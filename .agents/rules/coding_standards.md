@@ -54,10 +54,11 @@ RoyalSmash.Utils
 
 1. **Single Responsibility** — One class does one thing. No "do everything" scripts.
 2. **Composition over Inheritance** — Use components and interfaces, not deep inheritance trees.
-3. **Dependency Injection via Inspector** — Wire references in the Inspector, not with Find/GetComponent at runtime.
+3. **Dependency Injection via Inspector / Serialized References** — Wire references directly via Unity MCP (`manage_components` or `execute_code`), not with runtime Find() and NEVER ask the user to wire them manually.
 4. **ScriptableObject for Data** — All tunable values in ScriptableObjects, not hardcoded.
 5. **Events for Decoupling** — Systems communicate through events, not direct references to each other.
 6. **Immutable Game Rules** — Never change locked gameplay rules from the Master Build Prompt.
+7. **Autonomous In-Engine Execution** — All Unity Editor operations (components, materials, UI, references) must be performed by AI via MCP tools, never delegated to the user.
 
 ## Error Handling
 
