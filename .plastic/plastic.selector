@@ -1,0 +1,4 @@
+repository "SmasherRoyale/SmasherRoyale@18966813192417@cloud"
+  path "/"
+    br "/main"
+    co "/main"
