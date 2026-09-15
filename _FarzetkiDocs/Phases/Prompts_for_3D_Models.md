@@ -110,3 +110,156 @@ Game-ready mobile geometry, moderate polygon count, clean topology and UVs, simp
 
 Generate one isolated beam in horizontal orientation.
 
+9. Cream Marble Toy Column
+
+Create one isolated classical column adapted into a bright casual mobile toy-game style.
+
+The column should have a thick cylindrical shaft in warm creamy ivory, with very subtle stylized marble veins. Add a small rounded capital at the top and a matching base at the bottom. Use thin warm-gold accent rings where appropriate. Proportions should be chunky and simplified rather than historically accurate.
+
+The column must remain visually heavy and stable because it will act as a physics object that can stand upright and topple onto other objects. Avoid thin fluting, sharp stone edges or complex classical carvings.
+
+Material should resemble polished stylized marble or ceramic, with soft highlights and minimal texture noise.
+
+No broken state, environment, text or extra props.
+
+Mobile game-ready 3D asset with clean topology, UVs, PBR-ready materials, moderate polygon count and cylinder/capsule-friendly silhouette. Keep the center of mass visually believable and the bottom flat.
+
+Generate one isolated upright column.
+
+10. Red Royal Support Beam
+
+Create one isolated bright-red horizontal physics beam for a colorful royal casual mobile puzzle game.
+
+The beam is a long chunky rectangular construction piece with heavily rounded corners and thick bevels. Main body is vivid candy red with a slightly darker red border or recessed front frame. Add one simple embossed royal crest at the center of the front surface, such as a stylized crown-shaped abstract icon. The crest should be subtle and integrated into the geometry.
+
+The object should feel like solid molded plastic and be visually heavier than a small cube block. Keep the top and bottom flat enough for stable stacking.
+
+No text, letters, arrows, handles, bolts, realistic metal or wood textures. Avoid tiny details and floating decorations.
+
+Mobile game-ready, clean topology, clean UVs, PBR-ready glossy plastic material, moderate polygon count and simple box-collider-friendly dimensions.
+
+Generate only one isolated horizontal red support beam.
+
+11. Silver-Gold Modular Vertical Block
+
+Create one isolated modular vertical construction block for a cheerful royal-themed casual mobile physics puzzle game.
+
+The object should be a thick short rectangular prism designed to stack vertically. Main body is soft silver-blue painted metal with broad horizontal molded bands. Around the middle, add a vivid golden-yellow belt. Place a thin royal-purple ornamental zigzag or castle-battlement line across the yellow band.
+
+The visual style must remain toy-like and clean rather than industrial. Corners should be rounded and bevels large. The surface should have smooth satin metallic/plastic shading with no scratches, rivets, grime or realistic mechanical details.
+
+The block should be highly readable from a mobile gameplay camera and suitable for repeated modular stacking.
+
+Use one solid connected mesh, clean topology, UVs, PBR-ready materials, moderate polygon count and a collision-friendly rectangular silhouette.
+
+Generate one isolated vertical modular block, no scene or additional objects.
+
+12. Silver-Gold Horizontal Beam
+
+Create one isolated long horizontal modular beam for a stylized royal casual mobile physics puzzle game.
+
+The beam should be a thick rectangular prism with rounded corners. Main body is soft silver-blue with a bright golden-yellow vertical band at the center. Near both left and right ends, add a recessed royal-purple ornamental pattern shaped like a simple stepped castle motif. Include subtle silver caps at both extreme ends.
+
+The design should match a playful modular castle-construction set, not real architecture or industrial machinery. Surfaces are smooth satin enamel / painted metal with controlled highlights.
+
+Keep the geometry simple, sturdy, symmetrical and suitable for physics stacking. No bolts, text, realistic damage or thin protruding parts.
+
+Game-ready mobile mesh, clean topology, clean UVs, PBR-ready materials, moderate polygon count and simple box-collider-friendly outer volume.
+
+Generate exactly one isolated beam in horizontal orientation.
+
+13. Metal Turret / Top Cap
+
+Create one isolated decorative turret cap for a modular toy castle block set in a bright casual mobile physics puzzle game.
+
+The object is a short tapered tower-cap shape: a chunky truncated cone or tapered polygonal cap with a flat bottom. Use soft silver-blue on the upper section, a wide warm-gold band around the lower middle, and a thin royal-purple castle-shaped trim separating the materials.
+
+The form should be highly simplified and toy-like, with large bevels and no sharp spikes. It must look suitable for sitting on top of a modular column without appearing fragile.
+
+Materials should resemble smooth painted metal or premium molded plastic, with soft controlled highlights and no dirt or weathering.
+
+No flags, text, weapons or realistic medieval details.
+
+Mobile game-ready geometry, clean topology, clean UVs, PBR-ready materials, low-to-mid polygon count, flat bottom and collision-friendly silhouette.
+
+Generate one isolated turret cap.
+
+14. Bullseye / Target Disc
+
+Create one isolated circular target disc for a colorful royal casual mobile physics puzzle game.
+
+The object should be a thick coin-like cylinder viewed mainly from the front. The front face contains concentric circular rings: outer royal purple, inner bright blue-purple, a warm golden-yellow ring, and a small purple center. Use raised and recessed ring geometry rather than only a flat printed texture.
+
+The disc should feel like a sturdy toy target that can physically collide, move and fall. Give the outer edge a thick rounded rim and substantial depth.
+
+Use glossy molded-plastic / enamel materials with clean saturated colors and soft highlights. Avoid text, scoring numbers, arrows, scratches or realistic archery styling.
+
+Mobile game-ready mesh, clean topology, UVs, PBR-ready materials, moderate polygon count, simple cylindrical collider-friendly silhouette.
+
+Generate exactly one isolated target disc centered and facing forward.
+
+15. Standard Projectile Ball
+
+Create one isolated spherical projectile for a bright royal-themed casual mobile physics puzzle game.
+
+The projectile should be a perfectly readable chunky sphere with a smooth candy-red main surface. Add a very subtle golden circular trim or tiny embossed crown detail only if it does not interfere with the spherical collision silhouette. The object must remain primarily a clean sphere because it will use real Rigidbody physics and bounce naturally.
+
+Style should match premium molded toy plastic with smooth glossy highlights and saturated color. No seams, spikes, handles, text, facial features or complex surface detail.
+
+The geometry must be perfectly symmetrical, centered and suitable for a simple sphere collider. Use clean topology, clean UVs, moderate polygon count and PBR-ready material.
+
+Generate only one isolated projectile sphere.
+
+16. Stone / Ağır Taş
+
+Create one isolated heavy stone physics block for a bright casual mobile royal puzzle game.
+
+The object should be a chunky rounded stone block, roughly cube-like but with softly irregular organic edges. It must visually communicate that it is much heavier than the colorful plastic blocks. Use a cool desaturated blue-gray stone material with large simplified facets and very subtle stylized surface variation.
+
+Keep the silhouette compact and stable. Do not create sharp rocks, tiny cracks or photorealistic stone noise. Add only a few broad shallow carved lines or large smooth surface variations to suggest stone.
+
+The art style must remain compatible with colorful toy-game assets: simplified, polished and readable from a distance.
+
+Mobile game-ready, clean topology, clean UVs, PBR-ready material, moderate polygon count and physics-friendly collider shape.
+
+Generate exactly one isolated heavy stone block.
+
+17. Cone
+
+Create one isolated cone-shaped physics obstacle for a bright casual royal-themed mobile puzzle game.
+
+The object should be a chunky truncated cone with a wide stable base and softly rounded tip, similar to a premium toy construction piece. Use a vivid royal-purple main body with warm-gold rings around the bottom and near the upper section. Optionally add one simple small crown-shaped embossed detail on the front.
+
+The shape should clearly behave differently from cubes when hit: rounded, easy to tip and able to roll slightly. Keep the center of mass visually low.
+
+Use glossy molded-plastic / enamel materials, large bevels and clean saturated colors. No realistic traffic-cone styling, text, holes or thin decorative elements.
+
+Mobile game-ready geometry, clean topology, UVs, PBR-ready materials, moderate polygon count and simple cone/capsule-friendly collision silhouette.
+
+Generate one isolated cone standing upright.
+
+18. Paint Bottle
+
+Create one isolated stylized paint bottle physics object for a bright casual royal mobile puzzle game.
+
+The bottle should have a chunky rounded glass body with a short neck and a large colorful cap. Use slightly translucent but strongly stylized glass, thick enough to remain highly readable on a mobile screen. Inside the bottle, show saturated royal-purple paint occupying most of the volume. Add a warm-gold collar around the neck and a simple crown-shaped embossed mark molded into the front of the glass.
+
+The design should clearly communicate that the object is breakable, but the intact model must remain clean and sturdy. Avoid photorealistic glass, labels, text, tiny bubbles, complex bottle threading or thin fragile geometry.
+
+Use simplified mobile-friendly transparent material treatment, clean topology, clean UVs and PBR-ready materials. The silhouette should support a simple capsule or convex collider.
+
+Generate only one intact bottle, centered, upright, no floor, paint spill or broken shards.
+
+19. Paint Spill / Boya Birikintisi
+
+Create one isolated stylized paint puddle mesh for a bright casual mobile royal puzzle game.
+
+The object is a very thin irregular puddle of saturated royal-purple paint spread across a flat surface. Use a rounded organic silhouette with approximately six to ten broad lobes, avoiding tiny splashes or extremely thin tendrils. Include two or three small connected droplets near the main puddle, but keep them physically attached if possible.
+
+The material should look like thick glossy toy paint with smooth highlights, not realistic liquid simulation. The mesh should be almost flat with a slightly raised rounded edge and a gently domed center.
+
+No bottle, glass shards, floor, text or environment.
+
+Mobile game-ready, very low polygon count, clean topology and UVs, transparent or opaque PBR-ready paint material depending on implementation.
+
+Generate one isolated paint puddle viewed as a standalone mesh.
