@@ -179,6 +179,14 @@ namespace RoyalSmash.Gameplay
             Debug.Log($"[MortarController] Ball fired toward {worldTarget}! Remaining: {_remainingBalls}");
         }
 
+        /// <summary>
+        /// Fires a ball directly toward the target world position.
+        /// </summary>
+        public void Fire(Vector3 worldTarget)
+        {
+            HandleTapFired(worldTarget);
+        }
+
         private void LaunchProjectile(Vector3 targetPoint)
         {
             if (_ballPrefab == null)
