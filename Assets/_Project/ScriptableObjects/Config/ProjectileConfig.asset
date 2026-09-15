@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35db39703b8b11c4ab243a3a5c886df1, type: 3}
+  m_Name: ProjectileConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.ProjectileConfig
+  _launchSpeed: 22
+  _mass: 1.2
+  _bounciness: 0.45
+  _friction: 0.3
+  _lifetime: 5
+  _fadeDuration: 1
+  _fireCooldown: 0.15
+  _defaultBallCount: 25

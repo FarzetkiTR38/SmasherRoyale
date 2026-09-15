@@ -174,5 +174,14 @@ namespace RoyalSmash.Gameplay
         {
             HandleTap(screenPosition);
         }
+
+        /// <summary>
+        /// Programmatic simulation method for automated testing directly with world coordinates.
+        /// </summary>
+        public void SimulateTapWorldTarget(Vector3 worldTarget)
+        {
+            OnAimTargetChanged?.Invoke(worldTarget);
+            OnTapFired?.Invoke(worldTarget);
+        }
     }
 }

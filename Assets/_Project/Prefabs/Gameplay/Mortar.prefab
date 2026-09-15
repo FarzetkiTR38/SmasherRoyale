@@ -507,6 +507,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.MortarController
   _config: {fileID: 11400000, guid: e7329158b150fdb429d5dc065187386e, type: 2}
+  _projectileConfig: {fileID: 11400000, guid: 6f0958be8b36bd841bc424dcd4107a54, type: 2}
+  _ballPrefab: {fileID: 1773410511071674842, guid: f3db34c83cddce74d865879b482354dc, type: 3}
   _aimTransform: {fileID: 663447241481831823}
   _firePoint: {fileID: 3630960476756274545}
   _inputHandler: {fileID: 0}

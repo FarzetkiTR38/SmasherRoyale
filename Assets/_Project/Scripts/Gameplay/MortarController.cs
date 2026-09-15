@@ -1,18 +1,20 @@
+using System;
 using UnityEngine;
 
 namespace RoyalSmash.Gameplay
 {
     /// <summary>
-    /// Controls the mortar / cannon aiming and firing.
-    /// The mortar base remains stationary while the cannon head / barrel swivels horizontally
-    /// to follow player touch / drag input within clamped angular limits.
+    /// Controls the mortar / cannon aiming, cooldown timing, ammunition tracking, and projectile launching.
+    /// First ball is immediately ready (no initial cooldown).
     /// </summary>
     public class MortarController : MonoBehaviour
     {
-        [Header("Configuration")]
+        [Header("Configurations")]
         [SerializeField] private MortarConfig _config;
+        [SerializeField] private ProjectileConfig _projectileConfig;
 
-        [Header("References")]
+        [Header("Projectile References")]
+        [SerializeField] private GameObject _ballPrefab;
         [Tooltip("Transform that swivels horizontally to aim (Visuals or Turret).")]
         [SerializeField] private Transform _aimTransform;
 
@@ -21,16 +23,27 @@ namespace RoyalSmash.Gameplay
 
         [SerializeField] private InputHandler _inputHandler;
 
+        // Aiming state
         private float _targetYaw;
         private float _currentYaw;
         private float _yawVelocity;
         private Vector3 _lastTargetPoint;
+
+        // Ammunition and Cooldown state
+        private int _remainingBalls;
+        private float _cooldownTimer;
         private int _fireEventCount;
+
+        // Events
+        public event Action<int> OnBallCountChanged;
+        public event Action OnBallFired;
 
         public float CurrentYaw => _currentYaw;
         public float TargetYaw => _targetYaw;
         public Transform FirePoint => _firePoint;
         public Vector3 LastTargetPoint => _lastTargetPoint;
+        public int RemainingBalls => _remainingBalls;
+        public float CooldownTimer => _cooldownTimer;
         public int FireEventCount => _fireEventCount;
 
         private void Awake()
@@ -46,6 +59,10 @@ namespace RoyalSmash.Gameplay
                 var foundFirePoint = transform.Find("Visuals/BarrelPivot/FirePoint");
                 if (foundFirePoint != null) _firePoint = foundFirePoint;
             }
+
+            // Initialize ammunition and cooldown
+            _remainingBalls = _projectileConfig != null ? _projectileConfig.DefaultBallCount : 25;
+            _cooldownTimer = 0f; // First ball of level has NO cooldown
         }
 
         private void Start()
@@ -56,6 +73,7 @@ namespace RoyalSmash.Gameplay
             }
 
             RegisterInputEvents();
+            OnBallCountChanged?.Invoke(_remainingBalls);
         }
 
         private void OnEnable()
@@ -91,6 +109,7 @@ namespace RoyalSmash.Gameplay
         private void Update()
         {
             UpdateAimRotation();
+            UpdateCooldown();
         }
 
         private void UpdateAimRotation()
@@ -98,12 +117,17 @@ namespace RoyalSmash.Gameplay
             if (_aimTransform == null) return;
 
             float smoothTime = _config != null ? _config.SmoothTime : 0.05f;
-
-            // Smoothly damp towards target yaw
             _currentYaw = Mathf.SmoothDampAngle(_currentYaw, _targetYaw, ref _yawVelocity, smoothTime);
-
-            // Apply horizontal yaw to aim transform (swivels left and right)
             _aimTransform.localRotation = Quaternion.Euler(0f, _currentYaw, 0f);
+        }
+
+        private void UpdateCooldown()
+        {
+            if (_cooldownTimer > 0f)
+            {
+                _cooldownTimer -= Time.deltaTime;
+                if (_cooldownTimer < 0f) _cooldownTimer = 0f;
+            }
         }
 
         private void HandleAimTargetChanged(Vector3 worldTarget)
@@ -112,7 +136,6 @@ namespace RoyalSmash.Gameplay
             if (direction.sqrMagnitude < Mathf.Epsilon) return;
 
             float calculatedYaw = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-
             float minYaw = _config != null ? _config.MinYaw : -45f;
             float maxYaw = _config != null ? _config.MaxYaw : 45f;
 
@@ -121,17 +144,80 @@ namespace RoyalSmash.Gameplay
 
         private void HandleTapFired(Vector3 worldTarget)
         {
+            // Check ammunition
+            if (_remainingBalls <= 0)
+            {
+                Debug.Log("[MortarController] Cannot fire: No balls remaining!");
+                return;
+            }
+
+            // Check cooldown
+            if (_cooldownTimer > 0f)
+            {
+                Debug.Log($"[MortarController] Cooldown active ({_cooldownTimer:F2}s remaining), fire blocked.");
+                return;
+            }
+
+            // Aim directly at target point
+            HandleAimTargetChanged(worldTarget);
             _lastTargetPoint = worldTarget;
+
+            // Fire Ball
+            LaunchProjectile(worldTarget);
+
+            // Reset cooldown
+            float cooldown = _projectileConfig != null ? _projectileConfig.FireCooldown : 0.5f;
+            _cooldownTimer = cooldown;
+
+            // Decrement remaining ammunition
+            _remainingBalls--;
             _fireEventCount++;
 
-            // Ensure we are aiming directly at the tap target
-            HandleAimTargetChanged(worldTarget);
+            OnBallCountChanged?.Invoke(_remainingBalls);
+            OnBallFired?.Invoke();
 
-            Debug.Log($"[MortarController] Fire command received! Target: {worldTarget} (Total fires: {_fireEventCount})");
+            Debug.Log($"[MortarController] Ball fired toward {worldTarget}! Remaining: {_remainingBalls}");
+        }
+
+        private void LaunchProjectile(Vector3 targetPoint)
+        {
+            if (_ballPrefab == null)
+            {
+                Debug.LogWarning("[MortarController] Ball prefab is not assigned!");
+                return;
+            }
+
+            Vector3 spawnPosition = _firePoint != null ? _firePoint.position : transform.position + Vector3.up;
+            Quaternion spawnRotation = _firePoint != null ? _firePoint.rotation : Quaternion.identity;
+
+            GameObject ballGo = Instantiate(_ballPrefab, spawnPosition, spawnRotation);
+            var projectile = ballGo.GetComponent<ProjectileController>();
+
+            if (projectile != null)
+            {
+                projectile.Launch(targetPoint, _projectileConfig);
+            }
         }
 
         /// <summary>
-        /// Manually set the target yaw angle (for automated testing or resetting).
+        /// Set remaining ball count directly (for level loading or testing).
+        /// </summary>
+        public void SetBallCount(int count)
+        {
+            _remainingBalls = Mathf.Max(0, count);
+            OnBallCountChanged?.Invoke(_remainingBalls);
+        }
+
+        /// <summary>
+        /// Reset cooldown timer to 0 (for testing).
+        /// </summary>
+        public void ResetCooldown()
+        {
+            _cooldownTimer = 0f;
+        }
+
+        /// <summary>
+        /// Manually set target yaw angle.
         /// </summary>
         public void SetTargetYaw(float yawAngle)
         {
