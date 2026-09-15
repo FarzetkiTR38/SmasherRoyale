@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75de829a5c3177a4fbb139091e066b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.HUDController
-  _mortarController: {fileID: 1104467351}
+  _mortarController: {fileID: 0}
   _ballCountText: {fileID: 144985997}
   _ballCountCard: {fileID: 425631665}
   _punchScale: 1.25
@@ -1129,6 +1129,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435382636}
   m_CullTransparentMesh: 1
+--- !u!1001 &548526354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7580454146377585591, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_Name
+      value: Mortar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
 --- !u!1001 &653877400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1442,8 +1499,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747011842}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.104528464, y: 0, z: 0, w: 0.9945219}
-  m_LocalPosition: {x: 0, y: 2.7, z: -6.6}
+  m_LocalRotation: {x: 0.082808204, y: 0, z: 0, w: 0.9965655}
+  m_LocalPosition: {x: 0, y: 1.85, z: -5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1583,7 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc5de667d0b8d44d88207c32776cd64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.PlaygroundController
-  _mortar: {fileID: 1104467351}
+  _mortar: {fileID: 0}
   _resetButton: {fileID: 331414600}
   _infoText: {fileID: 0}
   _spawnList:
@@ -1717,78 +1774,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079b30e51eb0d834c88990824eea58a0, type: 3}
---- !u!1001 &1104467350
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1822762930407118993, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: _inputHandler
-      value: 
-      objectReference: {fileID: 271426620}
-    - target: {fileID: 7580454146377585591, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_Name
-      value: Mortar
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316775178322476878, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
---- !u!114 &1104467351 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1822762930407118993, guid: 72d80e0ac066bc24bb7a97cbbc4952aa, type: 3}
-  m_PrefabInstance: {fileID: 1104467350}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea80f6f255f7c546ad8ec25ab17de32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.MortarController
 --- !u!1001 &1190598185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2733,4 +2718,4 @@ SceneRoots:
   - {fileID: 370765837}
   - {fileID: 1531412768}
   - {fileID: 715551198}
-  - {fileID: 1104467350}
+  - {fileID: 548526354}
