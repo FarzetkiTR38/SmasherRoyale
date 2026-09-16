@@ -40,6 +40,11 @@ namespace RoyalSmash.Gameplay
             {
                 Destroy(_instancedMaterial);
             }
+
+            if (RoyalSmash.Levels.LevelManager.Instance != null)
+            {
+                RoyalSmash.Levels.LevelManager.Instance.UnregisterProjectile(this);
+            }
         }
 
         /// <summary>
@@ -79,6 +84,11 @@ namespace RoyalSmash.Gameplay
 
             Vector3 initialVelocity = (displacementXZ.normalized * launchSpeed) + (Vector3.up * vy);
             _rigidbody.linearVelocity = initialVelocity;
+
+            if (RoyalSmash.Levels.LevelManager.Instance != null)
+            {
+                RoyalSmash.Levels.LevelManager.Instance.RegisterProjectile(this);
+            }
 
             // Begin lifetime tracker
             if (_lifetimeCoroutine != null) StopCoroutine(_lifetimeCoroutine);
