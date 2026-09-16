@@ -20,6 +20,7 @@
 7. **Data-Driven Levels** — Level layouts MUST be defined in data (ScriptableObject or JSON), NOT hardcoded in scenes or scripts.
 8. **Placeholder Assets** — If an asset doesn't exist, create a clear placeholder (primitive mesh, solid color material, simple icon). Label it as "PLACEHOLDER". Make replacement easy.
 9. **Zero User Delegation via Unity MCP** — NEVER tell the user to manually perform actions inside the Unity Editor (attaching components, creating materials, setting inspector values, creating canvases, checking console). Use Unity MCP tools (`manage_gameobject`, `manage_components`, `manage_scene`, `manage_prefabs`, `manage_material`, `execute_code`, etc.) to execute them autonomously. Verify with `read_console` and screenshots (`manage_camera`), iterate until flawless, and only escalate external tasks (ad dashboards, backend credentials, custom art assets). See `.agents/skills/unity_mcp_automation/SKILL.md`.
+10. **Phase Implementation Plans** — For every development phase, you MUST create, maintain, and archive the implementation plan directly in `_FarzetkiDocs/Phases/Implementation Plan — Phase X.md`. Document system architecture, deliverables, acceptance criteria, and completion records. See `.agents/skills/phase_implementation_workflow/SKILL.md`.
 
 ## Architecture Rules
 
