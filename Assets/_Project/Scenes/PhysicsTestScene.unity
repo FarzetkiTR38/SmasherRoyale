@@ -1458,6 +1458,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1657986225}
     m_Modifications:
+    - target: {fileID: 1871676005799641951, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956530364221230336, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2818385396024775660, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
       propertyPath: m_Name
       value: SkillBtn_InfinityBall
@@ -1540,6 +1548,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2914761941008558550, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907085730484705180, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423194763570054548, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804978514445866231, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211616292997816594, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211616292997816594, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211616292997816594, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211616292997816594, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910029210126312521, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925511202432480284, guid: a79604f1740337740a9d403ff0260ff2, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3483,6 +3527,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillBtn_MegaBall
       objectReference: {fileID: 0}
+    - target: {fileID: 565935589583243055, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 813221582156394525, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560591220037868179, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601889557245188371, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3204635449552649496, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3561,6 +3621,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3204635449552649496, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546050132121547921, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442025717050297959, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786989532177641021, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786989532177641021, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786989532177641021, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786989532177641021, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357269891856565171, guid: 3b8bd0e4787750c45b0dc672a7956ab7, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

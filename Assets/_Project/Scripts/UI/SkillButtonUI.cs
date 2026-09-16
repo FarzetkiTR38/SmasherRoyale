@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 using RoyalSmash.Skills;
 
@@ -9,9 +10,10 @@ namespace RoyalSmash.UI
     /// <summary>
     /// Interactive HUD button representing an active player skill (MegaBall or InfinityBall).
     /// Displays lock status, remaining uses badge, active timer countdown, and handles user tap activation.
-    /// Follows Mobile Casual UI best practices with TextMeshPro and responsive feedback.
+    /// Implements IPointerClickHandler, IPointerDownHandler, IPointerUpHandler for guaranteed responsiveness.
+    /// Follows Mobile Casual UI best practices with TextMeshPro and responsive tactile feedback.
     /// </summary>
-    public class SkillButtonUI : MonoBehaviour
+    public class SkillButtonUI : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
     {
         [Header("Skill Binding")]
         [SerializeField] private SkillType _skillType;
@@ -24,6 +26,9 @@ namespace RoyalSmash.UI
         [SerializeField] private GameObject _activeGlow;
         [SerializeField] private TextMeshProUGUI _usesText;
         [SerializeField] private TextMeshProUGUI _timerText;
+
+        private float _lastClickTime = -1f;
+        private Coroutine _scaleRoutine;
 
         public SkillType BoundSkill => _skillType;
 
@@ -51,6 +56,7 @@ namespace RoyalSmash.UI
         private void OnDisable()
         {
             UnsubscribeEvents();
+            transform.localScale = Vector3.one;
         }
 
         private void OnDestroy()
@@ -152,29 +158,97 @@ namespace RoyalSmash.UI
             }
         }
 
+        public bool IsInteractable()
+        {
+            if (SkillManager.Instance == null) return false;
+            return SkillManager.Instance.IsSkillUnlocked(_skillType) &&
+                   SkillManager.Instance.GetRemainingUses(_skillType) > 0 &&
+                   !SkillManager.Instance.IsSkillActive(_skillType);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (!IsInteractable()) return;
+            AnimateScale(Vector3.one * 0.90f, 0.08f);
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            AnimateScale(Vector3.one, 0.08f);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (!IsInteractable()) return;
+            HandleButtonClicked();
+        }
+
         private void HandleButtonClicked()
         {
+            // Debounce guard to prevent double activation within the same frame or rapid succession
+            if (Time.unscaledTime - _lastClickTime < 0.15f) return;
+            _lastClickTime = Time.unscaledTime;
+
+            Debug.Log($"[SkillButtonUI] HandleButtonClicked CALLED for {_skillType}!");
             if (SkillManager.Instance != null)
             {
                 bool success = SkillManager.Instance.ActivateSkill(_skillType);
+                Debug.Log($"[SkillButtonUI] ActivateSkill({_skillType}) returned {success}");
                 if (success)
                 {
                     StartCoroutine(PunchAnimation());
                 }
             }
+            else
+            {
+                Debug.LogError($"[SkillButtonUI] SkillManager.Instance is NULL when clicking {_skillType}!");
+            }
+        }
+
+        private void AnimateScale(Vector3 targetScale, float duration)
+        {
+            if (_scaleRoutine != null) StopCoroutine(_scaleRoutine);
+            _scaleRoutine = StartCoroutine(ScaleRoutine(targetScale, duration));
+        }
+
+        private IEnumerator ScaleRoutine(Vector3 targetScale, float duration)
+        {
+            Vector3 startScale = transform.localScale;
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                transform.localScale = Vector3.Lerp(startScale, targetScale, elapsed / duration);
+                yield return null;
+            }
+            transform.localScale = targetScale;
+            _scaleRoutine = null;
         }
 
         private IEnumerator PunchAnimation()
         {
-            transform.localScale = Vector3.one * 1.15f;
+            if (_scaleRoutine != null)
+            {
+                StopCoroutine(_scaleRoutine);
+                _scaleRoutine = null;
+            }
+
+            transform.localScale = Vector3.one * 1.20f;
             float elapsed = 0f;
-            while (elapsed < 0.2f)
+            float duration = 0.22f;
+            while (elapsed < duration)
             {
                 elapsed += Time.unscaledDeltaTime;
-                transform.localScale = Vector3.Lerp(Vector3.one * 1.15f, Vector3.one, elapsed / 0.2f);
+                transform.localScale = Vector3.Lerp(Vector3.one * 1.20f, Vector3.one, elapsed / duration);
                 yield return null;
             }
             transform.localScale = Vector3.one;
+        }
+
+        [ContextMenu("Test Click")]
+        public void TestClick()
+        {
+            HandleButtonClicked();
         }
     }
 }
