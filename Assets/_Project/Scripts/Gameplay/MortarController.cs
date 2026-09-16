@@ -165,8 +165,15 @@ namespace RoyalSmash.Gameplay
             // Fire Ball
             LaunchProjectile(worldTarget);
 
-            // Reset cooldown
+            // Reset cooldown (InfinityBall overrides standard cooldown with rapid stream)
             float cooldown = _projectileConfig != null ? _projectileConfig.FireCooldown : 0.5f;
+            if (RoyalSmash.Skills.SkillManager.Instance != null && RoyalSmash.Skills.SkillManager.Instance.IsSkillActive(RoyalSmash.Skills.SkillType.InfinityBall))
+            {
+                float rapid = RoyalSmash.Skills.SkillManager.Instance.Config != null
+                    ? RoyalSmash.Skills.SkillManager.Instance.Config.InfinityBallRapidCooldown
+                    : 0.06f;
+                cooldown = rapid;
+            }
             _cooldownTimer = cooldown;
 
             // Decrement remaining ammunition
@@ -204,6 +211,20 @@ namespace RoyalSmash.Gameplay
             if (projectile != null)
             {
                 projectile.Launch(targetPoint, _projectileConfig);
+
+                // Check MegaBall skill buff
+                if (RoyalSmash.Skills.SkillManager.Instance != null && RoyalSmash.Skills.SkillManager.Instance.IsSkillActive(RoyalSmash.Skills.SkillType.MegaBall))
+                {
+                    float dMult = RoyalSmash.Skills.SkillManager.Instance.Config != null
+                        ? RoyalSmash.Skills.SkillManager.Instance.Config.MegaBallDiameterMultiplier
+                        : 2.0f;
+                    float mMult = RoyalSmash.Skills.SkillManager.Instance.Config != null
+                        ? RoyalSmash.Skills.SkillManager.Instance.Config.MegaBallMassMultiplier
+                        : 2.5f;
+
+                    projectile.ApplyMegaBall(dMult, mMult);
+                    RoyalSmash.Skills.SkillManager.Instance.ConsumeMegaBall();
+                }
             }
         }
 
