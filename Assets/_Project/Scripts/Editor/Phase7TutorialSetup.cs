@@ -205,10 +205,14 @@ public class Phase7TutorialSetup
                 if (tutMgrComp == null) tutMgrComp = tutMgrGo.AddComponent(tutMgrType);
 
                 SerializedObject soMgr = new SerializedObject(tutMgrComp);
+                soMgr.FindProperty("_enableTutorial").boolValue = false;
                 soMgr.FindProperty("_config").objectReferenceValue = tutConfig;
                 soMgr.FindProperty("_targetTransform").objectReferenceValue = targetTransform;
                 soMgr.FindProperty("_overlayUI").objectReferenceValue = tutOverlayComp;
                 soMgr.ApplyModifiedProperties();
+
+                // Keep overlay GameObject inactive by default while tutorial is turned OFF
+                overlayGo.SetActive(false);
 
                 EditorSceneManager.MarkSceneDirty(scene);
                 EditorSceneManager.SaveScene(scene);

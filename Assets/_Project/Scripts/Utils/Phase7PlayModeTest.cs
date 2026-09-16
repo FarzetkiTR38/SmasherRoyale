@@ -50,6 +50,7 @@ namespace RoyalSmash.Utils
             // ----------------------------------------------------------------------------------
             report.AppendLine("[TEST 1] First-Launch Tutorial Initialization...");
             // Force first-launch state in save data
+            tutMgr.EnableTutorial = true;
             saveMgr.SetTutorialCompleted(false);
             tutMgr.CheckAndInitializeTutorial();
 
@@ -198,6 +199,9 @@ namespace RoyalSmash.Utils
             {
                 report.AppendLine("  -> PASSED: Tutorial properly skipped on subsequent launches.");
             }
+
+            // Restore tutorial to disabled for user testing
+            tutMgr.EnableTutorial = false;
 
             // ----------------------------------------------------------------------------------
             // FINAL SUMMARY

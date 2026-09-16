@@ -14,6 +14,10 @@ namespace RoyalSmash.Tutorial
     {
         public static TutorialManager Instance { get; private set; }
 
+        [Header("Global Toggle (Testing / Debug)")]
+        [Tooltip("Master switch to turn the tutorial system ON or OFF. Uncheck to disable for testing.")]
+        [SerializeField] private bool _enableTutorial = false;
+
         [Header("Configuration")]
         [SerializeField] private TutorialConfig _config;
 
@@ -27,7 +31,21 @@ namespace RoyalSmash.Tutorial
         private bool _isTutorialActive;
         private Camera _mainCamera;
 
-        public bool IsTutorialActive => _isTutorialActive;
+        public bool EnableTutorial
+        {
+            get => _enableTutorial;
+            set
+            {
+                _enableTutorial = value;
+                if (!_enableTutorial && _isTutorialActive)
+                {
+                    _isTutorialActive = false;
+                    if (_overlayUI != null) _overlayUI.HideImmediate();
+                }
+            }
+        }
+
+        public bool IsTutorialActive => _isTutorialActive && _enableTutorial;
         public Transform TargetTransform => _targetTransform;
         public TutorialConfig Config => _config;
 
@@ -70,6 +88,15 @@ namespace RoyalSmash.Tutorial
         /// </summary>
         public void CheckAndInitializeTutorial()
         {
+            // 0. Master Switch check
+            if (!_enableTutorial)
+            {
+                Debug.Log("[TutorialManager] Tutorial is disabled via Inspector toggle (_enableTutorial == false). Skipping.");
+                _isTutorialActive = false;
+                if (_overlayUI != null) _overlayUI.HideImmediate();
+                return;
+            }
+
             // 1. Check Save Data
             bool isCompleted = false;
             if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
@@ -240,6 +267,50 @@ namespace RoyalSmash.Tutorial
         public void SetTargetTransform(Transform target)
         {
             _targetTransform = target;
+        }
+
+        private void OnValidate()
+        {
+            if (Application.isPlaying)
+            {
+                if (!_enableTutorial && _isTutorialActive)
+                {
+                    _isTutorialActive = false;
+                    if (_overlayUI != null) _overlayUI.HideImmediate();
+                }
+            }
+        }
+
+        [ContextMenu("Toggle Tutorial (On/Off)")]
+        public void ToggleTutorial()
+        {
+            EnableTutorial = !EnableTutorial;
+            Debug.Log($"[TutorialManager] EnableTutorial toggled to: {_enableTutorial}");
+        }
+
+        [ContextMenu("Enable Tutorial")]
+        public void EnableTutorialFromMenu()
+        {
+            EnableTutorial = true;
+            CheckAndInitializeTutorial();
+            Debug.Log("[TutorialManager] Tutorial enabled from context menu.");
+        }
+
+        [ContextMenu("Disable Tutorial")]
+        public void DisableTutorialFromMenu()
+        {
+            EnableTutorial = false;
+            Debug.Log("[TutorialManager] Tutorial disabled from context menu.");
+        }
+
+        [ContextMenu("Reset Tutorial Save (Set Incomplete)")]
+        public void ResetTutorialSave()
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SetTutorialCompleted(false);
+                Debug.Log("[TutorialManager] Reset save state: TutorialCompleted = false.");
+            }
         }
     }
 }

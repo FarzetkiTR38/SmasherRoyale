@@ -2017,6 +2017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069933e42662bb34a88a7058da585d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Tutorial.TutorialManager
+  _enableTutorial: 0
   _config: {fileID: 0}
   _targetTransform: {fileID: 1544237510}
   _overlayUI: {fileID: 1827900551}
@@ -3344,7 +3345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1827900551
 MonoBehaviour:
   m_ObjectHideFlags: 0
