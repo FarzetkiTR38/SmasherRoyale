@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using RoyalSmash.Tutorial;
+using RoyalSmash.Lives;
+using RoyalSmash.UI;
 
 namespace RoyalSmash.Gameplay
 {
@@ -76,6 +78,14 @@ namespace RoyalSmash.Gameplay
                     return;
                 }
                 _isPointerOverUI = false;
+
+                // Zero lives check: prevent aiming when out of lives
+                if (LivesManager.Instance != null && !LivesManager.Instance.HasLivesToPlay)
+                {
+                    var outOfLives = FindFirstObjectByType<OutOfLivesDialog>();
+                    if (outOfLives != null) outOfLives.Show();
+                    return;
+                }
 
                 // Aim at the initial touch point
                 Vector3 initialTarget = CalculateWorldTarget(currentPosition);
@@ -225,6 +235,15 @@ namespace RoyalSmash.Gameplay
             if (IsPointerOverUI(screenPosition))
             {
                 Debug.Log("[InputHandler] Tap ignored: clicked on UI element.");
+                return;
+            }
+
+            // Zero Lives Gating: block firing and display OutOfLivesDialog
+            if (LivesManager.Instance != null && !LivesManager.Instance.HasLivesToPlay)
+            {
+                Debug.LogWarning("[InputHandler] Tap rejected: Player has 0 lives!");
+                var outOfLives = FindFirstObjectByType<OutOfLivesDialog>();
+                if (outOfLives != null) outOfLives.Show();
                 return;
             }
 

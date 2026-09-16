@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using RoyalSmash.Economy;
 using RoyalSmash.Gameplay;
+using RoyalSmash.Save;
+using RoyalSmash.Lives;
 
 namespace RoyalSmash.Levels
 {
@@ -87,6 +89,22 @@ namespace RoyalSmash.Levels
 
             // Automatically scan and register existing target objects in scene
             ScanAndRegisterSceneTargets();
+
+            // Mark active level session for ungraceful exit detection
+            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            {
+                SaveManager.Instance.Data.WasInActiveLevel = true;
+                SaveManager.Instance.Data.ActiveLevelId = _currentLevelIndex;
+                SaveManager.Instance.Save();
+            }
+
+            // Check if player has lives to play
+            if (LivesManager.Instance != null && !LivesManager.Instance.HasLivesToPlay)
+            {
+                Debug.LogWarning("[LevelManager] Player has 0 lives! Gating level execution.");
+                var outOfLives = FindFirstObjectByType<RoyalSmash.UI.OutOfLivesDialog>();
+                if (outOfLives != null) outOfLives.Show();
+            }
         }
 
         private void OnDestroy()
@@ -276,6 +294,13 @@ namespace RoyalSmash.Levels
             _currentState = LevelState.Won;
             OnStateChanged?.Invoke(_currentState);
 
+            // Clear active level session flag (graceful completion, 0 life loss)
+            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            {
+                SaveManager.Instance.Data.WasInActiveLevel = false;
+                SaveManager.Instance.Save();
+            }
+
             int remainingBalls = _mortar != null ? _mortar.RemainingBalls : 0;
             int baseReward = _rewardConfig != null ? _rewardConfig.BaseLevelReward : 50;
             int totalGold = _rewardConfig != null ? _rewardConfig.CalculateReward(remainingBalls) : baseReward + (remainingBalls * 2);
@@ -298,6 +323,18 @@ namespace RoyalSmash.Levels
                 _currentState = LevelState.Lost;
                 OnStateChanged?.Invoke(_currentState);
 
+                // Clear active level flag and deduct exactly 1 life for defeat
+                if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+                {
+                    SaveManager.Instance.Data.WasInActiveLevel = false;
+                    SaveManager.Instance.Save();
+                }
+
+                if (LivesManager.Instance != null)
+                {
+                    LivesManager.Instance.DeductLife("LevelLost", $"Level_{_currentLevelIndex}_Loss");
+                }
+
                 Debug.Log($"[LevelManager] DEFEAT! Balls depleted with {_activeTargets.Count} targets remaining.");
                 OnLevelLost?.Invoke(_currentLevelIndex, _activeTargets.Count);
             }
@@ -310,9 +347,24 @@ namespace RoyalSmash.Levels
 
         /// <summary>
         /// Restarts the active scene/level (called by Retry button).
+        /// If called while actively playing, deducts 1 life as exit penalty.
         /// </summary>
         public void RestartLevel()
         {
+            if (_currentState == LevelState.Playing)
+            {
+                if (LivesManager.Instance != null)
+                {
+                    LivesManager.Instance.DeductLife("LevelExit", $"Level_{_currentLevelIndex}_Exit");
+                }
+            }
+
+            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            {
+                SaveManager.Instance.Data.WasInActiveLevel = false;
+                SaveManager.Instance.Save();
+            }
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

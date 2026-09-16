@@ -23,6 +23,8 @@ namespace RoyalSmash.Save
         // Lives
         public int Lives = 5;
         public long LifeTimerStartTicks = 0;
+        public bool WasInActiveLevel = false;
+        public int ActiveLevelId = 1;
 
         // Active Skills
         public bool MegaBallUnlocked = false;
