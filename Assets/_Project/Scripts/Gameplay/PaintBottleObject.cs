@@ -16,6 +16,17 @@ namespace RoyalSmash.Gameplay
         public Color PaintColor => _paintColor;
         public bool HasBroken => _hasBroken;
 
+        protected override void Start()
+        {
+            base.Start();
+
+            // Start in sleep state so grid remains rock-solid until projectile impact
+            if (_rigidbody != null)
+            {
+                _rigidbody.Sleep();
+            }
+        }
+
         protected override void HandleProjectileHit(Collision collision)
         {
             base.HandleProjectileHit(collision);
