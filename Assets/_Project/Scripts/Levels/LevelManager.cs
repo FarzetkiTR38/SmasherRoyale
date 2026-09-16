@@ -7,6 +7,7 @@ using RoyalSmash.Economy;
 using RoyalSmash.Gameplay;
 using RoyalSmash.Save;
 using RoyalSmash.Lives;
+using RoyalSmash.Skills;
 
 namespace RoyalSmash.Levels
 {
@@ -104,6 +105,12 @@ namespace RoyalSmash.Levels
                 Debug.LogWarning("[LevelManager] Player has 0 lives! Gating level execution.");
                 var outOfLives = FindFirstObjectByType<RoyalSmash.UI.OutOfLivesDialog>();
                 if (outOfLives != null) outOfLives.Show();
+            }
+
+            // Sync skills with current level progression (Level 5 MegaBall, Level 10 InfinityBall)
+            if (SkillManager.Instance != null)
+            {
+                SkillManager.Instance.UpdateUnlockStateForLevel(_currentLevelIndex);
             }
         }
 
@@ -305,6 +312,12 @@ namespace RoyalSmash.Levels
             int baseReward = _rewardConfig != null ? _rewardConfig.BaseLevelReward : 50;
             int totalGold = _rewardConfig != null ? _rewardConfig.CalculateReward(remainingBalls) : baseReward + (remainingBalls * 2);
 
+            // Clean up any lingering active skill states
+            if (SkillManager.Instance != null)
+            {
+                SkillManager.Instance.ResetActiveSkills();
+            }
+
             Debug.Log($"[LevelManager] VICTORY! Level {_currentLevelIndex} Cleared! Base: {baseReward}, Remaining Balls: {remainingBalls}, Total Gold: {totalGold}");
             OnLevelWon?.Invoke(_currentLevelIndex, baseReward, remainingBalls, totalGold);
         }
@@ -335,6 +348,12 @@ namespace RoyalSmash.Levels
                     LivesManager.Instance.DeductLife("LevelLost", $"Level_{_currentLevelIndex}_Loss");
                 }
 
+                // Clean up any lingering active skill states
+                if (SkillManager.Instance != null)
+                {
+                    SkillManager.Instance.ResetActiveSkills();
+                }
+
                 Debug.Log($"[LevelManager] DEFEAT! Balls depleted with {_activeTargets.Count} targets remaining.");
                 OnLevelLost?.Invoke(_currentLevelIndex, _activeTargets.Count);
             }
@@ -357,6 +376,11 @@ namespace RoyalSmash.Levels
                 {
                     LivesManager.Instance.DeductLife("LevelExit", $"Level_{_currentLevelIndex}_Exit");
                 }
+            }
+
+            if (SkillManager.Instance != null)
+            {
+                SkillManager.Instance.ResetActiveSkills();
             }
 
             if (SaveManager.Instance != null && SaveManager.Instance.Data != null)

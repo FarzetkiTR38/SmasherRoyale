@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using RoyalSmash.Save;
 
 namespace RoyalSmash.Skills
 {
     /// <summary>
     /// Central manager for active player skills: MegaBall and InfinityBall.
     /// Handles unlock states, remaining uses, active timers, skill stacking, and decoupled event dispatching.
+    /// Follows Master Build Prompt Section 12 & Save System Skill patterns.
     /// </summary>
     public class SkillManager : MonoBehaviour
     {
@@ -47,6 +49,11 @@ namespace RoyalSmash.Skills
             InitializeDefaults();
         }
 
+        private void Start()
+        {
+            SyncWithSaveData();
+        }
+
         private void OnDestroy()
         {
             if (Instance == this) Instance = null;
@@ -67,6 +74,42 @@ namespace RoyalSmash.Skills
         }
 
         /// <summary>
+        /// Synchronizes skill inventory and unlock flags with persistent SaveManager data.
+        /// </summary>
+        public void SyncWithSaveData()
+        {
+            var saveMgr = SaveManager.Instance;
+            if (saveMgr != null && saveMgr.Data != null)
+            {
+                var data = saveMgr.Data;
+                _megaBallUses = data.MegaBallUses;
+                _infinityBallUses = data.InfinityBallUses;
+
+                int megaUnlock = _config != null ? _config.MegaBallUnlockLevel : 5;
+                int infUnlock = _config != null ? _config.InfinityBallUnlockLevel : 10;
+
+                _megaBallUnlocked = data.MegaBallUnlocked || data.CurrentLevel >= megaUnlock;
+                _infinityBallUnlocked = data.InfinityBallUnlocked || data.CurrentLevel >= infUnlock;
+            }
+
+            NotifySkillState(SkillType.MegaBall);
+            NotifySkillState(SkillType.InfinityBall);
+        }
+
+        private void SaveStateToDisk()
+        {
+            var saveMgr = SaveManager.Instance;
+            if (saveMgr != null && saveMgr.Data != null)
+            {
+                saveMgr.Data.MegaBallUses = _megaBallUses;
+                saveMgr.Data.InfinityBallUses = _infinityBallUses;
+                saveMgr.Data.MegaBallUnlocked = _megaBallUnlocked;
+                saveMgr.Data.InfinityBallUnlocked = _infinityBallUnlocked;
+                saveMgr.Save();
+            }
+        }
+
+        /// <summary>
         /// Updates unlock states based on active player level (Level 5 for MegaBall, Level 10 for InfinityBall).
         /// </summary>
         public void UpdateUnlockStateForLevel(int playerLevel)
@@ -76,6 +119,8 @@ namespace RoyalSmash.Skills
 
             _megaBallUnlocked = playerLevel >= megaUnlock;
             _infinityBallUnlocked = playerLevel >= infUnlock;
+
+            SaveStateToDisk();
 
             NotifySkillState(SkillType.MegaBall);
             NotifySkillState(SkillType.InfinityBall);
@@ -146,6 +191,7 @@ namespace RoyalSmash.Skills
                 case SkillType.MegaBall:
                     _megaBallUses = Mathf.Max(0, _megaBallUses - 1);
                     _megaBallActive = true;
+                    SaveStateToDisk();
                     OnSkillActivated?.Invoke(SkillType.MegaBall);
                     NotifySkillState(SkillType.MegaBall);
                     Debug.Log($"[SkillManager] Mega Ball activated! ({_megaBallUses} uses left)");
@@ -154,6 +200,7 @@ namespace RoyalSmash.Skills
                 case SkillType.InfinityBall:
                     _infinityBallUses = Mathf.Max(0, _infinityBallUses - 1);
                     _infinityBallActive = true;
+                    SaveStateToDisk();
                     float duration = _config != null ? _config.InfinityBallDuration : 5.0f;
                     _infinityBallTimeRemaining = duration;
 
@@ -232,6 +279,7 @@ namespace RoyalSmash.Skills
         {
             if (skill == SkillType.MegaBall) _megaBallUnlocked = unlocked;
             else if (skill == SkillType.InfinityBall) _infinityBallUnlocked = unlocked;
+            SaveStateToDisk();
             NotifySkillState(skill);
         }
 
@@ -239,6 +287,7 @@ namespace RoyalSmash.Skills
         {
             if (skill == SkillType.MegaBall) _megaBallUses = Mathf.Max(0, uses);
             else if (skill == SkillType.InfinityBall) _infinityBallUses = Mathf.Max(0, uses);
+            SaveStateToDisk();
             NotifySkillState(skill);
         }
 
