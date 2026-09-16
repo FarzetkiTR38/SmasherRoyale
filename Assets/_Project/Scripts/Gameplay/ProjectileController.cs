@@ -19,7 +19,10 @@ namespace RoyalSmash.Gameplay
         private Material _instancedMaterial;
         private Coroutine _lifetimeCoroutine;
 
+        private bool _isMegaBall;
+
         public Rigidbody Rigidbody => _rigidbody;
+        public bool IsMegaBall => _isMegaBall;
 
         private void Awake()
         {
@@ -39,6 +42,33 @@ namespace RoyalSmash.Gameplay
             if (_instancedMaterial != null)
             {
                 Destroy(_instancedMaterial);
+            }
+
+            if (RoyalSmash.Levels.LevelManager.Instance != null)
+            {
+                RoyalSmash.Levels.LevelManager.Instance.UnregisterProjectile(this);
+            }
+        }
+
+        /// <summary>
+        /// Applies MegaBall physical scaling and mass multiplication.
+        /// </summary>
+        public void ApplyMegaBall(float diameterMultiplier, float massMultiplier)
+        {
+            _isMegaBall = true;
+            _originalScale = _originalScale * diameterMultiplier;
+            transform.localScale = _originalScale;
+
+            if (_rigidbody != null)
+            {
+                float baseMass = _config != null ? _config.Mass : _rigidbody.mass;
+                _rigidbody.mass = baseMass * massMultiplier;
+            }
+
+            if (_renderer != null && _instancedMaterial != null)
+            {
+                // Vibrant gold/orange tint for MegaBall
+                _instancedMaterial.color = new Color(1.0f, 0.65f, 0.10f);
             }
         }
 
@@ -79,6 +109,11 @@ namespace RoyalSmash.Gameplay
 
             Vector3 initialVelocity = (displacementXZ.normalized * launchSpeed) + (Vector3.up * vy);
             _rigidbody.linearVelocity = initialVelocity;
+
+            if (RoyalSmash.Levels.LevelManager.Instance != null)
+            {
+                RoyalSmash.Levels.LevelManager.Instance.RegisterProjectile(this);
+            }
 
             // Begin lifetime tracker
             if (_lifetimeCoroutine != null) StopCoroutine(_lifetimeCoroutine);

@@ -1,0 +1,260 @@
+using System;
+using System.Collections;
+using UnityEngine;
+
+namespace RoyalSmash.Skills
+{
+    /// <summary>
+    /// Central manager for active player skills: MegaBall and InfinityBall.
+    /// Handles unlock states, remaining uses, active timers, skill stacking, and decoupled event dispatching.
+    /// </summary>
+    public class SkillManager : MonoBehaviour
+    {
+        public static SkillManager Instance { get; private set; }
+
+        [Header("Configuration")]
+        [SerializeField] private SkillConfig _config;
+
+        [Header("Mega Ball State")]
+        [SerializeField] private bool _megaBallUnlocked;
+        [SerializeField] private int _megaBallUses = 3;
+        [SerializeField] private bool _megaBallActive;
+
+        [Header("Infinity Ball State")]
+        [SerializeField] private bool _infinityBallUnlocked;
+        [SerializeField] private int _infinityBallUses = 3;
+        [SerializeField] private bool _infinityBallActive;
+        [SerializeField] private float _infinityBallTimeRemaining;
+
+        private Coroutine _infinityBallRoutine;
+
+        // Events: (SkillType skill, bool isUnlocked, int remainingUses, bool isActive, float durationRemaining)
+        public event Action<SkillType, bool, int, bool, float> OnSkillStateChanged;
+        public event Action<SkillType> OnSkillActivated;
+        public event Action<SkillType> OnSkillDeactivated;
+
+        public SkillConfig Config => _config;
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+
+            InitializeDefaults();
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
+        }
+
+        private void InitializeDefaults()
+        {
+            if (_config == null)
+            {
+                _config = Resources.Load<SkillConfig>("Config/SkillConfig");
+            }
+
+            if (_config != null)
+            {
+                _megaBallUses = _config.MegaBallDefaultUses;
+                _infinityBallUses = _config.InfinityBallDefaultUses;
+            }
+        }
+
+        /// <summary>
+        /// Updates unlock states based on active player level (Level 5 for MegaBall, Level 10 for InfinityBall).
+        /// </summary>
+        public void UpdateUnlockStateForLevel(int playerLevel)
+        {
+            int megaUnlock = _config != null ? _config.MegaBallUnlockLevel : 5;
+            int infUnlock = _config != null ? _config.InfinityBallUnlockLevel : 10;
+
+            _megaBallUnlocked = playerLevel >= megaUnlock;
+            _infinityBallUnlocked = playerLevel >= infUnlock;
+
+            NotifySkillState(SkillType.MegaBall);
+            NotifySkillState(SkillType.InfinityBall);
+        }
+
+        public bool IsSkillUnlocked(SkillType skill)
+        {
+            return skill switch
+            {
+                SkillType.MegaBall => _megaBallUnlocked,
+                SkillType.InfinityBall => _infinityBallUnlocked,
+                _ => false
+            };
+        }
+
+        public int GetRemainingUses(SkillType skill)
+        {
+            return skill switch
+            {
+                SkillType.MegaBall => _megaBallUses,
+                SkillType.InfinityBall => _infinityBallUses,
+                _ => 0
+            };
+        }
+
+        public bool IsSkillActive(SkillType skill)
+        {
+            return skill switch
+            {
+                SkillType.MegaBall => _megaBallActive,
+                SkillType.InfinityBall => _infinityBallActive,
+                _ => false
+            };
+        }
+
+        public float GetActiveTimer(SkillType skill)
+        {
+            if (skill == SkillType.InfinityBall) return _infinityBallTimeRemaining;
+            return 0f;
+        }
+
+        /// <summary>
+        /// Attempts to activate a skill. Consumes 1 use and applies active modifier.
+        /// Supports stacking: both MegaBall and InfinityBall can be active simultaneously.
+        /// </summary>
+        public bool ActivateSkill(SkillType skill)
+        {
+            if (!IsSkillUnlocked(skill))
+            {
+                Debug.LogWarning($"[SkillManager] Cannot activate {skill}: Skill is locked!");
+                return false;
+            }
+
+            if (GetRemainingUses(skill) <= 0)
+            {
+                Debug.LogWarning($"[SkillManager] Cannot activate {skill}: No uses remaining!");
+                return false;
+            }
+
+            if (IsSkillActive(skill))
+            {
+                Debug.Log($"[SkillManager] {skill} is already active.");
+                return false;
+            }
+
+            switch (skill)
+            {
+                case SkillType.MegaBall:
+                    _megaBallUses = Mathf.Max(0, _megaBallUses - 1);
+                    _megaBallActive = true;
+                    OnSkillActivated?.Invoke(SkillType.MegaBall);
+                    NotifySkillState(SkillType.MegaBall);
+                    Debug.Log($"[SkillManager] Mega Ball activated! ({_megaBallUses} uses left)");
+                    return true;
+
+                case SkillType.InfinityBall:
+                    _infinityBallUses = Mathf.Max(0, _infinityBallUses - 1);
+                    _infinityBallActive = true;
+                    float duration = _config != null ? _config.InfinityBallDuration : 5.0f;
+                    _infinityBallTimeRemaining = duration;
+
+                    if (_infinityBallRoutine != null) StopCoroutine(_infinityBallRoutine);
+                    _infinityBallRoutine = StartCoroutine(InfinityBallCountdownRoutine(duration));
+
+                    OnSkillActivated?.Invoke(SkillType.InfinityBall);
+                    NotifySkillState(SkillType.InfinityBall);
+                    Debug.Log($"[SkillManager] Infinity Ball activated for {duration:F1}s! ({_infinityBallUses} uses left)");
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Consumes the active MegaBall one-shot buff (called immediately after Mortar fires the MegaBall).
+        /// </summary>
+        public void ConsumeMegaBall()
+        {
+            if (_megaBallActive)
+            {
+                _megaBallActive = false;
+                OnSkillDeactivated?.Invoke(SkillType.MegaBall);
+                NotifySkillState(SkillType.MegaBall);
+                Debug.Log("[SkillManager] Mega Ball consumed by shot.");
+            }
+        }
+
+        /// <summary>
+        /// Manually deactivates a skill (e.g. on level restart or completion).
+        /// </summary>
+        public void ResetActiveSkills()
+        {
+            if (_megaBallActive)
+            {
+                _megaBallActive = false;
+                OnSkillDeactivated?.Invoke(SkillType.MegaBall);
+                NotifySkillState(SkillType.MegaBall);
+            }
+
+            if (_infinityBallActive)
+            {
+                if (_infinityBallRoutine != null)
+                {
+                    StopCoroutine(_infinityBallRoutine);
+                    _infinityBallRoutine = null;
+                }
+                _infinityBallActive = false;
+                _infinityBallTimeRemaining = 0f;
+                OnSkillDeactivated?.Invoke(SkillType.InfinityBall);
+                NotifySkillState(SkillType.InfinityBall);
+            }
+        }
+
+        private IEnumerator InfinityBallCountdownRoutine(float duration)
+        {
+            _infinityBallTimeRemaining = duration;
+            while (_infinityBallTimeRemaining > 0f)
+            {
+                _infinityBallTimeRemaining -= Time.deltaTime;
+                NotifySkillState(SkillType.InfinityBall);
+                yield return null;
+            }
+
+            _infinityBallTimeRemaining = 0f;
+            _infinityBallActive = false;
+            _infinityBallRoutine = null;
+
+            OnSkillDeactivated?.Invoke(SkillType.InfinityBall);
+            NotifySkillState(SkillType.InfinityBall);
+            Debug.Log("[SkillManager] Infinity Ball duration expired.");
+        }
+
+        public void SetSkillUnlocked(SkillType skill, bool unlocked)
+        {
+            if (skill == SkillType.MegaBall) _megaBallUnlocked = unlocked;
+            else if (skill == SkillType.InfinityBall) _infinityBallUnlocked = unlocked;
+            NotifySkillState(skill);
+        }
+
+        public void SetRemainingUses(SkillType skill, int uses)
+        {
+            if (skill == SkillType.MegaBall) _megaBallUses = Mathf.Max(0, uses);
+            else if (skill == SkillType.InfinityBall) _infinityBallUses = Mathf.Max(0, uses);
+            NotifySkillState(skill);
+        }
+
+        public void AddUses(SkillType skill, int amount)
+        {
+            SetRemainingUses(skill, GetRemainingUses(skill) + amount);
+        }
+
+        public void NotifySkillState(SkillType skill)
+        {
+            bool isUnlocked = IsSkillUnlocked(skill);
+            int uses = GetRemainingUses(skill);
+            bool isActive = IsSkillActive(skill);
+            float timer = GetActiveTimer(skill);
+
+            OnSkillStateChanged?.Invoke(skill, isUnlocked, uses, isActive, timer);
+        }
+    }
+}

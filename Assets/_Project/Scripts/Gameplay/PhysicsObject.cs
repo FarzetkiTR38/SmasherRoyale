@@ -54,6 +54,11 @@ namespace RoyalSmash.Gameplay
         {
             // Set layer to PhysicsObject (Layer 7)
             gameObject.layer = 7;
+
+            if (RoyalSmash.Levels.LevelManager.Instance != null)
+            {
+                RoyalSmash.Levels.LevelManager.Instance.RegisterTarget(this);
+            }
         }
 
         protected virtual void OnDestroy()
@@ -61,6 +66,11 @@ namespace RoyalSmash.Gameplay
             if (_instancedMaterial != null)
             {
                 Destroy(_instancedMaterial);
+            }
+
+            if (RoyalSmash.Levels.LevelManager.Instance != null)
+            {
+                RoyalSmash.Levels.LevelManager.Instance.UnregisterTarget(this);
             }
         }
 

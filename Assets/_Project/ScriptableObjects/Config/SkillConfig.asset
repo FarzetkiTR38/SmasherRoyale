@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8a3cb624e3b1149b3344a699a7c349, type: 3}
+  m_Name: SkillConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Skills.SkillConfig
+  _megaBallDiameterMultiplier: 2
+  _megaBallMassMultiplier: 2.5
+  _megaBallDefaultUses: 3
+  _megaBallUnlockLevel: 5
+  _megaBallUsePrice: 50
+  _infinityBallDuration: 5
+  _infinityBallRapidCooldown: 0.06
+  _infinityBallDefaultUses: 3
+  _infinityBallUnlockLevel: 10
+  _infinityBallUsePrice: 100

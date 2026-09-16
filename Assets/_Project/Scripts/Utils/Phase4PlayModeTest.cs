@@ -200,7 +200,7 @@ namespace RoyalSmash.Utils
             // Hit bottom box directly
             mortar.ResetCooldown();
             inputHandler.SimulateTapWorldTarget(bottomSpawn);
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.85f);
 
             float topBoxY = (topBox != null) ? topBox.transform.position.y : 0f;
             report.AppendLine($"  Top box Y after hit: {topBoxY:F2} (Started at {topSpawn.y:F2})");
@@ -231,8 +231,8 @@ namespace RoyalSmash.Utils
             var edgePo = edgeBox.GetComponent<PhysicsObject>();
 
             // Push it off the edge toward ground
-            edgeRb.linearVelocity = new Vector3(4.0f, -1.0f, 0f);
-            yield return new WaitForSeconds(0.5f);
+            edgeRb.linearVelocity = new Vector3(5.0f, -2.0f, 0f);
+            yield return new WaitForSeconds(0.7f);
 
             bool shrinkStarted = edgePo != null && (edgePo.CurrentState == ObjectState.DestroyCondition || edgePo.CurrentState == ObjectState.Destroying);
             report.AppendLine($"  Fall-off state reached: {edgePo?.CurrentState}");
