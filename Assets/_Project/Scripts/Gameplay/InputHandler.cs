@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using RoyalSmash.Tutorial;
 
 namespace RoyalSmash.Gameplay
 {
@@ -84,6 +85,12 @@ namespace RoyalSmash.Gameplay
             else if (isCurrentlyPressed && _isPressed)
             {
                 if (_isPointerOverUI) return;
+
+                // If tutorial is active, suppress dragging so player focuses on tapping the target
+                if (TutorialManager.Instance != null && TutorialManager.Instance.IsTutorialActive)
+                {
+                    return;
+                }
 
                 float totalMoveDistance = Vector2.Distance(_touchStartPosition, currentPosition);
                 float threshold = _config != null ? _config.DragThresholdPixels : 12f;
@@ -172,7 +179,7 @@ namespace RoyalSmash.Gameplay
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, mask))
             {
                 worldTarget = hit.point;
-                if (hit.point.y < minAllowedY || hit.collider.CompareTag("Ground") || hit.collider.gameObject.name.ToLower().Contains("ground"))
+                if (hit.point.y < minAllowedY || hit.collider.gameObject.name.IndexOf("ground", StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     return true;
                 }
@@ -233,6 +240,17 @@ namespace RoyalSmash.Gameplay
                 Debug.Log($"[InputHandler] Tap rejected below stand (Y={worldTarget.y:F2} < {GetStandTabletopY():F2}).");
                 OnInvalidTapAttempted?.Invoke("STANDIN ALT KISMINA TIKLAYAMAZSINIZ, OBJELERE TIKLAYIN!");
                 return;
+            }
+
+            // Tutorial restriction: Player can only tap to fire at the highlighted target area on Level 1
+            if (TutorialManager.Instance != null && TutorialManager.Instance.IsTutorialActive)
+            {
+                if (!TutorialManager.Instance.IsTapAllowed(screenPosition, worldTarget))
+                {
+                    return;
+                }
+                // First guided shot unlocks full control immediately
+                TutorialManager.Instance.CompleteTutorial();
             }
 
             OnAimTargetChanged?.Invoke(worldTarget);
