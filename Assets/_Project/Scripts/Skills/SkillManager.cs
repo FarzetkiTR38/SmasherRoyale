@@ -308,6 +308,11 @@ namespace RoyalSmash.Skills
             SetRemainingUses(skill, GetRemainingUses(skill) + amount);
         }
 
+        public void AddSkillUses(SkillType skill, int amount)
+        {
+            AddUses(skill, amount);
+        }
+
         /// <summary>
         /// Purchases additional skill uses with Gold via GoldManager.
         /// </summary>
