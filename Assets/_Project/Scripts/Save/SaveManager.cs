@@ -10,7 +10,23 @@ namespace RoyalSmash.Save
     /// </summary>
     public class SaveManager : MonoBehaviour
     {
-        public static SaveManager Instance { get; private set; }
+        private static SaveManager _instance;
+        public static SaveManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<SaveManager>();
+                    if (_instance != null && _instance._data == null)
+                    {
+                        _instance.Load();
+                    }
+                }
+                return _instance;
+            }
+            private set => _instance = value;
+        }
 
         private const string SAVE_FILE_NAME = "player_save.json";
         private const string BACKUP_FILE_NAME = "player_save_backup.json";
@@ -61,6 +77,7 @@ namespace RoyalSmash.Save
                     _data = JsonUtility.FromJson<PlayerSaveData>(json);
                     if (_data != null)
                     {
+                        ValidateData();
                         Debug.Log($"[SaveManager] Save loaded successfully. Level: {_data.CurrentLevel}, TutorialCompleted: {_data.TutorialCompleted}");
                         OnSaveLoaded?.Invoke(_data);
                         return;
@@ -81,6 +98,7 @@ namespace RoyalSmash.Save
                     _data = JsonUtility.FromJson<PlayerSaveData>(jsonBackup);
                     if (_data != null)
                     {
+                        ValidateData();
                         Debug.Log("[SaveManager] Backup save loaded successfully.");
                         OnSaveLoaded?.Invoke(_data);
                         Save(); // Restore primary
@@ -95,9 +113,19 @@ namespace RoyalSmash.Save
 
             // Create default data
             _data = new PlayerSaveData();
+            ValidateData();
             Debug.Log("[SaveManager] Fresh default save data initialized.");
             Save();
             OnSaveLoaded?.Invoke(_data);
+        }
+
+        private void ValidateData()
+        {
+            if (_data == null) _data = new PlayerSaveData();
+            if (_data.RewardedLevelIds == null)
+            {
+                _data.RewardedLevelIds = new System.Collections.Generic.List<int>();
+            }
         }
 
         /// <summary>

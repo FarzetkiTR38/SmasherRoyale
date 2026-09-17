@@ -13,7 +13,19 @@ namespace RoyalSmash.Lives
     /// </summary>
     public class LivesManager : MonoBehaviour
     {
-        public static LivesManager Instance { get; private set; }
+        private static LivesManager _instance;
+        public static LivesManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<LivesManager>();
+                }
+                return _instance;
+            }
+            private set => _instance = value;
+        }
 
         [Header("Configuration")]
         [SerializeField] private LivesConfig _config;
@@ -272,19 +284,30 @@ namespace RoyalSmash.Lives
         /// </summary>
         public bool BuyLifeWithGold()
         {
-            var saveMgr = SaveManager.Instance;
-            if (saveMgr == null || saveMgr.Data == null) return false;
-
-            int price = _config != null ? _config.LifePriceGold : 100;
-            if (saveMgr.Data.Gold < price)
-            {
-                Debug.LogWarning($"[LivesManager] Insufficient Gold ({saveMgr.Data.Gold} < {price}).");
-                return false;
-            }
-
             if (AreLivesFull)
             {
                 Debug.Log("[LivesManager] Lives already at maximum capacity.");
+                return false;
+            }
+
+            int price = _config != null ? _config.LifePriceGold : 100;
+
+            if (Economy.GoldManager.Instance != null)
+            {
+                if (!Economy.GoldManager.Instance.SpendGold(price, "LifePurchase"))
+                {
+                    return false;
+                }
+                AddLife(1, "GoldPurchase");
+                return true;
+            }
+
+            var saveMgr = SaveManager.Instance;
+            if (saveMgr == null || saveMgr.Data == null) return false;
+
+            if (saveMgr.Data.Gold < price)
+            {
+                Debug.LogWarning($"[LivesManager] Insufficient Gold ({saveMgr.Data.Gold} < {price}).");
                 return false;
             }
 

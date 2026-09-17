@@ -162,12 +162,18 @@ namespace RoyalSmash.Editor
 
         public static void SetupActiveScene()
         {
-            // 0. Camera
+            // 0. Camera & Mortar (Preserving user's forward placement)
             var cam = GameObject.Find("Main Camera");
             if (cam != null)
             {
-                cam.transform.position = new Vector3(0f, 1.85f, -5.60f);
-                cam.transform.rotation = Quaternion.Euler(7.5f, 0f, 0f);
+                cam.transform.position = new Vector3(0f, 3.11f, -5.43f);
+                cam.transform.rotation = Quaternion.Euler(8.16f, 0f, 0f);
+            }
+
+            var mortar = GameObject.Find("Mortar");
+            if (mortar != null)
+            {
+                mortar.transform.position = new Vector3(0f, 1.07f, -2.52f);
             }
 
             // 1. Lighting
@@ -197,17 +203,17 @@ namespace RoyalSmash.Editor
 
             var bdMat = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_KingdomBackdrop.mat");
             backdrop.GetComponent<Renderer>().sharedMaterial = bdMat;
-            backdrop.transform.position = new Vector3(0f, 7.8f, 32.0f);
+            backdrop.transform.position = new Vector3(0f, 6.6f, 32.0f);
             backdrop.transform.rotation = Quaternion.Euler(7.5f, 0f, 0f);
-            backdrop.transform.localScale = new Vector3(28.0f, 42.0f, 1f);
+            backdrop.transform.localScale = new Vector3(26.0f, 40.0f, 1f);
 
             // 3. 3D Ground & Stylized Grass
             var grassMat = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_StylizedGrass.mat");
             var ground = GameObject.Find("Ground");
             if (ground != null)
             {
-                ground.transform.position = new Vector3(0f, 0f, 15f);
-                ground.transform.localScale = new Vector3(50f, 1f, 60f);
+                ground.transform.position = new Vector3(0f, 0f, 13.5f);
+                ground.transform.localScale = new Vector3(45f, 1f, 37f);
                 var mr = ground.GetComponent<MeshRenderer>();
                 if (mr != null)
                 {

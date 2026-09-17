@@ -19,6 +19,7 @@ namespace RoyalSmash.Save
 
         // Economy
         public int Gold = 1000;
+        public System.Collections.Generic.List<int> RewardedLevelIds = new System.Collections.Generic.List<int>();
 
         // Lives
         public int Lives = 5;

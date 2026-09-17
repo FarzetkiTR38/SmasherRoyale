@@ -12,7 +12,19 @@ namespace RoyalSmash.Skills
     /// </summary>
     public class SkillManager : MonoBehaviour
     {
-        public static SkillManager Instance { get; private set; }
+        private static SkillManager _instance;
+        public static SkillManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<SkillManager>();
+                }
+                return _instance;
+            }
+            private set => _instance = value;
+        }
 
         [Header("Configuration")]
         [SerializeField] private SkillConfig _config;
@@ -294,6 +306,18 @@ namespace RoyalSmash.Skills
         public void AddUses(SkillType skill, int amount)
         {
             SetRemainingUses(skill, GetRemainingUses(skill) + amount);
+        }
+
+        /// <summary>
+        /// Purchases additional skill uses with Gold via GoldManager.
+        /// </summary>
+        public bool BuySkillUsesWithGold(SkillType skill, int amount = 1)
+        {
+            if (Economy.GoldManager.Instance != null)
+            {
+                return Economy.GoldManager.Instance.BuySkillUses(skill, amount);
+            }
+            return false;
         }
 
         public void NotifySkillState(SkillType skill)
