@@ -56,6 +56,11 @@ namespace RoyalSmash.UI
 
         private void Start()
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayMainMenuBGM();
+            }
+
             RefreshUI();
             StartCoroutine(OfferCountdownRoutine());
             CheckLevel10UsernamePrompt();

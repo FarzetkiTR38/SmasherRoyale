@@ -46,6 +46,11 @@ namespace RoyalSmash.Gameplay
             if (_hasBroken) return;
             _hasBroken = true;
 
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayBottleBreak();
+            }
+
             Debug.Log($"[PaintBottleObject] Shattered at {impactPoint} with {_paintColor} paint splash!");
 
             // Spawn procedural paint splat particle burst

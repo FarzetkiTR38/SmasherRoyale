@@ -88,6 +88,11 @@ namespace RoyalSmash.Levels
                 _mortar.OnBallCountChanged += HandleBallCountChanged;
             }
 
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayGameplayBGM();
+            }
+
             // Automatically scan and register existing target objects in scene
             ScanAndRegisterSceneTargets();
 

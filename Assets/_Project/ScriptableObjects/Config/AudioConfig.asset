@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b6fa62483d7314db93df847f4f04aa, type: 3}
+  m_Name: AudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Audio.AudioConfig
+  _bgmMainMenu: {fileID: 8300000, guid: 4c443ef6664b9554a8b2d0c74828c983, type: 3}
+  _bgmGameplay: {fileID: 8300000, guid: 88b126490f4844144a0c766d25444baa, type: 3}
+  _ballLaunch: {fileID: 8300000, guid: 939882cf605192c43bbedbe2a8d306d1, type: 3}
+  _boxImpact: {fileID: 8300000, guid: b0176592c4c8cbe46a5c719bfe51dd53, type: 3}
+  _stoneImpact: {fileID: 8300000, guid: db061598de24f5247978ace55c5af651, type: 3}
+  _columnImpact: {fileID: 8300000, guid: 09867e192f89275408b941bf11d661db, type: 3}
+  _coneImpact: {fileID: 8300000, guid: e2d2c026c39600e4dbca5621c760d43a, type: 3}
+  _paintBottleBreak: {fileID: 8300000, guid: 75563b79d0dd0fc459f26a80b9569f4d, type: 3}
+  _objectDestruction: {fileID: 8300000, guid: 3f520a3d0cb5f2b4cafa021ec1f5add0, type: 3}
+  _buttonClick: {fileID: 8300000, guid: c545cecb0a00d6e4db6eeb104d9eb4f7, type: 3}
+  _winFanfare: {fileID: 8300000, guid: ba1f5057dadc7944da9ffa91bc846ffb, type: 3}
+  _loseSound: {fileID: 8300000, guid: 6a878590d4f483a44be0a00a3855fa5b, type: 3}
+  _rewardSound: {fileID: 8300000, guid: 44fbd73f4ee055a4699b164c6bcd06a7, type: 3}
+  _pitchRandomizationRange: 0.06
+  _maxSimultaneousVoices: 8
+  _minCollisionImpulse: 0.15

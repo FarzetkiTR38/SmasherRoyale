@@ -212,6 +212,11 @@ namespace RoyalSmash.Gameplay
             {
                 projectile.Launch(targetPoint, _projectileConfig);
 
+                if (RoyalSmash.Audio.AudioManager.Instance != null)
+                {
+                    RoyalSmash.Audio.AudioManager.Instance.PlayBallLaunch();
+                }
+
                 // Check MegaBall skill buff
                 if (RoyalSmash.Skills.SkillManager.Instance != null && RoyalSmash.Skills.SkillManager.Instance.IsSkillActive(RoyalSmash.Skills.SkillType.MegaBall))
                 {

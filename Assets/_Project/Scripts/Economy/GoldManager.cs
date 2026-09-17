@@ -169,6 +169,11 @@ namespace RoyalSmash.Economy
             _currentGold += amount;
             PersistGold();
 
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayRewardSound();
+            }
+
             Debug.Log($"[GoldManager] Added {amount} Gold ({reason}). New Balance: {_currentGold}");
             OnGoldChanged?.Invoke(_currentGold, amount);
         }

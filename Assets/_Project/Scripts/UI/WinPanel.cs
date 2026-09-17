@@ -154,6 +154,12 @@ namespace RoyalSmash.UI
             }
 
             _panelRoot.SetActive(true);
+
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayWinSound();
+            }
+
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
         }

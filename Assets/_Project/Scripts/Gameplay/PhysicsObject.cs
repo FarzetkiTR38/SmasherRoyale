@@ -133,6 +133,12 @@ namespace RoyalSmash.Gameplay
                 SetState(ObjectState.Hit);
             }
 
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                ObjectType type = _config != null ? _config.ObjectType : ObjectType.Box;
+                RoyalSmash.Audio.AudioManager.Instance.PlayImpact(type, collision.impulse.magnitude);
+            }
+
             OnObjectHit?.Invoke(this, collision);
             Debug.Log($"[PhysicsObject] {gameObject.name} hit by projectile. Impulse: {collision.impulse.magnitude:F2}");
         }
@@ -158,6 +164,11 @@ namespace RoyalSmash.Gameplay
                 _currentState == ObjectState.Destroyed)
             {
                 return;
+            }
+
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayObjectDestruction();
             }
 
             Debug.Log($"[PhysicsObject] {gameObject.name} destroy condition triggered: {reason}");
