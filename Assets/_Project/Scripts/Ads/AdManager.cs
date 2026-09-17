@@ -29,7 +29,17 @@ namespace RoyalSmash.Ads
 
         public bool IsAdShowing => _isAdShowing;
         public AdConfig Config => _config;
-        public IAdProvider Provider => _provider;
+        public IAdProvider Provider
+        {
+            get
+            {
+                if (_provider == null)
+                {
+                    InitializeManager();
+                }
+                return _provider;
+            }
+        }
 
         private void Awake()
         {
