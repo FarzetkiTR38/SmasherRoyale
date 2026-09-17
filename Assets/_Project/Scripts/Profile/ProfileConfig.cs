@@ -54,5 +54,15 @@ namespace RoyalSmash.Profile
             }
             return _frames != null && _frames.Length > 0 ? _frames[0] : null;
         }
+
+        public Sprite GetAvatarSprite(int id)
+        {
+            return GetAvatar(id)?.Icon;
+        }
+
+        public Sprite GetFrameSprite(int id)
+        {
+            return GetFrame(id)?.BorderSprite;
+        }
     }
 }

@@ -52,5 +52,19 @@ namespace RoyalSmash.Save
 
         // Metadata
         public long LastSaveTicks = 0;
+
+        // Aliases & Utilities
+        public int AvatarIndex { get => AvatarId; set => AvatarId = value; }
+        public int FrameIndex { get => FrameId; set => FrameId = value; }
+
+        public PlayerSaveData Clone()
+        {
+            var clone = (PlayerSaveData)this.MemberwiseClone();
+            if (this.RewardedLevelIds != null)
+            {
+                clone.RewardedLevelIds = new System.Collections.Generic.List<int>(this.RewardedLevelIds);
+            }
+            return clone;
+        }
     }
 }
