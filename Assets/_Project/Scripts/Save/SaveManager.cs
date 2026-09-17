@@ -126,6 +126,18 @@ namespace RoyalSmash.Save
             {
                 _data.RewardedLevelIds = new System.Collections.Generic.List<int>();
             }
+            if (string.IsNullOrEmpty(_data.Username))
+            {
+                _data.Username = "Player";
+            }
+            if (_data.AvatarId < 0 || _data.AvatarId > 7)
+            {
+                _data.AvatarId = 0;
+            }
+            if (_data.FrameId < 0 || _data.FrameId > 3)
+            {
+                _data.FrameId = 0;
+            }
         }
 
         /// <summary>

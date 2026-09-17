@@ -32,6 +32,8 @@ namespace RoyalSmash.UI
         [Header("Dialogs")]
         [SerializeField] private InGameSettingsDialog _settingsDialog;
         [SerializeField] private OutOfLivesDialog _outOfLivesDialog;
+        [SerializeField] private ProfileDialog _profileDialog;
+        [SerializeField] private UsernamePromptDialog _usernamePromptDialog;
 
         [Header("Navigation")]
         [SerializeField] private BottomNavigationUI _bottomNavigation;
@@ -56,6 +58,7 @@ namespace RoyalSmash.UI
         {
             RefreshUI();
             StartCoroutine(OfferCountdownRoutine());
+            CheckLevel10UsernamePrompt();
         }
 
         private void OnDestroy()
@@ -71,7 +74,8 @@ namespace RoyalSmash.UI
             TextMeshProUGUI levelTxt, Button playBtn, Button profileBtn, Button settingsBtn,
             GoldDisplayUI goldWgt, LivesWidgetUI livesWgt,
             InGameSettingsDialog settingsDlg, OutOfLivesDialog outOfLivesDlg,
-            BottomNavigationUI nav, TextMeshProUGUI offerTxt = null)
+            BottomNavigationUI nav, TextMeshProUGUI offerTxt = null,
+            ProfileDialog profileDlg = null, UsernamePromptDialog userPromptDlg = null)
         {
             _currentLevelText = levelTxt;
             _playButton = playBtn;
@@ -81,6 +85,8 @@ namespace RoyalSmash.UI
             _livesWidget = livesWgt;
             _settingsDialog = settingsDlg;
             _outOfLivesDialog = outOfLivesDlg;
+            _profileDialog = profileDlg;
+            _usernamePromptDialog = userPromptDlg;
             _bottomNavigation = nav;
             _offerCountdownText = offerTxt;
 
@@ -101,6 +107,23 @@ namespace RoyalSmash.UI
             }
 
             RefreshUI();
+            CheckLevel10UsernamePrompt();
+        }
+
+        public void CheckLevel10UsernamePrompt()
+        {
+            if (RoyalSmash.Profile.ProfileManager.Instance != null &&
+                RoyalSmash.Profile.ProfileManager.Instance.ShouldPromptLevel10Username())
+            {
+                if (_usernamePromptDialog != null)
+                {
+                    _usernamePromptDialog.Show();
+                }
+                else if (UsernamePromptDialog.Instance != null)
+                {
+                    UsernamePromptDialog.Instance.Show();
+                }
+            }
         }
 
         public void RefreshUI()
@@ -119,6 +142,30 @@ namespace RoyalSmash.UI
             if (_goldWidget != null)
             {
                 _goldWidget.RefreshDisplay();
+            }
+
+            RefreshProfileButtonVisual();
+        }
+
+        public void RefreshProfileButtonVisual()
+        {
+            if (_profileButton != null && RoyalSmash.Profile.ProfileManager.Instance != null)
+            {
+                var curAv = RoyalSmash.Profile.ProfileManager.Instance.CurrentAvatar;
+                var curFr = RoyalSmash.Profile.ProfileManager.Instance.CurrentFrame;
+                var iconImg = _profileButton.transform.Find("AvatarIcon")?.GetComponent<Image>();
+                var frameImg = _profileButton.transform.Find("FrameBorder")?.GetComponent<Image>();
+
+                if (iconImg != null && curAv != null)
+                {
+                    if (curAv.Icon != null) iconImg.sprite = curAv.Icon;
+                    iconImg.color = curAv.ThemeColor;
+                }
+                if (frameImg != null && curFr != null)
+                {
+                    if (curFr.BorderSprite != null) frameImg.sprite = curFr.BorderSprite;
+                    frameImg.color = curFr.BorderColor;
+                }
             }
         }
 
@@ -148,7 +195,15 @@ namespace RoyalSmash.UI
 
         private void HandleProfileClicked()
         {
-            Debug.Log("[MainMenuController] Profile clicked. (Full profile customization is Phase 12)");
+            Debug.Log("[MainMenuController] Profile clicked.");
+            if (_profileDialog != null)
+            {
+                _profileDialog.Show();
+            }
+            else if (ProfileDialog.Instance != null)
+            {
+                ProfileDialog.Instance.Show();
+            }
         }
 
         private void HandleSettingsClicked()

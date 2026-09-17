@@ -38,6 +38,17 @@ namespace RoyalSmash.Save
         public bool SfxEnabled = true;
         public bool VibrationEnabled = true;
 
+        // Profile (Section 18)
+        public string Username = "Player";
+        public int AvatarId = 0;
+        public int FrameId = 0;
+        public bool UsernamePrompted = false;
+
+        // Statistics (Section 18.1)
+        public int TotalShotsFired = 0;
+        public int TotalWins = 0;
+        public int CompletedLevelsCount = 0;
+
         // Metadata
         public long LastSaveTicks = 0;
     }
