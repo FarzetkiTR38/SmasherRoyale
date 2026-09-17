@@ -160,6 +160,11 @@ namespace RoyalSmash.UI
                 RoyalSmash.Audio.AudioManager.Instance.PlayWinSound();
             }
 
+            if (RoyalSmash.VFX.VFXManager.Instance != null)
+            {
+                RoyalSmash.VFX.VFXManager.Instance.SpawnWinCelebration(transform.position);
+            }
+
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
         }

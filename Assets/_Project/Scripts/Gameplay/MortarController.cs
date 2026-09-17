@@ -217,6 +217,11 @@ namespace RoyalSmash.Gameplay
                     RoyalSmash.Audio.AudioManager.Instance.PlayBallLaunch();
                 }
 
+                if (RoyalSmash.VFX.VFXManager.Instance != null)
+                {
+                    RoyalSmash.VFX.VFXManager.Instance.SpawnMuzzleFlash(spawnPosition, spawnRotation);
+                }
+
                 // Check MegaBall skill buff
                 if (RoyalSmash.Skills.SkillManager.Instance != null && RoyalSmash.Skills.SkillManager.Instance.IsSkillActive(RoyalSmash.Skills.SkillType.MegaBall))
                 {

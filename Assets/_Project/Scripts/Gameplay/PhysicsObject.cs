@@ -139,6 +139,13 @@ namespace RoyalSmash.Gameplay
                 RoyalSmash.Audio.AudioManager.Instance.PlayImpact(type, collision.impulse.magnitude);
             }
 
+            if (RoyalSmash.VFX.VFXManager.Instance != null)
+            {
+                Vector3 contactPoint = collision.contacts.Length > 0 ? collision.contacts[0].point : transform.position;
+                Vector3 contactNormal = collision.contacts.Length > 0 ? collision.contacts[0].normal : Vector3.up;
+                RoyalSmash.VFX.VFXManager.Instance.SpawnImpact(contactPoint, contactNormal, collision.impulse.magnitude);
+            }
+
             OnObjectHit?.Invoke(this, collision);
             Debug.Log($"[PhysicsObject] {gameObject.name} hit by projectile. Impulse: {collision.impulse.magnitude:F2}");
         }
@@ -169,6 +176,14 @@ namespace RoyalSmash.Gameplay
             if (RoyalSmash.Audio.AudioManager.Instance != null)
             {
                 RoyalSmash.Audio.AudioManager.Instance.PlayObjectDestruction();
+            }
+
+            if (RoyalSmash.VFX.VFXManager.Instance != null)
+            {
+                Color objColor = _instancedMaterial != null && _instancedMaterial.HasProperty("_BaseColor")
+                    ? _instancedMaterial.GetColor("_BaseColor")
+                    : Color.white;
+                RoyalSmash.VFX.VFXManager.Instance.SpawnDestruction(transform.position, objColor);
             }
 
             Debug.Log($"[PhysicsObject] {gameObject.name} destroy condition triggered: {reason}");

@@ -204,6 +204,10 @@ namespace RoyalSmash.Skills
                     _megaBallUses = Mathf.Max(0, _megaBallUses - 1);
                     _megaBallActive = true;
                     SaveStateToDisk();
+                    if (RoyalSmash.VFX.VFXManager.Instance != null)
+                    {
+                        RoyalSmash.VFX.VFXManager.Instance.SpawnSkillActivation(transform.position, SkillType.MegaBall);
+                    }
                     OnSkillActivated?.Invoke(SkillType.MegaBall);
                     NotifySkillState(SkillType.MegaBall);
                     Debug.Log($"[SkillManager] Mega Ball activated! ({_megaBallUses} uses left)");
@@ -219,6 +223,10 @@ namespace RoyalSmash.Skills
                     if (_infinityBallRoutine != null) StopCoroutine(_infinityBallRoutine);
                     _infinityBallRoutine = StartCoroutine(InfinityBallCountdownRoutine(duration));
 
+                    if (RoyalSmash.VFX.VFXManager.Instance != null)
+                    {
+                        RoyalSmash.VFX.VFXManager.Instance.SpawnSkillActivation(transform.position, SkillType.InfinityBall);
+                    }
                     OnSkillActivated?.Invoke(SkillType.InfinityBall);
                     NotifySkillState(SkillType.InfinityBall);
                     Debug.Log($"[SkillManager] Infinity Ball activated for {duration:F1}s! ({_infinityBallUses} uses left)");

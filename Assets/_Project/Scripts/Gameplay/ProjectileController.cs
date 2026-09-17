@@ -13,6 +13,7 @@ namespace RoyalSmash.Gameplay
         [Header("References")]
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private Renderer _renderer;
+        [SerializeField] private TrailRenderer _trailRenderer;
 
         private ProjectileConfig _config;
         private Vector3 _originalScale;
@@ -23,11 +24,13 @@ namespace RoyalSmash.Gameplay
 
         public Rigidbody Rigidbody => _rigidbody;
         public bool IsMegaBall => _isMegaBall;
+        public TrailRenderer Trail => _trailRenderer;
 
         private void Awake()
         {
             if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody>();
             if (_renderer == null) _renderer = GetComponentInChildren<Renderer>();
+            if (_trailRenderer == null) _trailRenderer = GetComponent<TrailRenderer>();
 
             _originalScale = transform.localScale;
 
@@ -70,6 +73,14 @@ namespace RoyalSmash.Gameplay
                 // Vibrant gold/orange tint for MegaBall
                 _instancedMaterial.color = new Color(1.0f, 0.65f, 0.10f);
             }
+
+            if (_trailRenderer != null)
+            {
+                _trailRenderer.startWidth = 0.55f;
+                _trailRenderer.endWidth = 0.05f;
+                _trailRenderer.startColor = new Color(1.0f, 0.65f, 0.10f, 0.9f);
+                _trailRenderer.endColor = new Color(1.0f, 0.25f, 0.0f, 0f);
+            }
         }
 
         /// <summary>
@@ -90,6 +101,12 @@ namespace RoyalSmash.Gameplay
             if (_config != null)
             {
                 _rigidbody.mass = _config.Mass;
+            }
+
+            if (_trailRenderer != null)
+            {
+                _trailRenderer.Clear();
+                _trailRenderer.emitting = true;
             }
 
             // Calculate ballistic arc

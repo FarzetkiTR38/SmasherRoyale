@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3739571a8b0760341b737d9add6cf4f8, type: 3}
+  m_Name: VFXConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.VFX.VFXConfig
+  _muzzleFlashPrefab: {fileID: 3002944343361871469, guid: d0975786c5ec15f48b218c857cbec667, type: 3}
+  _defaultTrailMaterial: {fileID: 2100000, guid: ce73e705fbab57b4483ec85104754d9d, type: 2}
+  _megaBallTrailMaterial: {fileID: 2100000, guid: 91c46673029099249b365c948b4a5792, type: 2}
+  _infinityBallTrailMaterial: {fileID: 2100000, guid: e58a4d45958a7ed40961ffb6294f17ae, type: 2}
+  _impactGenericPrefab: {fileID: 5177906305080101474, guid: 33cd375106a087f459056ceeb6e31329, type: 3}
+  _impactHeavyPrefab: {fileID: 1684564153733640163, guid: be1a8323559392f4094bf97cf64dd1e7, type: 3}
+  _objectDestructionPrefab: {fileID: 5409762045281811615, guid: 9c8ce7ab99d4ca24b9e79c13c6f45bce, type: 3}
+  _heavyImpactThreshold: 3
+  _bottleBreakShardsPrefab: {fileID: 60240534400449036, guid: 499e6494368000d45bacd57dc2b57a86, type: 3}
+  _paintSpillPrefab: {fileID: 1057790410192890506, guid: e97ac18a30bd0b247bf6953a82315494, type: 3}
+  _paintSpillLifetime: 4
+  _skillActivatePrefab: {fileID: 1438346004617522076, guid: 121ca594bc90c1147aa212273883ad3c, type: 3}
+  _winConfettiPrefab: {fileID: 7022933593415430039, guid: 58777c5e9998d604489d43897beb19ee, type: 3}
+  _coinFlyPrefab: {fileID: 1918497712065542931, guid: be18430828f27a84a8c506247b7433b1, type: 3}
+  _defaultPoolSize: 6
