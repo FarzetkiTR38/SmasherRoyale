@@ -97,13 +97,39 @@ namespace RoyalSmash.UI
 
         private void HandleWatchAd()
         {
-            if (LivesManager.Instance != null)
+            if (RoyalSmash.Ads.AdManager.Instance != null)
             {
-                LivesManager.Instance.GrantRewardedAdLife();
-                Debug.Log("[OutOfLivesDialog] Rewarded ad watched! Granted +1 life.");
-                OnLifeAcquired?.Invoke();
+                RoyalSmash.Ads.AdManager.Instance.ShowRewarded(
+                    "out_of_lives",
+                    onRewardGranted: () =>
+                    {
+                        if (LivesManager.Instance != null)
+                        {
+                            LivesManager.Instance.GrantRewardedAdLife();
+                            Debug.Log("[OutOfLivesDialog] Rewarded ad completed! Granted +1 life.");
+                            OnLifeAcquired?.Invoke();
+                        }
+                    },
+                    onClosed: () =>
+                    {
+                        Hide();
+                    },
+                    onFailed: (err) =>
+                    {
+                        Debug.LogWarning($"[OutOfLivesDialog] Ad failed: {err}");
+                    }
+                );
+            }
+            else
+            {
+                if (LivesManager.Instance != null)
+                {
+                    LivesManager.Instance.GrantRewardedAdLife();
+                    OnLifeAcquired?.Invoke();
+                }
                 Hide();
             }
         }
     }
 }
+

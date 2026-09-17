@@ -320,6 +320,11 @@ namespace RoyalSmash.Levels
 
             Debug.Log($"[LevelManager] VICTORY! Level {_currentLevelIndex} Cleared! Base: {baseReward}, Remaining Balls: {remainingBalls}, Total Gold: {totalGold}");
             OnLevelWon?.Invoke(_currentLevelIndex, baseReward, remainingBalls, totalGold);
+
+            if (RoyalSmash.Ads.AdManager.Instance != null)
+            {
+                RoyalSmash.Ads.AdManager.Instance.CheckAndShowProgressionInterstitial(_currentLevelIndex);
+            }
         }
 
         private IEnumerator DefeatEvaluationRoutine()

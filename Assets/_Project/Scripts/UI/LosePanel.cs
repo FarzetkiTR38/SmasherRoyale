@@ -122,6 +122,11 @@ namespace RoyalSmash.UI
             _panelRoot.SetActive(true);
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
+
+            if (RoyalSmash.Ads.AdManager.Instance != null)
+            {
+                RoyalSmash.Ads.AdManager.Instance.ShowLoseInterstitial();
+            }
         }
 
         public void HideImmediate()
