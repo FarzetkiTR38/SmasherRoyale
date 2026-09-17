@@ -393,11 +393,32 @@ namespace RoyalSmash.Levels
         }
 
         /// <summary>
-        /// Advances to next level or reloads level.
+        /// Advances to next level or returns to MainMenu if at Level 30.
         /// </summary>
         public void NextLevel()
         {
             Debug.Log($"[LevelManager] NextLevel requested from Level {_currentLevelIndex}.");
+            if (_currentLevelIndex >= 30)
+            {
+                Debug.Log("[LevelManager] Level 30 finale reached! Returning to Main Menu.");
+                if (Core.SceneTransitionManager.Instance != null)
+                {
+                    Core.SceneTransitionManager.Instance.LoadMainMenu();
+                }
+                else
+                {
+                    SceneManager.LoadScene("MainMenu");
+                }
+                return;
+            }
+
+            _currentLevelIndex++;
+            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            {
+                SaveManager.Instance.Data.CurrentLevel = _currentLevelIndex;
+                SaveManager.Instance.Save();
+            }
+
             RestartLevel();
         }
 

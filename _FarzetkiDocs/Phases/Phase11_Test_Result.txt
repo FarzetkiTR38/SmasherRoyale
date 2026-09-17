@@ -1,0 +1,16 @@
+=== PHASE 11: MAIN MENU & UI SYSTEM ACCEPTANCE TEST RUNNER ===
+Executed at: 2026-09-17 13:58:56
+---------------------------------------------------------------
+[PASS] Test 1: Current Level Display - Level display text: 'LEVEL 3' matches CurrentLevel (3)
+[PASS] Test 2: Build Settings Scenes - Scene 0: 'Assets/_Project/Scenes/MainMenu.unity', Scene 1: 'Assets/_Project/Scenes/MainGame.unity'
+[PASS] Test 3: Bottom Nav Shop Tab - Shop page active: True, Battle page inactive: True
+[PASS] Test 4: Bottom Nav Leaderboard Tab - Leaderboard page active: True
+[PASS] Test 5: Bottom Nav Battle Tab - Battle page active: True
+[PASS] Test 6: Zero Lives Play Gating - OutOfLivesDialog active: True when player has 0 lives
+[PASS] Test 7: Normal Play Flow Allowed - Player has 5 lives; play transition permitted
+[PASS] Test 8: Top Bar Gold Synchronization - Gold text: '1.250' reflects save data (1,250)
+[PASS] Test 9: Settings Dialog Accessibility - Settings modal opens and closes cleanly without errors
+[PASS] Test 10: Special Offers Display - Side offers present without obstructing Play button (Timer: 23:59:59)
+---------------------------------------------------------------
+TOTAL TESTS: 10 | PASSED: 10 | FAILED: 0
+VERDICT: ALL ACCEPTANCE CRITERIA MET (100% PASS)
