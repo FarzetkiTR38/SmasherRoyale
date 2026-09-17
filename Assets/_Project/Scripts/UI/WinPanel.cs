@@ -153,6 +153,19 @@ namespace RoyalSmash.UI
                 }
             }
 
+            if (_continueButton != null)
+            {
+                var btnText = _continueButton.GetComponentInChildren<TextMeshProUGUI>();
+                if (level >= 30)
+                {
+                    if (btnText != null) btnText.text = "RETURN TO MENU";
+                }
+                else
+                {
+                    if (btnText != null) btnText.text = "NEXT LEVEL";
+                }
+            }
+
             _panelRoot.SetActive(true);
 
             if (RoyalSmash.Audio.AudioManager.Instance != null)
