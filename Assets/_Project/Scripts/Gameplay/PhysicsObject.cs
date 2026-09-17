@@ -146,6 +146,12 @@ namespace RoyalSmash.Gameplay
                 RoyalSmash.VFX.VFXManager.Instance.SpawnImpact(contactPoint, contactNormal, collision.impulse.magnitude);
             }
 
+            if (RoyalSmash.Haptics.HapticManager.Instance != null)
+            {
+                ObjectType type = _config != null ? _config.ObjectType : ObjectType.Box;
+                RoyalSmash.Haptics.HapticManager.Instance.TriggerImpactHaptic(type, collision.impulse.magnitude);
+            }
+
             OnObjectHit?.Invoke(this, collision);
             Debug.Log($"[PhysicsObject] {gameObject.name} hit by projectile. Impulse: {collision.impulse.magnitude:F2}");
         }

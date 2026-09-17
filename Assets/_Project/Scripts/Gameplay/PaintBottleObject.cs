@@ -56,6 +56,11 @@ namespace RoyalSmash.Gameplay
                 RoyalSmash.VFX.VFXManager.Instance.SpawnBottleBreak(impactPoint, _paintColor);
             }
 
+            if (RoyalSmash.Haptics.HapticManager.Instance != null)
+            {
+                RoyalSmash.Haptics.HapticManager.Instance.TriggerBottleBreakHaptic();
+            }
+
             Debug.Log($"[PaintBottleObject] Shattered at {impactPoint} with {_paintColor} paint splash!");
 
             // Spawn procedural paint splat particle burst

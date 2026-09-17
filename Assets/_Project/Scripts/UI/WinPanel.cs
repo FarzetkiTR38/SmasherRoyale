@@ -165,6 +165,11 @@ namespace RoyalSmash.UI
                 RoyalSmash.VFX.VFXManager.Instance.SpawnWinCelebration(transform.position);
             }
 
+            if (RoyalSmash.Haptics.HapticManager.Instance != null)
+            {
+                RoyalSmash.Haptics.HapticManager.Instance.TriggerWinHaptic();
+            }
+
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
         }

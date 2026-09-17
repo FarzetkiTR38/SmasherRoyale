@@ -222,6 +222,11 @@ namespace RoyalSmash.Gameplay
                     RoyalSmash.VFX.VFXManager.Instance.SpawnMuzzleFlash(spawnPosition, spawnRotation);
                 }
 
+                if (RoyalSmash.Haptics.HapticManager.Instance != null)
+                {
+                    RoyalSmash.Haptics.HapticManager.Instance.TriggerFireHaptic();
+                }
+
                 // Check MegaBall skill buff
                 if (RoyalSmash.Skills.SkillManager.Instance != null && RoyalSmash.Skills.SkillManager.Instance.IsSkillActive(RoyalSmash.Skills.SkillType.MegaBall))
                 {

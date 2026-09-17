@@ -126,6 +126,11 @@ namespace RoyalSmash.UI
                 RoyalSmash.Audio.AudioManager.Instance.PlayLoseSound();
             }
 
+            if (RoyalSmash.Haptics.HapticManager.Instance != null)
+            {
+                RoyalSmash.Haptics.HapticManager.Instance.TriggerLoseHaptic();
+            }
+
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
 

@@ -208,6 +208,10 @@ namespace RoyalSmash.Skills
                     {
                         RoyalSmash.VFX.VFXManager.Instance.SpawnSkillActivation(transform.position, SkillType.MegaBall);
                     }
+                    if (RoyalSmash.Haptics.HapticManager.Instance != null)
+                    {
+                        RoyalSmash.Haptics.HapticManager.Instance.TriggerSkillActivationHaptic();
+                    }
                     OnSkillActivated?.Invoke(SkillType.MegaBall);
                     NotifySkillState(SkillType.MegaBall);
                     Debug.Log($"[SkillManager] Mega Ball activated! ({_megaBallUses} uses left)");
@@ -226,6 +230,10 @@ namespace RoyalSmash.Skills
                     if (RoyalSmash.VFX.VFXManager.Instance != null)
                     {
                         RoyalSmash.VFX.VFXManager.Instance.SpawnSkillActivation(transform.position, SkillType.InfinityBall);
+                    }
+                    if (RoyalSmash.Haptics.HapticManager.Instance != null)
+                    {
+                        RoyalSmash.Haptics.HapticManager.Instance.TriggerSkillActivationHaptic();
                     }
                     OnSkillActivated?.Invoke(SkillType.InfinityBall);
                     NotifySkillState(SkillType.InfinityBall);
