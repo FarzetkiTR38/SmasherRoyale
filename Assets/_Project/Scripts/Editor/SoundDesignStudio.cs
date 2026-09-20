@@ -127,8 +127,8 @@ namespace RoyalSmash.Editor
             // Alternatives (Alt 1 & Alt 2)
             config.BgmMainMenuAlt1 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/Music/bgm_menu_opt2_ballroom_waltz.mp3");
             config.BgmMainMenuAlt2 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/Music/bgm_menu_opt3_cozy_tavern.mp3");
-            config.BgmGameplayAlt1 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/Music/bgm_game_opt2_driving_groove.wav");
-            config.BgmGameplayAlt2 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/Music/bgm_game_opt3_bouncy_arcade.wav");
+            config.BgmGameplayAlt1 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/Music/bgm_game_opt2_run_amok.mp3");
+            config.BgmGameplayAlt2 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/Music/bgm_game_opt3_wagon_wheel.mp3");
 
             config.BallLaunchAlt1 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/SFX/BallLaunch/sfx_launch_opt2_catapult_boom.wav");
             config.BallLaunchAlt2 = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/SFX/BallLaunch/sfx_launch_opt3_arcade_pow.wav");

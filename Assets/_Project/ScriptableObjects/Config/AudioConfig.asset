@@ -16,8 +16,8 @@ MonoBehaviour:
   _bgmGameplay: {fileID: 8300000, guid: 740e14977f39f21408e3c96fda523304, type: 3}
   _bgmMainMenuAlt1: {fileID: 8300000, guid: 401b03a770fc2c8489b1ce80450ef55c, type: 3}
   _bgmMainMenuAlt2: {fileID: 8300000, guid: de2e1fa9172ec064ebfc5920ff8f0d28, type: 3}
-  _bgmGameplayAlt1: {fileID: 8300000, guid: d391191bed1fe3243ad599a89fbdd68b, type: 3}
-  _bgmGameplayAlt2: {fileID: 8300000, guid: a7085d0e025a969429333f22850f982b, type: 3}
+  _bgmGameplayAlt1: {fileID: 8300000, guid: 3b995de921ec8d44b919d0b51b4e038e, type: 3}
+  _bgmGameplayAlt2: {fileID: 8300000, guid: 4c3ec59b9def6fc4784bbd516cc4051b, type: 3}
   _ballLaunch: {fileID: 8300000, guid: 2f341619aaad50949b4c987f43498b10, type: 3}
   _ballLaunchAlt1: {fileID: 8300000, guid: 2bbd42ba09dc09f4cae025897260e0c7, type: 3}
   _ballLaunchAlt2: {fileID: 8300000, guid: 6bcfe39043e492245aeb6bb20a9d51ef, type: 3}
