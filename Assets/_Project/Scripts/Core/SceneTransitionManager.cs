@@ -27,6 +27,7 @@ namespace RoyalSmash.Core
             private set => _instance = value;
         }
 
+        public const string SCENE_BOOT = "BootScene";
         public const string SCENE_MAIN_MENU = "MainMenu";
         public const string SCENE_MAIN_GAME = "MainGame";
 
