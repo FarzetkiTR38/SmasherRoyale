@@ -80,6 +80,12 @@ namespace RoyalSmash.UI
                 LevelManager.Instance.OnLevelWon -= HandleLevelWon;
                 LevelManager.Instance.OnLevelWon += HandleLevelWon;
             }
+
+            if (Economy.GoldManager.HasInstance)
+            {
+                Economy.GoldManager.Instance.OnLevelRewardProcessed -= HandleRewardProcessed;
+                Economy.GoldManager.Instance.OnLevelRewardProcessed += HandleRewardProcessed;
+            }
         }
 
         private void UnsubscribeEvents()
@@ -88,17 +94,32 @@ namespace RoyalSmash.UI
             {
                 LevelManager.Instance.OnLevelWon -= HandleLevelWon;
             }
+
+            if (Economy.GoldManager.HasInstance)
+            {
+                Economy.GoldManager.Instance.OnLevelRewardProcessed -= HandleRewardProcessed;
+            }
         }
 
         private void HandleLevelWon(int level, int baseReward, int remainingBalls, int totalGold)
         {
-            Show(level, baseReward, remainingBalls, totalGold);
+            // Fallback display if GoldManager is not present in scene
+            if (Economy.GoldManager.Instance == null)
+            {
+                Show(level, baseReward, remainingBalls, totalGold, false);
+            }
+        }
+
+        private void HandleRewardProcessed(int level, int baseReward, int ballBonus, int totalGold, bool wasGranted)
+        {
+            int remainingBalls = ballBonus / 2;
+            Show(level, baseReward, remainingBalls, totalGold, !wasGranted);
         }
 
         /// <summary>
         /// Displays the Win Panel populated with reward calculation data.
         /// </summary>
-        public void Show(int level, int baseReward, int remainingBalls, int totalGold)
+        public void Show(int level, int baseReward, int remainingBalls, int totalGold, bool isDuplicateReplay = false)
         {
             if (_panelRoot == null) return;
 
@@ -107,23 +128,61 @@ namespace RoyalSmash.UI
                 _levelTitleText.text = $"LEVEL {level} COMPLETED!";
             }
 
-            if (_baseRewardText != null)
+            if (isDuplicateReplay || totalGold == 0)
             {
-                _baseRewardText.text = $"Base Reward: +{baseReward} Gold";
+                if (_baseRewardText != null) _baseRewardText.text = "Base Reward: +0 Gold (Replay)";
+                if (_remainingBonusText != null) _remainingBonusText.text = $"Ball Bonus ({remainingBalls} × 2): +0 Gold";
+                if (_totalGoldText != null) _totalGoldText.text = "+0 GOLD (CLAIMED)";
+            }
+            else
+            {
+                if (_baseRewardText != null)
+                {
+                    _baseRewardText.text = $"Base Reward: +{baseReward} Gold";
+                }
+
+                if (_remainingBonusText != null)
+                {
+                    int ballBonus = remainingBalls * 2;
+                    _remainingBonusText.text = $"Ball Bonus ({remainingBalls} × 2): +{ballBonus} Gold";
+                }
+
+                if (_totalGoldText != null)
+                {
+                    _totalGoldText.text = $"+{totalGold} GOLD";
+                }
             }
 
-            if (_remainingBonusText != null)
+            if (_continueButton != null)
             {
-                int ballBonus = remainingBalls * 2;
-                _remainingBonusText.text = $"Ball Bonus ({remainingBalls} × 2): +{ballBonus} Gold";
-            }
-
-            if (_totalGoldText != null)
-            {
-                _totalGoldText.text = $"+{totalGold} GOLD";
+                var btnText = _continueButton.GetComponentInChildren<TextMeshProUGUI>();
+                if (level >= 30)
+                {
+                    if (btnText != null) btnText.text = "RETURN TO MENU";
+                }
+                else
+                {
+                    if (btnText != null) btnText.text = "NEXT LEVEL";
+                }
             }
 
             _panelRoot.SetActive(true);
+
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayWinSound();
+            }
+
+            if (RoyalSmash.VFX.VFXManager.Instance != null)
+            {
+                RoyalSmash.VFX.VFXManager.Instance.SpawnWinCelebration(transform.position);
+            }
+
+            if (RoyalSmash.Haptics.HapticManager.Instance != null)
+            {
+                RoyalSmash.Haptics.HapticManager.Instance.TriggerWinHaptic();
+            }
+
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
         }

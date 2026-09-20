@@ -120,8 +120,24 @@ namespace RoyalSmash.UI
             }
 
             _panelRoot.SetActive(true);
+
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayLoseSound();
+            }
+
+            if (RoyalSmash.Haptics.HapticManager.Instance != null)
+            {
+                RoyalSmash.Haptics.HapticManager.Instance.TriggerLoseHaptic();
+            }
+
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
+
+            if (RoyalSmash.Ads.AdManager.Instance != null)
+            {
+                RoyalSmash.Ads.AdManager.Instance.ShowLoseInterstitial();
+            }
         }
 
         public void HideImmediate()
@@ -177,9 +193,13 @@ namespace RoyalSmash.UI
         private void HandleMainMenuClicked()
         {
             Debug.Log("[LosePanel] Main Menu clicked.");
-            if (LevelManager.Instance != null)
+            if (Core.SceneTransitionManager.Instance != null)
             {
-                LevelManager.Instance.RestartLevel();
+                Core.SceneTransitionManager.Instance.LoadMainMenu();
+            }
+            else
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
             }
             HideImmediate();
         }

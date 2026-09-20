@@ -10,7 +10,32 @@ namespace RoyalSmash.Save
     /// </summary>
     public class SaveManager : MonoBehaviour
     {
-        public static SaveManager Instance { get; private set; }
+        private static SaveManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
+        public static SaveManager Instance
+        {
+            get
+            {
+                if (_instance == null && !_isQuitting)
+                {
+                    _instance = FindFirstObjectByType<SaveManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("SaveManager");
+                        _instance = go.AddComponent<SaveManager>();
+                        DontDestroyOnLoad(go);
+                    }
+                    if (_instance != null && _instance._data == null)
+                    {
+                        _instance.Load();
+                    }
+                }
+                return _instance;
+            }
+            private set => _instance = value;
+        }
 
         private const string SAVE_FILE_NAME = "player_save.json";
         private const string BACKUP_FILE_NAME = "player_save_backup.json";
@@ -28,24 +53,33 @@ namespace RoyalSmash.Save
 
         private void Awake()
         {
-            if (Instance == null)
+            _isQuitting = false;
+            if (_instance == null)
             {
-                Instance = this;
-                if (_dontDestroyOnLoad && transform.parent == null)
+                _instance = this;
+                if (_dontDestroyOnLoad && transform.parent == null && Application.isPlaying)
                 {
                     DontDestroyOnLoad(gameObject);
                 }
                 Load();
             }
-            else if (Instance != this)
+            else if (_instance != this)
             {
                 Destroy(gameObject);
             }
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
         private void OnDestroy()
         {
-            if (Instance == this) Instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         /// <summary>
@@ -61,6 +95,7 @@ namespace RoyalSmash.Save
                     _data = JsonUtility.FromJson<PlayerSaveData>(json);
                     if (_data != null)
                     {
+                        ValidateData();
                         Debug.Log($"[SaveManager] Save loaded successfully. Level: {_data.CurrentLevel}, TutorialCompleted: {_data.TutorialCompleted}");
                         OnSaveLoaded?.Invoke(_data);
                         return;
@@ -81,6 +116,7 @@ namespace RoyalSmash.Save
                     _data = JsonUtility.FromJson<PlayerSaveData>(jsonBackup);
                     if (_data != null)
                     {
+                        ValidateData();
                         Debug.Log("[SaveManager] Backup save loaded successfully.");
                         OnSaveLoaded?.Invoke(_data);
                         Save(); // Restore primary
@@ -95,9 +131,31 @@ namespace RoyalSmash.Save
 
             // Create default data
             _data = new PlayerSaveData();
+            ValidateData();
             Debug.Log("[SaveManager] Fresh default save data initialized.");
             Save();
             OnSaveLoaded?.Invoke(_data);
+        }
+
+        private void ValidateData()
+        {
+            if (_data == null) _data = new PlayerSaveData();
+            if (_data.RewardedLevelIds == null)
+            {
+                _data.RewardedLevelIds = new System.Collections.Generic.List<int>();
+            }
+            if (string.IsNullOrEmpty(_data.Username))
+            {
+                _data.Username = "Player";
+            }
+            if (_data.AvatarId < 0 || _data.AvatarId > 7)
+            {
+                _data.AvatarId = 0;
+            }
+            if (_data.FrameId < 0 || _data.FrameId > 3)
+            {
+                _data.FrameId = 0;
+            }
         }
 
         /// <summary>

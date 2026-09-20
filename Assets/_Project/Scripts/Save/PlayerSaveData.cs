@@ -19,6 +19,8 @@ namespace RoyalSmash.Save
 
         // Economy
         public int Gold = 1000;
+        public System.Collections.Generic.List<int> RewardedLevelIds = new System.Collections.Generic.List<int>();
+        public bool NoAdsPurchased = false;
 
         // Lives
         public int Lives = 5;
@@ -37,7 +39,32 @@ namespace RoyalSmash.Save
         public bool SfxEnabled = true;
         public bool VibrationEnabled = true;
 
+        // Profile (Section 18)
+        public string Username = "Player";
+        public int AvatarId = 0;
+        public int FrameId = 0;
+        public bool UsernamePrompted = false;
+
+        // Statistics (Section 18.1)
+        public int TotalShotsFired = 0;
+        public int TotalWins = 0;
+        public int CompletedLevelsCount = 0;
+
         // Metadata
         public long LastSaveTicks = 0;
+
+        // Aliases & Utilities
+        public int AvatarIndex { get => AvatarId; set => AvatarId = value; }
+        public int FrameIndex { get => FrameId; set => FrameId = value; }
+
+        public PlayerSaveData Clone()
+        {
+            var clone = (PlayerSaveData)this.MemberwiseClone();
+            if (this.RewardedLevelIds != null)
+            {
+                clone.RewardedLevelIds = new System.Collections.Generic.List<int>(this.RewardedLevelIds);
+            }
+            return clone;
+        }
     }
 }

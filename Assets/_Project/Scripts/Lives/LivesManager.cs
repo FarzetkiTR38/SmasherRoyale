@@ -13,7 +13,28 @@ namespace RoyalSmash.Lives
     /// </summary>
     public class LivesManager : MonoBehaviour
     {
-        public static LivesManager Instance { get; private set; }
+        private static LivesManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
+        public static LivesManager Instance
+        {
+            get
+            {
+                if (_instance == null && !_isQuitting)
+                {
+                    _instance = FindFirstObjectByType<LivesManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("LivesManager");
+                        _instance = go.AddComponent<LivesManager>();
+                        DontDestroyOnLoad(go);
+                    }
+                }
+                return _instance;
+            }
+            private set => _instance = value;
+        }
 
         [Header("Configuration")]
         [SerializeField] private LivesConfig _config;
@@ -37,7 +58,7 @@ namespace RoyalSmash.Lives
         {
             get
             {
-                if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+                if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
                 {
                     return SaveManager.Instance.Data.Lives;
                 }
@@ -51,10 +72,11 @@ namespace RoyalSmash.Lives
 
         private void Awake()
         {
-            if (Instance == null)
+            _isQuitting = false;
+            if (_instance == null)
             {
-                Instance = this;
-                if (_dontDestroyOnLoad && transform.parent == null)
+                _instance = this;
+                if (_dontDestroyOnLoad && transform.parent == null && Application.isPlaying)
                 {
                     DontDestroyOnLoad(gameObject);
                 }
@@ -64,9 +86,10 @@ namespace RoyalSmash.Lives
                     _config = ScriptableObject.CreateInstance<LivesConfig>();
                 }
             }
-            else if (Instance != this)
+            else if (_instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
         }
 
@@ -91,9 +114,17 @@ namespace RoyalSmash.Lives
             }
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
         private void OnDestroy()
         {
-            if (Instance == this) Instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         /// <summary>
@@ -272,19 +303,30 @@ namespace RoyalSmash.Lives
         /// </summary>
         public bool BuyLifeWithGold()
         {
-            var saveMgr = SaveManager.Instance;
-            if (saveMgr == null || saveMgr.Data == null) return false;
-
-            int price = _config != null ? _config.LifePriceGold : 100;
-            if (saveMgr.Data.Gold < price)
-            {
-                Debug.LogWarning($"[LivesManager] Insufficient Gold ({saveMgr.Data.Gold} < {price}).");
-                return false;
-            }
-
             if (AreLivesFull)
             {
                 Debug.Log("[LivesManager] Lives already at maximum capacity.");
+                return false;
+            }
+
+            int price = _config != null ? _config.LifePriceGold : 100;
+
+            if (Economy.GoldManager.Instance != null)
+            {
+                if (!Economy.GoldManager.Instance.SpendGold(price, "LifePurchase"))
+                {
+                    return false;
+                }
+                AddLife(1, "GoldPurchase");
+                return true;
+            }
+
+            var saveMgr = SaveManager.Instance;
+            if (saveMgr == null || saveMgr.Data == null) return false;
+
+            if (saveMgr.Data.Gold < price)
+            {
+                Debug.LogWarning($"[LivesManager] Insufficient Gold ({saveMgr.Data.Gold} < {price}).");
                 return false;
             }
 

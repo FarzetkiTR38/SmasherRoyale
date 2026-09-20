@@ -16,6 +16,17 @@ namespace RoyalSmash.Gameplay
         public Color PaintColor => _paintColor;
         public bool HasBroken => _hasBroken;
 
+        protected override void Start()
+        {
+            base.Start();
+
+            // Start in sleep state so grid remains rock-solid until projectile impact
+            if (_rigidbody != null)
+            {
+                _rigidbody.Sleep();
+            }
+        }
+
         protected override void HandleProjectileHit(Collision collision)
         {
             base.HandleProjectileHit(collision);
@@ -34,6 +45,21 @@ namespace RoyalSmash.Gameplay
         {
             if (_hasBroken) return;
             _hasBroken = true;
+
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayBottleBreak();
+            }
+
+            if (RoyalSmash.VFX.VFXManager.Instance != null)
+            {
+                RoyalSmash.VFX.VFXManager.Instance.SpawnBottleBreak(impactPoint, _paintColor);
+            }
+
+            if (RoyalSmash.Haptics.HapticManager.Instance != null)
+            {
+                RoyalSmash.Haptics.HapticManager.Instance.TriggerBottleBreakHaptic();
+            }
 
             Debug.Log($"[PaintBottleObject] Shattered at {impactPoint} with {_paintColor} paint splash!");
 

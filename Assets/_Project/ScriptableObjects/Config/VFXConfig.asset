@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3739571a8b0760341b737d9add6cf4f8, type: 3}
+  m_Name: VFXConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.VFX.VFXConfig
+  _muzzleFlashPrefab: {fileID: 1395173715076444283, guid: 56008b4d69b1b6441a3a191c4b50da56, type: 3}
+  _defaultTrailMaterial: {fileID: 2100000, guid: 1d4f89b22ea40c141bf8f82f66cf2e5c, type: 2}
+  _megaBallTrailMaterial: {fileID: 2100000, guid: 91c46673029099249b365c948b4a5792, type: 2}
+  _infinityBallTrailMaterial: {fileID: 2100000, guid: e58a4d45958a7ed40961ffb6294f17ae, type: 2}
+  _muzzleFlashAlt1Prefab: {fileID: 6513655873922587099, guid: 24b753898fc042a42aef1ac3c71fc08c, type: 3}
+  _muzzleFlashAlt2Prefab: {fileID: 4674185703678938710, guid: d88facb7fe8542e40a7c686a12788d8e, type: 3}
+  _defaultTrailAlt1Material: {fileID: 2100000, guid: 5fba43b6042e016489d76b0352b48179, type: 2}
+  _defaultTrailAlt2Material: {fileID: 2100000, guid: 3a35d23d5e202e542a8d971c36f73408, type: 2}
+  _impactGenericPrefab: {fileID: 6840085548960137307, guid: 12859b1f5db9e9746898265cdf8336c9, type: 3}
+  _impactHeavyPrefab: {fileID: 3376329093981681781, guid: b139078f8cafc8c4c8e42fa04bb2e77b, type: 3}
+  _objectDestructionPrefab: {fileID: 5409762045281811615, guid: 9c8ce7ab99d4ca24b9e79c13c6f45bce, type: 3}
+  _heavyImpactThreshold: 3
+  _impactGenericAlt1Prefab: {fileID: 3376329093981681781, guid: b139078f8cafc8c4c8e42fa04bb2e77b, type: 3}
+  _impactGenericAlt2Prefab: {fileID: 433105920977601117, guid: f80c145e09aa6a94580e786140c20cfc, type: 3}
+  _impactHeavyAlt1Prefab: {fileID: 6840085548960137307, guid: 12859b1f5db9e9746898265cdf8336c9, type: 3}
+  _impactHeavyAlt2Prefab: {fileID: 433105920977601117, guid: f80c145e09aa6a94580e786140c20cfc, type: 3}
+  _objectDestructionAlt1Prefab: {fileID: 3376329093981681781, guid: b139078f8cafc8c4c8e42fa04bb2e77b, type: 3}
+  _objectDestructionAlt2Prefab: {fileID: 433105920977601117, guid: f80c145e09aa6a94580e786140c20cfc, type: 3}
+  _bottleBreakShardsPrefab: {fileID: 1431615949868779062, guid: 2ab3e1e5746952d459155ac8963d8028, type: 3}
+  _paintSpillPrefab: {fileID: 1057790410192890506, guid: e97ac18a30bd0b247bf6953a82315494, type: 3}
+  _paintSpillLifetime: 4
+  _bottleBreakShardsAlt1Prefab: {fileID: 8059536641223056795, guid: 05744c1cd7cd03043aab4c40c101b19b, type: 3}
+  _bottleBreakShardsAlt2Prefab: {fileID: 5658745258765380294, guid: d8d4ff81f5f534e458df3000fd786373, type: 3}
+  _skillActivatePrefab: {fileID: 1438346004617522076, guid: 121ca594bc90c1147aa212273883ad3c, type: 3}
+  _winConfettiPrefab: {fileID: 1910635237000807981, guid: ba50e2a002aa2b34ab1c72a6e4f9b63f, type: 3}
+  _coinFlyPrefab: {fileID: 1918497712065542931, guid: be18430828f27a84a8c506247b7433b1, type: 3}
+  _winConfettiAlt1Prefab: {fileID: 6236625168247850627, guid: f20ad879b86579849b3b24ad18f100b0, type: 3}
+  _winConfettiAlt2Prefab: {fileID: 7484332962906639111, guid: a8c0517d08cef4443bd5ca358a10cb45, type: 3}
+  _defaultPoolSize: 6

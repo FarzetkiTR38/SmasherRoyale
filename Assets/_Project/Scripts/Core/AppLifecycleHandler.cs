@@ -13,6 +13,7 @@ namespace RoyalSmash.Core
     public class AppLifecycleHandler : MonoBehaviour
     {
         public static AppLifecycleHandler Instance { get; private set; }
+        public static bool HasInstance => Instance != null;
 
         [SerializeField] private bool _dontDestroyOnLoad = true;
 
@@ -31,6 +32,11 @@ namespace RoyalSmash.Core
                 Destroy(gameObject);
                 return;
             }
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
         }
 
         private void Start()

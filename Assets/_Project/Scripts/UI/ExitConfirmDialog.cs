@@ -80,7 +80,14 @@ namespace RoyalSmash.UI
             Hide();
             OnExitConfirmed?.Invoke();
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            if (RoyalSmash.Core.SceneTransitionManager.Instance != null)
+            {
+                RoyalSmash.Core.SceneTransitionManager.Instance.LoadMainMenu();
+            }
+            else
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(RoyalSmash.Core.SceneTransitionManager.SCENE_MAIN_MENU);
+            }
         }
 
         private void HandleCancel()

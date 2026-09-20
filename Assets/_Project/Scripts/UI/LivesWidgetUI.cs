@@ -35,7 +35,7 @@ namespace RoyalSmash.UI
 
         private void OnDestroy()
         {
-            if (LivesManager.Instance != null)
+            if (LivesManager.HasInstance)
             {
                 LivesManager.Instance.OnLivesChanged -= HandleLivesChanged;
                 LivesManager.Instance.OnRegenTimerUpdated -= HandleTimerUpdated;

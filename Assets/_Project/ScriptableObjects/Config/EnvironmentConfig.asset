@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04af230a72b1b4d46bffa009438eac7b, type: 3}
+  m_Name: EnvironmentConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.EnvironmentConfig
+  _themes:
+  - ThemeName: Castle Courtyard
+    StartLevel: 1
+    EndLevel: 10
+    SunLightColor: {r: 1, g: 0.96, b: 0.88, a: 1}
+    SunLightIntensity: 1.15
+    SunEulerAngles: {x: 50, y: -30, z: 0}
+    SkyTopColor: {r: 0.35, g: 0.65, b: 0.95, a: 1}
+    SkyHorizonColor: {r: 0.75, g: 0.88, b: 0.98, a: 1}
+    GroundColor: {r: 0.28, g: 0.52, b: 0.22, a: 1}
+    EnableFog: 1
+    FogColor: {r: 0.72, g: 0.85, b: 0.95, a: 1}
+    FogStartDistance: 18
+    FogEndDistance: 48
+  - ThemeName: Royal Ramparts (Sunset)
+    StartLevel: 11
+    EndLevel: 20
+    SunLightColor: {r: 1, g: 0.78, b: 0.55, a: 1}
+    SunLightIntensity: 1.25
+    SunEulerAngles: {x: 35, y: -45, z: 0}
+    SkyTopColor: {r: 0.45, g: 0.35, b: 0.7, a: 1}
+    SkyHorizonColor: {r: 0.95, g: 0.65, b: 0.45, a: 1}
+    GroundColor: {r: 0.42, g: 0.35, b: 0.25, a: 1}
+    EnableFog: 1
+    FogColor: {r: 0.92, g: 0.68, b: 0.55, a: 1}
+    FogStartDistance: 16
+    FogEndDistance: 42
+  - ThemeName: Grand Palace Arena
+    StartLevel: 21
+    EndLevel: 30
+    SunLightColor: {r: 0.95, g: 0.92, b: 1, a: 1}
+    SunLightIntensity: 1.35
+    SunEulerAngles: {x: 60, y: -20, z: 0}
+    SkyTopColor: {r: 0.25, g: 0.2, b: 0.55, a: 1}
+    SkyHorizonColor: {r: 0.65, g: 0.55, b: 0.85, a: 1}
+    GroundColor: {r: 0.3, g: 0.25, b: 0.4, a: 1}
+    EnableFog: 1
+    FogColor: {r: 0.55, g: 0.48, b: 0.75, a: 1}
+    FogStartDistance: 14
+    FogEndDistance: 40

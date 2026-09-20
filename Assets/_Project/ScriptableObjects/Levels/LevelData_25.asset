@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e84930bcefe04d47b7b5093b5d1f648, type: 3}
+  m_Name: LevelData_25
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Levels.LevelData
+  _levelId: 25
+  _levelName: Level 25
+  _ballCount: 14
+  _baseRewardGold: 170
+  _stands:
+  - Position: {x: 0, y: 1, z: 5}
+    Scale: {x: 4, y: 0.3, z: 2.5}
+    Rotation: {x: 0, y: 0, z: 0}
+  _objects:
+  - Type: 4
+    Position: {x: -1.5, y: 1.55, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 0
+    Position: {x: -0.75, y: 1.55, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 1
+    Position: {x: 0, y: 1.55, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 0
+    Position: {x: 0.75, y: 1.55, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 2
+    Position: {x: 1.5, y: 1.55, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 3
+    Position: {x: -1.5, y: 2.4, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 4
+    Position: {x: -0.75, y: 2.4, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 0
+    Position: {x: 0, y: 2.4, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 2
+    Position: {x: 0.75, y: 2.4, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 0
+    Position: {x: 1.5, y: 2.4, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 3
+    Position: {x: -1.5, y: 3.25, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 0
+    Position: {x: -0.75, y: 3.25, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 4
+    Position: {x: 0, y: 3.25, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 0
+    Position: {x: 0.75, y: 3.25, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 1
+    Position: {x: 1.5, y: 3.25, z: 4.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  - Type: 3
+    Position: {x: -1.5, y: 4.1, z: 5.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+  _specialEvents:
+  - Type: 4
+    Data: Milestone Level 25 reached!
+  _isTutorialLevel: 0
+  _tutorialTargetPosition: {x: 0, y: 0, z: 0}
+  _tutorialHighlightRadius: 1
