@@ -76,8 +76,14 @@ namespace RoyalSmash.Levels
                 _levelRoot = rootGo.transform;
             }
 
-            // 1. Spawn Stands
-            if (data.Stands != null && _standPrefab != null)
+            // 1. Stand setup: Use existing scene stand if present, otherwise spawn from prefab
+            var existingSceneStand = GameObject.Find("Stand");
+            if (existingSceneStand != null)
+            {
+                // The scene already has the Royal Stand platform (at Z=7.50)
+                _spawnedStands.Add(existingSceneStand);
+            }
+            else if (data.Stands != null && _standPrefab != null)
             {
                 foreach (var standCfg in data.Stands)
                 {
@@ -97,6 +103,15 @@ namespace RoyalSmash.Levels
 
                     var go = Instantiate(prefab, placement.Position, Quaternion.Euler(placement.Rotation), _levelRoot);
                     go.transform.localScale = placement.Scale;
+
+                    if (placement.Type == ObjectType.PaintBottle && placement.PaintColor != Color.clear)
+                    {
+                        var bottle = go.GetComponent<PaintBottleObject>();
+                        if (bottle != null)
+                        {
+                            bottle.SetColor(placement.PaintColor);
+                        }
+                    }
 
                     var physObj = go.GetComponent<PhysicsObject>();
                     if (physObj != null)

@@ -129,8 +129,20 @@ namespace RoyalSmash.Levels
                 }
             }
 
-            // Automatically scan and register existing target objects in scene
-            ScanAndRegisterSceneTargets();
+            // Register spawned targets directly from LevelLoader, or fallback to scene scan
+            if (_levelLoader != null && _levelLoader.SpawnedObjects.Count > 0)
+            {
+                ResetState();
+                _activeTargets.Clear();
+                foreach (var obj in _levelLoader.SpawnedObjects)
+                {
+                    RegisterTarget(obj);
+                }
+            }
+            else
+            {
+                ScanAndRegisterSceneTargets();
+            }
 
             // Mark active level session for ungraceful exit detection
             if (SaveManager.HasInstance && SaveManager.Instance.Data != null)

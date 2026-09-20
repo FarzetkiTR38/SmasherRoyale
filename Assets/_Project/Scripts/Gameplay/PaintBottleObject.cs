@@ -16,6 +16,17 @@ namespace RoyalSmash.Gameplay
         public Color PaintColor => _paintColor;
         public bool HasBroken => _hasBroken;
 
+        public void SetColor(Color color)
+        {
+            _paintColor = color;
+            var rend = GetComponentInChildren<Renderer>();
+            if (rend != null && rend.material != null)
+            {
+                if (rend.material.HasProperty("_BaseColor")) rend.material.SetColor("_BaseColor", color);
+                if (rend.material.HasProperty("_Color")) rend.material.SetColor("_Color", color);
+            }
+        }
+
         protected override void Start()
         {
             base.Start();

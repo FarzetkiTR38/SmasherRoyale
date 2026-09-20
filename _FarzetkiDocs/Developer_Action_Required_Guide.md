@@ -52,19 +52,25 @@ Oyun içi dükkan (`ShopManager.cs` ve `IAPManager.cs`), No-Ads ve altın/skill 
 
 ---
 
-## 4. Bulut Kaydı & Gerçek Backend (Firebase / PlayFab / Game Center)
+## 4. Bulut Kaydı & Lider Tablosu (Resmi Unity Gaming Services — UGS)
 
-Projede `CloudSyncManager.cs` "en son yerel ilerleme kazanır" kuralıyla yerel disk önbelleği ve lider tablosunu yönetmektedir. Gerçek sunucuya bağlamak için:
+Projede harici hiçbir 3. parti sunucuya (Firebase, AWS, PlayFab) gerek kalmadan, tamamen Unity'nin resmi bulut servisi olan **Unity Gaming Services (UGS)** entegrasyonu tamamlanmıştır:
+- `com.unity.services.core` (Core SDK)
+- `com.unity.services.authentication` (Cihaz bazlı şifresiz Anonim Giriş)
+- `com.unity.services.cloudsave` (Atomik JSON bulut kaydı)
+- `com.unity.services.leaderboards` (Gerçek zamanlı global lider tablosu)
 
-1. **Firebase / PlayFab Seçimi**:
-   - Önerilen casual altyapı: Firebase Firestore veya PlayFab.
-   - Firebase SDK `unitypackage` import edin.
-2. **Kimlik Doğrulama & Firestore**:
-   - `ICloudSyncProvider` arayüzünü uygulayan bir `FirebaseCloudProvider.cs` oluşturun.
-   - `PushPlayerData(PlayerSaveData data)` metodunda veriyi `users/{userId}` belgesine JSON olarak yazın.
-   - `PullPlayerData()` metodunda buluttaki veriyi çekip `LastSaveTicks` karşılaştırması ile yerel veriyi güncelleyin.
-3. **Lider Tablosu (Leaderboard)**:
-   - `LeaderboardManager.cs` için sunucudaki en yüksek seviyeye ulaşan ilk 10/100 oyuncu sorgusunu çekin.
+### Kod Mimarisi:
+- `UGSCloudProvider.cs`: `ICloudSyncProvider` arayüzünü uygulayarak Unity Gaming Services API'leri ile konuşur.
+- `CloudSyncManager.cs`: `_useUGS = true` seçeneği ile otomatik olarak UGS sağlayıcısını çalıştırır. Cihaz çevrimdışıysa veya bağlantı koparsa otomatik olarak yerel önbelleğe (`leaderboard_cache.json`) döner.
+
+### Geliştiricinin Unity Dashboard'da (cloud.unity.com) Yapması Gerekenler:
+1. **Authentication**: *Sign-in Methods* sekmesinde **Anonymous** seçeneğinin `Enabled` olduğunu doğrulayın.
+2. **Cloud Save**: Cloud Save sekmesinde servisi `Enable` edip kurulum sihirbazını `Finish` ile tamamlayın.
+3. **Leaderboards**: *Create Leaderboard* butonuna basarak:
+   - **Leaderboard ID:** `global_highest_level`
+   - **Sort Order:** `Descending` (Yüksek seviye en üstte)
+   kaydını oluşturun.
 
 ---
 
