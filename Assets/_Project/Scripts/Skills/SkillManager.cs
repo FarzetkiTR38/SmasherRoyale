@@ -20,6 +20,12 @@ namespace RoyalSmash.Skills
                 if (_instance == null)
                 {
                     _instance = FindFirstObjectByType<SkillManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("SkillManager");
+                        _instance = go.AddComponent<SkillManager>();
+                        DontDestroyOnLoad(go);
+                    }
                 }
                 return _instance;
             }
@@ -57,6 +63,11 @@ namespace RoyalSmash.Skills
                 return;
             }
             Instance = this;
+
+            if (transform.parent == null && Application.isPlaying)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
 
             InitializeDefaults();
         }

@@ -13,7 +13,23 @@ namespace RoyalSmash.Ads
     public class AdManager : MonoBehaviour
     {
         private static AdManager _instance;
-        public static AdManager Instance => _instance;
+        public static AdManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<AdManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("AdManager");
+                        _instance = go.AddComponent<AdManager>();
+                        DontDestroyOnLoad(go);
+                    }
+                }
+                return _instance;
+            }
+        }
 
         [Header("Configuration")]
         [SerializeField] private AdConfig _config;

@@ -20,7 +20,23 @@ namespace RoyalSmash.Cloud
     public class CloudSyncManager : MonoBehaviour
     {
         private static CloudSyncManager _instance;
-        public static CloudSyncManager Instance => _instance;
+        public static CloudSyncManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<CloudSyncManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("CloudSyncManager");
+                        _instance = go.AddComponent<CloudSyncManager>();
+                        DontDestroyOnLoad(go);
+                    }
+                }
+                return _instance;
+            }
+        }
 
         [Header("Configuration")]
         [SerializeField] private LeaderboardConfig _config;

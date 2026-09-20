@@ -20,6 +20,12 @@ namespace RoyalSmash.Economy
                 if (_instance == null)
                 {
                     _instance = FindFirstObjectByType<GoldManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("GoldManager");
+                        _instance = go.AddComponent<GoldManager>();
+                        DontDestroyOnLoad(go);
+                    }
                     if (_instance != null && _instance._currentGold == 0)
                     {
                         _instance.InitializeGold();

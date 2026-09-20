@@ -13,7 +13,23 @@ namespace RoyalSmash.Cloud
     public class LeaderboardManager : MonoBehaviour
     {
         private static LeaderboardManager _instance;
-        public static LeaderboardManager Instance => _instance;
+        public static LeaderboardManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<LeaderboardManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("LeaderboardManager");
+                        _instance = go.AddComponent<LeaderboardManager>();
+                        DontDestroyOnLoad(go);
+                    }
+                }
+                return _instance;
+            }
+        }
 
         private List<LeaderboardEntryData> _currentEntries = new List<LeaderboardEntryData>();
         private bool _isCurrentDataCached = false;

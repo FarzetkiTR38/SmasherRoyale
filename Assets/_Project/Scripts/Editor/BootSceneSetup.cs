@@ -220,6 +220,7 @@ namespace RoyalSmash.Editor
             CreateManagerGameObject<AdManager>("AdManager");
             CreateManagerGameObject<IAPManager>("IAPManager");
             CreateManagerGameObject<SceneTransitionManager>("SceneTransitionManager");
+            CreateManagerGameObject<RoyalSmash.Utils.VibrationManager>("VibrationManager");
 
             // Save the newly created BootScene
             EditorSceneManager.SaveScene(newScene, BOOT_SCENE_PATH);

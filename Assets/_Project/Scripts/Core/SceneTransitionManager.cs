@@ -21,6 +21,12 @@ namespace RoyalSmash.Core
                 if (_instance == null)
                 {
                     _instance = FindFirstObjectByType<SceneTransitionManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("SceneTransitionManager");
+                        _instance = go.AddComponent<SceneTransitionManager>();
+                        DontDestroyOnLoad(go);
+                    }
                 }
                 return _instance;
             }

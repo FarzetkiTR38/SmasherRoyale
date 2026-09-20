@@ -21,6 +21,12 @@ namespace RoyalSmash.Lives
                 if (_instance == null)
                 {
                     _instance = FindFirstObjectByType<LivesManager>();
+                    if (_instance == null && Application.isPlaying)
+                    {
+                        var go = new GameObject("LivesManager");
+                        _instance = go.AddComponent<LivesManager>();
+                        DontDestroyOnLoad(go);
+                    }
                 }
                 return _instance;
             }
