@@ -211,12 +211,21 @@ namespace RoyalSmash.VFX
         {
             if (Config == null) return;
 
-            // 1. Glass shards burst
+            // 1. Glass shards and paint burst
             if (Config.BottleBreakShardsPrefab != null)
             {
                 GameObject shards = GetFromPool(Config.BottleBreakShardsPrefab, position, Quaternion.identity);
-                var ps = shards.GetComponentInChildren<ParticleSystem>();
-                if (ps != null) ps.Play();
+                var allSystems = shards.GetComponentsInChildren<ParticleSystem>();
+                foreach (var ps in allSystems)
+                {
+                    if (ps.gameObject.name.Contains("Paint") || ps.gameObject.name.Contains("Droplet") || 
+                        ps.gameObject.name.Contains("Puff") || ps.gameObject.name.Contains("Ring"))
+                    {
+                        var main = ps.main;
+                        main.startColor = paintColor;
+                    }
+                    ps.Play();
+                }
                 ReturnToPool(shards, Config.BottleBreakShardsPrefab.name, 1.5f);
             }
 

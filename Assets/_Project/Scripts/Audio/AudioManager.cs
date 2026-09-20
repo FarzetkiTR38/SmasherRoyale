@@ -346,6 +346,22 @@ namespace RoyalSmash.Audio
             }
         }
 
+        public void PlayPanelOpen()
+        {
+            if (Config != null && Config.PanelOpen != null)
+            {
+                PlaySfx(Config.PanelOpen, 0.85f, randomizePitch: false);
+            }
+        }
+
+        public void PlayGameStart()
+        {
+            if (Config != null && Config.GameStart != null)
+            {
+                PlaySfx(Config.GameStart, 1f, randomizePitch: false);
+            }
+        }
+
         public void PlayWinSound()
         {
             if (Config != null && Config.WinFanfare != null)
