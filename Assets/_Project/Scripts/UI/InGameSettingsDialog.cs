@@ -30,6 +30,7 @@ namespace RoyalSmash.UI
         [SerializeField] private TextMeshProUGUI _vibrationStatusText;
 
         public static InGameSettingsDialog Instance { get; private set; }
+        public bool IsVisible => _contentRoot != null ? _contentRoot.activeSelf : gameObject.activeSelf;
 
         private float _savedTimeScale = 1f;
         private bool _isTimePaused = false;

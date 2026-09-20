@@ -71,7 +71,7 @@ namespace RoyalSmash.Editor
             // Event System
             var eventObj = new GameObject("EventSystem");
             eventObj.AddComponent<UnityEngine.EventSystems.EventSystem>();
-            eventObj.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+            eventObj.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
 
             // 4. Background Image
             var bgObj = new GameObject("Background");

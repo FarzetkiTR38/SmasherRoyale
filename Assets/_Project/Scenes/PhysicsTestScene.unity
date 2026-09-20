@@ -11888,6 +11888,8 @@ MonoBehaviour:
   _musicStatusText: {fileID: 926820587}
   _sfxToggleButton: {fileID: 906989703}
   _sfxStatusText: {fileID: 1615594104}
+  _vibrationToggleButton: {fileID: 0}
+  _vibrationStatusText: {fileID: 0}
 --- !u!1 &1218967370
 GameObject:
   m_ObjectHideFlags: 0
