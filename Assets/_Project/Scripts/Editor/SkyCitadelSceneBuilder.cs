@@ -121,6 +121,7 @@ namespace RoyalSmash.Editor
             Directory.CreateDirectory(ROOT + "/Prefabs");
             Directory.CreateDirectory(ROOT + "/Levels");
             var variants = new[] { "wood", "stone", "crystal", "armored", "core" };
+            var sourceNames = new[] { "Box", "Stone", "Column", "Cone", "PaintBottle" };
             var prefabs = new GameObject[variants.Length];
             for (int i=0;i<variants.Length;i++)
             {
@@ -128,12 +129,23 @@ namespace RoyalSmash.Editor
                 var configPath = ROOT+"/Levels/Config_"+variants[i]+".asset";
                 var config = AssetDatabase.LoadAssetAtPath<ObjectConfig>(configPath);
                 if (config == null) { config=ScriptableObject.CreateInstance<ObjectConfig>(); AssetDatabase.CreateAsset(config,configPath); }
+                var source = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Gameplay/"+sourceNames[i]+".prefab");
+                var sourcePhysics = source.GetComponent<PhysicsObject>();
+                if (sourcePhysics.Config != null) EditorUtility.CopySerialized(sourcePhysics.Config,config);
                 var so = new SerializedObject(config);
                 so.FindProperty("_objectType").enumValueIndex = i;
                 so.FindProperty("_displayName").stringValue = "Citadel "+variants[i];
-                so.FindProperty("_mass").floatValue = i==1 ? 1.3f : 1f;
                 so.ApplyModifiedPropertiesWithoutUndo();
                 var prefabRoot = PrefabUtility.LoadPrefabContents(AssetDatabase.GetAssetPath(prefabs[i]));
+                if (i == 4)
+                {
+                    UnityEngine.Object.DestroyImmediate(prefabRoot.GetComponent<PhysicsObject>());
+                    var breakable = prefabRoot.AddComponent<PaintBottleObject>();
+                    var breakableData = new SerializedObject(breakable);
+                    breakableData.FindProperty("_paintColor").colorValue = new Color(.05f,.7f,1);
+                    breakableData.ApplyModifiedPropertiesWithoutUndo();
+                }
+                prefabRoot.GetComponent<Collider>().sharedMaterial = source.GetComponent<Collider>().sharedMaterial;
                 SetObject(prefabRoot.GetComponent<PhysicsObject>(),"_config",config);
                 var rb = prefabRoot.GetComponent<Rigidbody>(); rb.solverIterations=10; rb.solverVelocityIterations=4;
                 PrefabUtility.SaveAsPrefabAsset(prefabRoot,AssetDatabase.GetAssetPath(prefabs[i]));
@@ -160,7 +172,7 @@ namespace RoyalSmash.Editor
                     Position=new Vector3((col-(widths[row]-1)*.5f)*.745f,1.35f+.125f+.37f+row*.746f,7.5f),
                     Scale=Vector3.one*.74f,Rotation=Vector3.zero });
             }
-            data.SetData(1,"Sky Citadel",25,50,new[]{new StandPlacement {Position=new Vector3(0,1.35f,7.5f),Scale=new Vector3(5.7f,.25f,1.6f)}},placements.ToArray(),Array.Empty<LevelEvent>());
+            data.SetData(1,"Sky Citadel",25,50,new[]{new StandPlacement {Position=new Vector3(0,0,7.5f),Scale=new Vector3(1,1,.5f)}},placements.ToArray(),Array.Empty<LevelEvent>());
             EditorUtility.SetDirty(data);
             string databasePath=ROOT+"/Levels/CitadelLevelDatabase.asset";
             var database=AssetDatabase.LoadAssetAtPath<LevelDatabase>(databasePath);
@@ -168,6 +180,28 @@ namespace RoyalSmash.Editor
             var original=AssetDatabase.LoadAssetAtPath<LevelDatabase>("Assets/_Project/ScriptableObjects/Levels/LevelDatabase.asset");
             var levels = new LevelData[original.TotalLevels];
             for(int i=0;i<levels.Length;i++) levels[i]= i==0?data:original.GetLevel(i+1);
+            // The old third layout has almost unsupported central overhangs. Keep its eight
+            // targets and economy, but give the cuboid art variants a stable two-row foundation.
+            if(levels.Length>2 && levels[2].Objects.Length==8)
+            {
+                var sourceLevel=levels[2];
+                string thirdPath=ROOT+"/Levels/LevelData_Citadel03.asset";
+                var third=AssetDatabase.LoadAssetAtPath<LevelData>(thirdPath);
+                if(third==null){third=ScriptableObject.CreateInstance<LevelData>();AssetDatabase.CreateAsset(third,thirdPath);}
+                EditorUtility.CopySerialized(sourceLevel,third);
+                var supported=new ObjectPlacement[8];
+                for(int i=0;i<supported.Length;i++)
+                {
+                    var originalObject=sourceLevel.Objects[i];
+                    supported[i]=new ObjectPlacement{Type=originalObject.Type,
+                        Position=new Vector3((i%4-1.5f)*1.025f,1.975f+(i/4)*1.01f,7.5f),
+                        Scale=Vector3.one,Rotation=Vector3.zero,OverrideMass=originalObject.OverrideMass,
+                        CustomMass=originalObject.CustomMass};
+                }
+                third.SetData(sourceLevel.LevelId,sourceLevel.LevelName,sourceLevel.BallCount,
+                    sourceLevel.BaseRewardGold,sourceLevel.Stands,supported,sourceLevel.SpecialEvents);
+                levels[2]=third;EditorUtility.SetDirty(third);
+            }
             database.SetLevels(levels); EditorUtility.SetDirty(database);
             var manager=UnityEngine.Object.FindFirstObjectByType<LevelManager>();
             SetObject(manager,"_levelDatabase",database); SetObject(manager,"_levelLoader",loader);
@@ -200,6 +234,13 @@ namespace RoyalSmash.Editor
                 // Scale-aware front ornament avoids stretching the world diamond into a line.
                 gem.transform.localRotation=Quaternion.Euler(0,0,12);
             }
+            // Keep the original stand's origin and tabletop-height contract for levels 2–30.
+            var presentation = new GameObject("StandPresentation").transform;
+            var parts = new List<Transform>(); foreach(Transform part in stand.transform) parts.Add(part);
+            presentation.SetParent(stand.transform,false);
+            foreach(var part in parts) part.SetParent(presentation,false);
+            presentation.localPosition = new Vector3(0,1.35f,0);
+            presentation.localScale = new Vector3(5.7f,.25f,3.2f);
             var prefab=PrefabUtility.SaveAsPrefabAsset(stand,ROOT+"/Prefabs/PF_CitadelStand.prefab");
             UnityEngine.Object.DestroyImmediate(stand); return prefab;
         }
@@ -230,8 +271,8 @@ namespace RoyalSmash.Editor
                 rail.transform.localRotation=Quaternion.Euler(0,(i-1)*-12,0);
             }
             // Clone the existing gameplay projectile, preserving configuration and collision behavior.
-            var mc=mortar.GetComponent<MortarController>(); var ms=new SerializedObject(mc);
-            var source=(GameObject)ms.FindProperty("_ballPrefab").objectReferenceValue;
+            var mc=mortar.GetComponent<MortarController>();
+            var source=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Gameplay/Ball.prefab");
             var ball=UnityEngine.Object.Instantiate(source); ball.name="CitadelEnergyBall";
             foreach(var r in ball.GetComponentsInChildren<Renderer>(true)) r.sharedMaterial=_energy;
             for(int i=0;i<3;i++)

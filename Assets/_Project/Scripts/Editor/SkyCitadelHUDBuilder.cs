@@ -30,6 +30,8 @@ namespace RoyalSmash.Editor
 
             var canvas = canvasObject.GetComponent<Canvas>();
             if (canvas == null) throw new InvalidOperationException("MainCanvas has no Canvas component.");
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 100;
             Undo.RegisterFullObjectHierarchyUndo(canvasObject, "Apply Sky Citadel HUD");
             _circle = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
             _card = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
@@ -113,12 +115,11 @@ namespace RoyalSmash.Editor
             Card(button, true);
             ButtonColors(button);
             Image icon = Shape(button, "Sky_Orb", new Vector2(0, 20), new Vector2(106, 106), Gold, true);
-            Orb(icon.rectTransform, infinity ? 73 : 112, new Vector2(infinity ? 0 : 0, infinity ? 39 : 18));
-            if (infinity)
-            {
-                Orb(Shape(button, "Sky_OrbLeft", Vector2.zero, Vector2.one, Gold, true).rectTransform, 52, new Vector2(-43, 9));
-                Orb(Shape(button, "Sky_OrbRight", Vector2.zero, Vector2.one, Gold, true).rectTransform, 52, new Vector2(43, 9));
-            }
+            Place(icon.rectTransform,new Vector2(.5f,.5f),new Vector2(0,18),new Vector2(158,158));
+            ReferenceIcon(icon, infinity ? "Infinity" : "Mega",
+                infinity ? new Rect(787,48,335,420) : new Rect(284,26,505,525));
+            foreach(var name in new[]{"Sky_OrbLeft","Sky_OrbRight"})
+            { var old=button.Find(name); if(old!=null) UnityEngine.Object.DestroyImmediate(old.gameObject); }
             Text(Require(button, "Label"), infinity ? "INFINITY" : "MEGA", infinity ? 24 : 30, Ivory,
                 new Vector2(0, -60), new Vector2(176, 43));
 
@@ -161,13 +162,34 @@ namespace RoyalSmash.Editor
         private static void Orb(RectTransform root, float diameter, Vector2 position)
         {
             Place(root, new Vector2(0.5f, 0.5f), position, new Vector2(diameter, diameter));
-            SetImage(root.GetComponent<Image>(), Gold, true);
-            Shape(root, "Sky_Deep", Vector2.zero, Vector2.one * diameter * 0.87f, Blue, true);
-            Shape(root, "Sky_Core", new Vector2(-diameter * 0.05f, diameter * 0.04f), Vector2.one * diameter * 0.70f,
-                new Color32(6, 165, 226, 255), true);
-            Shape(root, "Sky_Light", new Vector2(-diameter * 0.16f, diameter * 0.16f), Vector2.one * diameter * 0.36f, Cyan, true);
-            Shape(root, "Sky_Glint", new Vector2(-diameter * 0.22f, diameter * 0.24f), Vector2.one * diameter * 0.12f, Ivory, true);
-            Shape(root, "Sky_Gem", new Vector2(diameter * 0.22f, -diameter * 0.23f), Vector2.one * diameter * 0.20f, Gold, false, 45);
+            ReferenceIcon(root.GetComponent<Image>(),"Ball",new Rect(0,108,302,312));
+        }
+
+        private static void ReferenceIcon(Image image,string name,Rect rect)
+        {
+            for(int i=image.transform.childCount-1;i>=0;i--)
+                if(image.transform.GetChild(i).name.StartsWith("Sky_"))
+                    UnityEngine.Object.DestroyImmediate(image.transform.GetChild(i).gameObject);
+            var effect=image.GetComponent<SkyCitadelCircleGraphic>();
+            if(effect!=null)UnityEngine.Object.DestroyImmediate(effect);
+            string path="Assets/_Project/Art/SkyCitadel/Textures/UI_"+name+".asset";
+            string texturePath="Assets/_Project/Art/SkyCitadel/Textures/T_CitadelReferenceIcons.png";
+            var importer=(TextureImporter)AssetImporter.GetAtPath(texturePath);
+            if(importer.npotScale!=TextureImporterNPOTScale.None || importer.maxTextureSize!=2048)
+            {
+                importer.npotScale=TextureImporterNPOTScale.None;importer.maxTextureSize=2048;
+                importer.alphaIsTransparency=true;importer.mipmapEnabled=false;
+                importer.textureCompression=TextureImporterCompression.Uncompressed;importer.SaveAndReimport();
+            }
+            var sprite=AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            if(sprite==null)
+            {
+                var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
+                sprite=Sprite.Create(texture,rect,new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect);
+                sprite.name="Citadel"+name;AssetDatabase.CreateAsset(sprite,path);
+            }
+            image.sprite=sprite;image.type=Image.Type.Simple;image.preserveAspect=true;
+            image.color=Color.white;image.raycastTarget=false;
         }
 
         private static void Card(RectTransform root, bool round)
@@ -226,6 +248,17 @@ namespace RoyalSmash.Editor
             image.color = color;
             image.raycastTarget = false;
             image.preserveAspect = round;
+            if(round)
+            {
+                var circle=image.GetComponent<SkyCitadelCircleGraphic>();
+                if(circle==null)circle=Undo.AddComponent<SkyCitadelCircleGraphic>(image.gameObject);
+                // Mesh modifiers run in component order; build the vector circle before outlining it.
+                var components=image.GetComponents<Component>();
+                int circleIndex=Array.IndexOf(components,circle);
+                int outlineIndex=Array.IndexOf(components,image.GetComponent<Outline>());
+                while(outlineIndex>=0 && circleIndex>outlineIndex)
+                { UnityEditorInternal.ComponentUtility.MoveComponentUp(circle);circleIndex--; }
+            }
         }
 
         private static TextMeshProUGUI Label(Transform parent, string name, string value, float size, Vector2 position, Vector2 box, Color color)

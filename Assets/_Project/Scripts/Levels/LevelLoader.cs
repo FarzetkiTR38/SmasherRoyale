@@ -49,6 +49,9 @@ namespace RoyalSmash.Levels
                     var child = _levelRoot.GetChild(i).gameObject;
                     if (Application.isPlaying)
                     {
+                        // Destroy is deferred until frame end. Retire colliders and targets now,
+                        // before the new layout is instantiated into the same positions.
+                        child.SetActive(false);
                         Destroy(child);
                     }
                     else

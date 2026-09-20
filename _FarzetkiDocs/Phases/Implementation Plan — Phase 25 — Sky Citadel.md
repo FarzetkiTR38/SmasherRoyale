@@ -115,3 +115,15 @@ Subphases may have independent preparation in parallel, but a completion gate on
 - Final portrait screenshot(s): pending.
 - Outstanding defects/limits: unverified implementation; audit hazards listed above must be addressed.
 - Commit: not created at initial checkpoint.
+
+## Live checkpoint — 2026-09-20 resumed after quota renewal
+
+- Pre-interruption sources were backed up by the user in commit `7d9d930` (`commit for backup`).
+- 25.1 complete: MCP reconnected; MainGame baseline saved to `_FarzetkiDocs/Backups/MainGame-BeforeSkyCitadel.unity`; initial screenshot exists.
+- Artwork: `Assets/_Project/Art/SkyCitadel/Textures/T_CitadelBackdrop.png` (user reference) and `T_CitadelMarble.png` (one built-in imagegen call). Prompt: `_FarzetkiDocs/Art/SkyCitadel_ImagePrompts.md`.
+- MainGame first build succeeded. Console had 0 errors/warnings. First visual evidence: `_FarzetkiDocs/Art/SkyCitadel/sky-citadel-first-pass.png`.
+- Authored sources: `SkyCitadelSceneBuilder.cs`, `SkyCitadelBlockFactory.cs`, `SkyCitadelHUDBuilder.cs` in Scripts/Editor; `SkyCitadelPreview.cs` in Scripts/Gameplay; `SkyCitadelStageLabel.cs` in Scripts/UI; `CitadelEnergy.shader` in Art/SkyCitadel/Shaders.
+- First pass showed floor, castle, stand, 26 blocks and cannon. HUD was absent in capture; now changing to overlay Canvas.
+- Review fixes authored: keep stand origin/tabletop contract for existing levels; clone original projectile on each rebuild to prevent repeated gold rings; retain source ObjectConfig and PaintBottleObject behavior.
+- Current state: EDIT MODE; refresh/compilation requested for these fixes. Changes are not yet rebuilt or play-tested.
+- Exact next action: check editor readiness and console, call `SkyCitadelSceneBuilder.BuildAll()` in MainGame, capture updated screenshot, then run idle/spawn/shot/UI/reload tests. Do not mark 25.3–25.8 complete until actual verification.
