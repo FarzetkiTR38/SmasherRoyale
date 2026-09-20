@@ -57,7 +57,7 @@ namespace RoyalSmash.UI
 
         private void OnDestroy()
         {
-            if (IAPManager.Instance != null)
+            if (IAPManager.HasInstance)
             {
                 IAPManager.Instance.OnPurchaseCompleted -= HandlePurchaseCompleted;
                 IAPManager.Instance.OnPurchaseFailed -= HandlePurchaseFailed;

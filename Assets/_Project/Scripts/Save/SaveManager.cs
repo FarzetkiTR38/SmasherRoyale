@@ -11,11 +11,14 @@ namespace RoyalSmash.Save
     public class SaveManager : MonoBehaviour
     {
         private static SaveManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static SaveManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<SaveManager>();
                     if (_instance == null && Application.isPlaying)
@@ -50,24 +53,33 @@ namespace RoyalSmash.Save
 
         private void Awake()
         {
-            if (Instance == null)
+            _isQuitting = false;
+            if (_instance == null)
             {
-                Instance = this;
-                if (_dontDestroyOnLoad && transform.parent == null)
+                _instance = this;
+                if (_dontDestroyOnLoad && transform.parent == null && Application.isPlaying)
                 {
                     DontDestroyOnLoad(gameObject);
                 }
                 Load();
             }
-            else if (Instance != this)
+            else if (_instance != this)
             {
                 Destroy(gameObject);
             }
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
         private void OnDestroy()
         {
-            if (Instance == this) Instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         /// <summary>

@@ -100,7 +100,7 @@ namespace RoyalSmash.UI
 
         private void UnsubscribeEvents()
         {
-            if (GoldManager.Instance != null)
+            if (GoldManager.HasInstance)
             {
                 GoldManager.Instance.OnGoldChanged -= HandleGoldChanged;
             }

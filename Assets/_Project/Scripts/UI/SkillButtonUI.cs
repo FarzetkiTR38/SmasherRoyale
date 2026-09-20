@@ -79,7 +79,7 @@ namespace RoyalSmash.UI
 
         private void UnsubscribeEvents()
         {
-            if (SkillManager.Instance != null)
+            if (SkillManager.HasInstance)
             {
                 SkillManager.Instance.OnSkillStateChanged -= HandleSkillStateChanged;
             }

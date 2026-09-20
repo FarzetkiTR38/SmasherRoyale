@@ -142,6 +142,7 @@ namespace RoyalSmash.Editor
             EnsureSaveManager();
             var data = SaveManager.Instance.Data;
             data.Lives = 5;
+            LivesManager.Instance.ClearTransactionGuards();
 
             // Scenario A: Win level
             int livesBeforeWin = data.Lives;

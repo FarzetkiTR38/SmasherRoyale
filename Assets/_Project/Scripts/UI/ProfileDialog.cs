@@ -65,7 +65,7 @@ namespace RoyalSmash.UI
 
         private void OnDestroy()
         {
-            if (ProfileManager.Instance != null)
+            if (ProfileManager.HasInstance)
             {
                 ProfileManager.Instance.OnProfileUpdated -= HandleProfileUpdated;
                 ProfileManager.Instance.OnStatsUpdated -= RefreshStats;

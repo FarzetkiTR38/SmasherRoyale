@@ -31,6 +31,7 @@ namespace RoyalSmash.Levels
 
         [Header("Configuration")]
         [SerializeField] private LevelRewardConfig _rewardConfig;
+        [SerializeField] private LevelDatabase _levelDatabase;
         [SerializeField] private float _victoryDelay = 2.0f;
         [SerializeField] private float _physicsSettleVelocityThreshold = 0.2f;
         [SerializeField] private float _maxSettleWaitTime = 1.0f;
@@ -38,6 +39,7 @@ namespace RoyalSmash.Levels
 
         [Header("Scene References")]
         [SerializeField] private MortarController _mortar;
+        [SerializeField] private LevelLoader _levelLoader;
 
         // Runtime Tracking
         private readonly HashSet<PhysicsObject> _activeTargets = new HashSet<PhysicsObject>();
@@ -57,6 +59,7 @@ namespace RoyalSmash.Levels
         public int TotalTargets => _totalTargets;
         public int CurrentLevelIndex => _currentLevelIndex;
         public LevelRewardConfig RewardConfig => _rewardConfig;
+        public LevelDatabase Database => _levelDatabase;
 
         private void Awake()
         {
@@ -73,6 +76,14 @@ namespace RoyalSmash.Levels
             if (_rewardConfig == null)
             {
                 _rewardConfig = ScriptableObject.CreateInstance<LevelRewardConfig>();
+            }
+
+            if (_levelDatabase == null)
+            {
+#if UNITY_EDITOR
+                _levelDatabase = UnityEditor.AssetDatabase.LoadAssetAtPath<LevelDatabase>(
+                    "Assets/_Project/ScriptableObjects/Levels/LevelDatabase.asset");
+#endif
             }
         }
 
@@ -93,11 +104,36 @@ namespace RoyalSmash.Levels
                 RoyalSmash.Audio.AudioManager.Instance.PlayGameplayBGM();
             }
 
+            // Sync current level index from SaveManager
+            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
+            {
+                _currentLevelIndex = Mathf.Clamp(SaveManager.Instance.Data.CurrentLevel, 1, 30);
+            }
+
+            // Data-driven level loading via LevelLoader and LevelDatabase
+            if (_levelLoader == null)
+            {
+                _levelLoader = FindFirstObjectByType<LevelLoader>();
+            }
+
+            if (_levelLoader != null && _levelDatabase != null)
+            {
+                var levelData = _levelDatabase.GetLevel(_currentLevelIndex);
+                if (levelData != null)
+                {
+                    _levelLoader.LoadLevel(levelData);
+                    if (_mortar != null)
+                    {
+                        _mortar.SetBallCount(levelData.BallCount);
+                    }
+                }
+            }
+
             // Automatically scan and register existing target objects in scene
             ScanAndRegisterSceneTargets();
 
             // Mark active level session for ungraceful exit detection
-            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
             {
                 SaveManager.Instance.Data.WasInActiveLevel = true;
                 SaveManager.Instance.Data.ActiveLevelId = _currentLevelIndex;
@@ -105,7 +141,7 @@ namespace RoyalSmash.Levels
             }
 
             // Check if player has lives to play
-            if (LivesManager.Instance != null && !LivesManager.Instance.HasLivesToPlay)
+            if (LivesManager.HasInstance && !LivesManager.Instance.HasLivesToPlay)
             {
                 Debug.LogWarning("[LevelManager] Player has 0 lives! Gating level execution.");
                 var outOfLives = FindFirstObjectByType<RoyalSmash.UI.OutOfLivesDialog>();
@@ -113,7 +149,7 @@ namespace RoyalSmash.Levels
             }
 
             // Sync skills with current level progression (Level 5 MegaBall, Level 10 InfinityBall)
-            if (SkillManager.Instance != null)
+            if (SkillManager.HasInstance)
             {
                 SkillManager.Instance.UpdateUnlockStateForLevel(_currentLevelIndex);
             }
@@ -307,7 +343,7 @@ namespace RoyalSmash.Levels
             OnStateChanged?.Invoke(_currentState);
 
             // Clear active level session flag (graceful completion, 0 life loss)
-            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
             {
                 SaveManager.Instance.Data.WasInActiveLevel = false;
                 SaveManager.Instance.Save();
@@ -318,7 +354,7 @@ namespace RoyalSmash.Levels
             int totalGold = _rewardConfig != null ? _rewardConfig.CalculateReward(remainingBalls) : baseReward + (remainingBalls * 2);
 
             // Clean up any lingering active skill states
-            if (SkillManager.Instance != null)
+            if (SkillManager.HasInstance)
             {
                 SkillManager.Instance.ResetActiveSkills();
             }
@@ -347,19 +383,19 @@ namespace RoyalSmash.Levels
                 OnStateChanged?.Invoke(_currentState);
 
                 // Clear active level flag and deduct exactly 1 life for defeat
-                if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+                if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
                 {
                     SaveManager.Instance.Data.WasInActiveLevel = false;
                     SaveManager.Instance.Save();
                 }
 
-                if (LivesManager.Instance != null)
+                if (LivesManager.HasInstance)
                 {
                     LivesManager.Instance.DeductLife("LevelLost", $"Level_{_currentLevelIndex}_Loss");
                 }
 
                 // Clean up any lingering active skill states
-                if (SkillManager.Instance != null)
+                if (SkillManager.HasInstance)
                 {
                     SkillManager.Instance.ResetActiveSkills();
                 }
@@ -382,18 +418,18 @@ namespace RoyalSmash.Levels
         {
             if (_currentState == LevelState.Playing)
             {
-                if (LivesManager.Instance != null)
+                if (LivesManager.HasInstance)
                 {
                     LivesManager.Instance.DeductLife("LevelExit", $"Level_{_currentLevelIndex}_Exit");
                 }
             }
 
-            if (SkillManager.Instance != null)
+            if (SkillManager.HasInstance)
             {
                 SkillManager.Instance.ResetActiveSkills();
             }
 
-            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
             {
                 SaveManager.Instance.Data.WasInActiveLevel = false;
                 SaveManager.Instance.Save();
@@ -423,7 +459,7 @@ namespace RoyalSmash.Levels
             }
 
             _currentLevelIndex++;
-            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
             {
                 SaveManager.Instance.Data.CurrentLevel = _currentLevelIndex;
                 SaveManager.Instance.Save();

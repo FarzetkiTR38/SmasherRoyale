@@ -13,21 +13,21 @@ namespace RoyalSmash.Haptics
     public class HapticManager : MonoBehaviour
     {
         private static HapticManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static HapticManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<HapticManager>();
-                    if (_instance == null)
+                    if (_instance == null && Application.isPlaying)
                     {
                         var go = new GameObject("HapticManager");
                         _instance = go.AddComponent<HapticManager>();
-                        if (Application.isPlaying)
-                        {
-                            DontDestroyOnLoad(go);
-                        }
+                        DontDestroyOnLoad(go);
                     }
                 }
                 return _instance;
@@ -43,6 +43,7 @@ namespace RoyalSmash.Haptics
 
         private void Awake()
         {
+            _isQuitting = false;
             if (_instance == null)
             {
                 _instance = this;
@@ -55,21 +56,27 @@ namespace RoyalSmash.Haptics
             else if (_instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
         }
 
         private void Start()
         {
             SyncWithSaveData();
-            if (SaveManager.Instance != null)
+            if (SaveManager.HasInstance)
             {
                 SaveManager.Instance.OnSaveLoaded += HandleSaveLoaded;
             }
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
         private void OnDestroy()
         {
-            if (SaveManager.Instance != null)
+            if (SaveManager.HasInstance)
             {
                 SaveManager.Instance.OnSaveLoaded -= HandleSaveLoaded;
             }

@@ -13,11 +13,14 @@ namespace RoyalSmash.Ads
     public class AdManager : MonoBehaviour
     {
         private static AdManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static AdManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<AdManager>();
                     if (_instance == null && Application.isPlaying)
@@ -59,6 +62,7 @@ namespace RoyalSmash.Ads
 
         private void Awake()
         {
+            _isQuitting = false;
             if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
@@ -66,9 +70,25 @@ namespace RoyalSmash.Ads
             }
 
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (transform.parent == null && Application.isPlaying)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
 
             InitializeManager();
+        }
+
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         private void InitializeManager()

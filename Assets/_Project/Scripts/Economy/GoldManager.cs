@@ -13,11 +13,14 @@ namespace RoyalSmash.Economy
     public class GoldManager : MonoBehaviour
     {
         private static GoldManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static GoldManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<GoldManager>();
                     if (_instance == null && Application.isPlaying)
@@ -65,18 +68,20 @@ namespace RoyalSmash.Economy
 
         private void Awake()
         {
-            if (Instance == null)
+            _isQuitting = false;
+            if (_instance == null)
             {
-                Instance = this;
-                if (_dontDestroyOnLoad && transform.parent == null)
+                _instance = this;
+                if (_dontDestroyOnLoad && transform.parent == null && Application.isPlaying)
                 {
                     DontDestroyOnLoad(gameObject);
                 }
                 InitializeGold();
             }
-            else if (Instance != this)
+            else if (_instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
         }
 
@@ -85,15 +90,23 @@ namespace RoyalSmash.Economy
             SubscribeEvents();
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
         private void OnDestroy()
         {
-            if (Instance == this) Instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
             UnsubscribeEvents();
         }
 
         private void SubscribeEvents()
         {
-            if (SaveManager.Instance != null)
+            if (SaveManager.HasInstance)
             {
                 SaveManager.Instance.OnSaveLoaded -= HandleSaveLoaded;
                 SaveManager.Instance.OnSaveLoaded += HandleSaveLoaded;
@@ -108,7 +121,7 @@ namespace RoyalSmash.Economy
 
         private void UnsubscribeEvents()
         {
-            if (SaveManager.Instance != null)
+            if (SaveManager.HasInstance)
             {
                 SaveManager.Instance.OnSaveLoaded -= HandleSaveLoaded;
             }

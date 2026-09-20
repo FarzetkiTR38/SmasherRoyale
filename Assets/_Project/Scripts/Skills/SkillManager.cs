@@ -13,11 +13,14 @@ namespace RoyalSmash.Skills
     public class SkillManager : MonoBehaviour
     {
         private static SkillManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static SkillManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<SkillManager>();
                     if (_instance == null && Application.isPlaying)
@@ -57,19 +60,21 @@ namespace RoyalSmash.Skills
 
         private void Awake()
         {
-            if (Instance != null && Instance != this)
+            _isQuitting = false;
+            if (_instance == null)
+            {
+                _instance = this;
+                if (transform.parent == null && Application.isPlaying)
+                {
+                    DontDestroyOnLoad(gameObject);
+                }
+                InitializeDefaults();
+            }
+            else if (_instance != this)
             {
                 Destroy(gameObject);
                 return;
             }
-            Instance = this;
-
-            if (transform.parent == null && Application.isPlaying)
-            {
-                DontDestroyOnLoad(gameObject);
-            }
-
-            InitializeDefaults();
         }
 
         private void Start()
@@ -77,9 +82,17 @@ namespace RoyalSmash.Skills
             SyncWithSaveData();
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
         private void OnDestroy()
         {
-            if (Instance == this) Instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         private void InitializeDefaults()

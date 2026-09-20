@@ -11,21 +11,21 @@ namespace RoyalSmash.Utils
     public class VibrationManager : MonoBehaviour
     {
         private static VibrationManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static VibrationManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<VibrationManager>();
-                    if (_instance == null)
+                    if (_instance == null && Application.isPlaying)
                     {
                         var go = new GameObject("VibrationManager");
                         _instance = go.AddComponent<VibrationManager>();
-                        if (Application.isPlaying)
-                        {
-                            DontDestroyOnLoad(go);
-                        }
+                        DontDestroyOnLoad(go);
                     }
                 }
                 return _instance;
@@ -38,6 +38,7 @@ namespace RoyalSmash.Utils
 
         private void Awake()
         {
+            _isQuitting = false;
             if (_instance == null)
             {
                 _instance = this;
@@ -50,6 +51,19 @@ namespace RoyalSmash.Utils
             {
                 Destroy(gameObject);
                 return;
+            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
             }
         }
 

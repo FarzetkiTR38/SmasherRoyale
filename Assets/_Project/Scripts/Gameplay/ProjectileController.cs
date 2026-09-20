@@ -40,11 +40,31 @@ namespace RoyalSmash.Gameplay
             }
         }
 
+        private void FixedUpdate()
+        {
+            // Boundary kill zone: if ball falls below floor or flies too far off screen, clean up immediately
+            if (transform.position.y < -10f || transform.position.sqrMagnitude > 4000f)
+            {
+                if (RoyalSmash.Levels.LevelManager.Instance != null)
+                {
+                    RoyalSmash.Levels.LevelManager.Instance.UnregisterProjectile(this);
+                }
+                Destroy(gameObject);
+            }
+        }
+
         private void OnDestroy()
         {
             if (_instancedMaterial != null)
             {
-                Destroy(_instancedMaterial);
+                if (Application.isPlaying)
+                {
+                    Destroy(_instancedMaterial);
+                }
+                else
+                {
+                    DestroyImmediate(_instancedMaterial);
+                }
             }
 
             if (RoyalSmash.Levels.LevelManager.Instance != null)

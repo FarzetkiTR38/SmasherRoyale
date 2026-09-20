@@ -14,11 +14,14 @@ namespace RoyalSmash.Lives
     public class LivesManager : MonoBehaviour
     {
         private static LivesManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static LivesManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<LivesManager>();
                     if (_instance == null && Application.isPlaying)
@@ -55,7 +58,7 @@ namespace RoyalSmash.Lives
         {
             get
             {
-                if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+                if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
                 {
                     return SaveManager.Instance.Data.Lives;
                 }
@@ -69,10 +72,11 @@ namespace RoyalSmash.Lives
 
         private void Awake()
         {
-            if (Instance == null)
+            _isQuitting = false;
+            if (_instance == null)
             {
-                Instance = this;
-                if (_dontDestroyOnLoad && transform.parent == null)
+                _instance = this;
+                if (_dontDestroyOnLoad && transform.parent == null && Application.isPlaying)
                 {
                     DontDestroyOnLoad(gameObject);
                 }
@@ -82,9 +86,10 @@ namespace RoyalSmash.Lives
                     _config = ScriptableObject.CreateInstance<LivesConfig>();
                 }
             }
-            else if (Instance != this)
+            else if (_instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
         }
 
@@ -109,9 +114,17 @@ namespace RoyalSmash.Lives
             }
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
         private void OnDestroy()
         {
-            if (Instance == this) Instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         /// <summary>

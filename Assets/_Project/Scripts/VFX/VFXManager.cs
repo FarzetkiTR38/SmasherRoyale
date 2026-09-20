@@ -13,21 +13,21 @@ namespace RoyalSmash.VFX
     public class VFXManager : MonoBehaviour
     {
         private static VFXManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static VFXManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<VFXManager>();
-                    if (_instance == null)
+                    if (_instance == null && Application.isPlaying)
                     {
                         var go = new GameObject("VFXManager");
                         _instance = go.AddComponent<VFXManager>();
-                        if (Application.isPlaying)
-                        {
-                            DontDestroyOnLoad(go);
-                        }
+                        DontDestroyOnLoad(go);
                     }
                 }
                 return _instance;
@@ -63,6 +63,7 @@ namespace RoyalSmash.VFX
 
         private void Awake()
         {
+            _isQuitting = false;
             if (_instance == null)
             {
                 _instance = this;
@@ -75,6 +76,20 @@ namespace RoyalSmash.VFX
             else if (_instance != this)
             {
                 Destroy(gameObject);
+                return;
+            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
             }
         }
 

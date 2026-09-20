@@ -46,7 +46,15 @@ namespace RoyalSmash.Levels
             {
                 for (int i = _levelRoot.childCount - 1; i >= 0; i--)
                 {
-                    Destroy(_levelRoot.GetChild(i).gameObject);
+                    var child = _levelRoot.GetChild(i).gameObject;
+                    if (Application.isPlaying)
+                    {
+                        Destroy(child);
+                    }
+                    else
+                    {
+                        DestroyImmediate(child);
+                    }
                 }
             }
         }

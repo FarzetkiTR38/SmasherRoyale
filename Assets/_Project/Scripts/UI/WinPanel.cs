@@ -81,7 +81,7 @@ namespace RoyalSmash.UI
                 LevelManager.Instance.OnLevelWon += HandleLevelWon;
             }
 
-            if (Economy.GoldManager.Instance != null)
+            if (Economy.GoldManager.HasInstance)
             {
                 Economy.GoldManager.Instance.OnLevelRewardProcessed -= HandleRewardProcessed;
                 Economy.GoldManager.Instance.OnLevelRewardProcessed += HandleRewardProcessed;
@@ -95,7 +95,7 @@ namespace RoyalSmash.UI
                 LevelManager.Instance.OnLevelWon -= HandleLevelWon;
             }
 
-            if (Economy.GoldManager.Instance != null)
+            if (Economy.GoldManager.HasInstance)
             {
                 Economy.GoldManager.Instance.OnLevelRewardProcessed -= HandleRewardProcessed;
             }

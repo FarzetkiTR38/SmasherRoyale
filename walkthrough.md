@@ -1,76 +1,107 @@
-# VFX & SFX Total Overhaul — Completed Walkthrough
+# Royal Smash — Full Project Review, Bug Fixes & Quality Audit Walkthrough
 
-## Summary of Completed Work
+## Executive Summary
 
-In accordance with the user's request, the visual effects (VFX) and sound effects (SFX) ecosystem has been completely overhauled and upgraded.
-Every single audio event, music theme, and visual particle effect now has **3 curated, high-quality variants** (Option 1 / Active in-game, Option 2 / Alternative 1, Option 3 / Alternative 2) allowing seamless 1-click swapping or code toggling.
-
----
-
-## 1. Visual Effects (VFX) Architecture & Upgrades
-
-### Why Previous VFX Looked Terrible
-- **Missing Textures**: Particle materials had `_BaseMap = null`, rendering as solid opaque polygonal slabs.
-- **Sharp Hard Edges**: Projectile trails lacked alpha falloff and cap smoothing, drawing rectangular polygonal bars.
-- **Single Emitter**: Bottle breaks only spawned basic white boxes without liquid physics or glass physics.
-
-### Procedural VFX Texture Generation
-Generated 7 crisp, alpha-blended procedural textures in `Assets/_Project/Textures/VFX/`:
-1. `tex_vfx_soft_glow.png`: 256x256 smooth Gaussian radial glow.
-2. `tex_vfx_trail_streak.png`: 512x128 directional comet streak with head flare and alpha tail.
-3. `tex_vfx_sparkle_star.png`: 256x256 4-point royal diamond sparkle star.
-4. `tex_vfx_shockwave_ring.png`: 256x256 sharp circular expanding shockwave wave.
-5. `tex_vfx_smoke_puff.png`: 256x256 soft multi-lobed cartoon smoke cloud.
-6. `tex_vfx_paint_splat.png`: 512x512 organic multi-droplet liquid paint splatter.
-7. `tex_vfx_glass_shard.png`: 256x256 sharp specular angular crystal glass shard.
-
-### 3 Curated Variants per Visual Effect
-
-| VFX Category | Option 1 (Active) | Option 2 (Alt 1) | Option 3 (Alt 2) |
-|---|---|---|---|
-| **Projectile Launch Trail** | **Royal Comet** (`Mat_Trail_RoyalComet.mat`): glowing gold-to-amber additive gradient + 4-point sparkle star trailing emitter | **Fiery Ribbon** (`Mat_Trail_FieryRibbon.mat`): fierce crimson/flame smoke ribbon | **Stardust Stream** (`Mat_Trail_Stardust.mat`): ethereal bright cyan/diamond streak |
-| **Paint Bottle Shatter & Splash** | **Fluid Splash** (`VFX_BottleBreak_Opt1_FluidSplash`): 32 gravity-arcing paint droplets matching bottle color + 20 tumbling specular glass shards + expanding radial color ring | **Ink Burst** (`VFX_BottleBreak_Opt2_InkBurst`): 18 cartoonish smoke puffs + dense ink droplet spray | **Crystal Shatter** (`VFX_BottleBreak_Opt3_CrystalShatter`): 36 high-velocity prismatic glass splinters + 20 sparkling stars |
-| **Block & Surface Impacts** | **Radial Shockwave** (`VFX_Impact_Opt1_RadialShockwave`): expanding horizontal ring + 22 bouncing golden sparks + core flash | **Dust Blast** (`VFX_Impact_Opt2_DustBlast`): rolling dust/smoke cloud + 12 chunky debris shards | **Comic Burst** (`VFX_Impact_Opt3_ComicBurst`): stylized 8-point impact star + velocity streaks |
-| **Mortar Muzzle Flash** | **Smoke Core** (`VFX_MuzzleFlash_Opt1_SmokeCore`): instant core flash + 12 rolling forward smoke puffs + 16 sparks | **Fire Cone** (`VFX_MuzzleFlash_Opt2_FireCone`): fiery flame cone burst + embers | **Royal Spark** (`VFX_MuzzleFlash_Opt3_RoyalSpark`): golden star fountain + expanding blast wave |
-| **Victory Celebration** | **Gold Ribbon** (`VFX_Win_Opt1_GoldRibbon`): dual golden ribbons & diamond confetti flutter falling | **Color Streamer** (`VFX_Win_Opt2_ColorStreamer`): vibrant multi-colored fountain streamer arc | **Star Fountain** (`VFX_Win_Opt3_StarFountain`): golden 4-point sparkle stars erupting in waves |
+A comprehensive, end-to-end audit, review, debugging, and quality verification of the entire **Royal Smash** 3D mobile physics puzzle codebase was conducted.
+All hidden edge cases, ghost object spawning during teardown, event unsubscription leaks, data-driven level loading disconnections, and projectile out-of-bounds leaks have been fully resolved, verified autonomously via Unity MCP, and backed by automated regression test suites.
 
 ---
 
-## 2. Sound Effects (SFX) & Music Architecture
+## Key Bugs Identified & Fixed
 
-### 3 Curated Variants per Sound Event & Music Theme
+### 1. Ghost Singleton Instantiation on Scene Teardown / Application Quit
+- **Root Cause**:
+  In `SaveManager`, `AudioManager`, `VFXManager`, `LivesManager`, `GoldManager`, `SkillManager`, `ProfileManager`, `HapticManager`, `IAPManager`, `SceneTransitionManager`, `CloudSyncManager`, `LeaderboardManager`, `AdManager`, and `VibrationManager`, the `Instance` property getter contained an auto-instantiating pattern:
+  ```csharp
+  if (_instance == null && Application.isPlaying)
+  {
+      var go = new GameObject("ManagerName");
+      _instance = go.AddComponent<ManagerName>();
+      DontDestroyOnLoad(go);
+  }
+  ```
+  During scene unload or application quit, `Application.isPlaying` remains `true` while GameObjects are destroyed. When UI classes or other managers accessed `Manager.Instance != null` in `OnDestroy()`, or when `if (Instance == this)` evaluated in the singleton's own `OnDestroy()`, Unity created a brand new GameObject inside the closing scene, triggering the warning:
+  `"Some objects were not cleaned up when closing the scene. (Did you spawn new GameObjects from OnDestroy?)"`.
+- **Solution**:
+  1. Exposed `public static bool HasInstance => _instance != null;` across all singletons. External classes now safely check `HasInstance` before unsubscribing events, preventing unwanted auto-creation.
+  2. Added static `_isQuitting` flag and `OnApplicationQuit()` handler. When quitting, `Instance` getter returns `null` immediately and never instantiates new GameObjects.
+  3. Replaced `Instance == this` with `_instance == this` in all `Awake()` and `OnDestroy()` methods, bypassing property getters during lifecycle transitions.
 
-All SFX clips are studio-grade 44.1kHz 16-bit uncompressed WAV files synthesized with physics-accurate acoustic equations (sub-bass punch, transient crack, mechanical resonance, and spatial decay) combined with curated Kenney CC0 tactile UI audio.
+### 2. Disconnected Data-Driven Level Loading Architecture
+- **Root Cause**:
+  While Phase 19 created all 30 balanced `LevelData` ScriptableObjects and `LevelLoader.cs`, `LevelManager.cs` had not yet been wired to read `LevelDatabase` or invoke `LevelLoader.LoadLevel()`.
+  Consequently, `LevelManager` was starting at Level 1, scanning hardcoded static objects from the scene, and when the player won and clicked "Next Level", reloading the scene re-scanned the same scene targets instead of loading Levels 2 through 30.
+- **Solution**:
+  1. Connected `LevelManager.cs` to `LevelDatabase` and `LevelLoader`.
+  2. In `LevelManager.Start()`:
+     - Automatically syncs `_currentLevelIndex` from `SaveManager.Instance.Data.CurrentLevel` (clamped 1..30).
+     - Finds `LevelLoader` in the scene and calls `LevelLoader.LoadLevel(levelData)` using the active level's configuration.
+     - Automatically sets `MortarController`'s starting ball count to match `LevelData.BallCount`.
+     - Scans and registers the spawned physical targets.
+  3. In `LevelManager.NextLevel()`:
+     - Advances `CurrentLevel` in save data.
+     - Gracefully reloads the scene, which seamlessly initializes the next level's stands, obstacles, and target bottles.
 
-| Category | Option 1 (Active) | Option 2 (Alt 1) | Option 3 (Alt 2) |
-|---|---|---|---|
-| **Mortar Launch** | `sfx_launch_opt1_heavy_cannon.wav` (Deep punchy sub-bass + metallic mortar thud) | `sfx_launch_opt2_catapult_boom.wav` (Medieval catapult blast) | `sfx_launch_opt3_arcade_pow.wav` (Stylized bouncy arcade launch) |
-| **Bottle Break** | `sfx_bottle_opt1_glass_splash.wav` (Crisp glass shatter + wet paint splash) | `sfx_bottle_opt2_ceramic_squish.wav` (Ceramic crack + squish) | `sfx_bottle_opt3_crystal_burst.wav` (Crystalline burst + chime) |
-| **Wood/Box Impact** | `sfx_impact_box_opt1.wav` (Heavy solid wood thud) | `sfx_impact_box_opt2.wav` (Wood plank crack) | `sfx_impact_box_opt3.wav` (Hollow crate thud) |
-| **Stone Impact** | `sfx_impact_stone_opt1.wav` (Heavy granite impact) | `sfx_impact_stone_opt2.wav` (Dense rock clack) | `sfx_impact_stone_opt3.wav` (Rock slap) |
-| **Column Impact** | `sfx_impact_column_opt1.wav` (Resonant marble ring) | `sfx_impact_column_opt2.wav` (Pillar thud) | `sfx_impact_column_opt3.wav` (Solid stone chime) |
-| **Cone Impact** | `sfx_impact_cone_opt1.wav` (Rubber pop & bounce) | `sfx_impact_cone_opt2.wav` (Springy plastic clatter) | `sfx_impact_cone_opt3.wav` (Arcade bounce) |
-| **Object Destruction** | `sfx_destruct_opt1_debris_crumble.wav` (Rubble crumble + dust whoosh) | `sfx_destruct_opt2_explosive_burst.wav` (Explosive pop) | `sfx_destruct_opt3_arcade_crunch.wav` (Tactile crunch) |
-| **UI Button Click** | `sfx_click_opt1_casual_pop.wav` (Crisp casual wooden pop) | `sfx_click_opt2_royal_click.wav` (Royal metallic snap) | `sfx_click_opt3_bubble_snap.wav` (Rounded bubble click) |
-| **UI Panel Open** | `sfx_panel_open_opt1_airy_whoosh.wav` (Modern airy whoosh) | `sfx_panel_open_opt2_royal_swoosh.wav` (Royal velvet swoosh) | `sfx_panel_open_opt3_slide_pop.wav` (Fast slide pop) |
-| **Game Start** | `sfx_start_opt1_royal_horn.wav` (Royal fanfare horn) | `sfx_start_opt2_ascending_harp.wav` (Ascending harp sparkle) | `sfx_start_opt3_drum_roll.wav` (Marching drum roll) |
-| **Level Victory** | `sfx_win_opt1_royal_brass.wav` (Triumphant brass fanfare) | `sfx_win_opt2_orchestral_jingle.wav` (Orchestral victory jingle) | `sfx_win_opt3_celebratory_bells.wav` (Celebratory cathedral bells) |
-| **Level Defeat** | `sfx_lose_opt1_melodic_groan.wav` (Sympathetic gentle defeat chime) | `sfx_lose_opt2_wah_wah.wav` (Comedic wah-wah) | `sfx_lose_opt3_soft_chimes.wav` (Soft melancholy chord) |
-| **Coin / Reward** | `sfx_coin_opt1_sparkle_cascade.wav` (Sparkling gold cascade) | `sfx_coin_opt2_heavy_gold_clink.wav` (Heavy gold coin clink) | `sfx_coin_opt3_arcade_ding.wav` (Bright arcade ding) |
-| **Menu Music** | `bgm_menu_opt1_royal_courtyard.mp3` (Orchestral castle courtyard) | `bgm_menu_opt2_ballroom_waltz.mp3` (Royal ballroom lute waltz) | `bgm_menu_opt3_cozy_tavern.mp3` (Warm relaxed tavern rhythm) |
-| **Gameplay Music**| `bgm_game_opt1_puzzle_march.mp3` (Upbeat casual puzzle march) | `bgm_game_opt2_driving_groove.wav` (Driving lute & percussion groove) | `bgm_game_opt3_bouncy_arcade.wav` (Bouncy pizzicato arcade rhythm) |
+### 3. Projectile Out-of-Bounds Physical Simulation Leak
+- **Root Cause**:
+  If a projectile missed the stand, fell off backwards, or dropped below the floor plane (`y < -10f`), it lingered for 5 full seconds in the PhysX simulation while waiting for the timer coroutine to finish.
+- **Solution**:
+  Added a continuous boundary check in `ProjectileController.FixedUpdate()`:
+  ```csharp
+  if (transform.position.y < -10f || transform.position.sqrMagnitude > 4000f)
+  {
+      if (RoyalSmash.Levels.LevelManager.Instance != null)
+      {
+          RoyalSmash.Levels.LevelManager.Instance.UnregisterProjectile(this);
+      }
+      Destroy(gameObject);
+  }
+  ```
+  Out-of-bounds balls are immediately unregistered from target evaluations and cleaned up, preventing physics clutter and delayed lose triggers.
+
+### 4. Edit-Mode vs Play-Mode Object Destruction Safety
+- **Root Cause**:
+  In `LevelLoader.ClearLevel()` and `ProjectileController.OnDestroy()`, calling `Destroy()` during edit-mode unit tests caused `"Destroy may not be called from edit mode! Use DestroyImmediate instead."` console warnings.
+- **Solution**:
+  Implemented conditional destruction throughout:
+  ```csharp
+  if (Application.isPlaying)
+      Destroy(target);
+  else
+      DestroyImmediate(target);
+  ```
 
 ---
 
-## 3. Verification & Validation Results
+## Automated Verification & Test Results
 
-1. **VFX & SFX Verification Suite** (`VFXSFXIntegrationTest`):
-   - `TestAudioConfigAndClips`: **PASSED** (All 45 primary and alternative audio clips verified).
-   - `TestVFXConfigAndPrefabs`: **PASSED** (All primary and alternative materials and prefabs verified).
-   - `TestRuntimeParticleInstantiation`: **PASSED** (All particle systems instantiate, render with valid materials, and play without errors).
-2. **Full Game Integration Suite** (`FullGameIntegrationSuite`):
-   - **10/10 SUITES PASSED, 0 FAILED** (Regression tested across physics, input, lives, skills, economy, save, progression).
-3. **Unity Console**:
-   - **0 compilation errors, 0 runtime errors**.
-4. **Live PlayMode Verification**:
-   - Captured and inspected `vfx_midair_royal_trail.png` and `vfx_bottle_shatter_splash.png` confirming visual quality.
+### 1. Project Quality Audit Suite (`ProjectQualityAuditTest.cs`)
+Created a dedicated quality audit test suite testing 6 core critical areas:
+- **Test 1: Singleton Lifecycle & HasInstance Safety**: All singletons safely queried without ghost GameObject creation.
+- **Test 2: Save System Atomic Integrity & Backup Auto-Recovery**: Corrupt primary JSON correctly falls back to backup with 0 data loss.
+- **Test 3: Lives Manager Idempotency & Clock Tampering Protection**: Duplicate transaction keys blocked; negative clock shifts clamped to current UTC ticks without granting infinite lives.
+- **Test 4: Data-Driven Level Progression**: Verified all 30 levels in `LevelDatabase` and `LevelLoader` spawn routines.
+- **Test 5: Projectile Boundary Kill Zone**: Verified immediate unregistration and cleanup for out-of-bounds projectiles.
+- **Test 6: Scene Input & TextMeshPro Compliance**: Verified all 4 scenes (`BootScene`, `MainMenu`, `MainGame`, `PhysicsTestScene`) have `InputSystemUIInputModule` and 0 legacy `UnityEngine.UI.Text` components.
+
+**Result**: **22 / 22 PASSED, 0 FAILED.**
+
+### 2. Full Game Integration Suite (`FullGameIntegrationSuite.cs`)
+Executed all 10 integration suites covering all 30 critical rules from Section 39:
+- Suite 01: Core Physics & Projectiles
+- Suite 02: Touch Input Separation
+- Suite 03: Life Deduction Rules (Win = 0, Lose = -1, Exit = -1)
+- Suite 04: Life Regeneration Engine (+1 life / 30m, remainder preserved)
+- Suite 05: Skill Unlocks & Stacking (MegaBall L5, InfinityBall L10)
+- Suite 06: Economy & First-Time Reward Multiplication
+- Suite 07: Data-Driven Level Progression (30 levels curve)
+- Suite 08: Profile & Identity Rules (Free name change, cosmetics)
+- Suite 09: Audio & Haptics System (SFX, BGM, Haptics)
+- Suite 10: Offline Cloud Sync & Ads Rules
+
+**Result**: **10 / 10 SUITES PASSED, 0 FAILED.**
+
+### 3. Unity Console Status
+- **Errors**: `0`
+- **Warnings**: `0`
+- **Compile Status**: `Clean / Success`

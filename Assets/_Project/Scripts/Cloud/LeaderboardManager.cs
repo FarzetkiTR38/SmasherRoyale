@@ -13,11 +13,14 @@ namespace RoyalSmash.Cloud
     public class LeaderboardManager : MonoBehaviour
     {
         private static LeaderboardManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static LeaderboardManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<LeaderboardManager>();
                     if (_instance == null && Application.isPlaying)
@@ -41,6 +44,7 @@ namespace RoyalSmash.Cloud
 
         private void Awake()
         {
+            _isQuitting = false;
             if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
@@ -48,7 +52,23 @@ namespace RoyalSmash.Cloud
             }
 
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (transform.parent == null && Application.isPlaying)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         /// <summary>

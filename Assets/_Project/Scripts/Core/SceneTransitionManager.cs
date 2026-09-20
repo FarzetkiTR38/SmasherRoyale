@@ -14,11 +14,14 @@ namespace RoyalSmash.Core
     public class SceneTransitionManager : MonoBehaviour
     {
         private static SceneTransitionManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static SceneTransitionManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<SceneTransitionManager>();
                     if (_instance == null && Application.isPlaying)
@@ -50,6 +53,7 @@ namespace RoyalSmash.Core
 
         private void Awake()
         {
+            _isQuitting = false;
             if (_instance == null)
             {
                 _instance = this;
@@ -61,7 +65,13 @@ namespace RoyalSmash.Core
             else if (_instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
+        }
+
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
         }
 
         private void OnDestroy()

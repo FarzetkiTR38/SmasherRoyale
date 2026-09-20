@@ -14,21 +14,21 @@ namespace RoyalSmash.Economy
     public class IAPManager : MonoBehaviour
     {
         private static IAPManager _instance;
+        private static bool _isQuitting = false;
+        public static bool HasInstance => _instance != null;
+
         public static IAPManager Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<IAPManager>();
-                    if (_instance == null)
+                    if (_instance == null && Application.isPlaying)
                     {
                         var go = new GameObject("IAPManager");
                         _instance = go.AddComponent<IAPManager>();
-                        if (Application.isPlaying)
-                        {
-                            DontDestroyOnLoad(go);
-                        }
+                        DontDestroyOnLoad(go);
                     }
                 }
                 return _instance;
@@ -62,6 +62,7 @@ namespace RoyalSmash.Economy
 
         private void Awake()
         {
+            _isQuitting = false;
             if (_instance == null)
             {
                 _instance = this;
@@ -74,6 +75,19 @@ namespace RoyalSmash.Economy
             {
                 Destroy(gameObject);
                 return;
+            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
             }
         }
 
