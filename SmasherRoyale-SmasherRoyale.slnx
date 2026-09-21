@@ -3,9 +3,9 @@
   <Project Path="Unity.RenderPipelines.GPUDriven.Runtime.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.csproj" />
   <Project Path="Unity.Services.Authentication.PlayerAccounts.csproj" />
-  <Project Path="MCPForUnity.Runtime.csproj" />
-  <Project Path="Unity.Services.Leaderboards.csproj" />
   <Project Path="Unity.Services.Core.Internal.csproj" />
+  <Project Path="Unity.Services.Leaderboards.csproj" />
+  <Project Path="MCPForUnity.Runtime.csproj" />
   <Project Path="Unity.Services.CloudSave.csproj" />
   <Project Path="Unity.ShaderGraph.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Core.Runtime.csproj" />
@@ -24,8 +24,8 @@
   <Project Path="Unity.Services.Core.Environments.Editor.csproj" />
   <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
-  <Project Path="Unity.InputSystem.csproj" />
   <Project Path="Unity.Services.Authentication.csproj" />
+  <Project Path="Unity.InputSystem.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="MCPForUnity.Editor.csproj" />
   <Project Path="Unity.Services.Authentication.Editor.csproj" />

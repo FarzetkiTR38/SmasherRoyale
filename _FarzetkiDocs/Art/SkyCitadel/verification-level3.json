@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "date": "2026-09-21T06:37:21.6906476Z",
+      "level": 3,
+      "total": 8,
+      "remaining": 8,
+      "activeObjects": 8,
+      "spawned": 8,
+      "stands": 1,
+      "maxSpeed": 0,
+      "ammo": 25
+    },
+    "compiler": "codedom"
+  }
+}

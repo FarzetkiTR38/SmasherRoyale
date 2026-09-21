@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "date": "2026-09-21T06:43:20.3330184Z",
+      "scene": "Assets/_Project/Scenes/MainGame.unity",
+      "playing": false,
+      "dirty": false
+    },
+    "compiler": "codedom"
+  }
+}

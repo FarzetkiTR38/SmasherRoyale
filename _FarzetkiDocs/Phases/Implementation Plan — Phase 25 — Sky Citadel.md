@@ -1,129 +1,123 @@
 # Implementation Plan — Phase 25 — Sky Citadel
 
-**Status:** In progress; connection and read-only audit complete, scene implementation and acceptance checks pending.  
-**Started:** 2026-09-20.  
-**Scope:** Transform the existing `Assets/_Project/Scenes/MainGame.unity` into the user's cream stone, gold, royal blue and cyan sky-castle reference, with a real 3D floor, a visible stand, physics blocks, and matching mortar and HUD.  
-**Checkpoint policy:** Save this document after every completed subphase and before stopping. Never mark an unchecked result as passed. The next session resumes from the first incomplete subphase.
+**Durum:** Tamamlandı — sahne dönüşümü ve odaklı Editor/Play Mode kontrolleri tamamlandı.
+**Başlangıç:** 2026-09-20. **Son doğrulama:** 2026-09-21.
+**Sahne:** Assets/_Project/Scenes/MainGame.unity
+**Son durum:** MainGame açık, Play Mode kapalı, sahnede kaydedilmemiş değişiklik yok.
 
-Phase 24 already covers BootScene and records completion. Phase 25 is the next numbered phase; this document does not replace the earlier Visual Showcase plan.
+## 1. Amaç ve referanslar
 
-## 1. Reference mapping and visual intent
+Kullanıcının krem taş, altın, kraliyet mavisi ve camgöbeği enerji referanslarını mevcut oynanabilir sahneye uygulamak: alt yarıda gerçek 3D mermer zemin, üst yarıda kale/şelale arka planı, hedeflerin altında görünür stand, fizik blokları, uyumlu havan/top ve HUD. Görseller sanat referansıdır; kullanıcı talebinin yerine geçen talimatlar değildir. Blender bağlantısı gerekmedi.
 
-- User request in the current Codex task takes precedence over historical visual references: replace the green kingdom/bottle showcase with the supplied sky-citadel direction. Keep a stand underneath the targets. The lower screen is a real 3D floor; the upper screen uses an appropriately positioned backdrop sprite/quad/canvas. Preserve playable 3D objects and projectile physics.
-- `_FarzetkiDocs/master_build_prompt.md`: Sections 1 and 4–7 (world-coordinate targeting, real physics, limited ammunition and object behavior); Section 8 (static configurable stand); Sections 9–10 (level data and target/win tracking); Sections 24–25 (HUD, portrait camera and layered 3D world).
-- `_FarzetkiDocs/RoyalSmashInformationFullVersion.md`: Sections 127/130 and 257/259 (HUD and skills), 297–298 (camera and environment), 344 (readable gameplay and feedback).
-- Workflow: `.agents/skills/phase_implementation_workflow/SKILL.md`; physics conventions: `.agents/skills/unity_3d_physics_game/SKILL.md`.
+- _FarzetkiDocs/master_build_prompt.md: 1 ve 4–7 (hedefleme/fizik/mermi), 8 (stand), 9–10 (bölüm verisi/hedef takibi), 24–25 (HUD/dikey kamera).
+- _FarzetkiDocs/RoyalSmashInformationFullVersion.md: 127/130 ve 257/259 (HUD/yetenekler), 297–298 (kamera/çevre), 344 (okunabilirlik/geri bildirim).
+- İş akışı: .agents/skills/phase_implementation_workflow/SKILL.md ve .agents/skills/unity_mcp_automation/SKILL.md.
+- Downloads referansları: Codex Görseli 20 Eyl 2026 19_18_21.png (çevre), 19_18_12.png (objeler/toplar), 19_18_36.png (kompozisyon). Eski sahne: codex-clipboard-73df2c25-069a-4bd7-9036-5ff9ab981ab0.png.
+- Zemin üretim promptu/kaynak kaydı: _FarzetkiDocs/Art/SkyCitadel_ImagePrompts.md.
 
-User reference files:
+## 2. Kalıcı faz kontrol listesi
 
-| File | Meaning |
-| --- | --- |
-| `C:/Users/Farzetki/Downloads/Codex Görseli 20 Eyl 2026 19_18_21.png` | Empty sky-castle environment and marble courtyard |
-| `C:/Users/Farzetki/Downloads/Codex Görseli 20 Eyl 2026 19_18_12.png` | Stone, reinforced, energy, glass and wooden blocks; blue energy balls |
-| `C:/Users/Farzetki/Downloads/Codex Görseli 20 Eyl 2026 19_18_36.png` | Overall palette/composition reference; floating target arrangement is not the intended support structure |
-| `C:/Users/Farzetki/AppData/Local/Temp/codex-clipboard-73df2c25-069a-4bd7-9036-5ff9ab981ab0.png` | Existing scene to overhaul |
-
-## 2. Architecture and implementation boundaries
-
-- Unity `6000.4.0f1`; URP `17.4.0`. The project includes `com.coplaydev.unity-mcp`. Current PC quality uses `Assets/Settings/PC_RPAsset.asset`; mobile uses `Mobile_RPAsset.asset` at render scale 0.8. Current camera postprocessing is disabled.
-- Preserve `RoyalSmash.Gameplay.MortarController`, `InputHandler`, `ProjectileController`, `PhysicsObject`, `StandController`, `RoyalSmash.Levels.LevelManager`, `LevelLoader`, and the existing UI event bindings.
-- `PhysicsObject` uses Rigidbody plus a root Collider, registers itself with LevelManager and clears on ground contact/falling. Visual children should not add accidental colliders. Continue using physics layers 6 projectile, 7 object, 8 stand, 9 ground.
-- Keep the mortar aiming root `Visuals` and its `Visuals/BarrelPivot/FirePoint`. Visual changes must preserve the muzzle position and aiming references.
-- Add a scoped editor setup utility in namespace `RoyalSmash.Editor`, with assets in a dedicated SkyCitadel area and a deterministic entry point. Record exact final filenames in the deliverable manifest below once chosen. Do not run the old `VisualShowcaseSetup.SetupAllScenes()` because it also modifies PhysicsTestScene and recreates the earlier art direction.
-- Prefer reusable asset materials/meshes/prefabs and Inspector configuration. The backdrop must not intercept input or collide with projectiles. The real ground must retain shadow reception and its gameplay collision layer.
-- HUD remains attached to existing controllers: ball count changes after firing, skill inventory/unlocks remain authoritative, and settings/exit actions continue to work. Do not turn a remaining-ball counter into a static level label accidentally.
-
-### Runtime hazards discovered by audit
-
-1. `LevelLoader` is active in MainGame. `LevelManager.Awake()` loads the LevelDatabase through an editor fallback, and `Start()` locates the loader and spawns a data-driven level. The old scene also contains 30 static bottles. Resolve the static-showcase/dynamic-level ownership before validating target counts; otherwise targets and stands can duplicate.
-2. `StandController.Awake()` reapplies `Assets/_Project/ScriptableObjects/Config/StandConfig.asset`, including tabletop height 1.35 and size `(5, 0.25, 3.2)`. A scene-only scale change can be overwritten on play.
-3. `EnvironmentThemeManager`, if active, can rewrite sun, camera background and fog at runtime. Check its scene references/configuration during play verification.
-4. Existing camera is `(0, 3.11, -5.43)`, pitch 8.16°, FOV 56°. Mortar is `(0, 1.07, -2.52)`. The old static targets are at z 7.5. These are baseline values, not locked design requirements.
-
-## 3. Baseline and protected pre-existing edits
-
-The following files were already modified before this phase. Preserve their unrelated edits; do not reset or overwrite them wholesale:
-
-- `.plastic/plastic.wktree`
-- `Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset`
-- `Assets/_Project/Materials/M_KingdomBackdrop.mat` (new texture reference)
-- `Assets/_Project/Materials/M_StylizedGrass.mat` (color and smoothness)
-- `Assets/_Project/Scenes/MainGame.unity` (backdrop transform and serialized values)
-
-Baseline screenshot exists at `_FarzetkiDocs/Art/SkyCitadel/sky-citadel-before.png`. Creating a durable baseline file backup and recording its location remain pending at the initial checkpoint. Avoid committing unrelated dirty files.
-
-## 4. Resumable subphases
-
-| ID | Work and completion gate | Status | Evidence / checkpoint |
+| Faz | İş | Durum | Kanıt |
 | --- | --- | --- | --- |
-| 25.1 | Verify live MCP, inspect current scene and dirty files; save a durable pre-change backup and baseline screenshot | In progress | MCP and audit done; baseline screenshot captured; durable backup location pending |
-| 25.2 | Import/copy reference artwork or generate suitable texture assets; build the upper-screen backdrop with correct framing and noninteractive rendering | Pending | Record asset paths and an editor capture |
-| 25.3 | Build cream marble 3D ground, blue/gold detail and an explicitly visible stand; match horizon and shadows; preserve support colliders | Pending | Inspect floor/backdrop seam and supported targets in portrait framing |
-| 25.4 | Create reusable physics block visuals/prefabs and target arrangement; resolve LevelLoader ownership; verify collider alignment and supported idle stack | Pending | Record prefab mapping and expected target count |
-| 25.5 | Restyle mortar/projectile in blue energy and gold; preserve aiming hierarchy, muzzle, ball physics and lifetime | Pending | Record changed prefab/material paths and a successful shot |
-| 25.6 | Restyle HUD and skill buttons with readable gold/blue/cyan presentation and mobile spacing while preserving functional bindings | Pending | Capture readable portrait HUD with input unobstructed |
-| 25.7 | Compile, perform focused play regression and console checks, verify idle/impact/reload behavior and capture final screenshots | Pending | Record each actual result, console errors, images and any failures |
-| 25.8 | Review final diff; save final scene/assets; reconcile documentation and manifest; report remaining limits and provide the result | Pending | Final summary and optional scoped Git commit only after verification |
+| 25.1 | MCP, başlangıç incelemesi ve yedek | Tamam | MainGame-BeforeSkyCitadel.unity; sky-citadel-before.png |
+| 25.2 | Görselleri içeri al, üst arka planı yerleştir | Tamam | Backdrop, Marble, ReferenceIcons dokuları; final görüntü |
+| 25.3 | Gerçek mermer zemin ve taş/altın/mavi stand | Tamam | Collider katmanları; final görüntü ve stabilite kontrolleri |
+| 25.4 | Beş fizik blok prefabı ve bölüm sahipliği | Tamam | 26/26 hedef ve 1 stand; bölüm 3 için 8/8 hedef |
+| 25.5 | Havan/top ve enerji materyalleri | Tamam | Gerçek hedefleme atışı, 25→24 mermi, çarpışma |
+| 25.6 | HUD, ikonlar ve güvenli ekran alanı davranışı | Tamam | Canlı bölüm/mermi etiketleri; ayarlar aç/kapa; dikey görüntü |
+| 25.7 | Derleme, Play Mode, yeniden yükleme ve görsel kontrol | Tamam | Bölüm 4'teki sonuçlar; son Console 0 hata/uyarı |
+| 25.8 | Kaydet, değişiklikleri incele, dokümantasyonu kapat | Tamam | MainGame temiz edit durumunda; oyuncu kayıtları geri yüklendi |
 
-Subphases may have independent preparation in parallel, but a completion gate only passes after the integrated scene has the required evidence. If interrupted, retain partial work and record the exact next unverified action below.
+## 3. Mimari ve teslim edilen dosyalar
 
-## 5. Deliverable manifest
+Unity 6000.4.0f1 / URP 17.4.0. Script yolları Assets/_Project/Scripts/ altındadır.
 
-| Deliverable | Path / namespace | State |
+| Dosya / namespace | Sorumluluk |
+| --- | --- |
+| Editor/SkyCitadelSceneBuilder.cs — RoyalSmash.Editor | MainGame için tekrar çalıştırılabilir çevre, stand, bölüm, havan ve materyal kurulumu |
+| Editor/SkyCitadelBlockFactory.cs — RoyalSmash.Editor | Pahlı blok meshleri, altın şeritler, enerji/ahşap/taş detayları, fizik prefabları |
+| Editor/SkyCitadelHUDBuilder.cs — RoyalSmash.Editor | Mevcut UI kontrollerini bağlarını koruyarak düzenleme; referans ikonları |
+| Gameplay/SkyCitadelPreview.cs — RoyalSmash.Gameplay | Editör önizlemesini runtime hedefleri kaydolmadan kapatma |
+| UI/SkyCitadelStageLabel.cs — RoyalSmash.UI | Canlı bölüm numarası ve güvenli ekran alanına göre konum |
+| UI/SkyCitadelCircleGraphic.cs — RoyalSmash.UI | Dairesel HUD geometrisi |
+| Levels/LevelLoader.cs — RoyalSmash.Levels | Eski objeleri Destroy öncesi pasifleştirerek aynı karede collider çakışmasını önleme |
+
+Varlık kökü: Assets/_Project/Art/SkyCitadel/
+
+- Shaders/CitadelEnergy.shader: URP enerji yüzeyi.
+- Textures/T_CitadelBackdrop.png, T_CitadelMarble.png, T_CitadelReferenceIcons.png; UI_Ball.asset, UI_Mega.asset, UI_Infinity.asset.
+- Prefabs/PF_wood.prefab, PF_stone.prefab, PF_crystal.prefab, PF_armored.prefab, PF_core.prefab, PF_CitadelStand.prefab, PF_CitadelBall.prefab.
+- Kalıcı Meshes/, Materials/, nesne konfigürasyonları ve CitadelVolume.asset.
+- Levels/LevelData_Citadel01.asset: stand üzerinde 26 bloklu basamaklı düzen.
+- Levels/LevelData_Citadel03.asset: kaynak bölümün 8 hedefini, türlerini ve ekonomisini koruyan, küp geometrisine uygun 4×2 destekli düzen.
+- Levels/CitadelLevelDatabase.asset: bu iki yerel alternatifi kullanır; orijinal 30 bölüm varlığı değiştirilmez.
+
+Çalışma akışı:
+
+1. Editörde SkyCitadelPreview gösterilir; Play başlangıcında kapanır.
+2. LevelManager, kayıtlı bölüm için LevelLoader üzerinden gerçek stand ve hedefleri üretir. Oyuncunun kayıtlı bölümü zorla 1 yapılmaz.
+3. Fizik katmanları: projectile 6, object 7, stand 8, ground 9. Arka plan input/collision almaz.
+4. Eski KingdomBackdrop, DirtPatch, GroundDecorations, PaintBottleGrid_6x5 ve Stand sahnede pasif tutulur; runtime ile çift hedef üretmez.
+5. Havanın nişan kökü ve FirePoint bağları korunur. Top her rebuild'de orijinal Ball prefabından klonlanır; altın halkalar birikmez.
+6. Nesne konfigürasyonları kaynaktan klonlanır. Core varyantında PaintBottleObject davranışı korunur.
+7. HUD Screen Space Overlay canvas üzerindedir. Mermi sayısı, skill envanteri/kilitleri ve düğme event bağları canlıdır.
+
+Kamera: (0,3.11,-5.43), pitch 8.16°, FOV 56°. Üst arka plan kamera hizalı unlit quad, alt kısım gerçek 3D zemindir. Stand kök başlangıç noktası, mevcut bölüm verilerinin beklediği masa yüksekliğini korur.
+
+## 4. Kabul kontrolleri ve gerçek sonuçlar
+
+Kalıcı Phase25PlayModeTest.cs eklenmedi. Odaklı kontroller canlı Unity MCP execute_code, manage_editor, manage_camera ve read_console ile yapıldı. Çıktılar kalıcı JSON olarak saklandı.
+
+Kanıt dizini: _FarzetkiDocs/Art/SkyCitadel/
+
+| Kontrol | Sonuç | Kanıt |
 | --- | --- | --- |
-| Phase plan | `_FarzetkiDocs/Phases/Implementation Plan — Phase 25 — Sky Citadel.md` | Created |
-| Main gameplay scene | `Assets/_Project/Scenes/MainGame.unity` | Visual update pending at initial checkpoint |
-| Baseline capture | `_FarzetkiDocs/Art/SkyCitadel/sky-citadel-before.png` | File exists |
-| Editor setup utility | `Assets/_Project/Scripts/Editor/` / `RoyalSmash.Editor`; exact filename to record | Pending |
-| Backdrop/floor/block/UI textures and materials | Dedicated SkyCitadel asset paths to record | Pending |
-| Reusable block, stand, projectile/mortar visual prefabs or prefab updates | Exact filenames to record after implementation | Pending |
-| Focused play checks | `Assets/_Project/Scripts/Editor/Phase25PlayModeTest.cs` if a permanent test is needed; otherwise record executed MCP validation and output | Not run; test file not yet created |
-| Final evidence | `_FarzetkiDocs/Art/SkyCitadel/`; exact capture filenames to record | Pending |
+| Dikey kompozisyon; zemin/arka plan geçişi; stand, kule, havan ve HUD | Geçti; görüntü açılarak incelendi | sky-citadel-final.png |
+| Bölüm 1, yeniden yüklemeden sonra bekleme | 26 toplam/kalan/aktif; 1 stand; önizleme pasif; en yüksek hız 0 | verification-reload.json |
+| InputHandler.SimulateTapAt üzerinden hedefli atış | UI engeli yok; mermi 25→24; HUD 24 | verification-shot.json |
+| Çarpışma ve projectile ömrü | 1 hit bildirimi; kalan hedef 23/26; mermi 24; yaşayan projectile 0 | verification-impact.json |
+| Ayarlar düğmesi | Açıldı ve kapandı | verification-impact.json |
+| Bölüm 3, düzeltme sonrası bekleme; 2026-09-21 | 8 toplam/kalan/aktif/spawned; 1 stand; en yüksek hız 0; mermi 25 | verification-level3.json; sky-citadel-level3-verified.png |
+| Son Console kontrolü | 0 hata, 0 uyarı | verification-final-console.json |
+| Play'den çıkış ve sahne | MainGame; isPlaying=false; isDirty=false | verification-final-state.json |
+| Son oturumda oyuncu kayıtlarını koruma | Üç JSON test öncesi yedekle SHA256 eşit; bölüm 5, can 3 korundu | verification-save-restore.json |
 
-## 6. Acceptance criteria and actual verification
+sky-citadel-template-play-1.png çalışan 26 bloklu düzenin Play Mode kanıtıdır. İlk denemelere ait first-pass görüntüleri ve sky-citadel-template-play.png final kabul kanıtı değildir.
 
-1. [ ] MainGame shows the supplied sky-castle visual direction with a 3D marble lower half and upper environment backdrop.
-2. [ ] A visible stone/blue/gold stand supports every intended starting target; no unintended target overlap or duplicate dynamic spawn exists.
-3. [ ] Camera frames the mortar, trajectories, stand and targets in portrait; background seam does not visibly break the environment.
-4. [ ] Idle targets remain stable, and a world-targeted shot consumes exactly one ball and produces real physics impact/destruction feedback.
-5. [ ] Shot lifetime, aim/tap behavior, target registration and win/lose tracking remain intact; a clean reload produces the expected target count.
-6. [ ] HUD numbers and labels are readable, skill/settings buttons remain wired and gameplay input is not intercepted by background imagery.
-7. [ ] Unity compiles with zero new errors, and the tested play session has no new missing-reference/runtime exceptions.
-8. [ ] Scene/assets are saved, before/after images are recorded, unrelated baseline changes are preserved and unresolved issues are documented.
+**Doğrulanmayan kapsam:** 30 bölümün tamamının dengesi, tüm kazanma/kaybetme akışları, fiziksel Android/iOS cihaz performansı, tüm en-boy oranları ve çentik senaryoları. Mevcut ilerleme/skill açılma kuralları korunmuştur; yeni görsellerin tüm kampanya için fiziksel uygunluğu ayrıca test edilmelidir. Önceki oturumlarda Editor Play giriş/çıkışında mevcut yaşam döngüsü sisteminin can düşürmesi gözlendi; bu fazda o sistem yeniden tasarlanmadı. Son test kayıtları yedekten geri yüklendi.
 
-**Current verification:** audit completed; MCP connection reported working by the implementing agent; baseline screenshot file exists. No scene-art implementation result or play regression is marked as passed yet.
+## 5. Yedekler ve Git
 
-## 7. Restart instructions and live checkpoint
+- Sahne dönüşümü öncesi kalıcı yedek: _FarzetkiDocs/Backups/MainGame-BeforeSkyCitadel.unity.
+- Kaynak ve varlıklar kesintiler arasında kullanıcının 7d9d930 ve 6c124ee (commit for backup) commitlerinde korundu.
+- Bu oturumda yeni Git commit oluşturulmadı. Önceden değişmiş SmasherRoyale-SmasherRoyale.slnx dosyasına dokunulmadı.
+- 2026-09-21 test öncesi yerel oyuncu yedeği: C:/Users/Farzetki/.codex/local-backups/SkyCitadel/20260921-final/. Oyuncu verileri repoya eklenmedi. Kayıtlar testten sonra geri yüklendi.
+- Eski Temp/CodexSky yardımcıları geçiciydi; devam etmek için gerekli değiller.
 
-**Last checkpoint:** 2026-09-20, initial plan after connection/audit.  
-**Current subphase:** 25.1.  
-**Exact next action:** Verify the active Unity scene and play state through the existing MCP bridge, create/record a durable backup of the currently dirty MainGame scene and any assets about to be changed, then proceed with the scoped Sky Citadel builder and artwork integration in 25.2. If implementation has advanced since this checkpoint, inspect the current diff and builder before recreating anything.
+## 6. Yeniden başlatma / devam rehberi
 
-1. Open this document first, then run `git status --short` and inspect only phase-related changes. Check whether the intended scene is already saved and whether a builder/asset folder exists.
-2. Existing working bridge: `Temp/CodexSky/mcp.py`, local endpoint `http://127.0.0.1:8080/mcp`. It uses a session file and JSON argument files, with `list`, `resources`, `resource`, `schema` and `call` modes. The connection was confirmed in this session. `Temp` is disposable: if these files are absent after restart, reconnect using the installed Unity MCP package instead of assuming the server remains available.
-3. `python Temp/CodexSky/mcp.py list` inventories tools. Read schemas before calls, e.g. `python Temp/CodexSky/mcp.py schema execute_code manage_scene manage_editor read_console`. Tool names must be confirmed from the live list. `Temp/CodexSky/inspect.json` and `screenshot.json` contain the initial inspection/capture arguments.
-4. Confirm MainGame is active and whether Unity is playing before edits. Preserve unsaved changes; do not blindly reload the scene or run an older broad setup utility.
-5. Resume the first incomplete gate in Section 4. After each gate, update its state, exact changed paths, verification evidence, and this checkpoint's next action.
-6. Before quota interruption or stopping, save Unity assets/scene and record current compile/play state, last success or error, pending verification, and the next concrete action. Do not claim visual or runtime completion from script compilation alone.
+**İlk eksik faz:** Yok; 25.1–25.8 tamamlandı. Yeni revizyon istenirse buradaki sonuçtan devam et, sıfırdan kurulum yapma.
 
-## 8. Completion record
+1. Önce bu dokümanı, git status --short çıktısını ve Unity'nin aktif sahne/Play durumunu kontrol et. Kullanıcının sonraki değişikliklerini koru.
+2. Unity MCP kaynakları: mcpforunity://custom-tools, mcpforunity://instances, mcpforunity://editor/state. Yerel bağlantı: http://127.0.0.1:8080/mcp.
+3. Yeniden üretme girişi: Royal Smash/Sky Citadel/Build MainGame menüsü veya RoyalSmash.Editor.SkyCitadelSceneBuilder.BuildAll(). Yalnızca MainGame Edit Mode'da çalıştır. Üretilmiş varlık/yerleşimleri yeniden yazar; sırf devam etmek için çalıştırma.
+4. Editördeki 26 bloklu kule önizlemedir. Play, kayıttaki gerçek bölümü açar. Bu davranışı bozuk sahne sanıp oyuncu ilerlemesini değiştirme.
+5. Yeni Play testinden önce persistentDataPath içindeki oyuncu dosyalarını Temp dışında yedekle. Play kapandıktan sonra geri yükle; hash ile doğrula.
+6. Yeni bir iş kesilirse faz satırına son başarılı adımı, eksik kontrolü, aktif sahne/Play durumunu ve tek somut sonraki adımı yaz. Doğrulanmayan sonucu tamamlandı işaretleme.
 
-- Completion date: pending.
-- Final changed asset/script paths: pending.
-- Compilation and console results: pending.
-- Play regression and target count: pending.
-- Final portrait screenshot(s): pending.
-- Outstanding defects/limits: unverified implementation; audit hazards listed above must be addressed.
-- Commit: not created at initial checkpoint.
+**Teslim sonucu:** Referans yönünde oynanabilir 3D Sky Citadel sahnesi, tekrar kullanılabilir prefab/kurulum araçları ve kesintiden sonra devam edilebilen faz kaydı hazır.
 
-## Live checkpoint — 2026-09-20 resumed after quota renewal
+## 7. Ek istek — 25.9 Prefab koleksiyonu (2026-09-21)
 
-- Pre-interruption sources were backed up by the user in commit `7d9d930` (`commit for backup`).
-- 25.1 complete: MCP reconnected; MainGame baseline saved to `_FarzetkiDocs/Backups/MainGame-BeforeSkyCitadel.unity`; initial screenshot exists.
-- Artwork: `Assets/_Project/Art/SkyCitadel/Textures/T_CitadelBackdrop.png` (user reference) and `T_CitadelMarble.png` (one built-in imagegen call). Prompt: `_FarzetkiDocs/Art/SkyCitadel_ImagePrompts.md`.
-- MainGame first build succeeded. Console had 0 errors/warnings. First visual evidence: `_FarzetkiDocs/Art/SkyCitadel/sky-citadel-first-pass.png`.
-- Authored sources: `SkyCitadelSceneBuilder.cs`, `SkyCitadelBlockFactory.cs`, `SkyCitadelHUDBuilder.cs` in Scripts/Editor; `SkyCitadelPreview.cs` in Scripts/Gameplay; `SkyCitadelStageLabel.cs` in Scripts/UI; `CitadelEnergy.shader` in Art/SkyCitadel/Shaders.
-- First pass showed floor, castle, stand, 26 blocks and cannon. HUD was absent in capture; now changing to overlay Canvas.
-- Review fixes authored: keep stand origin/tabletop contract for existing levels; clone original projectile on each rebuild to prevent repeated gold rings; retain source ObjectConfig and PaintBottleObject behavior.
-- Current state: EDIT MODE; refresh/compilation requested for these fixes. Changes are not yet rebuilt or play-tested.
-- Exact next action: check editor readiness and console, call `SkyCitadelSceneBuilder.BuildAll()` in MainGame, capture updated screenshot, then run idle/spawn/shot/UI/reload tests. Do not mark 25.3–25.8 complete until actual verification.
+**Durum:** Tamamlandı. Kullanıcının istediği bağımsız prefablar üretildi; etiketli vitrin Unity Prefab Mode'da açıldı ve Project penceresinde seçildi.
+
+- Hedef klasör: Assets/_Project/Prefabs/SkyCitadel/.
+- Teslimatlar: 5 isimli blok prefabı, stand, enerji topu, tam havan, 26 bloklu kule ve hepsini etiketlerle gösteren vitrin prefabı.
+- Mimari: mevcut kaynak prefab/material/mesh bağlantıları korunur; oyun için prefablar ile davranış içermeyen inceleme vitrini ayrı işlev görür.
+- Doğrulama: prefab sayıları, eksik referanslar, iç FirePoint bağlantısı, Console ve Unity vitrin görüntüsü. Yeni gameplay davranışı eklenmediği için ayrı Phase25PlayModeTest.cs gerekmiyor.
+- Araç: Assets/_Project/Scripts/Editor/SkyCitadelPrefabCollection.cs (RoyalSmash.Editor). Menü: Royal Smash > Sky Citadel > Export Prefab Collection / Open Prefab Collection.
+- Sonuç: 10 prefab kaydedildi. Kule: 6 Wood + 6 Stone + 4 Crystal + 4 Armored + 6 Core = 26. Havanın aim/FirePoint referansları prefabın içinde, projectile bağlantısı dolu.
+- Eksik script, mesh veya materyal: 0. Son Console kontrolü: 0 hata/uyarı. MainGame dosyası değiştirilmedi. Oyuncu kayıtlarına dokunulmadı; yeni Play testi çalıştırılmadı.
+- Kanıtlar: _FarzetkiDocs/Art/SkyCitadel/verification-prefab-collection.json ve sky-citadel-prefab-collection-overview.png (görüntü açılarak kontrol edildi).
+- Kullanım rehberi: Assets/_Project/Prefabs/SkyCitadel/00_BURADAN_BASLA.md. Tekil oyun prefabları fizik/controller bileşenlerini korur; vitrin bunların davranışsız görsel kopyalarını gösterir.
+- Devam noktası: 25.9 tamamlandı. Kullanıcı revizyon isterse mevcut koleksiyondan devam et; sırf açmak için Export işlemini yeniden çalıştırma.
