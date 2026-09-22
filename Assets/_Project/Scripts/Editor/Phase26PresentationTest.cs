@@ -80,14 +80,16 @@ namespace RoyalSmash.Editor
                     case 2:
                         Check("Resume hides and restores time", !_settings.IsVisible && Time.timeScale == 1);
                         Check("Settings button click again", Click(GameObject.Find("HUD_SettingsButton")));
-                        Check("Exit level button raycast and click", Click(Reference<Button>(_settings, "_exitLevelButton").gameObject));
                         break;
                     case 3:
+                        Check("Exit level button raycast and click", Click(Reference<Button>(_settings, "_exitLevelButton").gameObject));
+                        break;
+                    case 4:
                         Check("Exit confirmation visible", Reference<GameObject>(_exit, "_contentRoot").activeInHierarchy);
                         Check("Exit blocks world and settings HUD", Blocked() && Rays(Center(GameObject.Find("HUD_SettingsButton"))).First().gameObject.transform.IsChildOf(_exit.transform));
                         Check("Cancel button raycast and click", Click(Reference<Button>(_exit, "_cancelButton").gameObject));
                         break;
-                    case 4:
+                    case 5:
                         Check("Cancel hides confirmation", !Reference<GameObject>(_exit, "_contentRoot").activeInHierarchy);
                         Check("Gameplay raycasts clear after modal", !Blocked() && Rays(Camera.main.WorldToScreenPoint(_loader.SpawnedObjects[0].transform.position)).Length == 0);
                         Check("UI preserves ammo, fire count, lives and start lock", _before.SequenceEqual(State()) && _loader.GetComponent<LevelStartPhysicsGate>().IsWaitingForFirstShot);
@@ -102,10 +104,10 @@ namespace RoyalSmash.Editor
                         _monotonic = firstSize <= .7401f;
                         _lastScale = firstSize;
                         _started = EditorApplication.timeSinceStartup;
-                        _step = 5;
+                        _step = 6;
                         _next = 0;
                         return;
-                    case 5:
+                    case 6:
                         if (_shrink != null)
                         {
                             float size = _shrink.transform.localScale.x;
@@ -113,7 +115,7 @@ namespace RoyalSmash.Editor
                             _monotonic &= size <= _lastScale + .0001f && size <= .7401f;
                             _lastScale = size;
                             if (EditorApplication.timeSinceStartup - _started > 5) { Check("Shrink finished", false); Finish("failed"); return; }
-                            _step = 5; _next = 0; return;
+                            _step = 6; _next = 0; return;
                         }
                         Check("Smaller block shrinks without enlarging", _monotonic);
                         Finish(Current.failed.Count == 0 ? "passed" : "failed");
@@ -156,6 +158,7 @@ namespace RoyalSmash.Editor
                 manager.ResetState();
                 var level = manager.Database.GetLevel(manager.CurrentLevelIndex);
                 _loader.LoadLevel(level);
+                manager.ScanAndRegisterSceneTargets();
                 _mortar.SetBallCount(level.BallCount); _mortar.ResetCooldown();
                 _input.enabled = _inputEnabled;
             }

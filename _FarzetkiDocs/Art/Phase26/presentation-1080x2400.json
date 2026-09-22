@@ -1,0 +1,24 @@
+{
+    "status": "passed",
+    "width": 1080,
+    "height": 2400,
+    "passed": [
+        "HUD in screen bounds",
+        "Settings button raycast and click",
+        "Settings visible and paused",
+        "Settings blocks world and stage HUD",
+        "Resume button raycast and click",
+        "Resume hides and restores time",
+        "Settings button click again",
+        "Exit level button raycast and click",
+        "Exit confirmation visible",
+        "Exit blocks world and settings HUD",
+        "Cancel button raycast and click",
+        "Cancel hides confirmation",
+        "Gameplay raycasts clear after modal",
+        "UI preserves ammo, fire count, lives and start lock",
+        "Smaller block shrinks without enlarging"
+    ],
+    "failed": [],
+    "maximumShrinkScale": 0.715545654296875
+}
