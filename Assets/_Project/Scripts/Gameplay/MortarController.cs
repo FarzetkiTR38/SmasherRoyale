@@ -163,7 +163,7 @@ namespace RoyalSmash.Gameplay
             _lastTargetPoint = worldTarget;
 
             // Fire Ball
-            LaunchProjectile(worldTarget);
+            if (!LaunchProjectile(worldTarget)) return;
 
             // Reset cooldown (InfinityBall overrides standard cooldown with rapid stream)
             float cooldown = _projectileConfig != null ? _projectileConfig.FireCooldown : 0.5f;
@@ -194,12 +194,18 @@ namespace RoyalSmash.Gameplay
             HandleTapFired(worldTarget);
         }
 
-        private void LaunchProjectile(Vector3 targetPoint)
+        private bool LaunchProjectile(Vector3 targetPoint)
         {
             if (_ballPrefab == null)
             {
                 Debug.LogWarning("[MortarController] Ball prefab is not assigned!");
-                return;
+                return false;
+            }
+
+            if (_ballPrefab.GetComponent<ProjectileController>() == null)
+            {
+                Debug.LogWarning("[MortarController] Ball prefab has no ProjectileController; shot cancelled.");
+                return false;
             }
 
             Vector3 spawnPosition = _firePoint != null ? _firePoint.position : transform.position + Vector3.up;
@@ -241,6 +247,7 @@ namespace RoyalSmash.Gameplay
                     RoyalSmash.Skills.SkillManager.Instance.ConsumeMegaBall();
                 }
             }
+            return true;
         }
 
         /// <summary>

@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e84930bcefe04d47b7b5093b5d1f648, type: 3}
+  m_Name: LevelData_Citadel16
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Levels.LevelData
+  _levelId: 16
+  _levelName: Level 16
+  _ballCount: 18
+  _baseRewardGold: 125
+  _stands:
+  - Position: {x: 0, y: 0, z: 7.5}
+    Scale: {x: 1, y: 1, z: 1}
+    Rotation: {x: 0, y: 0, z: 0}
+  _objects:
+  - Type: 1
+    Position: {x: -0.905, y: 1.9185, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 0
+    Position: {x: 0, y: 1.9185, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 2
+    Position: {x: 0.905, y: 1.9185, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 0
+    Position: {x: -0.905, y: 2.8055, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 0
+    Position: {x: 0, y: 2.8055, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 2
+    Position: {x: 0.905, y: 2.8055, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 0
+    Position: {x: -0.905, y: 3.6924999, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 3
+    Position: {x: 0, y: 3.6924999, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 0
+    Position: {x: 0.905, y: 3.6924999, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 0
+    Position: {x: -0.905, y: 4.5794997, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 3
+    Position: {x: 0, y: 4.5794997, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 4
+    Position: {x: 0.905, y: 4.5794997, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0.55, g: 0.16, b: 0.85, a: 1}
+  - Type: 4
+    Position: {x: -0.905, y: 5.4665, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 1, g: 0.5, b: 0.05, a: 1}
+  - Type: 4
+    Position: {x: 0, y: 5.4665, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0.92, g: 0.12, b: 0.16, a: 1}
+  _specialEvents: []
+  _isTutorialLevel: 0
+  _tutorialTargetPosition: {x: 0, y: 0, z: 0}
+  _tutorialHighlightRadius: 1

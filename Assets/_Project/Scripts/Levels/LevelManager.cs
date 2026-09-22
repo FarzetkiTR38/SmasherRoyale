@@ -295,6 +295,9 @@ namespace RoyalSmash.Levels
             // Remove any null or destroyed projectile references
             _activeProjectiles.RemoveWhere(p => p == null);
 
+            // Remove any null, destroyed, or destroying target references
+            _activeTargets.RemoveWhere(t => t == null || t.CurrentState == ObjectState.DestroyCondition || t.CurrentState == ObjectState.Destroying || t.CurrentState == ObjectState.Destroyed);
+
             // 1. WIN EVALUATION: All required targets cleared
             if (_activeTargets.Count == 0 && _totalTargets > 0)
             {
@@ -372,6 +375,10 @@ namespace RoyalSmash.Levels
             }
 
             Debug.Log($"[LevelManager] VICTORY! Level {_currentLevelIndex} Cleared! Base: {baseReward}, Remaining Balls: {remainingBalls}, Total Gold: {totalGold}");
+            if (Economy.GoldManager.HasInstance)
+            {
+                Economy.GoldManager.Instance.ProcessLevelCompletionReward(_currentLevelIndex, remainingBalls);
+            }
             OnLevelWon?.Invoke(_currentLevelIndex, baseReward, remainingBalls, totalGold);
 
             if (RoyalSmash.Ads.AdManager.Instance != null)

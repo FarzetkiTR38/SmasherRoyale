@@ -25,6 +25,7 @@ namespace RoyalSmash.Editor
             BuildGameplay();
             BuildMortar();
             SkyCitadelHUDBuilder.Apply();
+            Phase26VisualPolish.Apply();
             Save();
         }
 
@@ -203,6 +204,8 @@ namespace RoyalSmash.Editor
                 levels[2]=third;EditorUtility.SetDirty(third);
             }
             database.SetLevels(levels); EditorUtility.SetDirty(database);
+            // Rebuilding the template must keep all 30 levels within the stand.
+            Phase26LayoutBuilder.Apply();
             var manager=UnityEngine.Object.FindFirstObjectByType<LevelManager>();
             SetObject(manager,"_levelDatabase",database); SetObject(manager,"_levelLoader",loader);
 
@@ -240,7 +243,7 @@ namespace RoyalSmash.Editor
             presentation.SetParent(stand.transform,false);
             foreach(var part in parts) part.SetParent(presentation,false);
             presentation.localPosition = new Vector3(0,1.35f,0);
-            presentation.localScale = new Vector3(5.7f,.25f,3.2f);
+            presentation.localScale = new Vector3(5.7f,.25f,1.9f);
             var prefab=PrefabUtility.SaveAsPrefabAsset(stand,ROOT+"/Prefabs/PF_CitadelStand.prefab");
             UnityEngine.Object.DestroyImmediate(stand); return prefab;
         }

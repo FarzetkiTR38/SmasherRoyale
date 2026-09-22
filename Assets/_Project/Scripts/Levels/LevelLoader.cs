@@ -23,6 +23,7 @@ namespace RoyalSmash.Levels
 
         private readonly List<PhysicsObject> _spawnedObjects = new List<PhysicsObject>();
         private readonly List<GameObject> _spawnedStands = new List<GameObject>();
+        private LevelStartPhysicsGate _startPhysicsGate;
 
         public List<PhysicsObject> SpawnedObjects => _spawnedObjects;
         public List<GameObject> SpawnedStands => _spawnedStands;
@@ -39,6 +40,7 @@ namespace RoyalSmash.Levels
 
         public void ClearLevel()
         {
+            if (_startPhysicsGate != null) _startPhysicsGate.Release();
             _spawnedObjects.Clear();
             _spawnedStands.Clear();
 
@@ -126,6 +128,13 @@ namespace RoyalSmash.Levels
                         _spawnedObjects.Add(physObj);
                     }
                 }
+            }
+
+            if (Application.isPlaying)
+            {
+                if (_startPhysicsGate == null)
+                    _startPhysicsGate = GetComponent<LevelStartPhysicsGate>() ?? gameObject.AddComponent<LevelStartPhysicsGate>();
+                _startPhysicsGate.Prepare(_spawnedObjects, FindFirstObjectByType<MortarController>());
             }
 
             Debug.Log($"[LevelLoader] Loaded Level {data.LevelId} ('{data.LevelName}') with {_spawnedObjects.Count} targets on {_spawnedStands.Count} stand(s).");

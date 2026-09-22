@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e84930bcefe04d47b7b5093b5d1f648, type: 3}
-  m_Name: LevelData_03
+  m_Name: LevelData_Citadel03
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Levels.LevelData
   _levelId: 3
   _levelName: Level 3

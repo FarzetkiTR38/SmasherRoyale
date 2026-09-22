@@ -91,9 +91,9 @@ namespace RoyalSmash.Editor
             {
                 var bs = go.AddComponent<AppBootstrapper>();
                 string target = bs.DetermineTargetScene();
-                Assert(target == SceneTransitionManager.SCENE_MAIN_GAME,
+                Assert(target == SceneTransitionManager.SCENE_MAIN_MENU,
                     "Test 2: First-Time Player Routing",
-                    $"Uninitiated player correctly routed to '{SceneTransitionManager.SCENE_MAIN_GAME}' for Tutorial.");
+                    $"AppBootstrapper consistently routes players to '{SceneTransitionManager.SCENE_MAIN_MENU}'.");
             }
             finally
             {

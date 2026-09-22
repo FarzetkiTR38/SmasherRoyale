@@ -20,5 +20,5 @@ MonoBehaviour:
   _isBreakable: 1
   _breakForceThreshold: 4
   _shrinkDuration: 0.4
-  _fallOffThresholdY: 0.2
+  _fallOffThresholdY: 1.1
   _impactSoundKey: wood_impact

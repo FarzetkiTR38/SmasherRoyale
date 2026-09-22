@@ -24,9 +24,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _FlowSpeed: 0.13
+    - _NoiseScale: 8
+    - _RimStrength: 0.34
+    - _SpecularStrength: 0.28
     m_Colors:
-    - _BaseColor: {r: 0.015, g: 0.22, b: 0.95, a: 1}
-    - _GlowColor: {r: 0.04, g: 1.6, b: 2.2, a: 1}
+    - _BaseColor: {r: 0.015, g: 0.2, b: 0.92, a: 1}
+    - _CoreColor: {r: 0.3, g: 1.65, b: 2.25, a: 1}
+    - _GlowColor: {r: 0.025, g: 1.15, b: 1.8, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
