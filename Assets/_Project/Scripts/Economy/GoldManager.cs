@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using RoyalSmash.Save;
 using RoyalSmash.Levels;
 
@@ -77,6 +78,7 @@ namespace RoyalSmash.Economy
                     DontDestroyOnLoad(gameObject);
                 }
                 InitializeGold();
+                SceneManager.sceneLoaded += HandleSceneLoaded;
             }
             else if (_instance != this)
             {
@@ -90,6 +92,11 @@ namespace RoyalSmash.Economy
             SubscribeEvents();
         }
 
+        private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            SubscribeEvents();
+        }
+
         private void OnApplicationQuit()
         {
             _isQuitting = true;
@@ -97,6 +104,7 @@ namespace RoyalSmash.Economy
 
         private void OnDestroy()
         {
+            SceneManager.sceneLoaded -= HandleSceneLoaded;
             if (_instance == this)
             {
                 _instance = null;

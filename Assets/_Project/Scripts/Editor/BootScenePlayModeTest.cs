@@ -199,9 +199,9 @@ namespace RoyalSmash.Editor
                 var ctrl = go.AddComponent<BootController>();
                 string dest = ctrl.DetermineDestinationScene();
 
-                Assert(dest == SceneTransitionManager.SCENE_MAIN_GAME,
+                Assert(dest == SceneTransitionManager.SCENE_MAIN_MENU,
                     "Test 7: Routing First-Time Player",
-                    $"Uncompleted tutorial routes to '{SceneTransitionManager.SCENE_MAIN_GAME}'.");
+                    $"BootScene consistently routes all players to '{SceneTransitionManager.SCENE_MAIN_MENU}'.");
             }
             finally
             {
@@ -288,15 +288,21 @@ namespace RoyalSmash.Editor
 
         private static void EnsureSaveManager()
         {
-            if (SaveManager.Instance == null)
+            var sm = UnityEngine.Object.FindFirstObjectByType<SaveManager>();
+            if (sm == null)
             {
                 var saveGo = new GameObject("SaveManager_BootTest");
-                saveGo.AddComponent<SaveManager>();
+                sm = saveGo.AddComponent<SaveManager>();
             }
 
-            if (SaveManager.Instance.Data == null)
+            if (sm.Data == null)
             {
-                SaveManager.Instance.Load();
+                sm.Load();
+                if (sm.Data == null)
+                {
+                    typeof(SaveManager).GetField("_data", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                        ?.SetValue(sm, new RoyalSmash.Save.PlayerSaveData());
+                }
             }
         }
     }

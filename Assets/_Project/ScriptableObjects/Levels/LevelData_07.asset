@@ -17,59 +17,69 @@ MonoBehaviour:
   _ballCount: 20
   _baseRewardGold: 80
   _stands:
-  - Position: {x: 0, y: 1, z: 5}
-    Scale: {x: 4, y: 0.3, z: 2.5}
+  - Position: {x: 0, y: 0, z: 7.5}
+    Scale: {x: 1, y: 1, z: 1}
     Rotation: {x: 0, y: 0, z: 0}
   _objects:
-  - Type: 1
-    Position: {x: -1.2, y: 1.55, z: 5}
+  - Type: 4
+    Position: {x: -1.2, y: 1.9000001, z: 6.8}
     Rotation: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     OverrideMass: 0
     CustomMass: 1
+    PaintColor: {r: 0.92, g: 0.12, b: 0.16, a: 1}
+  - Type: 4
+    Position: {x: 1.2, y: 1.9000001, z: 6.8}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0.1, g: 0.55, b: 0.95, a: 1}
   - Type: 0
-    Position: {x: -0.20000005, y: 1.55, z: 5}
+    Position: {x: -1.2, y: 1.95, z: 7.45}
     Rotation: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     OverrideMass: 0
     CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
   - Type: 0
-    Position: {x: 0.79999995, y: 1.55, z: 5}
+    Position: {x: -1.2, y: 2.9, z: 7.45}
     Rotation: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     OverrideMass: 0
     CustomMass: 1
-  - Type: 1
-    Position: {x: -1.2, y: 2.35, z: 5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
-    OverrideMass: 0
-    CustomMass: 1
-  - Type: 2
-    Position: {x: -0.20000005, y: 2.35, z: 5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
-    OverrideMass: 0
-    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
   - Type: 0
-    Position: {x: 0.79999995, y: 2.35, z: 5}
+    Position: {x: 0, y: 1.95, z: 7.45}
     Rotation: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     OverrideMass: 0
     CustomMass: 1
-  - Type: 1
-    Position: {x: -1.2, y: 3.15, z: 5}
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 3
+    Position: {x: 0, y: 2.9, z: 7.45}
     Rotation: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     OverrideMass: 0
     CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
   - Type: 0
-    Position: {x: -0.20000005, y: 3.15, z: 5}
+    Position: {x: 1.2, y: 1.95, z: 7.45}
     Rotation: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     OverrideMass: 0
     CustomMass: 1
-  _specialEvents: []
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  - Type: 0
+    Position: {x: 1.2, y: 2.9, z: 7.45}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+  _specialEvents:
+  - Type: 4
+    Data: Paint Bottle introduced!
   _isTutorialLevel: 0
   _tutorialTargetPosition: {x: 0, y: 0, z: 0}
   _tutorialHighlightRadius: 1

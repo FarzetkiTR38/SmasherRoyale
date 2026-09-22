@@ -94,7 +94,7 @@ namespace RoyalSmash.Gameplay
                 _currentState != ObjectState.Destroying &&
                 _currentState != ObjectState.Destroyed)
             {
-                float thresholdY = _config != null ? _config.FallOffThresholdY : 0.2f;
+                float thresholdY = _config != null ? _config.FallOffThresholdY : 1.1f;
                 if (transform.position.y < thresholdY)
                 {
                     TriggerDestroyCondition("Fell below stand threshold");
@@ -119,7 +119,7 @@ namespace RoyalSmash.Gameplay
             {
                 HandleProjectileHit(collision);
             }
-            else if (collision.gameObject.layer == 9) // Ground layer
+            else if (collision.gameObject.layer == 9 || collision.gameObject.CompareTag("Ground") || collision.gameObject.name.IndexOf("ground", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 // Falling onto the ground off the stand triggers destruction
                 TriggerDestroyCondition("Collided with Ground layer");
@@ -205,6 +205,8 @@ namespace RoyalSmash.Gameplay
         /// </summary>
         protected virtual IEnumerator DestroyRoutine()
         {
+            // LevelLoader applies placement scale after Awake; shrink from the actual visible size.
+            _originalScale = transform.localScale;
             SetState(ObjectState.Destroying);
 
             // Disable collider so it doesn't block other falling objects during shrink

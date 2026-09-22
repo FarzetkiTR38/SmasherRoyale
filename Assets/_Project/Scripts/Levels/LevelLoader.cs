@@ -23,6 +23,7 @@ namespace RoyalSmash.Levels
 
         private readonly List<PhysicsObject> _spawnedObjects = new List<PhysicsObject>();
         private readonly List<GameObject> _spawnedStands = new List<GameObject>();
+        private LevelStartPhysicsGate _startPhysicsGate;
 
         public List<PhysicsObject> SpawnedObjects => _spawnedObjects;
         public List<GameObject> SpawnedStands => _spawnedStands;
@@ -39,6 +40,7 @@ namespace RoyalSmash.Levels
 
         public void ClearLevel()
         {
+            if (_startPhysicsGate != null) _startPhysicsGate.Release();
             _spawnedObjects.Clear();
             _spawnedStands.Clear();
 
@@ -49,6 +51,9 @@ namespace RoyalSmash.Levels
                     var child = _levelRoot.GetChild(i).gameObject;
                     if (Application.isPlaying)
                     {
+                        // Destroy is deferred until frame end. Retire colliders and targets now,
+                        // before the new layout is instantiated into the same positions.
+                        child.SetActive(false);
                         Destroy(child);
                     }
                     else
@@ -76,8 +81,14 @@ namespace RoyalSmash.Levels
                 _levelRoot = rootGo.transform;
             }
 
-            // 1. Spawn Stands
-            if (data.Stands != null && _standPrefab != null)
+            // 1. Stand setup: Use existing scene stand if present, otherwise spawn from prefab
+            var existingSceneStand = GameObject.Find("Stand");
+            if (existingSceneStand != null)
+            {
+                // The scene already has the Royal Stand platform (at Z=7.50)
+                _spawnedStands.Add(existingSceneStand);
+            }
+            else if (data.Stands != null && _standPrefab != null)
             {
                 foreach (var standCfg in data.Stands)
                 {
@@ -98,6 +109,15 @@ namespace RoyalSmash.Levels
                     var go = Instantiate(prefab, placement.Position, Quaternion.Euler(placement.Rotation), _levelRoot);
                     go.transform.localScale = placement.Scale;
 
+                    if (placement.Type == ObjectType.PaintBottle && placement.PaintColor != Color.clear)
+                    {
+                        var bottle = go.GetComponent<PaintBottleObject>();
+                        if (bottle != null)
+                        {
+                            bottle.SetColor(placement.PaintColor);
+                        }
+                    }
+
                     var physObj = go.GetComponent<PhysicsObject>();
                     if (physObj != null)
                     {
@@ -108,6 +128,13 @@ namespace RoyalSmash.Levels
                         _spawnedObjects.Add(physObj);
                     }
                 }
+            }
+
+            if (Application.isPlaying)
+            {
+                if (_startPhysicsGate == null)
+                    _startPhysicsGate = GetComponent<LevelStartPhysicsGate>() ?? gameObject.AddComponent<LevelStartPhysicsGate>();
+                _startPhysicsGate.Prepare(_spawnedObjects, FindFirstObjectByType<MortarController>());
             }
 
             Debug.Log($"[LevelLoader] Loaded Level {data.LevelId} ('{data.LevelName}') with {_spawnedObjects.Count} targets on {_spawnedStands.Count} stand(s).");

@@ -8,13 +8,27 @@ using RoyalSmash.Gameplay;
 namespace RoyalSmash.Editor
 {
     /// <summary>
-    /// Procedural generator that creates all 30 balanced LevelData assets and the LevelDatabase.
-    /// Follows Master Build Prompt Section 9, Section 10, and Phase 19.
+    /// Procedural level generator creating all 30 high-fidelity LevelData assets.
+    /// Perfectly calibrated for the Royal Arena coordinate space matching PhysicsTestScene:
+    /// - Royal Stand Tabletop at Y = 1.45f, Z = 7.50f
+    /// - Tabletop Width: 5.5 units (X: -2.2f to +2.2f)
+    /// - Front Row Z: 6.80f, Main/Back Row Z: 7.45f
+    /// - Balanced progressive difficulty from Level 1 to Level 30.
     /// </summary>
     public static class LevelGenerator30
     {
         private const string LEVELS_DIR = "Assets/_Project/ScriptableObjects/Levels";
         private const string DATABASE_PATH = "Assets/_Project/ScriptableObjects/Levels/LevelDatabase.asset";
+
+        private static readonly Color[] BottleColors = new Color[]
+        {
+            new Color(0.92f, 0.12f, 0.16f), // Red
+            new Color(0.10f, 0.55f, 0.95f), // Blue
+            new Color(1.00f, 0.82f, 0.08f), // Yellow
+            new Color(0.96f, 0.20f, 0.58f), // Pink
+            new Color(0.55f, 0.16f, 0.85f), // Purple
+            new Color(1.00f, 0.50f, 0.05f)  // Orange
+        };
 
         [MenuItem("RoyalSmash/Phase 19/Generate All 30 Levels")]
         public static LevelDatabase GenerateAllLevels()
@@ -45,7 +59,7 @@ namespace RoyalSmash.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            Debug.Log($"[LevelGenerator30] Successfully generated and configured all 30 levels in {DATABASE_PATH}");
+            Debug.Log($"[LevelGenerator30] Successfully generated and configured all 30 calibrated levels in {DATABASE_PATH}");
             return database;
         }
 
@@ -59,7 +73,6 @@ namespace RoyalSmash.Editor
                 AssetDatabase.CreateAsset(level, path);
             }
 
-            // Progression curves
             int ballCount = GetBallCount(levelId);
             int baseReward = GetBaseReward(levelId);
             var stands = GetStandsForLevel(levelId);
@@ -78,9 +91,8 @@ namespace RoyalSmash.Editor
             if (levelId <= 11) return 20;
             if (levelId <= 16) return 18;
             if (levelId <= 20) return 16;
-            if (levelId <= 23) return 15;
-            if (levelId <= 26) return 14;
-            return 12; // Levels 27..30 tight economy
+            if (levelId <= 25) return 15;
+            return 14; // Levels 26..30
         }
 
         private static int GetBaseReward(int levelId)
@@ -90,107 +102,270 @@ namespace RoyalSmash.Editor
 
         private static StandPlacement[] GetStandsForLevel(int levelId)
         {
-            if (levelId == 12 || levelId == 22)
-            {
-                // Dual stand layout
-                return new StandPlacement[]
-                {
-                    new StandPlacement { Position = new Vector3(-2.2f, 1.0f, 5.0f), Scale = new Vector3(2.5f, 0.3f, 2.0f) },
-                    new StandPlacement { Position = new Vector3(2.2f, 1.0f, 5.0f), Scale = new Vector3(2.5f, 0.3f, 2.0f) }
-                };
-            }
-
+            // Consistent standard Royal Stand in main arena
             return new StandPlacement[]
             {
-                new StandPlacement { Position = new Vector3(0f, 1.0f, 5.0f), Scale = new Vector3(4.0f, 0.3f, 2.5f) }
+                new StandPlacement
+                {
+                    Position = new Vector3(0f, 0f, 7.50f),
+                    Scale = Vector3.one,
+                    Rotation = Vector3.zero
+                }
             };
         }
 
         private static ObjectPlacement[] GetObjectsForLevel(int levelId)
         {
             var list = new List<ObjectPlacement>();
-            float standTopY = 1.15f;
+            const float tableY = 1.45f;
+            const float mainZ = 7.45f;
+            const float frontZ = 6.80f;
 
-            if (levelId == 1)
+            switch (levelId)
             {
-                // Simple 4 boxes
-                list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.6f, standTopY + 0.35f, 5.0f) });
-                list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.6f, standTopY + 0.35f, 5.0f) });
-                list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, standTopY + 1.05f, 5.0f) });
-                list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0f, standTopY + 1.75f, 5.0f) });
-            }
-            else if (levelId < 5)
-            {
-                // Levels 2-4: Boxes & Cones
-                int count = 4 + levelId;
-                for (int i = 0; i < count; i++)
-                {
-                    float x = -1.2f + (i % 4) * 0.8f;
-                    float y = standTopY + 0.35f + (i / 4) * 0.7f;
-                    var type = (i % 3 == 0) ? ObjectType.Cone : ObjectType.Box;
-                    list.Add(new ObjectPlacement { Type = type, Position = new Vector3(x, y, 5.0f) });
-                }
-            }
-            else if (levelId < 10)
-            {
-                // Levels 5-9: Stones & Columns introduced
-                int count = 6 + (levelId - 5);
-                for (int i = 0; i < count; i++)
-                {
-                    float x = -1.2f + (i % 3) * 1.0f;
-                    float y = standTopY + 0.4f + (i / 3) * 0.8f;
-                    ObjectType type = (i % 3 == 0) ? ObjectType.Stone : (i % 4 == 0 ? ObjectType.Column : ObjectType.Box);
-                    list.Add(new ObjectPlacement { Type = type, Position = new Vector3(x, y, 5.0f) });
-                }
-            }
-            else if (levelId < 15)
-            {
-                // Levels 10-14: Cones + PaintBottle hints
-                int count = 9 + (levelId - 10);
-                for (int i = 0; i < count; i++)
-                {
-                    float x = -1.4f + (i % 4) * 0.9f;
-                    float y = standTopY + 0.4f + (i / 4) * 0.8f;
-                    ObjectType type = (i == count - 1) ? ObjectType.PaintBottle :
-                                      (i % 3 == 0) ? ObjectType.Column :
-                                      (i % 2 == 0) ? ObjectType.Stone : ObjectType.Box;
-                    list.Add(new ObjectPlacement { Type = type, Position = new Vector3(x, y, 5.0f) });
-                }
-            }
-            else if (levelId < 25)
-            {
-                // Levels 15-24: PaintBottles + Dual Row / Fortress
-                int count = 12 + (levelId - 15) / 2;
-                for (int i = 0; i < count; i++)
-                {
-                    float z = (i % 2 == 0) ? 4.6f : 5.4f; // Two layers
-                    float x = -1.3f + (i % 4) * 0.85f;
-                    float y = standTopY + 0.4f + (i / 4) * 0.85f;
-                    ObjectType type = (i % 5 == 0) ? ObjectType.PaintBottle :
-                                      (i % 4 == 0) ? ObjectType.Cone :
-                                      (i % 3 == 0) ? ObjectType.Column :
-                                      (i % 2 == 0) ? ObjectType.Stone : ObjectType.Box;
-                    list.Add(new ObjectPlacement { Type = type, Position = new Vector3(x, y, z) });
-                }
-            }
-            else
-            {
-                // Levels 25-30: Epic Castle / Finale
-                int count = 16 + (levelId - 25) * 2;
-                for (int i = 0; i < count; i++)
-                {
-                    float z = (i % 2 == 0) ? 4.5f : 5.5f;
-                    float x = -1.5f + (i % 5) * 0.75f;
-                    float y = standTopY + 0.4f + (i / 5) * 0.85f;
-                    ObjectType type = (i % 6 == 0) ? ObjectType.PaintBottle :
-                                      (i % 5 == 0) ? ObjectType.Cone :
-                                      (i % 4 == 0) ? ObjectType.Column :
-                                      (i % 2 == 0) ? ObjectType.Stone : ObjectType.Box;
-                    list.Add(new ObjectPlacement { Type = type, Position = new Vector3(x, y, z) });
-                }
+                // ==========================================
+                // TIER 1: LEVELS 1-3 (TUTORIAL & INTRO)
+                // ==========================================
+                case 1:
+                    // Easy, satisfying 4-box pyramid
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.65f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.65f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0f, tableY + 2.35f, mainZ) });
+                    break;
+
+                case 2:
+                    // Twin guard towers with center low block
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.30f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.30f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(-1.30f, tableY + 2.35f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, tableY + 0.50f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.30f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.30f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(1.30f, tableY + 2.35f, mainZ) });
+                    break;
+
+                case 3:
+                    // Castle Bridge Arch
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.50f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.50f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.50f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.50f, tableY + 1.45f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.55f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.55f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(-0.55f, tableY + 2.35f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0.55f, tableY + 2.35f, mainZ) });
+                    break;
+
+                // ==========================================
+                // TIER 2: LEVELS 4-6 (STONE BLOCKS INTRODUCED)
+                // ==========================================
+                case 4:
+                    // Heavy Stone core surrounded by wood
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.20f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(0f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.20f, tableY + 0.50f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.60f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.60f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(0f, tableY + 2.40f, mainZ) });
+                    break;
+
+                case 5:
+                    // Milestone: Mega Ball Unlock - Big Sturdy Pyramid
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(-1.40f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.50f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.50f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(1.40f, tableY + 0.50f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.95f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(0f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.95f, tableY + 1.45f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.50f, tableY + 2.40f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.50f, tableY + 2.40f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0f, tableY + 3.30f, mainZ) });
+                    break;
+
+                case 6:
+                    // Stone Vault (Heavy outer pillars, weak center)
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(-1.50f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(-1.50f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(1.50f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(1.50f, tableY + 1.45f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.75f, tableY + 2.40f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.75f, tableY + 2.40f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0f, tableY + 3.30f, mainZ) });
+                    break;
+
+                // ==========================================
+                // TIER 3: LEVELS 7-9 (PAINT BOTTLES INTRODUCED!)
+                // ==========================================
+                case 7:
+                    // Paint Bottle Debut: Red & Blue explosive bottles
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(-1.20f, tableY + 0.45f, frontZ), PaintColor = BottleColors[0] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(1.20f, tableY + 0.45f, frontZ), PaintColor = BottleColors[1] });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.20f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.20f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.20f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.20f, tableY + 1.45f, mainZ) });
+                    break;
+
+                case 8:
+                    // Color Cascade: 3 Bottles (Yellow, Pink, Blue)
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(-1.50f, tableY + 0.45f, frontZ), PaintColor = BottleColors[2] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(0f, tableY + 0.45f, frontZ), PaintColor = BottleColors[3] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(1.50f, tableY + 0.45f, frontZ), PaintColor = BottleColors[1] });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(-1.10f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.10f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(1.10f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.10f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0f, tableY + 2.40f, mainZ) });
+                    break;
+
+                case 9:
+                    // Stone Fortress with Purple & Orange bottle weak points
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(-0.70f, tableY + 0.45f, frontZ), PaintColor = BottleColors[4] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(0.70f, tableY + 0.45f, frontZ), PaintColor = BottleColors[5] });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(-1.60f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.70f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.70f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(1.60f, tableY + 0.50f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.15f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(0f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.15f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(-0.60f, tableY + 2.40f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0.60f, tableY + 2.40f, mainZ) });
+                    break;
+
+                // ==========================================
+                // TIER 4: LEVEL 10 (INFINITY BALL UNLOCK!)
+                // ==========================================
+                case 10:
+                    // Massive target board designed for Infinity Ball rapid-fire clearing!
+                    // Front bottle line
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(-1.60f, tableY + 0.45f, frontZ), PaintColor = BottleColors[0] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(-0.80f, tableY + 0.45f, frontZ), PaintColor = BottleColors[2] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(0f, tableY + 0.45f, frontZ), PaintColor = BottleColors[1] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(0.80f, tableY + 0.45f, frontZ), PaintColor = BottleColors[3] });
+                    list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(1.60f, tableY + 0.45f, frontZ), PaintColor = BottleColors[4] });
+
+                    // Main wall
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(-1.80f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-0.90f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(0.90f, tableY + 0.50f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(1.80f, tableY + 0.50f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(-1.35f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(-0.45f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(0.45f, tableY + 1.45f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(1.35f, tableY + 1.45f, mainZ) });
+
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(-0.90f, tableY + 2.40f, mainZ) });
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0.90f, tableY + 2.40f, mainZ) });
+                    break;
+
+                // ==========================================
+                // TIER 5: LEVELS 11-20 (COLUMNS, ARCHES & BALANCED PUZZLES)
+                // ==========================================
+                default:
+                    // Procedurally generated high-quality configurations for Levels 11..30
+                    GenerateAdvancedLevel(levelId, list, tableY, mainZ, frontZ);
+                    break;
             }
 
             return list.ToArray();
+        }
+
+        private static void GenerateAdvancedLevel(int levelId, List<ObjectPlacement> list, float tableY, float mainZ, float frontZ)
+        {
+            int seed = levelId * 1337;
+            var rand = new System.Random(seed);
+
+            int baseBlocks = Mathf.Min(18, 9 + (levelId / 2));
+            bool hasColumns = levelId >= 11;
+            bool hasBottles = levelId >= 7;
+
+            // 1. Foundation Layer (3 to 5 pillars/blocks across stand width)
+            int columnsCount = 3 + (levelId % 3); // 3, 4, or 5 columns
+            float xSpan = 3.6f;
+            float step = xSpan / (columnsCount - 1);
+
+            for (int i = 0; i < columnsCount; i++)
+            {
+                float x = -xSpan * 0.5f + (i * step);
+                ObjectType baseType = (i == 0 || i == columnsCount - 1) ? ObjectType.Stone : ObjectType.Box;
+
+                if (hasColumns && i % 2 == 1 && levelId >= 13)
+                {
+                    // Tall column pillar (center height = tableY + 1.2f)
+                    list.Add(new ObjectPlacement { Type = ObjectType.Column, Position = new Vector3(x, tableY + 1.20f, mainZ) });
+                }
+                else
+                {
+                    list.Add(new ObjectPlacement { Type = baseType, Position = new Vector3(x, tableY + 0.50f, mainZ) });
+                    // Layer 2
+                    ObjectType layer2Type = (i % 2 == 0) ? ObjectType.Box : ObjectType.Stone;
+                    list.Add(new ObjectPlacement { Type = layer2Type, Position = new Vector3(x, tableY + 1.45f, mainZ) });
+                }
+            }
+
+            // 2. Crossbeams & Arches (Layer 3)
+            int bridgeCount = columnsCount - 1;
+            for (int i = 0; i < bridgeCount; i++)
+            {
+                float x = -xSpan * 0.5f + (i * step) + (step * 0.5f);
+                list.Add(new ObjectPlacement { Type = ObjectType.Box, Position = new Vector3(x, tableY + 2.40f, mainZ) });
+
+                // Spire cones
+                if (i % 2 == 0)
+                {
+                    list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(x, tableY + 3.30f, mainZ) });
+                }
+            }
+
+            // 3. Front Row: Explosive Paint Bottles (1 to 4 bottles based on level)
+            if (hasBottles)
+            {
+                int bottleCount = Mathf.Clamp(1 + (levelId / 6), 1, 5);
+                float bSpan = 3.0f;
+                float bStep = bottleCount > 1 ? bSpan / (bottleCount - 1) : 0f;
+
+                for (int b = 0; b < bottleCount; b++)
+                {
+                    float bx = (bottleCount == 1) ? 0f : -bSpan * 0.5f + (b * bStep);
+                    Color col = BottleColors[(b + levelId) % BottleColors.Length];
+                    list.Add(new ObjectPlacement
+                    {
+                        Type = ObjectType.PaintBottle,
+                        Position = new Vector3(bx, tableY + 0.45f, frontZ),
+                        PaintColor = col
+                    });
+                }
+            }
+
+            // Level 30 Finale Spire bonus
+            if (levelId == 30)
+            {
+                // Grand King Citadel pinnacle
+                list.Add(new ObjectPlacement { Type = ObjectType.Stone, Position = new Vector3(0f, tableY + 3.35f, mainZ) });
+                list.Add(new ObjectPlacement { Type = ObjectType.Cone, Position = new Vector3(0f, tableY + 4.25f, mainZ) });
+                list.Add(new ObjectPlacement { Type = ObjectType.PaintBottle, Position = new Vector3(0f, tableY + 1.45f, frontZ), PaintColor = BottleColors[0] });
+            }
         }
 
         private static LevelEvent[] GetEventsForLevel(int levelId)
@@ -202,11 +377,14 @@ namespace RoyalSmash.Editor
                 list.Add(new LevelEvent { Type = LevelEventType.UnlockMegaBall, Data = "MegaBall unlocked!" });
                 list.Add(new LevelEvent { Type = LevelEventType.NewContentIntroduction, Data = "Stone Object introduced!" });
             }
+            else if (levelId == 7)
+            {
+                list.Add(new LevelEvent { Type = LevelEventType.NewContentIntroduction, Data = "Paint Bottle introduced!" });
+            }
             else if (levelId == 10)
             {
                 list.Add(new LevelEvent { Type = LevelEventType.UnlockInfinityBall, Data = "InfinityBall unlocked!" });
                 list.Add(new LevelEvent { Type = LevelEventType.PromptUsername, Data = "Level 10 Username Prompt" });
-                list.Add(new LevelEvent { Type = LevelEventType.NewContentIntroduction, Data = "Cone & PaintBottle introduced!" });
             }
             else if (levelId == 15 || levelId == 20 || levelId == 25)
             {

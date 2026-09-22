@@ -44,10 +44,24 @@ namespace RoyalSmash.Cloud
         [Header("Configuration")]
         [SerializeField] private LeaderboardConfig _config;
 
+        [Header("Backend Mode")]
+        [Tooltip("When true, connects to official Unity Gaming Services (Authentication, Cloud Save, Leaderboard). When false, runs simulated local offline backend.")]
+        [SerializeField] private bool _useUGS = true;
+
         private ICloudSyncProvider _provider;
 
         public event Action<bool> OnOnlineStateChanged;
         public event Action OnSyncCompleted;
+
+        public bool UseUGS
+        {
+            get => _useUGS;
+            set
+            {
+                _useUGS = value;
+                _provider = _useUGS ? (ICloudSyncProvider)new UGSCloudProvider(Config) : new SimulatedCloudProvider(Config);
+            }
+        }
 
         public ICloudSyncProvider Provider
         {
@@ -55,7 +69,7 @@ namespace RoyalSmash.Cloud
             {
                 if (_provider == null)
                 {
-                    _provider = new SimulatedCloudProvider(Config);
+                    _provider = _useUGS ? (ICloudSyncProvider)new UGSCloudProvider(Config) : new SimulatedCloudProvider(Config);
                 }
                 return _provider;
             }

@@ -103,10 +103,12 @@ namespace RoyalSmash.UI
 
         private void HandleLevelWon(int level, int baseReward, int remainingBalls, int totalGold)
         {
-            // Fallback display if GoldManager is not present in scene
-            if (Economy.GoldManager.Instance == null)
+            if (_panelRoot == null || !_panelRoot.activeSelf)
             {
-                Show(level, baseReward, remainingBalls, totalGold, false);
+                bool isDuplicate = Save.SaveManager.HasInstance && Save.SaveManager.Instance.Data != null &&
+                                   Save.SaveManager.Instance.Data.RewardedLevelIds != null &&
+                                   Save.SaveManager.Instance.Data.RewardedLevelIds.Contains(level);
+                Show(level, baseReward, remainingBalls, totalGold, isDuplicate);
             }
         }
 

@@ -1,0 +1,72 @@
+[
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_01_Wood.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 1
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_02_Stone.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 1
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_03_Crystal.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 1
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_04_Armored.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 1
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_05_Core.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 1
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/PF_00_SkyCitadel_Showcase.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/PF_01_Tower_26Blocks.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 26
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/PF_02_Mortar_Complete.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/PF_03_Stand.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/SkyCitadel/PF_04_EnergyBall.prefab",
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "physicsBlocks": 0
+  }
+]

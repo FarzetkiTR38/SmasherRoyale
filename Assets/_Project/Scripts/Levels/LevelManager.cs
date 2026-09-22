@@ -129,8 +129,20 @@ namespace RoyalSmash.Levels
                 }
             }
 
-            // Automatically scan and register existing target objects in scene
-            ScanAndRegisterSceneTargets();
+            // Register spawned targets directly from LevelLoader, or fallback to scene scan
+            if (_levelLoader != null && _levelLoader.SpawnedObjects.Count > 0)
+            {
+                ResetState();
+                _activeTargets.Clear();
+                foreach (var obj in _levelLoader.SpawnedObjects)
+                {
+                    RegisterTarget(obj);
+                }
+            }
+            else
+            {
+                ScanAndRegisterSceneTargets();
+            }
 
             // Mark active level session for ungraceful exit detection
             if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
@@ -283,6 +295,9 @@ namespace RoyalSmash.Levels
             // Remove any null or destroyed projectile references
             _activeProjectiles.RemoveWhere(p => p == null);
 
+            // Remove any null, destroyed, or destroying target references
+            _activeTargets.RemoveWhere(t => t == null || t.CurrentState == ObjectState.DestroyCondition || t.CurrentState == ObjectState.Destroying || t.CurrentState == ObjectState.Destroyed);
+
             // 1. WIN EVALUATION: All required targets cleared
             if (_activeTargets.Count == 0 && _totalTargets > 0)
             {
@@ -360,6 +375,10 @@ namespace RoyalSmash.Levels
             }
 
             Debug.Log($"[LevelManager] VICTORY! Level {_currentLevelIndex} Cleared! Base: {baseReward}, Remaining Balls: {remainingBalls}, Total Gold: {totalGold}");
+            if (Economy.GoldManager.HasInstance)
+            {
+                Economy.GoldManager.Instance.ProcessLevelCompletionReward(_currentLevelIndex, remainingBalls);
+            }
             OnLevelWon?.Invoke(_currentLevelIndex, baseReward, remainingBalls, totalGold);
 
             if (RoyalSmash.Ads.AdManager.Instance != null)

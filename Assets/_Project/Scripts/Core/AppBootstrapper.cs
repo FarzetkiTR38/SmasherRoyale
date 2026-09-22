@@ -139,11 +139,6 @@ namespace RoyalSmash.Core
         /// </summary>
         public string DetermineTargetScene()
         {
-            var save = SaveManager.Instance != null ? SaveManager.Instance.Data : null;
-            if (save == null || !save.TutorialCompleted)
-            {
-                return SceneTransitionManager.SCENE_MAIN_GAME;
-            }
             return SceneTransitionManager.SCENE_MAIN_MENU;
         }
     }

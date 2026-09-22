@@ -35,7 +35,7 @@ namespace RoyalSmash.Gameplay
         [SerializeField] private float _shrinkDuration = 0.5f;
 
         [Tooltip("Fall-off Y coordinate threshold below which the object is considered cleared from stand.")]
-        [SerializeField] private float _fallOffThresholdY = 0.2f;
+        [SerializeField] private float _fallOffThresholdY = 1.1f;
 
         [Header("Audio & Effects")]
         [SerializeField] private string _impactSoundKey = "wood_impact";

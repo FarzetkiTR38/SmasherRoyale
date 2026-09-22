@@ -1,0 +1,18 @@
+{
+  "width": 1080,
+  "height": 1920,
+  "settingsClick": true,
+  "paused": true,
+  "settingsBlocks": false,
+  "resumeClick": false,
+  "resumed": false,
+  "exitClick": true,
+  "exitVisible": true,
+  "exitBlocks": false,
+  "cancelClick": false,
+  "cancelled": false,
+  "worldClear": true,
+  "unchanged": true,
+  "inBounds": true,
+  "passed": false
+}
