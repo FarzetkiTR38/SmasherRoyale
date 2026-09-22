@@ -74,12 +74,13 @@ namespace RoyalSmash.Editor
                         break;
                     case 1:
                         Check("Settings visible and paused", _settings.IsVisible && Time.timeScale == 0);
-                        Check("Settings blocks world and back HUD", Blocked() && Rays(Center(GameObject.Find("HUD_ExitButton"))).First().gameObject.transform.IsChildOf(_settings.transform));
+                        Check("Settings blocks world and stage HUD", Blocked() && Rays(Center(GameObject.Find("HUD_SkyCitadelStage"))).First().gameObject.transform.IsChildOf(_settings.transform));
                         Check("Resume button raycast and click", Click(Reference<Button>(_settings, "_resumeButton").gameObject));
                         break;
                     case 2:
                         Check("Resume hides and restores time", !_settings.IsVisible && Time.timeScale == 1);
-                        Check("Back button raycast and click", Click(GameObject.Find("HUD_ExitButton")));
+                        Check("Settings button click again", Click(GameObject.Find("HUD_SettingsButton")));
+                        Check("Exit level button raycast and click", Click(Reference<Button>(_settings, "_exitLevelButton").gameObject));
                         break;
                     case 3:
                         Check("Exit confirmation visible", Reference<GameObject>(_exit, "_contentRoot").activeInHierarchy);

@@ -494,5 +494,67 @@ namespace RoyalSmash.Levels
         {
             _currentLevelIndex = level;
         }
+
+        /// <summary>
+        /// Immediately loads and spawns the specified level index in the current scene without a full scene reload.
+        /// </summary>
+        public void LoadLevelDirect(int levelIndex)
+        {
+            _currentLevelIndex = Mathf.Clamp(levelIndex, 1, 30);
+            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
+            {
+                SaveManager.Instance.Data.CurrentLevel = _currentLevelIndex;
+                SaveManager.Instance.Save();
+            }
+
+            if (_levelDatabase == null)
+            {
+#if UNITY_EDITOR
+                _levelDatabase = UnityEditor.AssetDatabase.LoadAssetAtPath<LevelDatabase>(
+                    "Assets/_Project/ScriptableObjects/Levels/LevelDatabase.asset");
+#endif
+            }
+
+            if (_levelLoader == null)
+            {
+                _levelLoader = FindFirstObjectByType<LevelLoader>();
+            }
+
+            if (_mortar == null)
+            {
+                _mortar = FindFirstObjectByType<MortarController>();
+            }
+
+            if (_levelLoader != null && _levelDatabase != null)
+            {
+                var levelData = _levelDatabase.GetLevel(_currentLevelIndex);
+                if (levelData != null)
+                {
+                    _levelLoader.LoadLevel(levelData);
+                    if (_mortar != null)
+                    {
+                        _mortar.SetBallCount(levelData.BallCount);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"[LevelManager] No LevelData found for Level {_currentLevelIndex}!");
+                }
+            }
+
+            ResetState();
+            _activeTargets.Clear();
+            if (_levelLoader != null && _levelLoader.SpawnedObjects.Count > 0)
+            {
+                foreach (var obj in _levelLoader.SpawnedObjects)
+                {
+                    RegisterTarget(obj);
+                }
+            }
+            _totalTargets = _activeTargets.Count;
+            OnTargetCountChanged?.Invoke(_activeTargets.Count, _totalTargets);
+
+            Debug.Log($"[LevelManager] LoadLevelDirect: Level {_currentLevelIndex} loaded with {_totalTargets} targets.");
+        }
     }
 }

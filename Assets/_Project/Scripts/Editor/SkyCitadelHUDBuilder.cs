@@ -48,8 +48,12 @@ namespace RoyalSmash.Editor
 
             RectTransform balls = Require(canvas.transform, "HUD_BallCounter");
             RectTransform settings = Require(canvas.transform, "HUD_SettingsButton");
-            RectTransform exit = Require(canvas.transform, "HUD_ExitButton");
-            RectTransform gold = Require(canvas.transform, "HUD_GoldDisplay");
+            // Destroy legacy HUD_ExitButton and HUD_GoldDisplay if present in MainGame
+            var oldExit = canvas.transform.Find("HUD_ExitButton");
+            if (oldExit != null) Undo.DestroyObjectImmediate(oldExit.gameObject);
+            var oldGold = canvas.transform.Find("HUD_GoldDisplay");
+            if (oldGold != null) Undo.DestroyObjectImmediate(oldGold.gameObject);
+
             RectTransform skillBar = Require(canvas.transform, "HUD_SkillBar");
             RectTransform mega = Require(skillBar, "SkillBtn_MegaBall");
             RectTransform infinity = Require(skillBar, "SkillBtn_InfinityBall");
@@ -71,27 +75,6 @@ namespace RoyalSmash.Editor
             if (oldSettingsIcon != null) oldSettingsIcon.gameObject.SetActive(false);
             Gear(settings);
             ButtonColors(settings);
-
-            Place(exit, new Vector2(0, 1), new Vector2(80, -281), new Vector2(96, 96));
-            Card(exit, true);
-            var exitText = exit.Find("Icon")?.GetComponent<TextMeshProUGUI>();
-            if (exitText != null) exitText.text = string.Empty;
-            Shape(exit, "Sky_BackShaft", new Vector2(4, 0), new Vector2(35, 8), Ivory);
-            Shape(exit, "Sky_BackUpper", new Vector2(-12, 10), new Vector2(29, 8), Ivory, false, 43);
-            Shape(exit, "Sky_BackLower", new Vector2(-12, -10), new Vector2(29, 8), Ivory, false, -43);
-            ButtonColors(exit);
-
-            Place(gold, new Vector2(0, 1), new Vector2(239, -274), new Vector2(190, 76));
-            Card(gold, false);
-            var oldCoinText = gold.Find("Icon")?.GetComponent<TextMeshProUGUI>();
-            if (oldCoinText != null) oldCoinText.text = string.Empty;
-            Rounded(gold, "Sky_Coin", new Vector2(-65, 0), new Vector2(49, 49), 25,
-                new Color32(255, 249, 177, 255), Gold, new Color32(163, 89, 12, 255), .6f);
-            Rounded(gold, "Sky_CoinInlay", new Vector2(-65, 0), new Vector2(36, 36), 18,
-                new Color32(172, 102, 14, 255), new Color32(255, 218, 81, 255), new Color32(255, 238, 146, 255), .1f);
-            Rounded(gold, "Sky_CoinMark", new Vector2(-65, 0), new Vector2(11, 24), 3,
-                Ivory, new Color32(255, 218, 91, 255), new Color32(183, 111, 15, 255), .25f);
-            Text(Require(gold, "GoldText"), null, 31, Ivory, new Vector2(18, -1), new Vector2(126, 53));
 
             // Keep the existing paths and all SkillButtonUI references; only their presentation changes.
             Place(skillBar, new Vector2(0.5f, 0), Vector2.zero, Vector2.zero);
@@ -131,7 +114,7 @@ namespace RoyalSmash.Editor
             if (level != null) stageText.SetText("{0}", level.CurrentLevelIndex);
             var stageController = stage.GetComponent<SkyCitadelStageLabel>();
             if (stageController == null) stageController = Undo.AddComponent<SkyCitadelStageLabel>(stage.gameObject);
-            stageController.Configure(stageText, new[] { stage, balls, settings, exit, gold }, new[] { mega, infinity });
+            stageController.Configure(stageText, new[] { stage, balls, settings }, new[] { mega, infinity });
             EditorUtility.SetDirty(stageController);
             StyleSettingsDialog(canvas.transform);
             StyleExitDialog(canvas.transform);
