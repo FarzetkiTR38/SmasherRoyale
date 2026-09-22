@@ -41,6 +41,14 @@ namespace RoyalSmash.UI
         [SerializeField] private Color _activeColor = new Color(1.0f, 0.85f, 0.25f, 1.0f); // Gold
         [SerializeField] private Color _inactiveColor = new Color(0.65f, 0.70f, 0.78f, 1.0f); // Muted slate
 
+        [Header("Tab Sprites (Active / Inactive)")]
+        [SerializeField] private Sprite _shopActiveSprite;
+        [SerializeField] private Sprite _shopInactiveSprite;
+        [SerializeField] private Sprite _battleActiveSprite;
+        [SerializeField] private Sprite _battleInactiveSprite;
+        [SerializeField] private Sprite _leaderboardActiveSprite;
+        [SerializeField] private Sprite _leaderboardInactiveSprite;
+
         private NavigationTab _currentTab = NavigationTab.Battle;
 
         public NavigationTab CurrentTab => _currentTab;
@@ -94,6 +102,21 @@ namespace RoyalSmash.UI
             SwitchTab(_currentTab);
         }
 
+        public void SetTabSprites(
+            Sprite shopActive, Sprite shopInactive,
+            Sprite battleActive, Sprite battleInactive,
+            Sprite leadActive, Sprite leadInactive)
+        {
+            _shopActiveSprite = shopActive;
+            _shopInactiveSprite = shopInactive;
+            _battleActiveSprite = battleActive;
+            _battleInactiveSprite = battleInactive;
+            _leaderboardActiveSprite = leadActive;
+            _leaderboardInactiveSprite = leadInactive;
+
+            SwitchTab(_currentTab);
+        }
+
         /// <summary>
         /// Switches active tab and updates UI visibility.
         /// </summary>
@@ -106,16 +129,24 @@ namespace RoyalSmash.UI
             if (_battlePage != null) _battlePage.SetActive(tab == NavigationTab.Battle);
             if (_leaderboardPage != null) _leaderboardPage.SetActive(tab == NavigationTab.Leaderboard);
 
-            // Update Colors
-            UpdateTabVisuals(_shopTabText, _shopTabIcon, tab == NavigationTab.Shop);
-            UpdateTabVisuals(_battleTabText, _battleTabIcon, tab == NavigationTab.Battle);
-            UpdateTabVisuals(_leaderboardTabText, _leaderboardTabIcon, tab == NavigationTab.Leaderboard);
+            // Update Colors & Sprites
+            UpdateTabVisuals(_shopTabButton, _shopTabText, _shopTabIcon, _shopActiveSprite, _shopInactiveSprite, tab == NavigationTab.Shop);
+            UpdateTabVisuals(_battleTabButton, _battleTabText, _battleTabIcon, _battleActiveSprite, _battleInactiveSprite, tab == NavigationTab.Battle);
+            UpdateTabVisuals(_leaderboardTabButton, _leaderboardTabText, _leaderboardTabIcon, _leaderboardActiveSprite, _leaderboardInactiveSprite, tab == NavigationTab.Leaderboard);
 
             OnTabChanged?.Invoke(_currentTab);
         }
 
-        private void UpdateTabVisuals(TextMeshProUGUI text, Image icon, bool isActive)
+        private void UpdateTabVisuals(Button btn, TextMeshProUGUI text, Image icon, Sprite activeSprite, Sprite inactiveSprite, bool isActive)
         {
+            if (btn != null && btn.GetComponent<Image>() is Image btnImg)
+            {
+                if (activeSprite != null && inactiveSprite != null)
+                {
+                    btnImg.sprite = isActive ? activeSprite : inactiveSprite;
+                }
+            }
+
             Color c = isActive ? _activeColor : _inactiveColor;
             if (text != null)
             {

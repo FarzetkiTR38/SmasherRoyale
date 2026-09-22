@@ -141,7 +141,7 @@ namespace RoyalSmash.UI
 
             if (_currentLevelText != null)
             {
-                _currentLevelText.text = $"LEVEL {currentLevel}";
+                _currentLevelText.text = $"Aşama {currentLevel}";
             }
 
             if (_goldWidget != null)
