@@ -70,6 +70,9 @@ namespace RoyalSmash.Lives
         public bool HasLivesToPlay => CurrentLives > 0;
         public bool AreLivesFull => CurrentLives >= MaxLives;
 
+        private static bool _infiniteLives = false;
+        public static bool InfiniteLives { get => _infiniteLives; set => _infiniteLives = value; }
+
         private void Awake()
         {
             _isQuitting = false;
@@ -133,6 +136,12 @@ namespace RoyalSmash.Lives
         /// </summary>
         public bool DeductLife(string reason, string transactionKey = null)
         {
+            if (_infiniteLives)
+            {
+                Debug.Log($"[LivesManager] Infinite lives active; deduction skipped ({reason}).");
+                return true;
+            }
+
             if (!string.IsNullOrEmpty(transactionKey))
             {
                 if (_processedDeductions.Contains(transactionKey))
@@ -343,6 +352,41 @@ namespace RoyalSmash.Lives
         {
             int reward = _config != null ? _config.RewardedAdLifeReward : 1;
             return AddLife(reward, "RewardedAd");
+        }
+
+        /// <summary>
+        /// Refills lives to full capacity (MaxLives).
+        /// </summary>
+        public void RefillLives()
+        {
+            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            {
+                SaveManager.Instance.Data.Lives = MaxLives;
+                SaveManager.Instance.Data.LifeTimerStartTicks = 0;
+                SaveManager.Instance.Save();
+                DispatchLivesChanged();
+            }
+        }
+
+        /// <summary>
+        /// Sets current lives count (clamped 0 to MaxLives).
+        /// </summary>
+        public void SetLives(int count)
+        {
+            if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
+            {
+                SaveManager.Instance.Data.Lives = Mathf.Clamp(count, 0, MaxLives);
+                if (SaveManager.Instance.Data.Lives >= MaxLives)
+                {
+                    SaveManager.Instance.Data.LifeTimerStartTicks = 0;
+                }
+                else if (SaveManager.Instance.Data.LifeTimerStartTicks <= 0)
+                {
+                    SaveManager.Instance.Data.LifeTimerStartTicks = DateTime.UtcNow.Ticks;
+                }
+                SaveManager.Instance.Save();
+                DispatchLivesChanged();
+            }
         }
 
         public void ClearTransactionGuards()

@@ -1,0 +1,14 @@
+[
+  {
+    "file": "leaderboard_cache.json",
+    "equal": true
+  },
+  {
+    "file": "player_save_backup.json",
+    "equal": true
+  },
+  {
+    "file": "player_save.json",
+    "equal": true
+  }
+]
