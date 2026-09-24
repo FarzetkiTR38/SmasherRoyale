@@ -23,6 +23,9 @@ namespace RoyalSmash.UI
         [Header("Scroll Area")]
         [SerializeField] private Transform _rowContainer;
         [SerializeField] private GameObject _rowPrefab;
+        [SerializeField] private GameObject _rank1Prefab;
+        [SerializeField] private GameObject _rank2Prefab;
+        [SerializeField] private GameObject _rank3Prefab;
 
         [Header("Sticky Player Row")]
         [SerializeField] private LeaderboardEntryRowUI _stickyPlayerRow;
@@ -55,7 +58,8 @@ namespace RoyalSmash.UI
         public void BindReferences(
             TextMeshProUGUI title, TextMeshProUGUI statusTxt, Image statusBg,
             Button refreshBtn, Transform container, GameObject rowPrefab,
-            LeaderboardEntryRowUI stickyRow, ProfileConfig profileCfg)
+            LeaderboardEntryRowUI stickyRow, ProfileConfig profileCfg,
+            GameObject rank1Prefab = null, GameObject rank2Prefab = null, GameObject rank3Prefab = null)
         {
             _titleText = title;
             _statusBadgeText = statusTxt;
@@ -65,6 +69,9 @@ namespace RoyalSmash.UI
             _rowPrefab = rowPrefab;
             _stickyPlayerRow = stickyRow;
             _profileConfig = profileCfg;
+            if (rank1Prefab != null) _rank1Prefab = rank1Prefab;
+            if (rank2Prefab != null) _rank2Prefab = rank2Prefab;
+            if (rank3Prefab != null) _rank3Prefab = rank3Prefab;
 
             if (_refreshButton != null)
             {
@@ -134,8 +141,14 @@ namespace RoyalSmash.UI
                 }
                 else
                 {
-                    if (_rowPrefab == null || _rowContainer == null) break;
-                    var go = Instantiate(_rowPrefab, _rowContainer);
+                    GameObject prefabToUse = _rowPrefab;
+                    int rank = entries[i].Rank;
+                    if (rank == 1 && _rank1Prefab != null) prefabToUse = _rank1Prefab;
+                    else if (rank == 2 && _rank2Prefab != null) prefabToUse = _rank2Prefab;
+                    else if (rank == 3 && _rank3Prefab != null) prefabToUse = _rank3Prefab;
+
+                    if (prefabToUse == null || _rowContainer == null) break;
+                    var go = Instantiate(prefabToUse, _rowContainer);
                     rowUI = go.GetComponent<LeaderboardEntryRowUI>();
                     if (rowUI == null) rowUI = go.AddComponent<LeaderboardEntryRowUI>();
                     _spawnedRows.Add(rowUI);

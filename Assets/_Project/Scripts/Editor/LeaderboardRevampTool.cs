@@ -84,14 +84,7 @@ namespace RoyalSmash.EditorTools
                 fontYellow, fontWhite, fontBlue,
                 rowPrefab);
 
-            // 5. Update Bottom Navigation visuals for Leaderboard tab
-            UpdateBottomNav(
-                LoadSprite("nav_btn_gold_selected.png"),
-                LoadSprite("nav_btn_blue_normal.png"),
-                LoadSprite("icon_trophy_gold.png"),
-                LoadSprite("icon_nav_home.png"),
-                LoadSprite("icon_nav_shop.png"),
-                fontWhite);
+            // 5. Bottom Navigation is managed separately and preserved from original working design
 
             // 6. Save scene and assets
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
@@ -683,81 +676,6 @@ namespace RoyalSmash.EditorTools
             tmp.text = text;
 
             return btnGo;
-        }
-
-        private static void SetupNavTab(GameObject tabGo, string label, Sprite iconSprite, Sprite btnSprite, Color txtColor, bool isSelected, TMP_FontAsset font)
-        {
-            if (tabGo == null) return;
-
-            var img = tabGo.GetComponent<Image>();
-            if (img != null && btnSprite != null)
-            {
-                img.sprite = btnSprite;
-                img.color = Color.white;
-            }
-
-            // Cleanly remove any old child elements (such as legacy text)
-            for (int i = tabGo.transform.childCount - 1; i >= 0; i--)
-            {
-                Object.DestroyImmediate(tabGo.transform.GetChild(i).gameObject);
-            }
-
-            // Icon Image
-            var iconGo = new GameObject("Icon", typeof(RectTransform), typeof(Image));
-            iconGo.transform.SetParent(tabGo.transform, false);
-            var iconRect = iconGo.GetComponent<RectTransform>();
-            iconRect.anchorMin = new Vector2(0.5f, 0.5f);
-            iconRect.anchorMax = new Vector2(0.5f, 0.5f);
-            iconRect.pivot = new Vector2(0.5f, 0.5f);
-            iconRect.anchoredPosition = new Vector2(0, 16);
-            iconRect.sizeDelta = new Vector2(56, 56);
-
-            var iconImg = iconGo.GetComponent<Image>();
-            iconImg.sprite = iconSprite;
-            iconImg.preserveAspect = true;
-            iconImg.color = isSelected ? new Color(1f, 0.95f, 0.6f) : new Color(0.75f, 0.88f, 1f);
-
-            // Label Text
-            var txtGo = new GameObject("Text", typeof(RectTransform), typeof(TextMeshProUGUI));
-            txtGo.transform.SetParent(tabGo.transform, false);
-            var txtRect = txtGo.GetComponent<RectTransform>();
-            txtRect.anchorMin = new Vector2(0.5f, 0.5f);
-            txtRect.anchorMax = new Vector2(0.5f, 0.5f);
-            txtRect.pivot = new Vector2(0.5f, 0.5f);
-            txtRect.anchoredPosition = new Vector2(0, -30);
-            txtRect.sizeDelta = new Vector2(250, 30);
-
-            var tmp = txtGo.GetComponent<TextMeshProUGUI>();
-            tmp.font = font;
-            tmp.fontSize = 21;
-            tmp.fontStyle = FontStyles.Bold;
-            tmp.alignment = TextAlignmentOptions.Center;
-            tmp.color = txtColor;
-            tmp.text = label;
-        }
-
-        private static void UpdateBottomNav(Sprite navSelectedGold, Sprite navNormalBlue, Sprite trophyIcon, Sprite homeIcon, Sprite shopIcon, TMP_FontAsset font)
-        {
-            var bottomNav = GameObject.Find("MainMenuCanvas/BottomNav");
-            if (bottomNav == null) return;
-
-            var shopTab = bottomNav.transform.Find("ShopTab")?.gameObject;
-            var battleTab = bottomNav.transform.Find("BattleTab")?.gameObject;
-            var leadTab = bottomNav.transform.Find("LeaderboardTab")?.gameObject;
-
-            SetupNavTab(shopTab, "MAĞAZA", shopIcon, navNormalBlue, new Color(0.75f, 0.88f, 1f), false, font);
-            SetupNavTab(battleTab, "ANA MENÜ", homeIcon, navNormalBlue, new Color(0.75f, 0.88f, 1f), false, font);
-            SetupNavTab(leadTab, "SIRALAMA", trophyIcon, navSelectedGold, new Color(1f, 0.92f, 0.4f), true, font);
-
-            var navUI = bottomNav.GetComponent<BottomNavigationUI>();
-            if (navUI != null)
-            {
-                navUI.SetTabSprites(
-                    navSelectedGold, navNormalBlue,
-                    navSelectedGold, navNormalBlue,
-                    navSelectedGold, navNormalBlue);
-                navUI.SwitchTab(NavigationTab.Leaderboard);
-            }
         }
     }
 }

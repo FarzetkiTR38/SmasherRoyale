@@ -142,6 +142,10 @@ namespace RoyalSmash.UI
             if (_stageLabelText != null)
             {
                 _stageLabelText.text = "Aşama";
+                if (data.Rank == 1) _stageLabelText.color = new Color(1.0f, 0.90f, 0.65f);
+                else if (data.Rank == 2) _stageLabelText.color = new Color(0.90f, 0.95f, 1.0f);
+                else if (data.Rank == 3) _stageLabelText.color = new Color(1.0f, 0.85f, 0.70f);
+                else _stageLabelText.color = new Color(0.75f, 0.90f, 1.0f);
             }
 
             if (_levelText != null)
