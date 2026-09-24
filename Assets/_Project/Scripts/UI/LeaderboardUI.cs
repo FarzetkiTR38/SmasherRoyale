@@ -116,7 +116,8 @@ namespace RoyalSmash.UI
 
             if (entries == null) return;
 
-            // 2. Hide existing spawned rows
+            // 2. Clean nulls & Hide existing spawned rows
+            _spawnedRows.RemoveAll(r => r == null);
             foreach (var row in _spawnedRows)
             {
                 row.gameObject.SetActive(false);
