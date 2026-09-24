@@ -1,0 +1,39 @@
+{
+  "tool": "Built-in image_gen",
+  "exportSize": [
+    360,
+    180
+  ],
+  "sources": [
+    {
+      "name": "Shop_Normal",
+      "path": "C:\\Users\\Farzetki\\.codex\\generated_images\\01a0bfa3-57f0-7130-a86e-d16793ced969\\exec-e0293d3c-69b7-4c89-93d1-fd35c9c2f7da.png",
+      "prompt": "Edit the attached existing MAĞAZA mobile game navigation button into a WIDE bottom-navigation tab. Return exactly ONE finished sprite PNG with actual transparency at 360x180 pixels, aspect ratio 2:1. The glossy dark-navy panel fills the canvas edge-to-edge with ZERO external margin, small 10px diagonally clipped corners, thin 5px layered electric-blue metallic rim. No exterior glow or drop shadow; transparency is only outside the clipped corners. Straight-on, no perspective. Keep the reference's dimensional polished blue-and-white shop awning, resized without distortion, centered at x180,y66, fitting a 96x90 box. Under it put bold white text exactly \"MAĞAZA\" centered x180,y143, height26. Recompose spacious horizontally; do NOT stretch or squash existing icon/text. Preserve the premium game UI style. This is the NORMAL/unselected state of a coherent six-sprite set. All subsequent sprites will use identical rectangle, corners, bevel, icon alignment and text baseline. No extra text, checkerboard or black background."
+    },
+    {
+      "name": "Shop_Selected",
+      "path": "C:\\Users\\Farzetki\\.codex\\generated_images\\01a0bfa3-57f0-7130-a86e-d16793ced969\\exec-90ee826c-6277-4db4-91e0-f125aaaac405.png",
+      "prompt": "Edit IMAGE 1, the wide navy navigation button template. IMAGE 2 supplies only the same blue and white storefront icon identity/style. Output ONE standalone selected bottom-navigation sprite, matching image1's EXACT canvas, wide panel silhouette, identical clipped corners, border thickness, background, text baseline and central content placement. Only change icon to same blue and white storefront icon and label to exactly \"MAĞAZA\". Icon centered in the same visual box as template store. Text is bold condensed uppercase, same HEIGHT as template text, never larger to fill its width. Selected state: recolor the blue rim to polished luminous gold and text to golden yellow, with highlights INSIDE the border. No exterior halo. Preserve panel geometry completely. True alpha transparent exterior, not black/checkerboard. No new elements, badges, shadows outside panel or padding. Intended final size360x180, wide2:1. It belongs to a six-image set with same alignment and dimensions."
+    },
+    {
+      "name": "Home_Normal",
+      "path": "C:\\Users\\Farzetki\\.codex\\generated_images\\01a0bfa3-57f0-7130-a86e-d16793ced969\\exec-30e40530-8d2d-4d77-842c-209914f4a9e6.png",
+      "prompt": "Edit IMAGE 1, the wide navy navigation button template. IMAGE 2 supplies only the silver house icon identity/style. Output ONE standalone normal bottom-navigation sprite, matching image1's EXACT canvas, wide panel silhouette, identical clipped corners, border thickness, background, text baseline and central content placement. Only change icon to silver house icon and label to exactly \"ANA MENÜ\". Icon centered in the same visual box as template store. Text is bold condensed uppercase, same HEIGHT as template text, never larger to fill its width. Normal state: retain precisely the template electric-blue rim and white/silver lettering. Preserve panel geometry completely. True alpha transparent exterior, not black/checkerboard. No new elements, badges, shadows outside panel or padding. Intended final size360x180, wide2:1. It belongs to a six-image set with same alignment and dimensions."
+    },
+    {
+      "name": "Home_Selected",
+      "path": "C:\\Users\\Farzetki\\.codex\\generated_images\\01a0bfa3-57f0-7130-a86e-d16793ced969\\exec-0066ad01-5f67-45a1-a7d7-15d83b08f519.png",
+      "prompt": "Edit IMAGE 1, the wide navy navigation button template. IMAGE 2 supplies only the gold house icon identity/style. Output ONE standalone selected bottom-navigation sprite, matching image1's EXACT canvas, wide panel silhouette, identical clipped corners, border thickness, background, text baseline and central content placement. Only change icon to gold house icon and label to exactly \"ANA MENÜ\". Icon centered in the same visual box as template store. Text is bold condensed uppercase, same HEIGHT as template text, never larger to fill its width. Selected state: recolor the blue rim to polished luminous gold and text to golden yellow, with highlights INSIDE the border. No exterior halo. Preserve panel geometry completely. True alpha transparent exterior, not black/checkerboard. No new elements, badges, shadows outside panel or padding. Intended final size360x180, wide2:1. It belongs to a six-image set with same alignment and dimensions."
+    },
+    {
+      "name": "Rank_Normal",
+      "path": "C:\\Users\\Farzetki\\.codex\\generated_images\\01a0bfa3-57f0-7130-a86e-d16793ced969\\exec-15ad19b0-82bc-4c5f-9533-e4000538670c.png",
+      "prompt": "Edit IMAGE 1, the wide navy navigation button template. IMAGE 2 supplies only the silver trophy cup icon identity/style. Output ONE standalone normal bottom-navigation sprite, matching image1's EXACT canvas, wide panel silhouette, identical clipped corners, border thickness, background, text baseline and central content placement. Only change icon to silver trophy cup icon and label to exactly \"SIRALAMA\". Icon centered in the same visual box as template store. Text is bold condensed uppercase, same HEIGHT as template text, never larger to fill its width. Normal state: retain precisely the template electric-blue rim and white/silver lettering. Preserve panel geometry completely. True alpha transparent exterior, not black/checkerboard. No new elements, badges, shadows outside panel or padding. Intended final size360x180, wide2:1. It belongs to a six-image set with same alignment and dimensions."
+    },
+    {
+      "name": "Rank_Selected",
+      "path": "C:\\Users\\Farzetki\\.codex\\generated_images\\01a0bfa3-57f0-7130-a86e-d16793ced969\\exec-bc508642-6ae9-4d08-823f-d854bc06c54d.png",
+      "prompt": "Edit IMAGE 1, the wide navy navigation button template. IMAGE 2 supplies only the gold trophy cup icon identity/style. Output ONE standalone selected bottom-navigation sprite, matching image1's EXACT canvas, wide panel silhouette, identical clipped corners, border thickness, background, text baseline and central content placement. Only change icon to gold trophy cup icon and label to exactly \"SIRALAMA\". Icon centered in the same visual box as template store. Text is bold condensed uppercase, same HEIGHT as template text, never larger to fill its width. Selected state: recolor the blue rim to polished luminous gold and text to golden yellow, with highlights INSIDE the border. No exterior halo. Preserve panel geometry completely. True alpha transparent exterior, not black/checkerboard. No new elements, badges, shadows outside panel or padding. Intended final size360x180, wide2:1. It belongs to a six-image set with same alignment and dimensions."
+    }
+  ]
+}

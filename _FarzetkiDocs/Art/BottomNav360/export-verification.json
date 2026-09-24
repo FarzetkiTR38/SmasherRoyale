@@ -1,0 +1,26 @@
+[
+  {
+    "file": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\_FarzetkiArts\\mainmenu\\BottomNav_360x180\\Nav_Shop_Normal.png",
+    "result": "360x180 RGBA; source frame 0,101,1774,686"
+  },
+  {
+    "file": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\_FarzetkiArts\\mainmenu\\BottomNav_360x180\\Nav_Shop_Selected.png",
+    "result": "360x180 RGBA; source frame 0,97,1774,691"
+  },
+  {
+    "file": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\_FarzetkiArts\\mainmenu\\BottomNav_360x180\\Nav_Home_Normal.png",
+    "result": "360x180 RGBA; source frame 0,99,1774,689"
+  },
+  {
+    "file": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\_FarzetkiArts\\mainmenu\\BottomNav_360x180\\Nav_Home_Selected.png",
+    "result": "360x180 RGBA; source frame 0,97,1774,693"
+  },
+  {
+    "file": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\_FarzetkiArts\\mainmenu\\BottomNav_360x180\\Nav_Rank_Normal.png",
+    "result": "360x180 RGBA; source frame 0,97,1774,690"
+  },
+  {
+    "file": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\_FarzetkiArts\\mainmenu\\BottomNav_360x180\\Nav_Rank_Selected.png",
+    "result": "360x180 RGBA; source frame 0,98,1774,690"
+  }
+]
