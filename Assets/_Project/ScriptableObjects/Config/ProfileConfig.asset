@@ -16,19 +16,19 @@ MonoBehaviour:
   - Id: 0
     Name: Knight
     ThemeColor: {r: 0.25, g: 0.55, b: 0.95, a: 1}
-    Icon: {fileID: 21300000, guid: 87e4d13199bd51146ae3d273f61a67a1, type: 3}
+    Icon: {fileID: 21300000, guid: 32a7a556acdfb4b4eb654fadb0678551, type: 3}
   - Id: 1
     Name: Archer
     ThemeColor: {r: 0.2, g: 0.75, b: 0.35, a: 1}
-    Icon: {fileID: 21300000, guid: f76c1583f5f9d844896fd45d15d638b8, type: 3}
+    Icon: {fileID: 21300000, guid: ce99b603637bfde4c9e85690c018999c, type: 3}
   - Id: 2
     Name: King
     ThemeColor: {r: 0.95, g: 0.75, b: 0.15, a: 1}
-    Icon: {fileID: 21300000, guid: 764d21c644b19d74a981c921b20c76ab, type: 3}
+    Icon: {fileID: 21300000, guid: 145169b736fb3534c9dfea393d117500, type: 3}
   - Id: 3
     Name: Queen
     ThemeColor: {r: 0.8, g: 0.3, b: 0.75, a: 1}
-    Icon: {fileID: 21300000, guid: dec6b6bf556186149b9d61558e01187b, type: 3}
+    Icon: {fileID: 21300000, guid: 3174cae7f6b4c0a4dbf87fbb4790416f, type: 3}
   - Id: 4
     Name: Wizard
     ThemeColor: {r: 0.55, g: 0.25, b: 0.85, a: 1}
@@ -49,16 +49,16 @@ MonoBehaviour:
   - Id: 0
     Name: Bronze
     BorderColor: {r: 0.7, g: 0.45, b: 0.25, a: 1}
-    BorderSprite: {fileID: 21300000, guid: 8be5acba3d05db34a94d0b89ef323110, type: 3}
+    BorderSprite: {fileID: 21300000, guid: 2d0f85238bee9cd40baa3b540802cd37, type: 3}
   - Id: 1
     Name: Silver
     BorderColor: {r: 0.8, g: 0.85, b: 0.9, a: 1}
-    BorderSprite: {fileID: 21300000, guid: e54ca3e24a6aff544814d11c9ea519ee, type: 3}
+    BorderSprite: {fileID: 21300000, guid: 67b29bdb9b5c9f84c8cb3bce1f151756, type: 3}
   - Id: 2
     Name: Gold
     BorderColor: {r: 1, g: 0.85, b: 0.2, a: 1}
-    BorderSprite: {fileID: 21300000, guid: 14ad7cc899e67c4438ececb537385b12, type: 3}
+    BorderSprite: {fileID: 21300000, guid: 42fab0a5dcae6e94da3d562f93b93c38, type: 3}
   - Id: 3
     Name: Amethyst
     BorderColor: {r: 0.65, g: 0.2, b: 0.9, a: 1}
-    BorderSprite: {fileID: 21300000, guid: c3a3ba32f2ba8a64795d2726b44efb5d, type: 3}
+    BorderSprite: {fileID: 21300000, guid: 94eb205dc23809649a91c80e0347ec93, type: 3}

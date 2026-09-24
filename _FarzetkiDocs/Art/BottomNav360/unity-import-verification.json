@@ -1,0 +1,50 @@
+[
+  {
+    "path": "Assets/_Project/Art/_FarzetkiArts/mainmenu/BottomNav_360x180\\Nav_Home_Normal.png",
+    "width": 360.0,
+    "height": 180.0,
+    "pixelsPerUnit": 100.0,
+    "pivot": "(180.00, 90.00)",
+    "hasAlpha": true
+  },
+  {
+    "path": "Assets/_Project/Art/_FarzetkiArts/mainmenu/BottomNav_360x180\\Nav_Home_Selected.png",
+    "width": 360.0,
+    "height": 180.0,
+    "pixelsPerUnit": 100.0,
+    "pivot": "(180.00, 90.00)",
+    "hasAlpha": true
+  },
+  {
+    "path": "Assets/_Project/Art/_FarzetkiArts/mainmenu/BottomNav_360x180\\Nav_Rank_Normal.png",
+    "width": 360.0,
+    "height": 180.0,
+    "pixelsPerUnit": 100.0,
+    "pivot": "(180.00, 90.00)",
+    "hasAlpha": true
+  },
+  {
+    "path": "Assets/_Project/Art/_FarzetkiArts/mainmenu/BottomNav_360x180\\Nav_Rank_Selected.png",
+    "width": 360.0,
+    "height": 180.0,
+    "pixelsPerUnit": 100.0,
+    "pivot": "(180.00, 90.00)",
+    "hasAlpha": true
+  },
+  {
+    "path": "Assets/_Project/Art/_FarzetkiArts/mainmenu/BottomNav_360x180\\Nav_Shop_Normal.png",
+    "width": 360.0,
+    "height": 180.0,
+    "pixelsPerUnit": 100.0,
+    "pivot": "(180.00, 90.00)",
+    "hasAlpha": true
+  },
+  {
+    "path": "Assets/_Project/Art/_FarzetkiArts/mainmenu/BottomNav_360x180\\Nav_Shop_Selected.png",
+    "width": 360.0,
+    "height": 180.0,
+    "pixelsPerUnit": 100.0,
+    "pivot": "(180.00, 90.00)",
+    "hasAlpha": true
+  }
+]
