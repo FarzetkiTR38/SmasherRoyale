@@ -127,31 +127,31 @@ namespace RoyalSmash.UI
 
             if (_levelTitleText != null)
             {
-                _levelTitleText.text = $"LEVEL {level} COMPLETED!";
+                _levelTitleText.text = $"<color=#E0F4FF>SEVİYE {level}</color>\n<color=#FFDF20><size=115%>TAMAMLANDI!</size></color>";
             }
 
             if (isDuplicateReplay || totalGold == 0)
             {
-                if (_baseRewardText != null) _baseRewardText.text = "Base Reward: +0 Gold (Replay)";
-                if (_remainingBonusText != null) _remainingBonusText.text = $"Ball Bonus ({remainingBalls} × 2): +0 Gold";
-                if (_totalGoldText != null) _totalGoldText.text = "+0 GOLD (CLAIMED)";
+                if (_baseRewardText != null) _baseRewardText.text = "Temel Ödül: <b><color=#FFD700>+0 Altın</color></b> (Tekrar)";
+                if (_remainingBonusText != null) _remainingBonusText.text = $"Top Bonusu ({remainingBalls} x 2): <b><color=#FFD700>+0 Altın</color></b>";
+                if (_totalGoldText != null) _totalGoldText.text = "<b><color=#FFE224>+0 ALTIN</color></b>\n<size=58%><color=#EDF4FA>(ALINDI)</color></size>";
             }
             else
             {
                 if (_baseRewardText != null)
                 {
-                    _baseRewardText.text = $"Base Reward: +{baseReward} Gold";
+                    _baseRewardText.text = $"Temel Ödül: <b><color=#FFD700>+{baseReward} Altın</color></b>";
                 }
 
                 if (_remainingBonusText != null)
                 {
                     int ballBonus = remainingBalls * 2;
-                    _remainingBonusText.text = $"Ball Bonus ({remainingBalls} × 2): +{ballBonus} Gold";
+                    _remainingBonusText.text = $"Top Bonusu ({remainingBalls} x 2): <b><color=#FFD700>+{ballBonus} Altın</color></b>";
                 }
 
                 if (_totalGoldText != null)
                 {
-                    _totalGoldText.text = $"+{totalGold} GOLD";
+                    _totalGoldText.text = $"<b><color=#FFE224>+{totalGold} ALTIN</color></b>";
                 }
             }
 
@@ -160,11 +160,11 @@ namespace RoyalSmash.UI
                 var btnText = _continueButton.GetComponentInChildren<TextMeshProUGUI>();
                 if (level >= 30)
                 {
-                    if (btnText != null) btnText.text = "RETURN TO MENU";
+                    if (btnText != null) btnText.text = "<b>ANA MENÜYE DÖN</b>";
                 }
                 else
                 {
-                    if (btnText != null) btnText.text = "NEXT LEVEL";
+                    if (btnText != null) btnText.text = "<b>SONRAKİ SEVİYE >></b>";
                 }
             }
 

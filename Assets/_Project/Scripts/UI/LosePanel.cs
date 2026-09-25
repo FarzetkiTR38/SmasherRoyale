@@ -111,12 +111,12 @@ namespace RoyalSmash.UI
 
             if (_titleText != null)
             {
-                _titleText.text = "LEVEL FAILED";
+                _titleText.text = "SEVİYE BAŞARISIZ!";
             }
 
             if (_reasonText != null)
             {
-                _reasonText.text = $"No balls remaining!\n({remainingTargets} targets left)";
+                _reasonText.text = $"Top kalmadı!\n({remainingTargets} hedef kaldı)";
             }
 
             _panelRoot.SetActive(true);

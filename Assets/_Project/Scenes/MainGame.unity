@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 6243254}
   - component: {fileID: 6243253}
   - component: {fileID: 6243252}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 7520974}
   - component: {fileID: 7520976}
   - component: {fileID: 7520975}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 27532856}
   - component: {fileID: 27532855}
   - component: {fileID: 27532854}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 51490119}
   - component: {fileID: 51490121}
   - component: {fileID: 51490120}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_CloseSlashA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 69948814}
   - component: {fileID: 69948816}
   - component: {fileID: 69948815}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 70496896}
   - component: {fileID: 70496898}
   - component: {fileID: 70496897}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WarningText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 71022282}
   - component: {fileID: 71022281}
   - component: {fileID: 71022283}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 96626706}
   - component: {fileID: 96626705}
   - component: {fileID: 96626704}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 105738290}
   - component: {fileID: 105738292}
   - component: {fileID: 105738291}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SfxToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 113110848}
   - component: {fileID: 113110850}
   - component: {fileID: 113110849}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 115215838}
   - component: {fileID: 115215837}
   - component: {fileID: 115215836}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,7 +1464,7 @@ GameObject:
   - component: {fileID: 115632241}
   - component: {fileID: 115632243}
   - component: {fileID: 115632242}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,7 +1676,7 @@ GameObject:
   - component: {fileID: 123034721}
   - component: {fileID: 123034720}
   - component: {fileID: 123034719}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1770,7 +1770,7 @@ GameObject:
   - component: {fileID: 123588467}
   - component: {fileID: 123588466}
   - component: {fileID: 123588470}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CloseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1903,7 +1903,7 @@ GameObject:
   - component: {fileID: 126202661}
   - component: {fileID: 126202660}
   - component: {fileID: 126202659}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_IvoryPlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2075,7 +2075,7 @@ GameObject:
   - component: {fileID: 132495826}
   - component: {fileID: 132495825}
   - component: {fileID: 132495830}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD_SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2266,7 +2266,7 @@ GameObject:
   - component: {fileID: 135997612}
   - component: {fileID: 135997614}
   - component: {fileID: 135997613}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2409,7 +2409,7 @@ GameObject:
   - component: {fileID: 138834277}
   - component: {fileID: 138834276}
   - component: {fileID: 138834281}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SkillBtn_InfinityBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2612,7 +2612,7 @@ GameObject:
   - component: {fileID: 145068182}
   - component: {fileID: 145068184}
   - component: {fileID: 145068183}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LockText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2750,7 +2750,7 @@ GameObject:
   - component: {fileID: 145469125}
   - component: {fileID: 145469124}
   - component: {fileID: 145469123}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2843,7 +2843,7 @@ GameObject:
   - component: {fileID: 151659653}
   - component: {fileID: 151659652}
   - component: {fileID: 151659651}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2936,7 +2936,7 @@ GameObject:
   - component: {fileID: 152495816}
   - component: {fileID: 152495815}
   - component: {fileID: 152495814}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3029,7 +3029,7 @@ GameObject:
   - component: {fileID: 170934079}
   - component: {fileID: 170934078}
   - component: {fileID: 170934077}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3341,6 +3341,132 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &194242848
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 681122131}
+    m_Modifications:
+    - target: {fileID: 1200047403614232767, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428165267705738063, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294964715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428165267705738063, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3843836338507902572, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388653165039598890, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278522911
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388653165039598890, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560670213206796319, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+      propertyPath: m_Name
+      value: LosePanel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+--- !u!224 &194242849 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
+  m_PrefabInstance: {fileID: 194242848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &203335990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,7 +3569,7 @@ GameObject:
   - component: {fileID: 208774537}
   - component: {fileID: 208774536}
   - component: {fileID: 208774535}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SimulatedAdDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3541,7 +3667,7 @@ GameObject:
   - component: {fileID: 211834082}
   - component: {fileID: 211834081}
   - component: {fileID: 211834080}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3633,7 +3759,7 @@ GameObject:
   - component: {fileID: 219745952}
   - component: {fileID: 219745954}
   - component: {fileID: 219745953}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_CloseSlashB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3706,7 +3832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 219918802}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Gear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3956,7 @@ GameObject:
   - component: {fileID: 239186813}
   - component: {fileID: 239186815}
   - component: {fileID: 239186812}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3941,7 +4067,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259408190}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3983,7 +4109,7 @@ GameObject:
   - component: {fileID: 264794631}
   - component: {fileID: 264794630}
   - component: {fileID: 264794632}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HubLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4158,7 +4284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 290113764}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4379,7 +4505,7 @@ GameObject:
   - component: {fileID: 299159362}
   - component: {fileID: 299159364}
   - component: {fileID: 299159363}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4505,7 +4631,7 @@ GameObject:
   - component: {fileID: 302530870}
   - component: {fileID: 302530872}
   - component: {fileID: 302530871}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ExitLevelBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4674,7 +4800,7 @@ GameObject:
   - component: {fileID: 306236164}
   - component: {fileID: 306236166}
   - component: {fileID: 306236165}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CloseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4967,7 @@ GameObject:
   - component: {fileID: 328345065}
   - component: {fileID: 328345066}
   - component: {fileID: 328345067}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4978,7 +5104,7 @@ GameObject:
   - component: {fileID: 329048535}
   - component: {fileID: 329048537}
   - component: {fileID: 329048536}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5055,7 +5181,7 @@ GameObject:
   - component: {fileID: 329682337}
   - component: {fileID: 329682336}
   - component: {fileID: 329682335}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5149,7 +5275,7 @@ GameObject:
   - component: {fileID: 333401864}
   - component: {fileID: 333401863}
   - component: {fileID: 333401866}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FailButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5282,7 +5408,7 @@ GameObject:
   - component: {fileID: 351345806}
   - component: {fileID: 351345805}
   - component: {fileID: 351345804}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5464,7 +5590,7 @@ GameObject:
   - component: {fileID: 371949956}
   - component: {fileID: 371949958}
   - component: {fileID: 371949957}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5539,7 +5665,7 @@ GameObject:
   - component: {fileID: 378239513}
   - component: {fileID: 378239515}
   - component: {fileID: 378239514}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5689,7 +5815,7 @@ GameObject:
   - component: {fileID: 396024073}
   - component: {fileID: 396024072}
   - component: {fileID: 396024074}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LockBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5777,7 +5903,7 @@ GameObject:
   - component: {fileID: 397771404}
   - component: {fileID: 397771406}
   - component: {fileID: 397771405}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6002,7 +6128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398193959}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6044,7 +6170,7 @@ GameObject:
   - component: {fileID: 398460652}
   - component: {fileID: 398460651}
   - component: {fileID: 398460650}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6226,7 +6352,7 @@ GameObject:
   - component: {fileID: 405666217}
   - component: {fileID: 405666219}
   - component: {fileID: 405666218}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6586,7 +6712,7 @@ GameObject:
   - component: {fileID: 448385483}
   - component: {fileID: 448385482}
   - component: {fileID: 448385481}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6679,7 +6805,7 @@ GameObject:
   - component: {fileID: 460615662}
   - component: {fileID: 460615661}
   - component: {fileID: 460615660}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_StatusWell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6769,7 +6895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495517475}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6925,7 +7051,7 @@ GameObject:
   - component: {fileID: 523453498}
   - component: {fileID: 523453497}
   - component: {fileID: 523453499}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ActiveGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7013,7 +7139,7 @@ GameObject:
   - component: {fileID: 526797229}
   - component: {fileID: 526797228}
   - component: {fileID: 526797227}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7105,7 +7231,7 @@ GameObject:
   - component: {fileID: 540538164}
   - component: {fileID: 540538166}
   - component: {fileID: 540538165}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UsesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7242,7 +7368,7 @@ GameObject:
   - component: {fileID: 545625321}
   - component: {fileID: 545625323}
   - component: {fileID: 545625322}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BannerBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7318,7 +7444,7 @@ GameObject:
   - component: {fileID: 546403215}
   - component: {fileID: 546403217}
   - component: {fileID: 546403216}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UsesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7455,7 +7581,7 @@ GameObject:
   - component: {fileID: 554832208}
   - component: {fileID: 554832210}
   - component: {fileID: 554832209}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7530,7 +7656,7 @@ GameObject:
   - component: {fileID: 556780175}
   - component: {fileID: 556780177}
   - component: {fileID: 556780176}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7667,7 +7793,7 @@ GameObject:
   - component: {fileID: 570558429}
   - component: {fileID: 570558431}
   - component: {fileID: 570558430}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7804,7 +7930,7 @@ GameObject:
   - component: {fileID: 586832385}
   - component: {fileID: 586832387}
   - component: {fileID: 586832386}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7930,164 +8056,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586832384}
   m_CullTransparentMesh: 1
---- !u!1001 &591642839
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 681122131}
-    m_Modifications:
-    - target: {fileID: 122168620136513368, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 122168620136513368, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 122168620136513368, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1200047403614232767, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8560670213206796319, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      propertyPath: m_Name
-      value: LosePanel
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4870272681731283027, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 591642844}
-    - targetCorrespondingSourceObject: {fileID: 4179320349263194744, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 591642843}
-  m_SourcePrefab: {fileID: 100100000, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
---- !u!224 &591642840 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6152967120831953960, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-  m_PrefabInstance: {fileID: 591642839}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &591642841 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4179320349263194744, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-  m_PrefabInstance: {fileID: 591642839}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &591642842 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4870272681731283027, guid: d44d2a4d8deaeed4b90b5587bae80531, type: 3}
-  m_PrefabInstance: {fileID: 591642839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &591642843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591642841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf0cb0179f3deb4b961a0162b633946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonSound
---- !u!114 &591642844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591642842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf0cb0179f3deb4b961a0162b633946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonSound
 --- !u!1 &601219850
 GameObject:
   m_ObjectHideFlags: 0
@@ -8105,7 +8073,7 @@ GameObject:
   - component: {fileID: 601219853}
   - component: {fileID: 601219852}
   - component: {fileID: 601219857}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SkillBtn_MegaBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8309,7 +8277,7 @@ GameObject:
   - component: {fileID: 609221143}
   - component: {fileID: 609221142}
   - component: {fileID: 609221141}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8402,7 +8370,7 @@ GameObject:
   - component: {fileID: 610149719}
   - component: {fileID: 610149718}
   - component: {fileID: 610149717}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8495,7 +8463,7 @@ GameObject:
   - component: {fileID: 615734046}
   - component: {fileID: 615734045}
   - component: {fileID: 615734044}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8587,7 +8555,7 @@ GameObject:
   - component: {fileID: 619182495}
   - component: {fileID: 619182497}
   - component: {fileID: 619182496}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8665,7 +8633,7 @@ GameObject:
   - component: {fileID: 622858243}
   - component: {fileID: 622858244}
   - component: {fileID: 622858240}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UsesBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8785,7 +8753,7 @@ GameObject:
   - component: {fileID: 623123095}
   - component: {fileID: 623123097}
   - component: {fileID: 623123096}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9012,7 +8980,7 @@ GameObject:
   - component: {fileID: 651179049}
   - component: {fileID: 651179051}
   - component: {fileID: 651179050}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9149,7 +9117,7 @@ GameObject:
   - component: {fileID: 656132921}
   - component: {fileID: 656132923}
   - component: {fileID: 656132922}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9287,7 +9255,7 @@ GameObject:
   - component: {fileID: 666243433}
   - component: {fileID: 666243432}
   - component: {fileID: 666243431}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9451,7 +9419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 676888301}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9492,7 +9460,7 @@ GameObject:
   - component: {fileID: 678710936}
   - component: {fileID: 678710938}
   - component: {fileID: 678710937}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9569,7 +9537,7 @@ GameObject:
   - component: {fileID: 681122130}
   - component: {fileID: 681122129}
   - component: {fileID: 681122128}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9625,9 +9593,9 @@ Canvas:
   m_GameObject: {fileID: 681122127}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 2117069538}
-  m_PlaneDistance: 1
+  m_PlaneDistance: 2
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -9656,8 +9624,8 @@ RectTransform:
   - {fileID: 1406774722}
   - {fileID: 1918552492}
   - {fileID: 132495824}
-  - {fileID: 2107158559}
-  - {fileID: 591642840}
+  - {fileID: 772115509}
+  - {fileID: 194242849}
   - {fileID: 1892368481}
   - {fileID: 1049573367}
   - {fileID: 1372521132}
@@ -9682,7 +9650,7 @@ GameObject:
   - component: {fileID: 697725224}
   - component: {fileID: 697725226}
   - component: {fileID: 697725225}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9889,7 +9857,7 @@ GameObject:
   - component: {fileID: 725540995}
   - component: {fileID: 725540997}
   - component: {fileID: 725540994}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10006,7 +9974,7 @@ GameObject:
   - component: {fileID: 730021397}
   - component: {fileID: 730021396}
   - component: {fileID: 730021398}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10094,7 +10062,7 @@ GameObject:
   - component: {fileID: 745304201}
   - component: {fileID: 745304203}
   - component: {fileID: 745304202}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LockText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10232,7 +10200,7 @@ GameObject:
   - component: {fileID: 752497474}
   - component: {fileID: 752497473}
   - component: {fileID: 752497472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10399,7 +10367,7 @@ GameObject:
   - component: {fileID: 769755564}
   - component: {fileID: 769755563}
   - component: {fileID: 769755565}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ActiveGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10475,6 +10443,178 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563dadb676bb54a4e8b63fd1ec942468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.SkyCitadelCircleGraphic
+--- !u!1001 &772115508
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 681122131}
+    m_Modifications:
+    - target: {fileID: 735340479024620026, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144341368399060246, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279055114
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144341368399060246, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095260748471139719, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095260748471139719, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661646749618327206, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661646749618327206, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556589054005095103, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256850715989945005, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256850715989945005, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497067425414216808, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_Name
+      value: WinPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154096896487198151, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990330538384065723, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_text
+      value: "<color=#E0F4FF>SEV\u0130YE 22</color>\n<color=#FFDF20><size=115%>TAMAMLANDI!</size></color>"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990330538384065723, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996172550693746047, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_text
+      value: '<b><color=#FFE224>+0 ALTIN</color></b>
+
+        <size=58%><color=#EDF4FA>(ALINDI)</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996172550693746047, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 7665410803856283408, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024141626870832836, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+--- !u!224 &772115509 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
+  m_PrefabInstance: {fileID: 772115508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &778312789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10561,7 +10701,7 @@ GameObject:
   - component: {fileID: 804740200}
   - component: {fileID: 804740199}
   - component: {fileID: 804740198}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10658,7 +10798,7 @@ GameObject:
   - component: {fileID: 806702551}
   - component: {fileID: 806702553}
   - component: {fileID: 806702554}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BuyWithGoldBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10790,7 +10930,7 @@ GameObject:
   - component: {fileID: 815721496}
   - component: {fileID: 815721498}
   - component: {fileID: 815721497}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10867,7 +11007,7 @@ GameObject:
   - component: {fileID: 819937194}
   - component: {fileID: 819937193}
   - component: {fileID: 819937192}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11121,7 +11261,7 @@ GameObject:
   - component: {fileID: 843200654}
   - component: {fileID: 843200653}
   - component: {fileID: 843200652}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11287,7 +11427,7 @@ GameObject:
   - component: {fileID: 859369605}
   - component: {fileID: 859369607}
   - component: {fileID: 859369606}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11441,7 +11581,7 @@ GameObject:
   - component: {fileID: 877707716}
   - component: {fileID: 877707718}
   - component: {fileID: 877707717}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11517,7 +11657,7 @@ GameObject:
   - component: {fileID: 881131756}
   - component: {fileID: 881131755}
   - component: {fileID: 881131754}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11609,7 +11749,7 @@ GameObject:
   - component: {fileID: 899073963}
   - component: {fileID: 899073965}
   - component: {fileID: 899073964}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11744,7 +11884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 901063790}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VibrationRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11986,7 +12126,7 @@ GameObject:
   - component: {fileID: 954888592}
   - component: {fileID: 954888594}
   - component: {fileID: 954888595}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12181,7 +12321,7 @@ GameObject:
   - component: {fileID: 969648825}
   - component: {fileID: 969648824}
   - component: {fileID: 969648823}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12273,7 +12413,7 @@ GameObject:
   - component: {fileID: 975252237}
   - component: {fileID: 975252239}
   - component: {fileID: 975252238}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12423,7 +12563,7 @@ GameObject:
   - component: {fileID: 989393105}
   - component: {fileID: 989393104}
   - component: {fileID: 989393103}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12589,7 +12729,7 @@ GameObject:
   - component: {fileID: 1001803389}
   - component: {fileID: 1001803391}
   - component: {fileID: 1001803390}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12726,7 +12866,7 @@ GameObject:
   - component: {fileID: 1009838337}
   - component: {fileID: 1009838336}
   - component: {fileID: 1009838335}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TargetRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12979,7 +13119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1032931736}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13021,7 +13161,7 @@ GameObject:
   - component: {fileID: 1044379872}
   - component: {fileID: 1044379871}
   - component: {fileID: 1044379870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13114,7 +13254,7 @@ GameObject:
   - component: {fileID: 1047155314}
   - component: {fileID: 1047155313}
   - component: {fileID: 1047155312}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13296,7 +13436,7 @@ GameObject:
   - component: {fileID: 1049573367}
   - component: {fileID: 1049573368}
   - component: {fileID: 1049573366}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TutorialOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13367,7 +13507,7 @@ GameObject:
   - component: {fileID: 1063530142}
   - component: {fileID: 1063530141}
   - component: {fileID: 1063530140}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13460,7 +13600,7 @@ GameObject:
   - component: {fileID: 1074610643}
   - component: {fileID: 1074610642}
   - component: {fileID: 1074610644}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13547,7 +13687,7 @@ GameObject:
   - component: {fileID: 1089754259}
   - component: {fileID: 1089754261}
   - component: {fileID: 1089754260}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13620,7 +13760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1097133638}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13841,7 +13981,7 @@ GameObject:
   - component: {fileID: 1110907129}
   - component: {fileID: 1110907131}
   - component: {fileID: 1110907130}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14091,7 +14231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1124230440}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14133,7 +14273,7 @@ GameObject:
   - component: {fileID: 1130846900}
   - component: {fileID: 1130846899}
   - component: {fileID: 1130846898}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14300,7 +14440,7 @@ GameObject:
   - component: {fileID: 1139136473}
   - component: {fileID: 1139136472}
   - component: {fileID: 1139136471}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14393,7 +14533,7 @@ GameObject:
   - component: {fileID: 1143746996}
   - component: {fileID: 1143746995}
   - component: {fileID: 1143746997}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14480,7 +14620,7 @@ GameObject:
   - component: {fileID: 1145991308}
   - component: {fileID: 1145991310}
   - component: {fileID: 1145991309}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14620,7 +14760,7 @@ GameObject:
   - component: {fileID: 1191813915}
   - component: {fileID: 1191813912}
   - component: {fileID: 1191813911}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD_SkyCitadelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14760,7 +14900,7 @@ GameObject:
   - component: {fileID: 1197884484}
   - component: {fileID: 1197884486}
   - component: {fileID: 1197884485}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ConfirmBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15016,7 +15156,7 @@ GameObject:
   - component: {fileID: 1212699174}
   - component: {fileID: 1212699173}
   - component: {fileID: 1212699172}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_NumberWell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15109,7 +15249,7 @@ GameObject:
   - component: {fileID: 1222599574}
   - component: {fileID: 1222599573}
   - component: {fileID: 1222599575}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LockBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15269,7 +15409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1259306938}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15402,7 +15542,7 @@ GameObject:
   - component: {fileID: 1271710721}
   - component: {fileID: 1271710720}
   - component: {fileID: 1271710723}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15535,7 +15675,7 @@ GameObject:
   - component: {fileID: 1273253895}
   - component: {fileID: 1273253894}
   - component: {fileID: 1273253893}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15628,7 +15768,7 @@ GameObject:
   - component: {fileID: 1275506285}
   - component: {fileID: 1275506284}
   - component: {fileID: 1275506283}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15724,7 +15864,7 @@ GameObject:
   - component: {fileID: 1275991871}
   - component: {fileID: 1275991873}
   - component: {fileID: 1275991872}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MusicToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15892,7 +16032,7 @@ GameObject:
   - component: {fileID: 1295160543}
   - component: {fileID: 1295160542}
   - component: {fileID: 1295160541}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_HeaderLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15984,7 +16124,7 @@ GameObject:
   - component: {fileID: 1296375699}
   - component: {fileID: 1296375701}
   - component: {fileID: 1296375700}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16121,7 +16261,7 @@ GameObject:
   - component: {fileID: 1307355827}
   - component: {fileID: 1307355829}
   - component: {fileID: 1307355828}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16259,7 +16399,7 @@ GameObject:
   - component: {fileID: 1317902948}
   - component: {fileID: 1317902947}
   - component: {fileID: 1317902949}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16344,7 +16484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1319449988}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16385,7 +16525,7 @@ GameObject:
   - component: {fileID: 1321467797}
   - component: {fileID: 1321467799}
   - component: {fileID: 1321467798}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_CounterTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16526,7 +16666,7 @@ GameObject:
   - component: {fileID: 1362759434}
   - component: {fileID: 1362759436}
   - component: {fileID: 1362759435}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResumeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16691,7 +16831,7 @@ GameObject:
   - component: {fileID: 1363778794}
   - component: {fileID: 1363778796}
   - component: {fileID: 1363778795}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16919,7 +17059,7 @@ GameObject:
   - component: {fileID: 1367421444}
   - component: {fileID: 1367421443}
   - component: {fileID: 1367421442}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17010,7 +17150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1372521132}
   - component: {fileID: 1372521131}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OutOfLivesDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17066,7 +17206,7 @@ GameObject:
   - component: {fileID: 1387538916}
   - component: {fileID: 1387538915}
   - component: {fileID: 1387538914}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17158,7 +17298,7 @@ GameObject:
   - component: {fileID: 1389733916}
   - component: {fileID: 1389733918}
   - component: {fileID: 1389733917}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17295,7 +17435,7 @@ GameObject:
   - component: {fileID: 1391075773}
   - component: {fileID: 1391075775}
   - component: {fileID: 1391075774}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17371,7 +17511,7 @@ GameObject:
   - component: {fileID: 1391763441}
   - component: {fileID: 1391763440}
   - component: {fileID: 1391763439}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17463,7 +17603,7 @@ GameObject:
   - component: {fileID: 1398986184}
   - component: {fileID: 1398986186}
   - component: {fileID: 1398986185}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17603,7 +17743,7 @@ GameObject:
   - component: {fileID: 1406774723}
   - component: {fileID: 1406774727}
   - component: {fileID: 1406774726}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD_BallCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17778,7 +17918,7 @@ GameObject:
   - component: {fileID: 1444718621}
   - component: {fileID: 1444718623}
   - component: {fileID: 1444718622}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17988,7 +18128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1452655248}
   - component: {fileID: 1452655249}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ExitConfirmDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18190,7 +18330,7 @@ GameObject:
   - component: {fileID: 1475870826}
   - component: {fileID: 1475870825}
   - component: {fileID: 1475870824}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18283,7 +18423,7 @@ GameObject:
   - component: {fileID: 1477932810}
   - component: {fileID: 1477932809}
   - component: {fileID: 1477932808}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18375,7 +18515,7 @@ GameObject:
   - component: {fileID: 1478191052}
   - component: {fileID: 1478191054}
   - component: {fileID: 1478191053}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18452,7 +18592,7 @@ GameObject:
   - component: {fileID: 1478621031}
   - component: {fileID: 1478621030}
   - component: {fileID: 1478621029}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_StatusWell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18545,7 +18685,7 @@ GameObject:
   - component: {fileID: 1498552523}
   - component: {fileID: 1498552522}
   - component: {fileID: 1498552521}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18637,7 +18777,7 @@ GameObject:
   - component: {fileID: 1499084745}
   - component: {fileID: 1499084746}
   - component: {fileID: 1499084747}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18774,7 +18914,7 @@ GameObject:
   - component: {fileID: 1505265920}
   - component: {fileID: 1505265922}
   - component: {fileID: 1505265921}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19030,7 +19170,7 @@ GameObject:
   - component: {fileID: 1535342816}
   - component: {fileID: 1535342818}
   - component: {fileID: 1535342819}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19106,7 +19246,7 @@ GameObject:
   - component: {fileID: 1563132071}
   - component: {fileID: 1563132070}
   - component: {fileID: 1563132069}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19196,7 +19336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1567302094}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19403,7 +19543,7 @@ GameObject:
   - component: {fileID: 1574543023}
   - component: {fileID: 1574543022}
   - component: {fileID: 1574543025}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19536,7 +19676,7 @@ GameObject:
   - component: {fileID: 1587906854}
   - component: {fileID: 1587906853}
   - component: {fileID: 1587906852}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19719,7 +19859,7 @@ GameObject:
   - component: {fileID: 1594124585}
   - component: {fileID: 1594124584}
   - component: {fileID: 1594124583}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ProgressSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19845,7 +19985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1612259214}
   - component: {fileID: 1612259215}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InGameSettingsDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19906,7 +20046,7 @@ GameObject:
   - component: {fileID: 1615999190}
   - component: {fileID: 1615999189}
   - component: {fileID: 1615999188}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_LeftClasp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19999,7 +20139,7 @@ GameObject:
   - component: {fileID: 1621385163}
   - component: {fileID: 1621385162}
   - component: {fileID: 1621385161}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20089,7 +20229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623160971}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20205,7 +20345,7 @@ GameObject:
   - component: {fileID: 1627522750}
   - component: {fileID: 1627522749}
   - component: {fileID: 1627522748}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20298,7 +20438,7 @@ GameObject:
   - component: {fileID: 1629213929}
   - component: {fileID: 1629213928}
   - component: {fileID: 1629213927}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20391,7 +20531,7 @@ GameObject:
   - component: {fileID: 1629627563}
   - component: {fileID: 1629627562}
   - component: {fileID: 1629627561}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20484,7 +20624,7 @@ GameObject:
   - component: {fileID: 1631118341}
   - component: {fileID: 1631118340}
   - component: {fileID: 1631118339}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20576,7 +20716,7 @@ GameObject:
   - component: {fileID: 1632886526}
   - component: {fileID: 1632886528}
   - component: {fileID: 1632886527}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20714,7 +20854,7 @@ GameObject:
   - component: {fileID: 1644010202}
   - component: {fileID: 1644010201}
   - component: {fileID: 1644010200}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_RightClasp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20806,7 +20946,7 @@ GameObject:
   - component: {fileID: 1648772270}
   - component: {fileID: 1648772272}
   - component: {fileID: 1648772271}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20943,7 +21083,7 @@ GameObject:
   - component: {fileID: 1649554219}
   - component: {fileID: 1649554221}
   - component: {fileID: 1649554220}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21084,7 +21224,7 @@ GameObject:
   - component: {fileID: 1666093269}
   - component: {fileID: 1666093271}
   - component: {fileID: 1666093270}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VibrationToggleBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21250,7 +21390,7 @@ GameObject:
   - component: {fileID: 1668903942}
   - component: {fileID: 1668903944}
   - component: {fileID: 1668903943}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21387,7 +21527,7 @@ GameObject:
   - component: {fileID: 1670470211}
   - component: {fileID: 1670470213}
   - component: {fileID: 1670470212}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21525,7 +21665,7 @@ GameObject:
   - component: {fileID: 1675859473}
   - component: {fileID: 1675859472}
   - component: {fileID: 1675859471}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21621,7 +21761,7 @@ GameObject:
   - component: {fileID: 1688153084}
   - component: {fileID: 1688153086}
   - component: {fileID: 1688153085}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CancelBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21875,7 +22015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705943979}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21917,7 +22057,7 @@ GameObject:
   - component: {fileID: 1715424856}
   - component: {fileID: 1715424855}
   - component: {fileID: 1715424854}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22010,7 +22150,7 @@ GameObject:
   - component: {fileID: 1722815785}
   - component: {fileID: 1722815784}
   - component: {fileID: 1722815783}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22103,7 +22243,7 @@ GameObject:
   - component: {fileID: 1726678106}
   - component: {fileID: 1726678105}
   - component: {fileID: 1726678104}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22270,7 +22410,7 @@ GameObject:
   - component: {fileID: 1769114267}
   - component: {fileID: 1769114266}
   - component: {fileID: 1769114265}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22363,7 +22503,7 @@ GameObject:
   - component: {fileID: 1781761919}
   - component: {fileID: 1781761918}
   - component: {fileID: 1781761917}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_IvoryEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22455,7 +22595,7 @@ GameObject:
   - component: {fileID: 1790937123}
   - component: {fileID: 1790937125}
   - component: {fileID: 1790937124}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22532,7 +22672,7 @@ GameObject:
   - component: {fileID: 1798483447}
   - component: {fileID: 1798483449}
   - component: {fileID: 1798483450}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WatchAdBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22665,7 +22805,7 @@ GameObject:
   - component: {fileID: 1800034862}
   - component: {fileID: 1800034861}
   - component: {fileID: 1800034863}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22752,7 +22892,7 @@ GameObject:
   - component: {fileID: 1804443622}
   - component: {fileID: 1804443624}
   - component: {fileID: 1804443625}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PointerHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22902,7 +23042,7 @@ GameObject:
   - component: {fileID: 1823542253}
   - component: {fileID: 1823542252}
   - component: {fileID: 1823542251}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22995,7 +23135,7 @@ GameObject:
   - component: {fileID: 1843584842}
   - component: {fileID: 1843584841}
   - component: {fileID: 1843584840}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23087,7 +23227,7 @@ GameObject:
   - component: {fileID: 1845737938}
   - component: {fileID: 1845737940}
   - component: {fileID: 1845737939}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23160,7 +23300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1847638826}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23202,7 +23342,7 @@ GameObject:
   - component: {fileID: 1850910397}
   - component: {fileID: 1850910396}
   - component: {fileID: 1850910395}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23292,7 +23432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1853270786}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23408,7 +23548,7 @@ GameObject:
   - component: {fileID: 1864758487}
   - component: {fileID: 1864758486}
   - component: {fileID: 1864758485}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23501,7 +23641,7 @@ GameObject:
   - component: {fileID: 1877884449}
   - component: {fileID: 1877884448}
   - component: {fileID: 1877884447}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23760,13 +23900,13 @@ GameObject:
   - component: {fileID: 1892368484}
   - component: {fileID: 1892368483}
   - component: {fileID: 1892368482}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InvalidAimWarning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1892368481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23927,7 +24067,7 @@ GameObject:
   - component: {fileID: 1898227962}
   - component: {fileID: 1898227961}
   - component: {fileID: 1898227963}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24016,7 +24156,7 @@ GameObject:
   - component: {fileID: 1913577175}
   - component: {fileID: 1913577174}
   - component: {fileID: 1913577173}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InstructionBanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24108,7 +24248,7 @@ GameObject:
   - component: {fileID: 1915870568}
   - component: {fileID: 1915870567}
   - component: {fileID: 1915870566}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_StatusWell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24201,7 +24341,7 @@ GameObject:
   - component: {fileID: 1916691529}
   - component: {fileID: 1916691528}
   - component: {fileID: 1916691527}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24291,7 +24431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918552492}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD_SkillBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24420,7 +24560,7 @@ GameObject:
   - component: {fileID: 1918875379}
   - component: {fileID: 1918875381}
   - component: {fileID: 1918875380}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24555,7 +24695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929021368}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24594,7 +24734,7 @@ GameObject:
   - component: {fileID: 1929163973}
   - component: {fileID: 1929163972}
   - component: {fileID: 1929163971}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_HeaderLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24687,7 +24827,7 @@ GameObject:
   - component: {fileID: 1933629504}
   - component: {fileID: 1933629503}
   - component: {fileID: 1933629502}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24777,7 +24917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1936161319}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_Chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24818,7 +24958,7 @@ GameObject:
   - component: {fileID: 1956263124}
   - component: {fileID: 1956263126}
   - component: {fileID: 1956263125}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24895,7 +25035,7 @@ GameObject:
   - component: {fileID: 1980120647}
   - component: {fileID: 1980120646}
   - component: {fileID: 1980120645}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24988,7 +25128,7 @@ GameObject:
   - component: {fileID: 1982236759}
   - component: {fileID: 1982236758}
   - component: {fileID: 1982236757}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25206,7 +25346,7 @@ GameObject:
   - component: {fileID: 1997889733}
   - component: {fileID: 1997889732}
   - component: {fileID: 1997889731}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25408,7 +25548,7 @@ GameObject:
   - component: {fileID: 2019700255}
   - component: {fileID: 2019700254}
   - component: {fileID: 2019700253}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OuterGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25500,7 +25640,7 @@ GameObject:
   - component: {fileID: 2026161294}
   - component: {fileID: 2026161296}
   - component: {fileID: 2026161295}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25576,7 +25716,7 @@ GameObject:
   - component: {fileID: 2046114517}
   - component: {fileID: 2046114516}
   - component: {fileID: 2046114515}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25668,7 +25808,7 @@ GameObject:
   - component: {fileID: 2052700917}
   - component: {fileID: 2052700919}
   - component: {fileID: 2052700918}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooth4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25907,7 +26047,7 @@ GameObject:
   - component: {fileID: 2060809417}
   - component: {fileID: 2060809419}
   - component: {fileID: 2060809418}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TypeBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26135,7 +26275,7 @@ GameObject:
   - component: {fileID: 2094481667}
   - component: {fileID: 2094481666}
   - component: {fileID: 2094481665}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26318,7 +26458,7 @@ GameObject:
   - component: {fileID: 2097058334}
   - component: {fileID: 2097058333}
   - component: {fileID: 2097058332}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26411,7 +26551,7 @@ GameObject:
   - component: {fileID: 2097292817}
   - component: {fileID: 2097292816}
   - component: {fileID: 2097292815}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PolishedGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26506,7 +26646,7 @@ GameObject:
   - component: {fileID: 2099262172}
   - component: {fileID: 2099262173}
   - component: {fileID: 2099262169}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UsesBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26615,132 +26755,6 @@ MonoBehaviour:
   _bottom: {r: 0.46666667, g: 0.023529412, b: 0.10980392, a: 1}
   _radius: 30
   _gloss: 0.25
---- !u!1001 &2107158558
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 681122131}
-    m_Modifications:
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497067425414216808, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_Name
-      value: WinPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154096896487198151, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7499812438071117237, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2107158561}
-  m_SourcePrefab: {fileID: 100100000, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
---- !u!224 &2107158559 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 752561364694175772, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-  m_PrefabInstance: {fileID: 2107158558}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2107158560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7499812438071117237, guid: bd8069a152b15ba4eb40edc6c92bb18d, type: 3}
-  m_PrefabInstance: {fileID: 2107158558}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2107158561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107158560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf0cb0179f3deb4b961a0162b633946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonSound
 --- !u!1 &2117069536
 GameObject:
   m_ObjectHideFlags: 0
@@ -26891,7 +26905,7 @@ GameObject:
   - component: {fileID: 2119091334}
   - component: {fileID: 2119091333}
   - component: {fileID: 2119091332}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sky_TitleCap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
