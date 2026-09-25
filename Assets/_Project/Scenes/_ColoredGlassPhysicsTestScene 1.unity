@@ -16645,6 +16645,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stand
       objectReference: {fileID: 0}
+    - target: {fileID: 1226597338633195079, guid: 2939a181be0860e49ac05cdd8e715844, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5869950775843580997, guid: 2939a181be0860e49ac05cdd8e715844, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -19197,11 +19201,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Levels.LevelManager
   _rewardConfig: {fileID: 0}
+  _levelDatabase: {fileID: 0}
   _victoryDelay: 2
   _physicsSettleVelocityThreshold: 0.2
   _maxSettleWaitTime: 1
   _currentLevelIndex: 1
   _mortar: {fileID: 0}
+  _levelLoader: {fileID: 0}
 --- !u!4 &1949229572
 Transform:
   m_ObjectHideFlags: 0
