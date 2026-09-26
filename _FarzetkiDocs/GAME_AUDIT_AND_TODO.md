@@ -216,10 +216,10 @@ Aşağıdaki liste, oyunu baştan sona cilalamak ve hatasız bir şekilde yayın
 - [x] 2.3: `LevelLoader`'ın Stand üzerindeki nesneleri ilk atışa kadar kusursuz dondurmasını sağla (`LevelStartPhysicsGate` optimizasyonu).
 - [x] 2.4: 1'den 30'a kadar olan seviyeleri artan zorluk, taktiksel engeller ve tatmin edici yıkım hissi sunacak şekilde yeniden tasarla.
 
-### 🎨 FAZ 3: UI / UX & MENÜ ENTEGRASYONLARI
-- [ ] 3.1: Leaderboard alt sekmelerini (`Tab_Dunya`, `Tab_Turkiye`, `Tab_Arkadaslar`) aktif hale getir ve filtrelemeyi bağla.
-- [ ] 3.2: `SettingsDialog` ve `InGameSettingsDialog` arasındaki ses/titreşim durumlarını yüzde yüz senkronize tut.
-- [ ] 3.3: Win Panel ve Lose Panel pop-in animasyonlarını ve altın kazanma parıltı efektlerini cilala.
+### 🎨 FAZ 3: UI / UX & MENÜ ENTEGRASYONLARI [TAMAMLANDI]
+- [x] 3.1: Leaderboard'u tek tip Küresel (Global) sıralama olarak sabitle; pasif yerel/arkadaşlar alt sekmelerini arındır ve tam sayfa düzenini optimize et.
+- [x] 3.2: `SettingsDialog` ve `InGameSettingsDialog` arasındaki ses/titreşim durumlarını yüzde yüz senkronize tut.
+- [x] 3.3: Win Panel ve Lose Panel pop-in animasyonlarını ve altın kazanma parıltı efektlerini cilala.
 
 ### 💥 FAZ 4: OYNANIŞ HİSSİ & CİLA (GAME FEEL & JUICE)
 - [ ] 4.1: Havan nişan alırken topun gideceği rotayı gösteren noktalı görsel nişan yayı (`TrajectoryPredictor`) ekle.

@@ -52,6 +52,25 @@ namespace RoyalSmash.UI
             HideImmediate();
         }
 
+        public void BindReferences(GameObject root, TextMeshProUGUI title, TextMeshProUGUI reason, Button retryBtn, Button menuBtn)
+        {
+            _panelRoot = root;
+            _titleText = title;
+            _reasonText = reason;
+            _retryButton = retryBtn;
+            _mainMenuButton = menuBtn;
+            if (_retryButton != null)
+            {
+                _retryButton.onClick.RemoveAllListeners();
+                _retryButton.onClick.AddListener(HandleRetryClicked);
+            }
+            if (_mainMenuButton != null)
+            {
+                _mainMenuButton.onClick.RemoveAllListeners();
+                _mainMenuButton.onClick.AddListener(HandleMainMenuClicked);
+            }
+        }
+
         private void Start()
         {
             SubscribeEvents();
@@ -155,10 +174,10 @@ namespace RoyalSmash.UI
                 _panelRoot.transform.localScale = Vector3.one;
             }
 
-            Transform cardTarget = transform.Find("Content/CardContainer") ?? transform.Find("CardContainer");
+            Transform cardTarget = transform.Find("CardContainer") ?? transform.Find("Content/CardContainer") ?? transform.Find("Panel_Lose");
             if (cardTarget == null && _panelRoot != null)
             {
-                cardTarget = _panelRoot.transform.Find("CardContainer");
+                cardTarget = _panelRoot.transform.Find("CardContainer") ?? _panelRoot.transform.Find("Panel_Lose");
             }
             if (cardTarget == null)
             {
@@ -172,8 +191,10 @@ namespace RoyalSmash.UI
             {
                 elapsed += Time.unscaledDeltaTime;
                 float t = Mathf.Clamp01(elapsed / _popDuration);
-                float scale = Mathf.Sin(t * Mathf.PI * 0.5f) * 1.05f;
-                if (t >= 0.85f) scale = Mathf.Lerp(1.05f, 1.0f, (t - 0.85f) / 0.15f);
+                // Spring overshoot: quick rise to 1.10, gentle settle to 1.0
+                float scale = (t < 0.7f)
+                    ? Mathf.Lerp(0f, 1.10f, t / 0.7f)
+                    : Mathf.Lerp(1.10f, 1.0f, (t - 0.7f) / 0.3f);
                 cardTarget.localScale = Vector3.one * scale;
                 yield return null;
             }

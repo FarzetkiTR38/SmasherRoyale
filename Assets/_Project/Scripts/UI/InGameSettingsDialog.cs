@@ -73,8 +73,52 @@ namespace RoyalSmash.UI
             UpdateToggleVisuals();
         }
 
+        private void OnEnable()
+        {
+            SubscribeStateEvents();
+            UpdateToggleVisuals();
+        }
+
+        private void OnDisable()
+        {
+            UnsubscribeStateEvents();
+        }
+
+        private void SubscribeStateEvents()
+        {
+            if (AudioManager.HasInstance)
+            {
+                AudioManager.Instance.OnMusicStateChanged -= HandleAudioStateChanged;
+                AudioManager.Instance.OnMusicStateChanged += HandleAudioStateChanged;
+                AudioManager.Instance.OnSfxStateChanged -= HandleAudioStateChanged;
+                AudioManager.Instance.OnSfxStateChanged += HandleAudioStateChanged;
+            }
+            if (VibrationManager.HasInstance)
+            {
+                VibrationManager.Instance.OnVibrationStateChanged -= HandleVibrationStateChanged;
+                VibrationManager.Instance.OnVibrationStateChanged += HandleVibrationStateChanged;
+            }
+        }
+
+        private void UnsubscribeStateEvents()
+        {
+            if (AudioManager.HasInstance)
+            {
+                AudioManager.Instance.OnMusicStateChanged -= HandleAudioStateChanged;
+                AudioManager.Instance.OnSfxStateChanged -= HandleAudioStateChanged;
+            }
+            if (VibrationManager.HasInstance)
+            {
+                VibrationManager.Instance.OnVibrationStateChanged -= HandleVibrationStateChanged;
+            }
+        }
+
+        private void HandleAudioStateChanged(bool _) => UpdateToggleVisuals();
+        private void HandleVibrationStateChanged(bool _) => UpdateToggleVisuals();
+
         private void OnDestroy()
         {
+            UnsubscribeStateEvents();
             if (_supportButton != null) _supportButton.onClick.RemoveListener(HandleSupportClicked);
             if (_termsButton != null) _termsButton.onClick.RemoveListener(HandleTermsClicked);
             if (_privacyButton != null) _privacyButton.onClick.RemoveListener(HandlePrivacyClicked);
@@ -188,7 +232,7 @@ namespace RoyalSmash.UI
         public void ToggleMusic()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic;
+            bool current = AudioManager.HasInstance ? AudioManager.Instance.IsMusicEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic);
             bool newState = !current;
 
             if (AudioManager.Instance != null)
@@ -211,7 +255,7 @@ namespace RoyalSmash.UI
         public void ToggleSfx()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx;
+            bool current = AudioManager.HasInstance ? AudioManager.Instance.IsSfxEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx);
             bool newState = !current;
 
             if (AudioManager.Instance != null)
@@ -234,7 +278,7 @@ namespace RoyalSmash.UI
         public void ToggleVibration()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib;
+            bool current = VibrationManager.HasInstance ? VibrationManager.Instance.IsVibrationEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib);
             bool newState = !current;
 
             if (VibrationManager.Instance != null)
@@ -257,9 +301,9 @@ namespace RoyalSmash.UI
         public void UpdateToggleVisuals()
         {
             var saveMgr = SaveManager.Instance;
-            bool musicOn = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic;
-            bool sfxOn = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx;
-            bool vibOn = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib;
+            bool musicOn = AudioManager.HasInstance ? AudioManager.Instance.IsMusicEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic);
+            bool sfxOn = AudioManager.HasInstance ? AudioManager.Instance.IsSfxEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx);
+            bool vibOn = VibrationManager.HasInstance ? VibrationManager.Instance.IsVibrationEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib);
 
             Color onColor = new Color(0.3f, 1f, 0.3f);
             Color offColor = new Color(0.7f, 0.7f, 0.7f);
