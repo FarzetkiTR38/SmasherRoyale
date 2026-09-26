@@ -337,8 +337,8 @@ Rigidbody:
   m_GameObject: {fileID: 6888216860949157384}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 0.35
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -369,3 +369,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.PhysicsObject
   _config: {fileID: 11400000, guid: ae7264e95f08ac14e97f7abdbe8a927d, type: 2}
   _currentState: 0
+  _isRequiredTarget: 1

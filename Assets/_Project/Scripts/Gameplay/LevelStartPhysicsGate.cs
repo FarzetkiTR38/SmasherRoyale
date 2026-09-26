@@ -55,10 +55,11 @@ namespace RoyalSmash.Gameplay
                 body.isKinematic = true;
             }
             IsWaitingForFirstShot = _heldBodies.Count > 0;
-            if (_mortar != null && IsWaitingForFirstShot) _mortar.OnBallFired += Release;
+            // Note: We do NOT release on OnBallFired. We release when an actual impact occurs
+            // (via LevelStartPhysicsGate.ReleaseActiveGate() in PhysicsObject/Stand collision).
         }
 
-        /// <summary>Restore the dynamic configuration before the newly fired ball's physics step.</summary>
+        /// <summary>Restore dynamic configuration upon first projectile impact.</summary>
         public void Release()
         {
             if (_mortar != null) _mortar.OnBallFired -= Release;
@@ -71,7 +72,7 @@ namespace RoyalSmash.Gameplay
                 held.Body.collisionDetectionMode = held.DetectionMode;
                 held.Body.linearVelocity = Vector3.zero;
                 held.Body.angularVelocity = Vector3.zero;
-                held.Body.WakeUp();
+                held.Body.Sleep();
             }
             _heldBodies.Clear();
             IsWaitingForFirstShot = false;

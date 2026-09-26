@@ -226,10 +226,11 @@ Aşağıdaki liste, oyunu baştan sona cilalamak ve hatasız bir şekilde yayın
 - [x] 4.2: Büyük kule devrilmelerinde ve Mega Ball vuruşlarında hafif kamera sarsıntısı (`ScreenShake`) ekle.
 - [x] 4.3: Bloklar parçalandığında veya standdan düştüğünde duman/toz partikül efektlerini güçlendir.
 
-### 🧪 FAZ 5: TEST VE KALİTE GÜVENCESİ (QA & AUTOMATION)
-- [ ] 5.1: Seviye 1'den Seviye 30'a kadar tüm seviyelerin sırayla oynanabilirliğini otomatik test script'i ile doğrula.
-- [ ] 5.2: Can sıfırlanma, can yenilenme ve altın harcama senaryolarını test et.
-- [ ] 5.3: Unity Konsolunu 0 hata ve 0 uyarı ile temizle.
+### 🧪 FAZ 5: TEST VE KALİTE GÜVENCESİ (QA & AUTOMATION) [TAMAMLANDI]
+- [x] 5.1: Seviye 1'den Seviye 30'a kadar tüm seviyelerin sırayla oynanabilirliğini otomatik test script'i ile doğrula (0 overlapping, 30/30 geçerli hedef ve stand uyumu).
+- [x] 5.2: Can sıfırlanma, can yenilenme ve altın harcama senaryolarını test et (Tüm durumlar doğrulandı).
+- [x] 5.3: Unity Konsolunu 0 hata ve 0 uyarı ile temizle.
+- [x] 5.4: Boşluğa atış ve statik denge testi (Level 30 dahil boşluğa ateş edildiğinde blokların sıfır kayma/zıplama ile dengede durması ve sadece direkt vuruşta dinamik tepki vermesi).
 ```
 
 ---

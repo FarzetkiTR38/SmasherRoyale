@@ -18,16 +18,17 @@ namespace RoyalSmash.Editor
     {
         private const float BASE_Y = 1.845f;
         private const float LAYER_STEP_Y = 0.746f;
-        private const float STEP_X = 0.745f;
+        private const float STEP_X = 0.755f;
         private const float STAND_Z = 7.50f;
-        private const float FRONT_Z = 7.15f;
-        private const float BACK_Z = 7.85f;
+        private const float FRONT_Z = 7.08f;
+        private const float BACK_Z = 7.88f;
         private static readonly Vector3 BLOCK_SCALE = new Vector3(0.74f, 0.74f, 0.74f);
 
         [MenuItem("RoyalSmash/Levels/Generate All 30 Citadel Levels")]
         public static void GenerateAllLevels()
         {
             const string levelsFolder = "Assets/_Project/Art/SkyCitadel/Levels";
+            var levelList = new List<LevelData>();
 
             for (int levelId = 1; levelId <= 30; levelId++)
             {
@@ -41,6 +42,14 @@ namespace RoyalSmash.Editor
 
                 BuildLevelData(levelId, levelData);
                 EditorUtility.SetDirty(levelData);
+                levelList.Add(levelData);
+            }
+
+            var db = AssetDatabase.LoadAssetAtPath<LevelDatabase>("Assets/_Project/Art/SkyCitadel/Levels/CitadelLevelDatabase.asset");
+            if (db != null)
+            {
+                db.SetLevels(levelList.ToArray());
+                EditorUtility.SetDirty(db);
             }
 
             AssetDatabase.SaveAssets();
@@ -339,9 +348,9 @@ namespace RoyalSmash.Editor
                     objs.Add(CreateBlock(ObjectType.Box, STEP_X * 1.2f, 0));
                     objs.Add(CreateBlock(ObjectType.Column, STEP_X * 1.2f, 1));
                     objs.Add(CreateBlock(ObjectType.Box, STEP_X * 1.2f, 2));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X * 0.6f, 3));
+                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 3));
                     objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 3));
-                    objs.Add(CreateBlock(ObjectType.Box, STEP_X * 0.6f, 3));
+                    objs.Add(CreateBlock(ObjectType.Box, STEP_X, 3));
                     break;
 
                 case 19:
@@ -540,13 +549,13 @@ namespace RoyalSmash.Editor
                     for (int x = -3; x <= 3; x++)
                     {
                         bool isFlank = Mathf.Abs(x) == 3;
-                        objs.Add(CreateBlock(isFlank ? ObjectType.Cone : ObjectType.Box, x * STEP_X * 0.85f, 0, STAND_Z, isRequired: !isFlank));
+                        objs.Add(CreateBlock(isFlank ? ObjectType.Cone : ObjectType.Box, x * STEP_X, 0, STAND_Z, isRequired: !isFlank));
                     }
                     // Layer 1: 5 blocks
                     for (int x = -2; x <= 2; x++)
                     {
                         ObjectType t = (x == 0) ? ObjectType.PaintBottle : ObjectType.Column;
-                        objs.Add(CreateBlock(t, x * STEP_X * 0.9f, 1));
+                        objs.Add(CreateBlock(t, x * STEP_X, 1));
                     }
                     // Layer 2: 4 blocks battlements
                     objs.Add(CreateBlock(ObjectType.Box, -STEP_X * 1.5f, 2));
@@ -554,9 +563,9 @@ namespace RoyalSmash.Editor
                     objs.Add(CreateBlock(ObjectType.PaintBottle, STEP_X * 0.5f, 2));
                     objs.Add(CreateBlock(ObjectType.Box, STEP_X * 1.5f, 2));
                     // Layer 3: 3 blocks crown base
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X * 0.75f, 3));
+                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 3));
                     objs.Add(CreateBlock(ObjectType.Box, 0f, 3));
-                    objs.Add(CreateBlock(ObjectType.Column, STEP_X * 0.75f, 3));
+                    objs.Add(CreateBlock(ObjectType.Column, STEP_X, 3));
                     // Layer 4: The Royal Crown Core!
                     objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 4));
                     break;
