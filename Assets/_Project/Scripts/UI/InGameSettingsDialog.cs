@@ -25,12 +25,19 @@ namespace RoyalSmash.UI
         [SerializeField] private Button _musicToggleButton;
         [SerializeField] private TextMeshProUGUI _musicStatusText;
         [SerializeField] private Image _musicIconImage;
+        [SerializeField] private Image _musicSwitchImage;
         [SerializeField] private Button _sfxToggleButton;
         [SerializeField] private TextMeshProUGUI _sfxStatusText;
         [SerializeField] private Image _sfxIconImage;
+        [SerializeField] private Image _sfxSwitchImage;
         [SerializeField] private Button _vibrationToggleButton;
         [SerializeField] private TextMeshProUGUI _vibrationStatusText;
         [SerializeField] private Image _vibrationIconImage;
+        [SerializeField] private Image _vibrationSwitchImage;
+
+        [Header("Switch Sprites")]
+        [SerializeField] private Sprite _switchOnSprite;
+        [SerializeField] private Sprite _switchOffSprite;
 
         [Header("Extra Buttons (Main Menu Settings)")]
         [SerializeField] private Button _supportButton;
@@ -42,6 +49,9 @@ namespace RoyalSmash.UI
 
         private float _savedTimeScale = 1f;
         private bool _isTimePaused = false;
+        private bool _previewMusic = true;
+        private bool _previewSfx = true;
+        private bool _previewVib = true;
 
         private void Awake()
         {
@@ -178,7 +188,7 @@ namespace RoyalSmash.UI
         public void ToggleMusic()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : true;
+            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic;
             bool newState = !current;
 
             if (AudioManager.Instance != null)
@@ -190,6 +200,10 @@ namespace RoyalSmash.UI
                 saveMgr.Data.MusicEnabled = newState;
                 saveMgr.Save();
             }
+            else
+            {
+                _previewMusic = newState;
+            }
 
             UpdateToggleVisuals();
         }
@@ -197,7 +211,7 @@ namespace RoyalSmash.UI
         public void ToggleSfx()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : true;
+            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx;
             bool newState = !current;
 
             if (AudioManager.Instance != null)
@@ -209,6 +223,10 @@ namespace RoyalSmash.UI
                 saveMgr.Data.SfxEnabled = newState;
                 saveMgr.Save();
             }
+            else
+            {
+                _previewSfx = newState;
+            }
 
             UpdateToggleVisuals();
         }
@@ -216,7 +234,7 @@ namespace RoyalSmash.UI
         public void ToggleVibration()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : true;
+            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib;
             bool newState = !current;
 
             if (VibrationManager.Instance != null)
@@ -228,6 +246,10 @@ namespace RoyalSmash.UI
                 saveMgr.Data.VibrationEnabled = newState;
                 saveMgr.Save();
             }
+            else
+            {
+                _previewVib = newState;
+            }
 
             UpdateToggleVisuals();
         }
@@ -235,9 +257,9 @@ namespace RoyalSmash.UI
         public void UpdateToggleVisuals()
         {
             var saveMgr = SaveManager.Instance;
-            bool musicOn = saveMgr == null || saveMgr.Data == null || saveMgr.Data.MusicEnabled;
-            bool sfxOn = saveMgr == null || saveMgr.Data == null || saveMgr.Data.SfxEnabled;
-            bool vibOn = saveMgr == null || saveMgr.Data == null || saveMgr.Data.VibrationEnabled;
+            bool musicOn = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic;
+            bool sfxOn = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx;
+            bool vibOn = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib;
 
             Color onColor = new Color(0.3f, 1f, 0.3f);
             Color offColor = new Color(0.7f, 0.7f, 0.7f);
@@ -266,6 +288,22 @@ namespace RoyalSmash.UI
             if (_musicIconImage != null) _musicIconImage.color = musicOn ? iconActive : iconInactive;
             if (_sfxIconImage != null) _sfxIconImage.color = sfxOn ? iconActive : iconInactive;
             if (_vibrationIconImage != null) _vibrationIconImage.color = vibOn ? iconActive : iconInactive;
+
+            if (_musicSwitchImage != null)
+            {
+                if (musicOn && _switchOnSprite != null) _musicSwitchImage.sprite = _switchOnSprite;
+                else if (!musicOn && _switchOffSprite != null) _musicSwitchImage.sprite = _switchOffSprite;
+            }
+            if (_sfxSwitchImage != null)
+            {
+                if (sfxOn && _switchOnSprite != null) _sfxSwitchImage.sprite = _switchOnSprite;
+                else if (!sfxOn && _switchOffSprite != null) _sfxSwitchImage.sprite = _switchOffSprite;
+            }
+            if (_vibrationSwitchImage != null)
+            {
+                if (vibOn && _switchOnSprite != null) _vibrationSwitchImage.sprite = _switchOnSprite;
+                else if (!vibOn && _switchOffSprite != null) _vibrationSwitchImage.sprite = _switchOffSprite;
+            }
         }
 
         private void HandleSupportClicked()
