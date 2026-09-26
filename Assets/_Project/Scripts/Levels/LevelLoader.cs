@@ -121,6 +121,7 @@ namespace RoyalSmash.Levels
                     var physObj = go.GetComponent<PhysicsObject>();
                     if (physObj != null)
                     {
+                        physObj.SetRequiredTarget(placement.IsRequiredTarget);
                         if (placement.OverrideMass && physObj.Rigidbody != null)
                         {
                             physObj.Rigidbody.mass = placement.CustomMass;
@@ -130,12 +131,9 @@ namespace RoyalSmash.Levels
                 }
             }
 
-            if (Application.isPlaying)
-            {
-                if (_startPhysicsGate == null)
-                    _startPhysicsGate = GetComponent<LevelStartPhysicsGate>() ?? gameObject.AddComponent<LevelStartPhysicsGate>();
-                _startPhysicsGate.Prepare(_spawnedObjects, FindFirstObjectByType<MortarController>());
-            }
+            if (_startPhysicsGate == null)
+                _startPhysicsGate = GetComponent<LevelStartPhysicsGate>() ?? gameObject.AddComponent<LevelStartPhysicsGate>();
+            _startPhysicsGate.Prepare(_spawnedObjects, FindFirstObjectByType<MortarController>());
 
             Debug.Log($"[LevelLoader] Loaded Level {data.LevelId} ('{data.LevelName}') with {_spawnedObjects.Count} targets on {_spawnedStands.Count} stand(s).");
         }

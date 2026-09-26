@@ -18,8 +18,29 @@ namespace RoyalSmash.Gameplay
         public bool IsWaitingForFirstShot { get; private set; }
         public int HeldBodyCount => _heldBodies.Count;
 
+        public static LevelStartPhysicsGate ActiveGate { get; private set; }
+
+        public static void ReleaseActiveGate()
+        {
+            if (ActiveGate != null && ActiveGate.IsWaitingForFirstShot)
+            {
+                ActiveGate.Release();
+            }
+        }
+
+        private void Awake()
+        {
+            ActiveGate = this;
+        }
+
+        private void OnDestroy()
+        {
+            if (ActiveGate == this) ActiveGate = null;
+        }
+
         public void Prepare(IReadOnlyList<PhysicsObject> targets, MortarController mortar)
         {
+            ActiveGate = this;
             Release();
             _mortar = mortar;
             for (int i = 0; i < targets.Count; i++)
@@ -34,10 +55,11 @@ namespace RoyalSmash.Gameplay
                 body.isKinematic = true;
             }
             IsWaitingForFirstShot = _heldBodies.Count > 0;
-            if (_mortar != null && IsWaitingForFirstShot) _mortar.OnBallFired += Release;
+            // Note: We do NOT release on OnBallFired. We release when an actual impact occurs
+            // (via LevelStartPhysicsGate.ReleaseActiveGate() in PhysicsObject/Stand collision).
         }
 
-        /// <summary>Restore the dynamic configuration before the newly fired ball's physics step.</summary>
+        /// <summary>Restore dynamic configuration upon first projectile impact.</summary>
         public void Release()
         {
             if (_mortar != null) _mortar.OnBallFired -= Release;
@@ -50,7 +72,7 @@ namespace RoyalSmash.Gameplay
                 held.Body.collisionDetectionMode = held.DetectionMode;
                 held.Body.linearVelocity = Vector3.zero;
                 held.Body.angularVelocity = Vector3.zero;
-                held.Body.WakeUp();
+                held.Body.Sleep();
             }
             _heldBodies.Clear();
             IsWaitingForFirstShot = false;

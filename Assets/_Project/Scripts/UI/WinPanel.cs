@@ -49,6 +49,21 @@ namespace RoyalSmash.UI
             HideImmediate();
         }
 
+        public void BindReferences(GameObject root, TextMeshProUGUI title, TextMeshProUGUI baseReward, TextMeshProUGUI bonus, TextMeshProUGUI totalGold, Button continueBtn)
+        {
+            _panelRoot = root;
+            _levelTitleText = title;
+            _baseRewardText = baseReward;
+            _remainingBonusText = bonus;
+            _totalGoldText = totalGold;
+            _continueButton = continueBtn;
+            if (_continueButton != null)
+            {
+                _continueButton.onClick.RemoveAllListeners();
+                _continueButton.onClick.AddListener(HandleContinueClicked);
+            }
+        }
+
         private void Start()
         {
             SubscribeEvents();
@@ -81,7 +96,7 @@ namespace RoyalSmash.UI
                 LevelManager.Instance.OnLevelWon += HandleLevelWon;
             }
 
-            if (Economy.GoldManager.HasInstance)
+            if (Economy.GoldManager.Instance != null)
             {
                 Economy.GoldManager.Instance.OnLevelRewardProcessed -= HandleRewardProcessed;
                 Economy.GoldManager.Instance.OnLevelRewardProcessed += HandleRewardProcessed;
@@ -105,9 +120,7 @@ namespace RoyalSmash.UI
         {
             if (_panelRoot == null || !_panelRoot.activeSelf)
             {
-                bool isDuplicate = Save.SaveManager.HasInstance && Save.SaveManager.Instance.Data != null &&
-                                   Save.SaveManager.Instance.Data.RewardedLevelIds != null &&
-                                   Save.SaveManager.Instance.Data.RewardedLevelIds.Contains(level);
+                bool isDuplicate = (totalGold == 0);
                 Show(level, baseReward, remainingBalls, totalGold, isDuplicate);
             }
         }
@@ -127,31 +140,31 @@ namespace RoyalSmash.UI
 
             if (_levelTitleText != null)
             {
-                _levelTitleText.text = $"LEVEL {level} COMPLETED!";
+                _levelTitleText.text = $"<color=#E0F4FF>SEVİYE {level}</color>\n<color=#FFDF20><size=115%>TAMAMLANDI!</size></color>";
             }
 
             if (isDuplicateReplay || totalGold == 0)
             {
-                if (_baseRewardText != null) _baseRewardText.text = "Base Reward: +0 Gold (Replay)";
-                if (_remainingBonusText != null) _remainingBonusText.text = $"Ball Bonus ({remainingBalls} × 2): +0 Gold";
-                if (_totalGoldText != null) _totalGoldText.text = "+0 GOLD (CLAIMED)";
+                if (_baseRewardText != null) _baseRewardText.text = "Temel Ödül: <b><color=#FFD700>+0 Altın</color></b> (Tekrar)";
+                if (_remainingBonusText != null) _remainingBonusText.text = $"Top Bonusu ({remainingBalls} x 2): <b><color=#FFD700>+0 Altın</color></b>";
+                if (_totalGoldText != null) _totalGoldText.text = "<b><color=#FFE224>+0 ALTIN</color></b>\n<size=58%><color=#EDF4FA>(ALINDI)</color></size>";
             }
             else
             {
                 if (_baseRewardText != null)
                 {
-                    _baseRewardText.text = $"Base Reward: +{baseReward} Gold";
+                    _baseRewardText.text = $"Temel Ödül: <b><color=#FFD700>+{baseReward} Altın</color></b>";
                 }
 
                 if (_remainingBonusText != null)
                 {
                     int ballBonus = remainingBalls * 2;
-                    _remainingBonusText.text = $"Ball Bonus ({remainingBalls} × 2): +{ballBonus} Gold";
+                    _remainingBonusText.text = $"Top Bonusu ({remainingBalls} x 2): <b><color=#FFD700>+{ballBonus} Altın</color></b>";
                 }
 
                 if (_totalGoldText != null)
                 {
-                    _totalGoldText.text = $"+{totalGold} GOLD";
+                    _totalGoldText.text = $"<b><color=#FFE224>+{totalGold} ALTIN</color></b>";
                 }
             }
 
@@ -160,11 +173,11 @@ namespace RoyalSmash.UI
                 var btnText = _continueButton.GetComponentInChildren<TextMeshProUGUI>();
                 if (level >= 30)
                 {
-                    if (btnText != null) btnText.text = "RETURN TO MENU";
+                    if (btnText != null) btnText.text = "<b>ANA MENÜYE DÖN</b>";
                 }
                 else
                 {
-                    if (btnText != null) btnText.text = "NEXT LEVEL";
+                    if (btnText != null) btnText.text = "<b>SONRAKİ SEVİYE >></b>";
                 }
             }
 
@@ -187,6 +200,10 @@ namespace RoyalSmash.UI
 
             StopAllCoroutines();
             StartCoroutine(PopInRoutine());
+            if (!isDuplicateReplay && totalGold > 0)
+            {
+                StartCoroutine(CountUpGoldRoutine(totalGold));
+            }
         }
 
         public void HideImmediate()
@@ -204,10 +221,10 @@ namespace RoyalSmash.UI
                 _panelRoot.transform.localScale = Vector3.one;
             }
 
-            Transform cardTarget = transform.Find("Content/CardContainer") ?? transform.Find("CardContainer");
+            Transform cardTarget = transform.Find("CardContainer") ?? transform.Find("Content/CardContainer") ?? transform.Find("Panel_Win");
             if (cardTarget == null && _panelRoot != null)
             {
-                cardTarget = _panelRoot.transform.Find("CardContainer");
+                cardTarget = _panelRoot.transform.Find("CardContainer") ?? _panelRoot.transform.Find("Panel_Win");
             }
             if (cardTarget == null)
             {
@@ -221,13 +238,59 @@ namespace RoyalSmash.UI
             {
                 elapsed += Time.unscaledDeltaTime;
                 float t = Mathf.Clamp01(elapsed / _popDuration);
-                float scale = Mathf.Sin(t * Mathf.PI * 0.5f) * 1.05f;
-                if (t >= 0.85f) scale = Mathf.Lerp(1.05f, 1.0f, (t - 0.85f) / 0.15f);
+                // Spring overshoot: quick rise to 1.12, gentle settle to 1.0
+                float scale = (t < 0.7f)
+                    ? Mathf.Lerp(0f, 1.12f, t / 0.7f)
+                    : Mathf.Lerp(1.12f, 1.0f, (t - 0.7f) / 0.3f);
                 cardTarget.localScale = Vector3.one * scale;
                 yield return null;
             }
 
             cardTarget.localScale = Vector3.one;
+        }
+
+        private IEnumerator CountUpGoldRoutine(int targetGold)
+        {
+            if (_totalGoldText == null) yield break;
+
+            Vector3 originalScale = _totalGoldText.transform.localScale;
+            float duration = 0.65f;
+            float elapsed = 0f;
+            int lastSoundStep = -1;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float progress = Mathf.Clamp01(elapsed / duration);
+                float easeOut = 1f - Mathf.Pow(1f - progress, 3);
+                int currentGold = Mathf.RoundToInt(Mathf.Lerp(0, targetGold, easeOut));
+
+                _totalGoldText.text = $"<b><color=#FFE224>+{currentGold} ALTIN</color></b>";
+
+                int soundStep = currentGold / 5;
+                if (soundStep != lastSoundStep && RoyalSmash.Audio.AudioManager.Instance != null)
+                {
+                    lastSoundStep = soundStep;
+                    RoyalSmash.Audio.AudioManager.Instance.PlayButtonClick();
+                }
+
+                yield return null;
+            }
+
+            _totalGoldText.text = $"<b><color=#FFE224>+{targetGold} ALTIN</color></b>";
+
+            // Golden sparkle punch pulse
+            float punchElapsed = 0f;
+            const float punchDuration = 0.25f;
+            while (punchElapsed < punchDuration)
+            {
+                punchElapsed += Time.unscaledDeltaTime;
+                float pt = punchElapsed / punchDuration;
+                float scale = 1f + Mathf.Sin(pt * Mathf.PI) * 0.18f;
+                _totalGoldText.transform.localScale = originalScale * scale;
+                yield return null;
+            }
+            _totalGoldText.transform.localScale = originalScale;
         }
 
         private void HandleContinueClicked()

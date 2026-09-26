@@ -159,8 +159,8 @@ Rigidbody:
   m_GameObject: {fileID: 1054819194521798230}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 0.35
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.PaintBottleObject
   _config: {fileID: 11400000, guid: 68450682e8df325469ea0ff3f4ac0ce8, type: 2}
   _currentState: 0
+  _isRequiredTarget: 1
   _paintColor: {r: 0.05, g: 0.7, b: 1, a: 1}
   _hasBroken: 0
 --- !u!1 &2692650306394229145

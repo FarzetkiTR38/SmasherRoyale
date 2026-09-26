@@ -75,6 +75,7 @@ namespace RoyalSmash.Levels
         public bool OverrideMass = false;
         public float CustomMass = 1.0f;
         public Color PaintColor = Color.clear;
+        public bool IsRequiredTarget = true;
     }
 
     [Serializable]

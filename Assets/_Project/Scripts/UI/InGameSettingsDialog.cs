@@ -24,16 +24,34 @@ namespace RoyalSmash.UI
         [Header("Toggles (Section 20)")]
         [SerializeField] private Button _musicToggleButton;
         [SerializeField] private TextMeshProUGUI _musicStatusText;
+        [SerializeField] private Image _musicIconImage;
+        [SerializeField] private Image _musicSwitchImage;
         [SerializeField] private Button _sfxToggleButton;
         [SerializeField] private TextMeshProUGUI _sfxStatusText;
+        [SerializeField] private Image _sfxIconImage;
+        [SerializeField] private Image _sfxSwitchImage;
         [SerializeField] private Button _vibrationToggleButton;
         [SerializeField] private TextMeshProUGUI _vibrationStatusText;
+        [SerializeField] private Image _vibrationIconImage;
+        [SerializeField] private Image _vibrationSwitchImage;
+
+        [Header("Switch Sprites")]
+        [SerializeField] private Sprite _switchOnSprite;
+        [SerializeField] private Sprite _switchOffSprite;
+
+        [Header("Extra Buttons (Main Menu Settings)")]
+        [SerializeField] private Button _supportButton;
+        [SerializeField] private Button _termsButton;
+        [SerializeField] private Button _privacyButton;
 
         public static InGameSettingsDialog Instance { get; private set; }
         public bool IsVisible => _contentRoot != null ? _contentRoot.activeSelf : gameObject.activeSelf;
 
         private float _savedTimeScale = 1f;
         private bool _isTimePaused = false;
+        private bool _previewMusic = true;
+        private bool _previewSfx = true;
+        private bool _previewVib = true;
 
         private void Awake()
         {
@@ -45,6 +63,9 @@ namespace RoyalSmash.UI
             if (_musicToggleButton != null) _musicToggleButton.onClick.AddListener(ToggleMusic);
             if (_sfxToggleButton != null) _sfxToggleButton.onClick.AddListener(ToggleSfx);
             if (_vibrationToggleButton != null) _vibrationToggleButton.onClick.AddListener(ToggleVibration);
+            if (_supportButton != null) _supportButton.onClick.AddListener(HandleSupportClicked);
+            if (_termsButton != null) _termsButton.onClick.AddListener(HandleTermsClicked);
+            if (_privacyButton != null) _privacyButton.onClick.AddListener(HandlePrivacyClicked);
         }
 
         private void Start()
@@ -52,8 +73,62 @@ namespace RoyalSmash.UI
             UpdateToggleVisuals();
         }
 
+        private void OnEnable()
+        {
+            SubscribeStateEvents();
+            UpdateToggleVisuals();
+        }
+
+        private void OnDisable()
+        {
+            UnsubscribeStateEvents();
+        }
+
+        private void SubscribeStateEvents()
+        {
+            if (AudioManager.HasInstance)
+            {
+                AudioManager.Instance.OnMusicStateChanged -= HandleAudioStateChanged;
+                AudioManager.Instance.OnMusicStateChanged += HandleAudioStateChanged;
+                AudioManager.Instance.OnSfxStateChanged -= HandleAudioStateChanged;
+                AudioManager.Instance.OnSfxStateChanged += HandleAudioStateChanged;
+            }
+            if (VibrationManager.HasInstance)
+            {
+                VibrationManager.Instance.OnVibrationStateChanged -= HandleVibrationStateChanged;
+                VibrationManager.Instance.OnVibrationStateChanged += HandleVibrationStateChanged;
+            }
+        }
+
+        private void UnsubscribeStateEvents()
+        {
+            if (AudioManager.HasInstance)
+            {
+                AudioManager.Instance.OnMusicStateChanged -= HandleAudioStateChanged;
+                AudioManager.Instance.OnSfxStateChanged -= HandleAudioStateChanged;
+            }
+            if (VibrationManager.HasInstance)
+            {
+                VibrationManager.Instance.OnVibrationStateChanged -= HandleVibrationStateChanged;
+            }
+        }
+
+        private void HandleAudioStateChanged(bool _) => UpdateToggleVisuals();
+        private void HandleVibrationStateChanged(bool _) => UpdateToggleVisuals();
+
         private void OnDestroy()
         {
+            UnsubscribeStateEvents();
+            if (_supportButton != null) _supportButton.onClick.RemoveListener(HandleSupportClicked);
+            if (_termsButton != null) _termsButton.onClick.RemoveListener(HandleTermsClicked);
+            if (_privacyButton != null) _privacyButton.onClick.RemoveListener(HandlePrivacyClicked);
+            if (_closeButton != null) _closeButton.onClick.RemoveListener(Hide);
+            if (_resumeButton != null) _resumeButton.onClick.RemoveListener(Hide);
+            if (_exitLevelButton != null) _exitLevelButton.onClick.RemoveListener(HandleExitLevelClicked);
+            if (_musicToggleButton != null) _musicToggleButton.onClick.RemoveListener(ToggleMusic);
+            if (_sfxToggleButton != null) _sfxToggleButton.onClick.RemoveListener(ToggleSfx);
+            if (_vibrationToggleButton != null) _vibrationToggleButton.onClick.RemoveListener(ToggleVibration);
+
             if (_isTimePaused)
             {
                 Time.timeScale = _savedTimeScale;
@@ -157,7 +232,7 @@ namespace RoyalSmash.UI
         public void ToggleMusic()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : true;
+            bool current = AudioManager.HasInstance ? AudioManager.Instance.IsMusicEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic);
             bool newState = !current;
 
             if (AudioManager.Instance != null)
@@ -169,6 +244,10 @@ namespace RoyalSmash.UI
                 saveMgr.Data.MusicEnabled = newState;
                 saveMgr.Save();
             }
+            else
+            {
+                _previewMusic = newState;
+            }
 
             UpdateToggleVisuals();
         }
@@ -176,7 +255,7 @@ namespace RoyalSmash.UI
         public void ToggleSfx()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : true;
+            bool current = AudioManager.HasInstance ? AudioManager.Instance.IsSfxEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx);
             bool newState = !current;
 
             if (AudioManager.Instance != null)
@@ -188,6 +267,10 @@ namespace RoyalSmash.UI
                 saveMgr.Data.SfxEnabled = newState;
                 saveMgr.Save();
             }
+            else
+            {
+                _previewSfx = newState;
+            }
 
             UpdateToggleVisuals();
         }
@@ -195,7 +278,7 @@ namespace RoyalSmash.UI
         public void ToggleVibration()
         {
             var saveMgr = SaveManager.Instance;
-            bool current = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : true;
+            bool current = VibrationManager.HasInstance ? VibrationManager.Instance.IsVibrationEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib);
             bool newState = !current;
 
             if (VibrationManager.Instance != null)
@@ -207,6 +290,10 @@ namespace RoyalSmash.UI
                 saveMgr.Data.VibrationEnabled = newState;
                 saveMgr.Save();
             }
+            else
+            {
+                _previewVib = newState;
+            }
 
             UpdateToggleVisuals();
         }
@@ -214,9 +301,9 @@ namespace RoyalSmash.UI
         public void UpdateToggleVisuals()
         {
             var saveMgr = SaveManager.Instance;
-            bool musicOn = saveMgr == null || saveMgr.Data == null || saveMgr.Data.MusicEnabled;
-            bool sfxOn = saveMgr == null || saveMgr.Data == null || saveMgr.Data.SfxEnabled;
-            bool vibOn = saveMgr == null || saveMgr.Data == null || saveMgr.Data.VibrationEnabled;
+            bool musicOn = AudioManager.HasInstance ? AudioManager.Instance.IsMusicEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.MusicEnabled : _previewMusic);
+            bool sfxOn = AudioManager.HasInstance ? AudioManager.Instance.IsSfxEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.SfxEnabled : _previewSfx);
+            bool vibOn = VibrationManager.HasInstance ? VibrationManager.Instance.IsVibrationEnabled : (saveMgr != null && saveMgr.Data != null ? saveMgr.Data.VibrationEnabled : _previewVib);
 
             Color onColor = new Color(0.3f, 1f, 0.3f);
             Color offColor = new Color(0.7f, 0.7f, 0.7f);
@@ -238,6 +325,47 @@ namespace RoyalSmash.UI
                 _vibrationStatusText.text = vibOn ? "ON" : "OFF";
                 _vibrationStatusText.color = vibOn ? onColor : offColor;
             }
+
+            Color iconActive = Color.white;
+            Color iconInactive = new Color(0.35f, 0.45f, 0.6f, 0.55f);
+
+            if (_musicIconImage != null) _musicIconImage.color = musicOn ? iconActive : iconInactive;
+            if (_sfxIconImage != null) _sfxIconImage.color = sfxOn ? iconActive : iconInactive;
+            if (_vibrationIconImage != null) _vibrationIconImage.color = vibOn ? iconActive : iconInactive;
+
+            if (_musicSwitchImage != null)
+            {
+                if (musicOn && _switchOnSprite != null) _musicSwitchImage.sprite = _switchOnSprite;
+                else if (!musicOn && _switchOffSprite != null) _musicSwitchImage.sprite = _switchOffSprite;
+            }
+            if (_sfxSwitchImage != null)
+            {
+                if (sfxOn && _switchOnSprite != null) _sfxSwitchImage.sprite = _switchOnSprite;
+                else if (!sfxOn && _switchOffSprite != null) _sfxSwitchImage.sprite = _switchOffSprite;
+            }
+            if (_vibrationSwitchImage != null)
+            {
+                if (vibOn && _switchOnSprite != null) _vibrationSwitchImage.sprite = _switchOnSprite;
+                else if (!vibOn && _switchOffSprite != null) _vibrationSwitchImage.sprite = _switchOffSprite;
+            }
+        }
+
+        private void HandleSupportClicked()
+        {
+            Debug.Log("[InGameSettingsDialog] Support button clicked!");
+            Application.OpenURL("mailto:support@smasherroyale.com");
+        }
+
+        private void HandleTermsClicked()
+        {
+            Debug.Log("[InGameSettingsDialog] Terms & Privacy button clicked!");
+            Application.OpenURL("https://smasherroyale.com/terms");
+        }
+
+        private void HandlePrivacyClicked()
+        {
+            Debug.Log("[InGameSettingsDialog] Privacy Options button clicked!");
+            Application.OpenURL("https://smasherroyale.com/privacy");
         }
     }
 }

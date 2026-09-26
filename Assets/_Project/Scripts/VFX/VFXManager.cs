@@ -23,11 +23,14 @@ namespace RoyalSmash.VFX
                 if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<VFXManager>();
-                    if (_instance == null && Application.isPlaying)
+                    if (_instance == null)
                     {
                         var go = new GameObject("VFXManager");
                         _instance = go.AddComponent<VFXManager>();
-                        DontDestroyOnLoad(go);
+                        if (Application.isPlaying)
+                        {
+                            DontDestroyOnLoad(go);
+                        }
                     }
                 }
                 return _instance;
@@ -216,6 +219,32 @@ namespace RoyalSmash.VFX
             }
 
             ReturnToPool(vfx, Config.ObjectDestructionPrefab.name, 1.5f);
+            return vfx;
+        }
+
+        /// <summary>
+        /// Spawns a billowing ground dust blast when falling blocks crash into the floor off the stand.
+        /// </summary>
+        public GameObject SpawnGroundDust(Vector3 position)
+        {
+            if (Config == null) return null;
+
+            GameObject prefab = Config.ImpactHeavyPrefab != null ? Config.ImpactHeavyPrefab : Config.ImpactGenericPrefab;
+            if (prefab == null) return null;
+
+            Vector3 groundPos = new Vector3(position.x, Mathf.Max(0.05f, position.y), position.z);
+            GameObject vfx = GetFromPool(prefab, groundPos, Quaternion.LookRotation(Vector3.up));
+
+            var ps = vfx.GetComponentInChildren<ParticleSystem>();
+            if (ps != null)
+            {
+                var main = ps.main;
+                main.startSizeMultiplier = 2.4f;
+                main.startColor = new Color(0.88f, 0.85f, 0.80f, 0.95f); // Dust tone
+                ps.Play();
+            }
+
+            ReturnToPool(vfx, prefab.name, 1.4f);
             return vfx;
         }
 

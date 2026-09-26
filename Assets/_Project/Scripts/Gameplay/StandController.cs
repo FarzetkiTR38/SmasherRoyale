@@ -96,5 +96,13 @@ namespace RoyalSmash.Gameplay
                 if (child != null) SetLayerRecursively(child.gameObject, newLayer);
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.GetComponent<ProjectileController>() != null || collision.gameObject.CompareTag("Projectile"))
+            {
+                LevelStartPhysicsGate.ReleaseActiveGate();
+            }
+        }
     }
 }

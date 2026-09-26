@@ -15,7 +15,7 @@ namespace RoyalSmash.Economy
     {
         private static GoldManager _instance;
         private static bool _isQuitting = false;
-        public static bool HasInstance => _instance != null;
+        public static bool HasInstance => _instance != null || FindFirstObjectByType<GoldManager>() != null;
 
         public static GoldManager Instance
         {
@@ -24,11 +24,11 @@ namespace RoyalSmash.Economy
                 if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<GoldManager>();
-                    if (_instance == null && Application.isPlaying)
+                    if (_instance == null)
                     {
                         var go = new GameObject("GoldManager");
                         _instance = go.AddComponent<GoldManager>();
-                        DontDestroyOnLoad(go);
+                        if (Application.isPlaying) DontDestroyOnLoad(go);
                     }
                     if (_instance != null && _instance._currentGold == 0)
                     {
@@ -120,11 +120,6 @@ namespace RoyalSmash.Economy
                 SaveManager.Instance.OnSaveLoaded += HandleSaveLoaded;
             }
 
-            if (LevelManager.Instance != null)
-            {
-                LevelManager.Instance.OnLevelWon -= HandleLevelWon;
-                LevelManager.Instance.OnLevelWon += HandleLevelWon;
-            }
         }
 
         private void UnsubscribeEvents()
@@ -132,11 +127,6 @@ namespace RoyalSmash.Economy
             if (SaveManager.HasInstance)
             {
                 SaveManager.Instance.OnSaveLoaded -= HandleSaveLoaded;
-            }
-
-            if (LevelManager.Instance != null)
-            {
-                LevelManager.Instance.OnLevelWon -= HandleLevelWon;
             }
         }
 
@@ -149,9 +139,12 @@ namespace RoyalSmash.Economy
             }
         }
 
-        private void HandleLevelWon(int levelIndex, int baseReward, int remainingBalls, int totalGold)
+        /// <summary>
+        /// Returns true if the level completion reward has not yet been claimed.
+        /// </summary>
+        public bool IsFirstTimeReward(int levelIndex)
         {
-            ProcessLevelCompletionReward(levelIndex, remainingBalls);
+            return !HasClaimedLevelReward(levelIndex);
         }
 
         /// <summary>
