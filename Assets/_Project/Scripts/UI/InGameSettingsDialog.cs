@@ -24,10 +24,18 @@ namespace RoyalSmash.UI
         [Header("Toggles (Section 20)")]
         [SerializeField] private Button _musicToggleButton;
         [SerializeField] private TextMeshProUGUI _musicStatusText;
+        [SerializeField] private Image _musicIconImage;
         [SerializeField] private Button _sfxToggleButton;
         [SerializeField] private TextMeshProUGUI _sfxStatusText;
+        [SerializeField] private Image _sfxIconImage;
         [SerializeField] private Button _vibrationToggleButton;
         [SerializeField] private TextMeshProUGUI _vibrationStatusText;
+        [SerializeField] private Image _vibrationIconImage;
+
+        [Header("Extra Buttons (Main Menu Settings)")]
+        [SerializeField] private Button _supportButton;
+        [SerializeField] private Button _termsButton;
+        [SerializeField] private Button _privacyButton;
 
         public static InGameSettingsDialog Instance { get; private set; }
         public bool IsVisible => _contentRoot != null ? _contentRoot.activeSelf : gameObject.activeSelf;
@@ -45,6 +53,9 @@ namespace RoyalSmash.UI
             if (_musicToggleButton != null) _musicToggleButton.onClick.AddListener(ToggleMusic);
             if (_sfxToggleButton != null) _sfxToggleButton.onClick.AddListener(ToggleSfx);
             if (_vibrationToggleButton != null) _vibrationToggleButton.onClick.AddListener(ToggleVibration);
+            if (_supportButton != null) _supportButton.onClick.AddListener(HandleSupportClicked);
+            if (_termsButton != null) _termsButton.onClick.AddListener(HandleTermsClicked);
+            if (_privacyButton != null) _privacyButton.onClick.AddListener(HandlePrivacyClicked);
         }
 
         private void Start()
@@ -54,6 +65,16 @@ namespace RoyalSmash.UI
 
         private void OnDestroy()
         {
+            if (_supportButton != null) _supportButton.onClick.RemoveListener(HandleSupportClicked);
+            if (_termsButton != null) _termsButton.onClick.RemoveListener(HandleTermsClicked);
+            if (_privacyButton != null) _privacyButton.onClick.RemoveListener(HandlePrivacyClicked);
+            if (_closeButton != null) _closeButton.onClick.RemoveListener(Hide);
+            if (_resumeButton != null) _resumeButton.onClick.RemoveListener(Hide);
+            if (_exitLevelButton != null) _exitLevelButton.onClick.RemoveListener(HandleExitLevelClicked);
+            if (_musicToggleButton != null) _musicToggleButton.onClick.RemoveListener(ToggleMusic);
+            if (_sfxToggleButton != null) _sfxToggleButton.onClick.RemoveListener(ToggleSfx);
+            if (_vibrationToggleButton != null) _vibrationToggleButton.onClick.RemoveListener(ToggleVibration);
+
             if (_isTimePaused)
             {
                 Time.timeScale = _savedTimeScale;
@@ -238,6 +259,31 @@ namespace RoyalSmash.UI
                 _vibrationStatusText.text = vibOn ? "ON" : "OFF";
                 _vibrationStatusText.color = vibOn ? onColor : offColor;
             }
+
+            Color iconActive = Color.white;
+            Color iconInactive = new Color(0.35f, 0.45f, 0.6f, 0.55f);
+
+            if (_musicIconImage != null) _musicIconImage.color = musicOn ? iconActive : iconInactive;
+            if (_sfxIconImage != null) _sfxIconImage.color = sfxOn ? iconActive : iconInactive;
+            if (_vibrationIconImage != null) _vibrationIconImage.color = vibOn ? iconActive : iconInactive;
+        }
+
+        private void HandleSupportClicked()
+        {
+            Debug.Log("[InGameSettingsDialog] Support button clicked!");
+            Application.OpenURL("mailto:support@smasherroyale.com");
+        }
+
+        private void HandleTermsClicked()
+        {
+            Debug.Log("[InGameSettingsDialog] Terms & Privacy button clicked!");
+            Application.OpenURL("https://smasherroyale.com/terms");
+        }
+
+        private void HandlePrivacyClicked()
+        {
+            Debug.Log("[InGameSettingsDialog] Privacy Options button clicked!");
+            Application.OpenURL("https://smasherroyale.com/privacy");
         }
     }
 }

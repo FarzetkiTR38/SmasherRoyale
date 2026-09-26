@@ -20030,10 +20030,16 @@ MonoBehaviour:
   _exitLevelButton: {fileID: 302530867}
   _musicToggleButton: {fileID: 1275991868}
   _musicStatusText: {fileID: 1444718622}
+  _musicIconImage: {fileID: 0}
   _sfxToggleButton: {fileID: 105738287}
   _sfxStatusText: {fileID: 1649554220}
+  _sfxIconImage: {fileID: 0}
   _vibrationToggleButton: {fileID: 1666093266}
   _vibrationStatusText: {fileID: 69948815}
+  _vibrationIconImage: {fileID: 0}
+  _supportButton: {fileID: 0}
+  _termsButton: {fileID: 0}
+  _privacyButton: {fileID: 0}
 --- !u!1 &1615999186
 GameObject:
   m_ObjectHideFlags: 0
@@ -25220,6 +25226,10 @@ PrefabInstance:
     - target: {fileID: 1226597338633195079, guid: 2939a181be0860e49ac05cdd8e715844, type: 3}
       propertyPath: m_Name
       value: Stand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226597338633195079, guid: 2939a181be0860e49ac05cdd8e715844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5869950775843580997, guid: 2939a181be0860e49ac05cdd8e715844, type: 3}
       propertyPath: m_LocalPosition.x

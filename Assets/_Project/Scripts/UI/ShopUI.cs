@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using RoyalSmash.Economy;
 
@@ -21,6 +22,9 @@ namespace RoyalSmash.UI
         [Header("Limited Offer Countdown")]
         [SerializeField] private TextMeshProUGUI _limitedOfferTimerText;
         [SerializeField] private float _countdownDurationSeconds = 86400f; // 24 hours
+
+        [Header("Close Button")]
+        [SerializeField] private Button _closeButton;
 
         [Header("Dialogs")]
         [SerializeField] private PurchaseFeedbackDialog _feedbackDialog;
@@ -51,6 +55,11 @@ namespace RoyalSmash.UI
                 IAPManager.Instance.OnPurchaseFailed += HandlePurchaseFailed;
             }
 
+            if (_closeButton != null)
+            {
+                _closeButton.onClick.AddListener(HandleCloseClicked);
+            }
+
             StartCoroutine(CountdownTimerRoutine());
             RefreshAllCards();
         }
@@ -62,7 +71,24 @@ namespace RoyalSmash.UI
                 IAPManager.Instance.OnPurchaseCompleted -= HandlePurchaseCompleted;
                 IAPManager.Instance.OnPurchaseFailed -= HandlePurchaseFailed;
             }
+            if (_closeButton != null)
+            {
+                _closeButton.onClick.RemoveListener(HandleCloseClicked);
+            }
             if (Instance == this) Instance = null;
+        }
+
+        private void HandleCloseClicked()
+        {
+            var bottomNav = FindObjectOfType<BottomNavigationUI>();
+            if (bottomNav != null)
+            {
+                bottomNav.SwitchTab(NavigationTab.Battle);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         public void BindReferences(
