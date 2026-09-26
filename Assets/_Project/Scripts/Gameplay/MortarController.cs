@@ -22,6 +22,7 @@ namespace RoyalSmash.Gameplay
         [SerializeField] private Transform _firePoint;
 
         [SerializeField] private InputHandler _inputHandler;
+        [SerializeField] private TrajectoryPredictor _trajectoryPredictor;
 
         // Aiming state
         private float _targetYaw;
@@ -45,6 +46,7 @@ namespace RoyalSmash.Gameplay
         public int RemainingBalls => _remainingBalls;
         public float CooldownTimer => _cooldownTimer;
         public int FireEventCount => _fireEventCount;
+        public TrajectoryPredictor TrajectoryPredictor => _trajectoryPredictor;
 
         private void Awake()
         {
@@ -58,6 +60,11 @@ namespace RoyalSmash.Gameplay
             {
                 var foundFirePoint = transform.Find("Visuals/BarrelPivot/FirePoint");
                 if (foundFirePoint != null) _firePoint = foundFirePoint;
+            }
+
+            if (_trajectoryPredictor == null)
+            {
+                _trajectoryPredictor = GetComponentInChildren<TrajectoryPredictor>();
             }
 
             // Initialize ammunition and cooldown

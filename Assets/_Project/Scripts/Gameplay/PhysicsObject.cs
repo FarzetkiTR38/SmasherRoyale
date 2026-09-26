@@ -131,7 +131,13 @@ namespace RoyalSmash.Gameplay
             }
             else if (collision.gameObject.layer == 9 || collision.gameObject.CompareTag("Ground") || collision.gameObject.name.IndexOf("ground", StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                // Falling onto the ground off the stand triggers destruction
+                // Falling onto the ground off the stand triggers dust burst, camera shake and destruction
+                Vector3 groundHitPos = collision.contacts.Length > 0 ? collision.contacts[0].point : transform.position;
+                if (RoyalSmash.VFX.VFXManager.Instance != null)
+                {
+                    RoyalSmash.VFX.VFXManager.Instance.SpawnGroundDust(groundHitPos);
+                }
+                ScreenShake.TriggerMedium();
                 TriggerDestroyCondition("Collided with Ground layer");
             }
         }
@@ -143,6 +149,23 @@ namespace RoyalSmash.Gameplay
             if (_currentState == ObjectState.Idle)
             {
                 SetState(ObjectState.Hit);
+            }
+
+            var proj = collision.gameObject.GetComponent<ProjectileController>();
+            bool isMega = proj != null && proj.IsMegaBall;
+
+            // Camera screen shake based on impact intensity or MegaBall
+            if (isMega)
+            {
+                ScreenShake.TriggerHeavy();
+            }
+            else if (collision.impulse.magnitude >= 3.5f)
+            {
+                ScreenShake.TriggerMedium();
+            }
+            else if (collision.impulse.magnitude >= 1.2f)
+            {
+                ScreenShake.TriggerLight();
             }
 
             if (RoyalSmash.Audio.AudioManager.Instance != null)

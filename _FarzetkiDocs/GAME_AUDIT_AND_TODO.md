@@ -221,10 +221,10 @@ Aşağıdaki liste, oyunu baştan sona cilalamak ve hatasız bir şekilde yayın
 - [x] 3.2: `SettingsDialog` ve `InGameSettingsDialog` arasındaki ses/titreşim durumlarını yüzde yüz senkronize tut.
 - [x] 3.3: Win Panel ve Lose Panel pop-in animasyonlarını ve altın kazanma parıltı efektlerini cilala.
 
-### 💥 FAZ 4: OYNANIŞ HİSSİ & CİLA (GAME FEEL & JUICE)
-- [ ] 4.1: Havan nişan alırken topun gideceği rotayı gösteren noktalı görsel nişan yayı (`TrajectoryPredictor`) ekle.
-- [ ] 4.2: Büyük kule devrilmelerinde ve Mega Ball vuruşlarında hafif kamera sarsıntısı (`ScreenShake`) ekle.
-- [ ] 4.3: Bloklar parçalandığında veya standdan düştüğünde duman/toz partikül efektlerini güçlendir.
+### 💥 FAZ 4: OYNANIŞ HİSSİ & CİLA (GAME FEEL & JUICE) [TAMAMLANDI]
+- [x] 4.1: Havan nişan alırken topun gideceği rotayı gösteren noktalı görsel nişan yayı (`TrajectoryPredictor`) ekle.
+- [x] 4.2: Büyük kule devrilmelerinde ve Mega Ball vuruşlarında hafif kamera sarsıntısı (`ScreenShake`) ekle.
+- [x] 4.3: Bloklar parçalandığında veya standdan düştüğünde duman/toz partikül efektlerini güçlendir.
 
 ### 🧪 FAZ 5: TEST VE KALİTE GÜVENCESİ (QA & AUTOMATION)
 - [ ] 5.1: Seviye 1'den Seviye 30'a kadar tüm seviyelerin sırayla oynanabilirliğini otomatik test script'i ile doğrula.
