@@ -210,11 +210,11 @@ Aşağıdaki liste, oyunu baştan sona cilalamak ve hatasız bir şekilde yayın
 - [x] 1.6: `GoldDisplayUI` üzerindeki '+' butonuna tıklandığında Mağaza (Shop) sekmesine geçişi bağla.
 - [x] 1.7: `LevelManager.NextLevel()` metodunu tam sahne yeniden yüklemesi yerine `LoadLevelDirect` kullanacak şekilde optimize et.
 
-### 🏰 FAZ 2: LEVEL SİSTEMİ & BULMACA ALTYAPISI REVİZYONU
-- [ ] 2.1: `PhysicsObject` ve `LevelData` yapısına `IsRequiredTarget` desteği ekle (Hedef vs Stratejik Engel ayrımı).
-- [ ] 2.2: Yeni Citadel prefab ölçülerine (`0.74m`) tam oturan modüler seviye dizilim matematik formülünü entegre et.
-- [ ] 2.3: `LevelLoader`'ın Stand üzerindeki nesneleri ilk atışa kadar kusursuz dondurmasını sağla (`LevelStartPhysicsGate` optimizasyonu).
-- [ ] 2.4: 1'den 30'a kadar olan seviyeleri artan zorluk, taktiksel engeller ve tatmin edici yıkım hissi sunacak şekilde yeniden tasarla.
+### 🏰 FAZ 2: LEVEL SİSTEMİ & BULMACA ALTYAPISI REVİZYONU [TAMAMLANDI]
+- [x] 2.1: `PhysicsObject` ve `LevelData` yapısına `IsRequiredTarget` desteği ekle (Hedef vs Stratejik Engel ayrımı).
+- [x] 2.2: Yeni Citadel prefab ölçülerine (`0.74m`) tam oturan modüler seviye dizilim matematik formülünü entegre et.
+- [x] 2.3: `LevelLoader`'ın Stand üzerindeki nesneleri ilk atışa kadar kusursuz dondurmasını sağla (`LevelStartPhysicsGate` optimizasyonu).
+- [x] 2.4: 1'den 30'a kadar olan seviyeleri artan zorluk, taktiksel engeller ve tatmin edici yıkım hissi sunacak şekilde yeniden tasarla.
 
 ### 🎨 FAZ 3: UI / UX & MENÜ ENTEGRASYONLARI
 - [ ] 3.1: Leaderboard alt sekmelerini (`Tab_Dunya`, `Tab_Turkiye`, `Tab_Arkadaslar`) aktif hale getir ve filtrelemeyi bağla.

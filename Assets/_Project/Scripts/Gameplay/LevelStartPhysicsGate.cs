@@ -18,8 +18,29 @@ namespace RoyalSmash.Gameplay
         public bool IsWaitingForFirstShot { get; private set; }
         public int HeldBodyCount => _heldBodies.Count;
 
+        public static LevelStartPhysicsGate ActiveGate { get; private set; }
+
+        public static void ReleaseActiveGate()
+        {
+            if (ActiveGate != null && ActiveGate.IsWaitingForFirstShot)
+            {
+                ActiveGate.Release();
+            }
+        }
+
+        private void Awake()
+        {
+            ActiveGate = this;
+        }
+
+        private void OnDestroy()
+        {
+            if (ActiveGate == this) ActiveGate = null;
+        }
+
         public void Prepare(IReadOnlyList<PhysicsObject> targets, MortarController mortar)
         {
+            ActiveGate = this;
             Release();
             _mortar = mortar;
             for (int i = 0; i < targets.Count; i++)

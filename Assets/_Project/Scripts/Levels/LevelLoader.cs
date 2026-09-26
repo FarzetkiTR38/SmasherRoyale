@@ -121,6 +121,7 @@ namespace RoyalSmash.Levels
                     var physObj = go.GetComponent<PhysicsObject>();
                     if (physObj != null)
                     {
+                        physObj.SetRequiredTarget(placement.IsRequiredTarget);
                         if (placement.OverrideMass && physObj.Rigidbody != null)
                         {
                             physObj.Rigidbody.mass = placement.CustomMass;

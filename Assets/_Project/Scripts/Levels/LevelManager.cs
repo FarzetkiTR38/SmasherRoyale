@@ -43,6 +43,7 @@ namespace RoyalSmash.Levels
 
         // Runtime Tracking
         private readonly HashSet<PhysicsObject> _activeTargets = new HashSet<PhysicsObject>();
+        private readonly HashSet<PhysicsObject> _activeObstacles = new HashSet<PhysicsObject>();
         private readonly HashSet<ProjectileController> _activeProjectiles = new HashSet<ProjectileController>();
         private int _totalTargets;
         private LevelState _currentState = LevelState.Playing;
@@ -134,10 +135,13 @@ namespace RoyalSmash.Levels
             {
                 ResetState();
                 _activeTargets.Clear();
+                _activeObstacles.Clear();
                 foreach (var obj in _levelLoader.SpawnedObjects)
                 {
                     RegisterTarget(obj);
                 }
+                _totalTargets = _activeTargets.Count;
+                OnTargetCountChanged?.Invoke(_activeTargets.Count, _totalTargets);
             }
             else
             {
@@ -177,11 +181,23 @@ namespace RoyalSmash.Levels
         }
 
         /// <summary>
-        /// Registers a target PhysicsObject that must be cleared to win the level.
+        /// Registers a target PhysicsObject. If IsRequiredTarget is true, it is tracked as a win condition target.
+        /// If false, it acts as a strategic obstacle/shield that does not block victory.
         /// </summary>
         public void RegisterTarget(PhysicsObject target)
         {
-            if (target == null || _activeTargets.Contains(target)) return;
+            if (target == null) return;
+
+            if (!target.IsRequiredTarget)
+            {
+                if (!_activeObstacles.Contains(target))
+                {
+                    _activeObstacles.Add(target);
+                }
+                return;
+            }
+
+            if (_activeTargets.Contains(target)) return;
 
             _activeTargets.Add(target);
             _totalTargets = Mathf.Max(_totalTargets, _activeTargets.Count);
@@ -191,11 +207,19 @@ namespace RoyalSmash.Levels
         }
 
         /// <summary>
-        /// Unregisters a target PhysicsObject when destroyed or cleared.
+        /// Unregisters a target or obstacle PhysicsObject when destroyed or cleared.
         /// </summary>
         public void UnregisterTarget(PhysicsObject target)
         {
-            if (target == null || !_activeTargets.Contains(target)) return;
+            if (target == null) return;
+
+            if (_activeObstacles.Contains(target))
+            {
+                _activeObstacles.Remove(target);
+                return;
+            }
+
+            if (!_activeTargets.Contains(target)) return;
 
             target.OnStateChanged -= HandleTargetStateChanged;
             _activeTargets.Remove(target);
@@ -253,6 +277,7 @@ namespace RoyalSmash.Levels
                 _evalRoutine = null;
             }
             _activeProjectiles.Clear();
+            _activeObstacles.Clear();
             _currentState = LevelState.Playing;
             OnStateChanged?.Invoke(_currentState);
         }
@@ -266,19 +291,19 @@ namespace RoyalSmash.Levels
         }
 
         /// <summary>
-        /// Scans active scene for all PhysicsObject components and registers them as required targets.
+        /// Scans active scene for all PhysicsObject components and registers them according to IsRequiredTarget.
         /// </summary>
         public void ScanAndRegisterSceneTargets()
         {
             ResetState();
             _activeTargets.Clear();
+            _activeObstacles.Clear();
             var objects = FindObjectsByType<PhysicsObject>(FindObjectsSortMode.None);
             foreach (var obj in objects)
             {
                 if (obj.CurrentState != ObjectState.Destroyed && obj.CurrentState != ObjectState.Destroying && obj.CurrentState != ObjectState.DestroyCondition)
                 {
-                    _activeTargets.Add(obj);
-                    obj.OnStateChanged += HandleTargetStateChanged;
+                    RegisterTarget(obj);
                 }
             }
             _totalTargets = _activeTargets.Count;
@@ -554,6 +579,7 @@ namespace RoyalSmash.Levels
 
             ResetState();
             _activeTargets.Clear();
+            _activeObstacles.Clear();
             if (_levelLoader != null && _levelLoader.SpawnedObjects.Count > 0)
             {
                 foreach (var obj in _levelLoader.SpawnedObjects)

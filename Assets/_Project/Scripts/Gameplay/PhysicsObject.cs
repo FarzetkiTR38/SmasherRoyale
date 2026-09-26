@@ -32,8 +32,18 @@ namespace RoyalSmash.Gameplay
 
         public ObjectState CurrentState => _currentState;
         public ObjectConfig Config => _config;
-        public Rigidbody Rigidbody => _rigidbody;
-        public Collider Collider => _collider;
+        public Rigidbody Rigidbody => _rigidbody != null ? _rigidbody : (_rigidbody = GetComponent<Rigidbody>());
+        public Collider Collider => _collider != null ? _collider : (_collider = GetComponent<Collider>());
+        public bool IsRequiredTarget => _isRequiredTarget;
+
+        [Header("Puzzle Target Role")]
+        [Tooltip("If true, clearing this object is required to win the level. If false, it acts as an obstacle/shield.")]
+        [SerializeField] private bool _isRequiredTarget = true;
+
+        public void SetRequiredTarget(bool isRequired)
+        {
+            _isRequiredTarget = isRequired;
+        }
 
         protected virtual void Awake()
         {
@@ -128,6 +138,8 @@ namespace RoyalSmash.Gameplay
 
         protected virtual void HandleProjectileHit(Collision collision)
         {
+            LevelStartPhysicsGate.ReleaseActiveGate();
+
             if (_currentState == ObjectState.Idle)
             {
                 SetState(ObjectState.Hit);

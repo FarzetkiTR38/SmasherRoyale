@@ -13,133 +13,78 @@ MonoBehaviour:
   m_Name: LevelData_Citadel17
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Levels.LevelData
   _levelId: 17
-  _levelName: Level 17
-  _ballCount: 16
-  _baseRewardGold: 130
+  _levelName: The Royal Vault
+  _ballCount: 25
+  _baseRewardGold: 150
   _stands:
   - Position: {x: 0, y: 0, z: 7.5}
-    Scale: {x: 1, y: 1, z: 1}
+    Scale: {x: 1, y: 1, z: 0.5}
     Rotation: {x: 0, y: 0, z: 0}
   _objects:
-  - Type: 1
-    Position: {x: -1.3575, y: 1.9185, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: -0.4525, y: 1.9185, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 2
-    Position: {x: 0.4525, y: 1.9185, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: 1.3575, y: 1.9185, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: -1.3575, y: 2.8055, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 2
-    Position: {x: -0.4525, y: 2.8055, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 1
-    Position: {x: 0.4525, y: 2.8055, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: 1.3575, y: 2.8055, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: -1.3575, y: 3.6924999, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
   - Type: 3
-    Position: {x: -0.4525, y: 3.6924999, z: 7.5}
+    Position: {x: -1.1175001, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: 0.4525, y: 3.6924999, z: 7.5}
+    IsRequiredTarget: 0
+  - Type: 4
+    Position: {x: -0.3725, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: 1.3575, y: 3.6924999, z: 7.5}
+    IsRequiredTarget: 1
+  - Type: 4
+    Position: {x: 0.3725, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
   - Type: 3
-    Position: {x: -1.3575, y: 4.5794997, z: 7.5}
+    Position: {x: 1.1175001, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 0
+  - Type: 1
+    Position: {x: -0.745, y: 2.591, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 0
+  - Type: 2
+    Position: {x: 0, y: 2.591, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
+  - Type: 1
+    Position: {x: 0.745, y: 2.591, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 0
   - Type: 0
-    Position: {x: -0.4525, y: 4.5794997, z: 7.5}
+    Position: {x: 0, y: 3.337, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 4
-    Position: {x: 0.4525, y: 4.5794997, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 1, g: 0.5, b: 0.05, a: 1}
-  - Type: 4
-    Position: {x: 1.3575, y: 4.5794997, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0.92, g: 0.12, b: 0.16, a: 1}
-  - Type: 4
-    Position: {x: 1.3575, y: 5.4665, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.88699996, y: 0.88699996, z: 0.88699996}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0.1, g: 0.55, b: 0.95, a: 1}
+    IsRequiredTarget: 1
   _specialEvents: []
   _isTutorialLevel: 0
   _tutorialTargetPosition: {x: 0, y: 0, z: 0}

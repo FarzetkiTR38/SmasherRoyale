@@ -13,77 +13,70 @@ MonoBehaviour:
   m_Name: LevelData_Citadel08
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Levels.LevelData
   _levelId: 8
-  _levelName: Level 8
-  _ballCount: 20
-  _baseRewardGold: 85
+  _levelName: Twin Keeps
+  _ballCount: 22
+  _baseRewardGold: 90
   _stands:
   - Position: {x: 0, y: 0, z: 7.5}
-    Scale: {x: 1, y: 1, z: 1}
+    Scale: {x: 1, y: 1, z: 0.5}
     Rotation: {x: 0, y: 0, z: 0}
   _objects:
-  - Type: 4
-    Position: {x: -1.996, y: 1.965, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 1, g: 0.82, b: 0.08, a: 1}
-  - Type: 4
-    Position: {x: -0.998, y: 1.965, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0.96, g: 0.2, b: 0.58, a: 1}
-  - Type: 4
-    Position: {x: 0, y: 1.965, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0.1, g: 0.55, b: 0.95, a: 1}
-  - Type: 1
-    Position: {x: 0.998, y: 1.965, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
   - Type: 0
-    Position: {x: 1.996, y: 1.965, z: 7.5}
+    Position: {x: -1.1175001, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
   - Type: 0
-    Position: {x: -1.996, y: 2.9450002, z: 7.5}
+    Position: {x: -1.1175001, y: 2.591, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 1
-    Position: {x: -0.998, y: 2.9450002, z: 7.5}
+    IsRequiredTarget: 1
+  - Type: 2
+    Position: {x: -1.1175001, y: 3.337, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
   - Type: 0
-    Position: {x: 0, y: 2.9450002, z: 7.5}
+    Position: {x: 1.1175001, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 3
-    Position: {x: 0.998, y: 2.9450002, z: 7.5}
+    IsRequiredTarget: 1
+  - Type: 0
+    Position: {x: 1.1175001, y: 2.591, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
+  - Type: 2
+    Position: {x: 1.1175001, y: 3.337, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
+  - Type: 4
+    Position: {x: 0, y: 2.591, z: 7.5}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
+    OverrideMass: 0
+    CustomMass: 1
+    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
   _specialEvents: []
   _isTutorialLevel: 0
   _tutorialTargetPosition: {x: 0, y: 0, z: 0}

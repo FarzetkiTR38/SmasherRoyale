@@ -13,63 +13,46 @@ MonoBehaviour:
   m_Name: LevelData_Citadel02
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Levels.LevelData
   _levelId: 2
-  _levelName: Level 2
-  _ballCount: 25
+  _levelName: Triple Spire
+  _ballCount: 20
   _baseRewardGold: 55
   _stands:
   - Position: {x: 0, y: 0, z: 7.5}
-    Scale: {x: 1, y: 1, z: 1}
+    Scale: {x: 1, y: 1, z: 0.5}
     Rotation: {x: 0, y: 0, z: 0}
   _objects:
   - Type: 0
-    Position: {x: -0.998, y: 1.965, z: 7.5}
+    Position: {x: -0.745, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
   - Type: 0
-    Position: {x: 0, y: 1.965, z: 7.5}
+    Position: {x: 0, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 3
-    Position: {x: 0.998, y: 1.965, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
   - Type: 0
-    Position: {x: -0.998, y: 2.9450002, z: 7.5}
+    Position: {x: 0.745, y: 1.845, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: 0, y: 2.9450002, z: 7.5}
+    IsRequiredTarget: 1
+  - Type: 2
+    Position: {x: 0, y: 2.591, z: 7.5}
     Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
+    Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
     CustomMass: 1
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 0
-    Position: {x: 0.998, y: 2.9450002, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
-  - Type: 3
-    Position: {x: 0, y: 3.9250002, z: 7.5}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 0.98, y: 0.98, z: 0.98}
-    OverrideMass: 0
-    CustomMass: 1
-    PaintColor: {r: 0, g: 0, b: 0, a: 0}
+    IsRequiredTarget: 1
   _specialEvents: []
   _isTutorialLevel: 0
   _tutorialTargetPosition: {x: 0, y: 0, z: 0}
