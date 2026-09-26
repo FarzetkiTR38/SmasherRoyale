@@ -81,7 +81,7 @@ namespace RoyalSmash.UI
                 LevelManager.Instance.OnLevelWon += HandleLevelWon;
             }
 
-            if (Economy.GoldManager.HasInstance)
+            if (Economy.GoldManager.Instance != null)
             {
                 Economy.GoldManager.Instance.OnLevelRewardProcessed -= HandleRewardProcessed;
                 Economy.GoldManager.Instance.OnLevelRewardProcessed += HandleRewardProcessed;
@@ -105,9 +105,7 @@ namespace RoyalSmash.UI
         {
             if (_panelRoot == null || !_panelRoot.activeSelf)
             {
-                bool isDuplicate = Save.SaveManager.HasInstance && Save.SaveManager.Instance.Data != null &&
-                                   Save.SaveManager.Instance.Data.RewardedLevelIds != null &&
-                                   Save.SaveManager.Instance.Data.RewardedLevelIds.Contains(level);
+                bool isDuplicate = (totalGold == 0);
                 Show(level, baseReward, remainingBalls, totalGold, isDuplicate);
             }
         }

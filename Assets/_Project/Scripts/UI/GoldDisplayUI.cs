@@ -168,7 +168,12 @@ namespace RoyalSmash.UI
 
         private void HandleAddGoldClicked()
         {
-            Debug.Log("[GoldDisplayUI] Add Gold clicked. (Shop will be integrated in Phase 13)");
+            Debug.Log("[GoldDisplayUI] Add Gold clicked -> Switching to Shop.");
+            var bottomNav = FindFirstObjectByType<BottomNavigationUI>();
+            if (bottomNav != null)
+            {
+                bottomNav.SwitchTab(NavigationTab.Shop);
+            }
         }
     }
 }

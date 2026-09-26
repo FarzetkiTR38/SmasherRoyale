@@ -221,12 +221,20 @@ namespace RoyalSmash.UI
 
         private void HandleLeftOfferClicked()
         {
-            Debug.Log("[MainMenuController] Special Starter Bundle clicked. (Shop IAP in Phase 13)");
+            Debug.Log("[MainMenuController] Special Starter Bundle clicked -> Switching to Shop.");
+            if (_bottomNavigation != null)
+            {
+                _bottomNavigation.SwitchTab(NavigationTab.Shop);
+            }
         }
 
         private void HandleRightOfferClicked()
         {
-            Debug.Log("[MainMenuController] Limited Time Offer clicked. (Shop IAP in Phase 13)");
+            Debug.Log("[MainMenuController] Limited Time Offer clicked -> Switching to Shop.");
+            if (_bottomNavigation != null)
+            {
+                _bottomNavigation.SwitchTab(NavigationTab.Shop);
+            }
         }
 
         private IEnumerator OfferCountdownRoutine()

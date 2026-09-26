@@ -375,11 +375,12 @@ namespace RoyalSmash.Levels
             }
 
             Debug.Log($"[LevelManager] VICTORY! Level {_currentLevelIndex} Cleared! Base: {baseReward}, Remaining Balls: {remainingBalls}, Total Gold: {totalGold}");
-            if (Economy.GoldManager.HasInstance)
+            int awardedGold = totalGold;
+            if (Economy.GoldManager.Instance != null)
             {
-                Economy.GoldManager.Instance.ProcessLevelCompletionReward(_currentLevelIndex, remainingBalls);
+                awardedGold = Economy.GoldManager.Instance.ProcessLevelCompletionReward(_currentLevelIndex, remainingBalls);
             }
-            OnLevelWon?.Invoke(_currentLevelIndex, baseReward, remainingBalls, totalGold);
+            OnLevelWon?.Invoke(_currentLevelIndex, baseReward, remainingBalls, awardedGold);
 
             if (RoyalSmash.Ads.AdManager.Instance != null)
             {
@@ -454,7 +455,13 @@ namespace RoyalSmash.Levels
                 SaveManager.Instance.Save();
             }
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            var losePanel = FindFirstObjectByType<UI.LosePanel>();
+            if (losePanel != null) losePanel.HideImmediate();
+
+            var winPanel = FindFirstObjectByType<UI.WinPanel>();
+            if (winPanel != null) winPanel.HideImmediate();
+
+            LoadLevelDirect(_currentLevelIndex);
         }
 
         /// <summary>
@@ -484,7 +491,10 @@ namespace RoyalSmash.Levels
                 SaveManager.Instance.Save();
             }
 
-            RestartLevel();
+            var winPanel = FindFirstObjectByType<UI.WinPanel>();
+            if (winPanel != null) winPanel.HideImmediate();
+
+            LoadLevelDirect(_currentLevelIndex);
         }
 
         /// <summary>

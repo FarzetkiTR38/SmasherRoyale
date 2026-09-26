@@ -201,14 +201,14 @@ Yeni seviye mimarisi **3 katmanlı modern bir bulmaca sistemi** üzerine kurulma
 Aşağıdaki liste, oyunu baştan sona cilalamak ve hatasız bir şekilde yayına hazırlamak için oluşturulmuştur:
 
 ```markdown
-### 🚀 FAZ 1: KRİTİK HATALARIN DÜZELTİLMESİ (BUG FIXES)
-- [ ] 1.1: Level zaferinde 0 Altın verme hatasını düzelt (`LevelManager` & `WinPanel` & `GoldManager` ödül senkronizasyonu).
-- [ ] 1.2: `MainGame` sahnesindeki `SkyCitadelPreview` hayalet bloklarını sahneden temizle; `PF_CitadelStand`'i ana stand olarak sabitle.
-- [ ] 1.3: `TapIndicator` üzerindeki bozuk/missing script bileşenini temizle ve doğrula.
-- [ ] 1.4: `MainMenu` sahnesindeki eski `OutOfLivesDialog`'u `MainGame`'deki yeni mecha görsel versiyonuyla güncelle.
-- [ ] 1.5: `MainMenuController`'da `_offerCountdownText` referansını bağla, teklif butonlarının Shop'u açmasını sağla.
-- [ ] 1.6: `GoldDisplayUI` üzerindeki '+' butonuna tıklandığında Mağaza (Shop) sekmesine geçişi bağla.
-- [ ] 1.7: `LevelManager.NextLevel()` metodunu tam sahne yeniden yüklemesi yerine `LoadLevelDirect` kullanacak şekilde optimize et.
+### 🚀 FAZ 1: KRİTİK HATALARIN DÜZELTİLMESİ (BUG FIXES) [TAMAMLANDI]
+- [x] 1.1: Level zaferinde 0 Altın verme hatasını düzelt (`LevelManager` & `WinPanel` & `GoldManager` ödül senkronizasyonu).
+- [x] 1.2: `MainGame` sahnesindeki `SkyCitadelPreview` hayalet bloklarını sahneden temizle; `PF_CitadelStand`'i ana stand olarak sabitle.
+- [x] 1.3: `TapIndicator` üzerindeki bozuk/missing script bileşenini temizle ve doğrula.
+- [x] 1.4: `MainMenu` sahnesindeki eski `OutOfLivesDialog`'u `MainGame`'deki yeni mecha görsel versiyonuyla güncelle.
+- [x] 1.5: `MainMenuController`'da `_offerCountdownText` referansını bağla, teklif butonlarının Shop'u açmasını sağla.
+- [x] 1.6: `GoldDisplayUI` üzerindeki '+' butonuna tıklandığında Mağaza (Shop) sekmesine geçişi bağla.
+- [x] 1.7: `LevelManager.NextLevel()` metodunu tam sahne yeniden yüklemesi yerine `LoadLevelDirect` kullanacak şekilde optimize et.
 
 ### 🏰 FAZ 2: LEVEL SİSTEMİ & BULMACA ALTYAPISI REVİZYONU
 - [ ] 2.1: `PhysicsObject` ve `LevelData` yapısına `IsRequiredTarget` desteği ekle (Hedef vs Stratejik Engel ayrımı).

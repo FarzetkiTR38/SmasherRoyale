@@ -21,11 +21,11 @@ namespace RoyalSmash.Save
                 if (_instance == null && !_isQuitting)
                 {
                     _instance = FindFirstObjectByType<SaveManager>();
-                    if (_instance == null && Application.isPlaying)
+                    if (_instance == null)
                     {
                         var go = new GameObject("SaveManager");
                         _instance = go.AddComponent<SaveManager>();
-                        DontDestroyOnLoad(go);
+                        if (Application.isPlaying) DontDestroyOnLoad(go);
                     }
                     if (_instance != null && _instance._data == null)
                     {
