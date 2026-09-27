@@ -44,6 +44,17 @@ namespace RoyalSmash.Levels
             _spawnedObjects.Clear();
             _spawnedStands.Clear();
 
+            // Guarantee any editor showcase preview is completely cleaned up
+            var preview = GameObject.Find("SkyCitadelPreview");
+            if (preview != null)
+            {
+                preview.SetActive(false);
+                if (Application.isPlaying)
+                    Destroy(preview);
+                else
+                    DestroyImmediate(preview);
+            }
+
             if (_levelRoot != null)
             {
                 for (int i = _levelRoot.childCount - 1; i >= 0; i--)
