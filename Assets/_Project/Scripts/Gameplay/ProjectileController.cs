@@ -103,9 +103,18 @@ namespace RoyalSmash.Gameplay
             }
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            // Restore gravity upon impact so ball bounces and falls naturally
+            if (_rigidbody != null)
+            {
+                _rigidbody.useGravity = true;
+            }
+        }
+
         /// <summary>
-        /// Launch the ball toward the specified 3D world target coordinate with real physics.
-        /// Accounts for gravity to hit the target point accurately.
+        /// Launch the ball directly toward the specified 3D world target coordinate.
+        /// Flies straight without mid-air gravity drop, restoring gravity upon impact.
         /// </summary>
         /// <param name="targetPoint">3D world coordinate to hit.</param>
         /// <param name="config">Configuration containing launch speed, lifetime, and fade durations.</param>
@@ -113,8 +122,8 @@ namespace RoyalSmash.Gameplay
         {
             _config = config;
 
-            // Ensure physics settings
-            _rigidbody.useGravity = true;
+            // Direct straight flight: disable gravity in air, enable upon collision
+            _rigidbody.useGravity = false;
             _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
             _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
@@ -129,23 +138,12 @@ namespace RoyalSmash.Gameplay
                 _trailRenderer.emitting = true;
             }
 
-            // Calculate ballistic arc
+            // Direct linear velocity towards target point
             Vector3 origin = transform.position;
-            Vector3 displacement = targetPoint - origin;
-            Vector3 displacementXZ = new Vector3(displacement.x, 0f, displacement.z);
-            float distanceXZ = displacementXZ.magnitude;
+            Vector3 direction = (targetPoint - origin).normalized;
+            float launchSpeed = _config != null ? Mathf.Max(_config.LaunchSpeed, 26f) : 26f;
 
-            float launchSpeed = _config != null ? _config.LaunchSpeed : 22f;
-            if (distanceXZ < 0.1f) distanceXZ = 0.1f;
-
-            float timeToTarget = distanceXZ / launchSpeed;
-            float gravity = Mathf.Abs(Physics.gravity.y);
-
-            // Kinematic formula for vertical velocity to arrive at target Y at timeToTarget
-            float vy = (displacement.y + 0.5f * gravity * timeToTarget * timeToTarget) / timeToTarget;
-
-            Vector3 initialVelocity = (displacementXZ.normalized * launchSpeed) + (Vector3.up * vy);
-            _rigidbody.linearVelocity = initialVelocity;
+            _rigidbody.linearVelocity = direction * launchSpeed;
 
             if (RoyalSmash.Levels.LevelManager.Instance != null)
             {
