@@ -1,0 +1,11 @@
+{
+  "Stage": "32.3",
+  "Checked": 178,
+  "ExpectedChanged": [
+    "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_CitadelStand.prefab"
+  ],
+  "UnexpectedChanged": [
+    null
+  ],
+  "Passed": true
+}
