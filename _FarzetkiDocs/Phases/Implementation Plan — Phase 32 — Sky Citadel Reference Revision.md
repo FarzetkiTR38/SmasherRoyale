@@ -1,9 +1,9 @@
 # Phase 32 — Sky Citadel referans görseline göre revizyon
 
 **Başlangıç:** 27 Eylül 2026  
-**Durum:** Devam ediyor — 32.1 tamamlandı; 32.2 uygulanıyor.  
-**Son tamamlanan aşama:** 32.1  
-**Devam noktası:** 32.2 ışık/yansıma temelini doğrula; ardından 32.3 stand revizyonu.  
+**Durum:** Devam ediyor — **32.1, 32.2, 32.3 ve öncelikli 32.6 zemin tamamlandı (4/12)**.  
+**Son tamamlanan aşama:** **32.6 — Zemin**, 27 Eylül 2026.  
+**Devam noktası:** **32.4 — Mortar namlu/gövde revizyonu.** Zemini yeniden üretme; mevcut doğrulanan teknik çıktıları koru.  
 **Kullanıcı isteği:** Mevcut mortar, stand, zemin ve blokları revize ederek verilen ilk görselin canlılığına, yüzey kalitesine ve hacimli detaylarına yaklaştırmak. Çalışmayı kalıcı aşamalara bölmek; sonraki oturumda tamamlanmayan aşamadan devam etmek.
 
 ## Referanslar ve kapsam
@@ -39,11 +39,11 @@ Referans bir sanat hedefidir. Görseldeki **22 bölüm, 15 top ve 5×3 blok düz
 | Aşama | İş | Tamamlanma şartı | Durum |
 | --- | --- | --- | --- |
 | **32.1** | Güncel sahne, referans, runtime müdahaleleri, fizik ve asset envanteri; yedek ve aynı kamera ile başlangıç görüntüsü | MCP/başlangıç doğrulandı, riskler ve geri dönüş yolu kayıtlı | **Tamam** |
-| **32.2** | Işık, yansıma ve malzeme temeli: kontrollü baked reflection probe, altın/safir/çelik ayrımı, mermer parlaklığı, ölçülü bloom | Aynı level 30 önce/sonra; materyal/ışık dışındaki oyun verileri değişmez; konsol temiz | **Devam ediyor** |
-| **32.3** | Stand ön kiriş ve ayaklar: pahlı zırh, koyu şase, merkez elmas, cyan kanallar, mekanik kaideler ve arma panelleri | Mevcut stand prefabında görünür revizyon; aynı üst yüzey/collider; farklı stand ölçeklerinde bozulma yok | Bekliyor |
+| **32.2** | Işık, yansıma ve malzeme temeli: kontrollü baked reflection probe, altın/safir/çelik ayrımı, mermer parlaklığı, ölçülü bloom | Aynı level 30 önce/sonra; materyal/ışık dışındaki oyun verileri değişmez; konsol temiz | **Tamam** |
+| **32.3** | Stand ön kiriş ve ayaklar: pahlı zırh, koyu şase, merkez elmas, cyan kanallar, mekanik kaideler ve arma panelleri | Mevcut stand prefabında görünür revizyon; aynı üst yüzey/collider; farklı stand ölçeklerinde bozulma yok | **Tamam** |
 | **32.4** | Mortar namlu/gövde: mavi kaplama, kalın altın bilezikler, fildişi zırh, koyu bağlantılar, detaylı enerji haznesi | Mevcut pivotlar, FirePoint, nişan ve recoil korunur; ön planda referansa yakın hacim | Bekliyor |
 | **32.5** | Mortar platformu: açılı yan raylar, zırh panelleri, kenar altınları, cyan ışık yuvaları | Disk görünümü azalır; hareket sınırlarında HUD/oyun alanını kapatmaz | Bekliyor |
-| **32.6** | Zemin: mevcut mermeri revize eden doku, altın derz/safir kakma ve yüzeye göre parlaklık | Perspektif/tiling tutarlı; tekrar dikişi yok; yeni collider yok; aşırı ayna etkisi yok | Bekliyor |
+| **32.6** | **ÖNCELİKLİ — Zemin:** mevcut mermeri revize eden doku, altın derz/safir kakma ve yüzeye göre parlaklık | Perspektif/tiling tutarlı; tekrar dikişi yok; yeni collider yok; aşırı ayna etkisi yok | **Tamam** |
 | **32.7** | Ahşap/taş/zırhlı bloklar: damar, derz, merkez elmas, kalın metal köşeler ve pahlı kenarlar | 3 varyant ayırt edilebilir; aynı unit collider, root ve config; birleşik mesh/materyal sayısı kontrollü | Bekliyor |
 | **32.8** | Crystal/core/top enerji yüzeyleri: belirgin soket, parlak çekirdek, iç akış ve kontrollü kenar ışığı | Beyaza patlamayan cyan; top/skill renk davranışı ve kırılma/kaybolma korunur | Bekliyor |
 | **32.9** | Kompozisyon ve HUD uyumu: sahne ölçeği, arka plan-zemin geçişi, hedef/stand/mortar ekran payları | 1/15/22/30. bölümler kadrajda; dinamik HUD değerleri okunur; nişan alanı açık | Bekliyor |
@@ -85,3 +85,52 @@ Planlanan güncel test aracı: `Assets/_Project/Scripts/Editor/Phase32VisualVeri
 - Gerçek Play Mode'da Level 30 başlangıç görüntüsü alındı. Başlangıç konsolu: **0 hata, 0 uyarı**.
 - Bağımsız görsel ve kod denetimi tamamlandı; eski builder/test riskleri yukarıya işlendi.
 - Görsel hedef henüz tamamlanmadı; sonraki aşamalar gerçek mesh/yüzey revizyonlarını içeriyor.
+
+### 32.2 — Tamamlandı, 2026-09-27
+
+- `Phase32VisualRevision.cs`: mevcut altı Lit materyal, Directional Light, CitadelVolume; soğuk dolgu ışığı ve 128 px baked courtyard reflection; kamera FXAA. Mevcut global URP assetleri değişmedi.
+- 178 izlenen prefab/mesh/level/config/oynanış dosyası aynı: `32-02-integrity.json`.
+- Gerçek Level 30 testi: 20 gövde; 3 saniye idle ve 3 saniye hedef dışı atışta **0.000 m** hareket; gerçek temas sonrası gate açıldı ve hareket oluştu. `32-02-lighting-smoke.json`.
+- İlk görüntü: `32-02-lighting-level30-1080x1920.png`; final renkler stand turunda hafif yumuşatıldı.
+- Önemli ölçüm: Edit Mode PC pipeline; Play Mode mevcut platform seçimiyle **Mobile_RPAsset** kullanıyor. Nihai mobil cihaz performansı henüz ölçülmedi.
+
+### 32.3 — Tamamlandı, 2026-09-27
+
+- `Phase32StandRevision.cs`, mevcut `PF_CitadelStand.prefab` yerinde güncellendi; GUID `f584db03b39b870429a68ddac8d6ef52` korunuyor.
+- Tek `Phase32StandDetails` kökü; **5 ek renderer, 4.180 üçgen, 9.300 vertex, 0 dekoratif collider**. Materyale göre birleştirilmiş ön kiriş, merkez fasetli elmas, arma kalkanları ve sekizgen zırhlı ayaklar.
+- Eski objeler silinmedi; dört eski frieze parça adının rendererları kapatıldı. Root, StandPresentation ve tek taşıyıcı BoxCollider aynen korundu.
+- `32-03-stand-verification.json`: fizik fingerprint aynı; dekor üstü **1.4685**, collider üstü **1.475**. `32-03-scaled-stand-check.json`: 0.8 / 1 / 1.2 ölçeklerinde aynı üst yüzey ilişkisi.
+- Aynı güncel Play smoke testi stand revizyonundan sonra da geçti: `32-03-stand-smoke.json`.
+- URP materyal doğrulaması `None` GI flag'ında emission keyword'ünü kapattığı için cyan materyal **BakedEmissive** ile düzeltildi; yeniden Play girişinde `_EMISSION=true` doğrulandı. Realtime GI eklenmedi.
+- 178 dosyalık kontrolde yalnızca hedef stand prefabı değişti. Mevcut level/fizik/mesh/diğer prefablar aynı. Son genel renk/yüzey cilası 32.12 kapsamında.
+
+### Öncelik değişikliği — 2026-09-27
+
+- Kullanıcı: “önce zemini bitirelim referansdaki gibi zemin olsun”.
+- Sıra: **32.6 → 32.4 → 32.5 → 32.7…32.12**. Aşama numaraları önceki kayıtları bozmamak için sabit kaldı.
+- Zemin albedo'su built-in imagegen ile mevcut `T_CitadelMarble.png` + referans görüntü kullanılarak revize ediliyor. Orijinal doku stone materyalinde de paylaşıldığı için değiştirilmez; yeni zemin dokusu sibling asset'e kaydedilir ve mevcut `M_MarbleFloor` revize edilir.
+
+### 32.6 — Tamamlandı, 2026-09-27
+
+**Görsel teslimat**
+
+- Mevcut dört sekizgen mermer plaka düzeni revize edildi: açık fildişi/beyaz mermer, daha belirgin altın derzler, büyük ve canlı safir/cyan kakmalar.
+- Doku: `Assets/_Project/Art/SkyCitadel/Textures/T_CitadelMarble_Reference.png`. Built-in **imagegen**; kaynak PNG **1254×1254**, GPU blok sıkıştırması için Unity import **2048×2048**. Kaynak çözünürlük ile import çözünürlüğü farklıdır.
+- Tam prompt ve kaynak/output yolları: `_FarzetkiDocs/Art/Phase32/32-06-imagegen-manifest.json`. Orijinal `T_CitadelMarble.png` byte'ları korunuyor; stone materyali değişmedi.
+- `M_MarbleFloor.mat` mevcut GUID'siyle güncellendi. Yeni `RoyalSmash/Citadel Floor` shader'ı aynı albedo'nun renklerinden mermer/altın/safir alanlarını ayırıyor; hizası kayacak ikinci maske resmi yok.
+- Son değerler: mermer metallic `.02` / smoothness `.67`; altın `.32/.78`; safir `.15/.86`; mikro relief `.0006 m` (yalnız ışık normali, geometri displacement yok).
+- Tek albedo örneklemesi, URP ışık/gölge/reflection-probe/fog desteği, Forward/ShadowCaster/DepthOnly pass'leri; SSR, raymarch veya her kare reflection render eklenmedi.
+- Uygulama: `RoyalSmash.Editor.Phase32FloorRevision.Apply()`. Menü: `Royal Smash/Sky Citadel/Phase 32/06 - Apply Reference Floor`. İleri aşamada lighting foundation tekrar uygulanırsa yeni zemin shader'ı korunur.
+
+**Doğrulama ve kanıt**
+
+- `32-06-floor-verification.json`: ground position/rotation/scale/layer/mesh/collider fingerprint **aynı**; aynı tiling `(7.5, 6.1)`; shader hatası **0**.
+- Final Game View: `32-06-floor-approved-1080x1920.png` ve `32-06-floor-approved-1080x2400.png`. Her iki oranda da görsel denetim yapıldı; boş doku birleşimi, yeni zemin kenarı veya saydam delik gözlenmedi. Bu, tüm 30 seviye/HUD mobil QA'sının tamamlandığı anlamına gelmez.
+- `32-06-floor-smoke.json`: Level 30 gerçek Play Mode; 20 hedef; idle/boş atışta **0.000 m** hareket; 35→33 top; gerçek projectile teması gate'i açıp fizik tepkisi oluşturdu. **PASSED**.
+- Konsol son kontrol: **0 hata / 0 uyarı**. `32-06-integrity.json`: uzun oturumun 14:02 baseline'ına göre InputHandler, MortarConfig, MortarController, ProjectileController ve TrajectoryPredictor değişmiş. **Bunlar bu zemin revizyonu tarafından düzenlenmedi**; eşzamanlı kullanıcının/başka çalışmanın güncel değişiklikleri korunuyor. Bu nedenle tüm proje için “178 dosya değişmedi” denmez; ground fingerprint'i, değişmeyen orijinal marble dokusu ve güncel kod üstündeki Play testi bu zemin aşamasının doğrulamasıdır.
+- Texture: Repeat + Trilinear + mipmap + aniso 8; mobil ASTC 6×6, Standalone BC7. `32-06-final-render-check.json` gerçek Editor ölçümünü kaydeder: bu makinenin D3D12 API'si ASTC desteklemiyor, dolayısıyla **Editor bellek ölçümü mobil sıkıştırılmış cihaz belleği değildir**. Gerçek cihaz FPS/bellek doğrulaması 32.11'de kalır.
+- Play kapatıldı; Game View orijinal index 5'e döndürüldü; geçici 1080×2400 test seçeneği kaldırıldı; MainGame kaydedildi, Ground seçili.
+- Kullanıcının aradaki yeni çalışmasını korumak için eski 14:02 kaydı yerine **zemin final testlerinden önceki güncel** `C:/Users/Farzetki/.codex/local-backups/Phase32Floor-20260927-191022/PlayerSave/` geri yüklendi. Hash doğrulaması: `32-06-save-restoration.json`.
+- Kullanıcı çalışma sırasında `074e1b7` backup commit'ini oluşturdu; sonraki dosyalar çalışma ağacında bırakıldı. Agent tarafından commit yapılmadı.
+
+**Sıradaki iş:** 32.4 mortar namlu ve gövde. Tüm referans sahne hedefi henüz tamamlanmadı; bu oturumun zemin önceliği tamamlandı.

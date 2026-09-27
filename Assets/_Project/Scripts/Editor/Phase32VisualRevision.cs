@@ -30,7 +30,8 @@ namespace RoyalSmash.Editor
             Material steel = RequireMaterial("ObsidianSteel");
             Material stone = RequireMaterial("IvoryStone");
             Material wood = RequireMaterial("WarmWood");
-            Material floor = RequireMaterial("MarbleFloor");
+            var floor = AssetDatabase.LoadAssetAtPath<Material>(ArtRoot + "/Materials/M_MarbleFloor.mat");
+            if (floor == null) throw new InvalidOperationException("Existing marble floor material is missing.");
             var environment = GameObject.Find("SkyCitadelEnvironment");
             var sunObject = GameObject.Find("Directional Light");
             var sun = sunObject != null ? sunObject.GetComponent<Light>() : null;
@@ -50,7 +51,9 @@ namespace RoyalSmash.Editor
             SetLit(steel, new Color(.095f, .135f, .205f), .64f, .59f);
             SetLit(stone, new Color(1f, .97f, .91f), .025f, .43f);
             SetLit(wood, new Color(.82f, .35f, .10f), 0f, .32f);
-            SetLit(floor, Color.white, .035f, .53f);
+            // Stage 32.6 owns the surface-specific floor shader once installed.
+            if (floor.shader.name == "Universal Render Pipeline/Lit")
+                SetLit(floor, Color.white, .035f, .53f);
 
             Undo.RecordObject(sun, UndoLabel);
             sun.color = new Color(1f, .955f, .86f);

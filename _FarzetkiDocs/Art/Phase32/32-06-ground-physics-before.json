@@ -1,0 +1,1 @@
+{"name":"Ground","pos":"(0.000000, 0.000000, 0.450000)","rotation":"(0.000000, 0.000000, 0.000000, 1.000000)","scale":"(3.200000, 1.000000, 2.610000)","layer":9,"colliderType":"MeshCollider","enabled":true,"trigger":false,"bounds":"Center: (0.000000, 0.000000, 0.450000), Extents: (16.000000, 0.000000, 13.050000)","material":"","mesh":"Plane","vertices":121,"triangles":600}

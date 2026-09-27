@@ -2989,6 +2989,7 @@ MonoBehaviour:
   _scrollSpeed: 2.5
   _startColor: {r: 0.18, g: 0.84, b: 1, a: 0.95}
   _endColor: {r: 1, g: 0.82, b: 0.22, a: 0.65}
+  _showTrajectoryLine: 0
 --- !u!120 &235150751
 LineRenderer:
   serializedVersion: 3
