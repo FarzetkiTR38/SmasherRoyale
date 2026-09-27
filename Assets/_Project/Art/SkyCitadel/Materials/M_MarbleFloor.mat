@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_MarbleFloor
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: fa8fc67bc0369be4a83ca80559423ad0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -17,8 +17,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -26,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 1d9febfa11a98a9408ab4362516fc804, type: 3}
+        m_Texture: {fileID: 2800000, guid: a729b8eb13199ad4792c765544262535, type: 3}
         m_Scale: {x: 7.5, y: 6.1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -50,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1d9febfa11a98a9408ab4362516fc804, type: 3}
+        m_Texture: {fileID: 2800000, guid: a729b8eb13199ad4792c765544262535, type: 3}
         m_Scale: {x: 7.5, y: 6.1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -88,6 +87,8 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _BlueMetallic: 0.15
+    - _BlueSmoothness: 0.86
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -101,12 +102,17 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 0.03
+    - _GoldMetallic: 0.32
+    - _GoldSmoothness: 0.78
+    - _MarbleMetallic: 0.02
+    - _MarbleSmoothness: 0.67
+    - _Metallic: 0.035
+    - _MicroHeight: 0.0006
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.27
+    - _Smoothness: 0.66
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

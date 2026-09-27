@@ -32,6 +32,9 @@ namespace RoyalSmash.Gameplay
         [SerializeField] private Color _startColor = new Color(0.18f, 0.84f, 1.0f, 0.95f); // Royal Cyan
         [SerializeField] private Color _endColor = new Color(1.0f, 0.82f, 0.22f, 0.65f);   // Warm Gold
 
+        [Header("Display Settings")]
+        [SerializeField] private bool _showTrajectoryLine = false;
+
         // Runtime state
         private bool _isAiming;
         private Vector3 _currentTarget;
@@ -40,6 +43,15 @@ namespace RoyalSmash.Gameplay
         private Coroutine _fadeCoroutine;
         private float _currentAlpha = 0f;
 
+        public bool ShowTrajectoryLine
+        {
+            get => _showTrajectoryLine;
+            set
+            {
+                _showTrajectoryLine = value;
+                if (!_showTrajectoryLine) SetTrajectoryVisible(false, instant: true);
+            }
+        }
         public bool IsAiming => _isAiming;
         public int PointCount => _lineRenderer != null ? _lineRenderer.positionCount : 0;
         public Vector3 CurrentTarget => _currentTarget;
@@ -55,6 +67,12 @@ namespace RoyalSmash.Gameplay
             ConfigureLineRenderer();
 
             CreateDefaultHitMarkerIfNeeded();
+
+            if (!_showTrajectoryLine)
+            {
+                if (_lineRenderer != null) _lineRenderer.enabled = false;
+                if (_hitMarker != null) _hitMarker.SetActive(false);
+            }
         }
 
         private void Start()
@@ -191,6 +209,7 @@ namespace RoyalSmash.Gameplay
         private void HandleAimTargetChanged(Vector3 worldTarget)
         {
             _currentTarget = worldTarget;
+            if (!_showTrajectoryLine) return;
 
             // Don't show if out of ammo or lives
             if (_mortar != null && _mortar.RemainingBalls <= 0) return;
@@ -202,6 +221,7 @@ namespace RoyalSmash.Gameplay
 
         private void HandleDragStarted()
         {
+            if (!_showTrajectoryLine) return;
             if (_mortar != null && _mortar.RemainingBalls <= 0) return;
             SetTrajectoryVisible(true);
         }
@@ -222,6 +242,7 @@ namespace RoyalSmash.Gameplay
         /// </summary>
         public void CalculateAndRenderArc(Vector3 targetPoint)
         {
+            if (!_showTrajectoryLine) return;
             if (_lineRenderer == null) _lineRenderer = GetComponent<LineRenderer>();
             if (_lineRenderer == null) return;
 
@@ -315,6 +336,7 @@ namespace RoyalSmash.Gameplay
         /// </summary>
         public void SetTrajectoryVisible(bool visible, bool instant = false)
         {
+            if (!_showTrajectoryLine) visible = false;
             _isAiming = visible;
 
             if (_fadeCoroutine != null) StopCoroutine(_fadeCoroutine);

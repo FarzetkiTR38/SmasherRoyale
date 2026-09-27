@@ -168,6 +168,11 @@ namespace RoyalSmash.Gameplay
             // Aim directly at target point
             HandleAimTargetChanged(worldTarget);
             _lastTargetPoint = worldTarget;
+            _currentYaw = _targetYaw;
+            if (_aimTransform != null)
+            {
+                _aimTransform.localRotation = Quaternion.Euler(0f, _targetYaw, 0f);
+            }
 
             // Fire Ball
             if (!LaunchProjectile(worldTarget)) return;

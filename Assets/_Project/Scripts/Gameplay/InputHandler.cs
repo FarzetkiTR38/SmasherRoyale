@@ -87,37 +87,30 @@ namespace RoyalSmash.Gameplay
                     return;
                 }
 
-                // Aim at the initial touch point
+                // Immediately aim mortar toward the touch point
                 Vector3 initialTarget = CalculateWorldTarget(currentPosition);
                 OnAimTargetChanged?.Invoke(initialTarget);
             }
-            // 2. Touch / Press Active (Held or Moved)
+            // 2. Touch / Press Active (Held or Moved) - Smoothly rotate/aim mortar with cursor
             else if (isCurrentlyPressed && _isPressed)
             {
                 if (_isPointerOverUI) return;
 
-                // If tutorial is active, suppress dragging so player focuses on tapping the target
-                if (TutorialManager.Instance != null && TutorialManager.Instance.IsTutorialActive)
-                {
-                    return;
-                }
-
                 float totalMoveDistance = Vector2.Distance(_touchStartPosition, currentPosition);
                 float threshold = _config != null ? _config.DragThresholdPixels : 12f;
-
                 if (!_isDragging && totalMoveDistance > threshold)
                 {
                     _isDragging = true;
                     OnDragStarted?.Invoke();
                 }
 
-                // While dragging or holding, continuously update the aim target
+                // Continuously update mortar aim direction as mouse/finger moves
                 Vector3 currentTarget = CalculateWorldTarget(currentPosition);
                 OnAimTargetChanged?.Invoke(currentTarget);
 
                 _lastTouchPosition = currentPosition;
             }
-            // 3. Touch / Press Released
+            // 3. Touch / Press Released - Fire!
             else if (!isCurrentlyPressed && _isPressed)
             {
                 _isPressed = false;
@@ -125,20 +118,17 @@ namespace RoyalSmash.Gameplay
                 if (_isPointerOverUI)
                 {
                     _isPointerOverUI = false;
-                    return; // Ignore release over UI: no cannon fire
+                    return;
                 }
 
                 if (_isDragging)
                 {
-                    // Finished dragging - NO FIRE on drag release
                     _isDragging = false;
                     OnDragEnded?.Invoke();
                 }
-                else
-                {
-                    // Pure Tap detected - Fire at world coordinate
-                    HandleTap(currentPosition);
-                }
+
+                // Fire at the aimed/released world coordinate
+                HandleTap(currentPosition);
             }
         }
 
@@ -196,7 +186,7 @@ namespace RoyalSmash.Gameplay
                 return false;
             }
 
-            float targetZ = _config != null ? _config.DefaultTargetDistance : 7.5f;
+            float targetZ = _standController != null ? _standController.transform.position.z : (_config != null ? _config.DefaultTargetDistance : 7.5f);
             Plane targetPlane = new Plane(Vector3.back, new Vector3(0f, 0f, targetZ));
             if (targetPlane.Raycast(ray, out float enterDistance))
             {
@@ -297,7 +287,7 @@ namespace RoyalSmash.Gameplay
             }
 
             // 2. Intersect with virtual gameplay target plane at gameplay depth
-            float targetZ = _config != null ? _config.DefaultTargetDistance : 7.5f;
+            float targetZ = _standController != null ? _standController.transform.position.z : (_config != null ? _config.DefaultTargetDistance : 7.5f);
             Plane targetPlane = new Plane(Vector3.back, new Vector3(0f, 0f, targetZ));
 
             if (targetPlane.Raycast(ray, out float enterDistance))

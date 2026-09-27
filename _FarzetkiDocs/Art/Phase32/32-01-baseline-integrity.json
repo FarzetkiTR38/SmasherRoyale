@@ -1,0 +1,714 @@
+[
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\CitadelLevelDatabase.asset",
+    "Hash": "38F5439E7CDF76B3158D2E2ECB0FDD8F8A3499AEB707ABF4D37827D1D58B4F99"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\CitadelLevelDatabase.asset.meta",
+    "Hash": "CA1B4399C72FCC6AA12F9D86CF7B73D9784D1C13603B37CFCD78CE1EBF11A586"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_armored.asset",
+    "Hash": "C65E9284FA6F4D55AAA8A6F670006ADFCCFB0A21862AFCB184F265DDDBCBE61B"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_armored.asset.meta",
+    "Hash": "2ABDD529685C1E0D5BF280C2F7F9FA716FE897C8A85BEFF8BCDF5D097D6B6A57"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_core.asset",
+    "Hash": "A7E88DBC3CF8C959438D611EB2400D935AACA97EA9DFD5305982134DDA221779"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_core.asset.meta",
+    "Hash": "8544B0BA8E9D169F3ED2A1278E400AAB615C887538FED90BA52932ABEB85B7EC"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_crystal.asset",
+    "Hash": "A8917DC85EF3AF47BFE310392F656E1B4C78CA949E5918C7BBF99A9332A0E8C9"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_crystal.asset.meta",
+    "Hash": "6DFD8B209B33F3759E64C40AF9C7BF8657101C25AEAC531439F83A2948325F14"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_stone.asset",
+    "Hash": "6C075D00F10C6F6A0D65D734B762A6EC1CA258A44C7FB6CC236603F1FED33C6B"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_stone.asset.meta",
+    "Hash": "CDF8C5BFB58B1AA95235D549F27BFB5D75BBCB8D20957E6EB42B90FC69C7D304"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_wood.asset",
+    "Hash": "30199EBA6315EB6D8DC13CA8509841ED36F7073EA83594CB3083BC96C4677312"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\Config_wood.asset.meta",
+    "Hash": "AD254EFB13588C37686C80CBCFF5890D7156519A50373B7BA281C446B429A854"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel01.asset",
+    "Hash": "39FFF5431FB241A74715A9F66994A023A729E0C76719E627C93B94BBECC68603"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel01.asset.meta",
+    "Hash": "5DD0FE28A48F8F455EE8ADA63C0912B455438DCCEFD101A82EAC86957394C747"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel02.asset",
+    "Hash": "1393AF5A3C9E56DDF5D39243BD5AAF6B6B6E69ACDE3EAE986564C534C9CC5091"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel02.asset.meta",
+    "Hash": "4BDC5EFEFE911A38529FA6E96668C8CF7BF6F8E99F9A16505D5E09C75A202045"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel03.asset",
+    "Hash": "275F8721E26650B5CC2CDF9C014E937E25B335B1E107BCC0867D2582ADE1BBD7"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel03.asset.meta",
+    "Hash": "455C82B127768A074248D7ACFD37FFABB71176D3BE6C3F7FE6B6EE7BBF7D4C0D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel04.asset",
+    "Hash": "D38BB6C1D8B62E523856076662B1BEF38BDA7488C3059C0D0AA69B661A0F6805"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel04.asset.meta",
+    "Hash": "C511EB0F6B3CBE5B90544AEA60B4DEE035B8916AAC84B9A8E00E157CE7EC4D1C"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel05.asset",
+    "Hash": "9542B6D1FBA66E7D33D4102F53014506BEDDEB4026CE13C37D695586BC23561F"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel05.asset.meta",
+    "Hash": "0EF6A2051266C73FD6D1541BD87BE71DF4D91195D22128E8B979C9F4D1657CB2"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel06.asset",
+    "Hash": "58A17EEC3128D4BE8545F3C19D17062A8D0593D7904ED9BD635F61EF2DA0AEC7"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel06.asset.meta",
+    "Hash": "02479294BA38318ADF6C940F3CB1153D847268123603098E34E42D837735D1AA"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel07.asset",
+    "Hash": "A75210275B3F3FDD308A937A42E272D1BF4747AC0519D71EA14E90C4CC8630B6"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel07.asset.meta",
+    "Hash": "FDF5C54F81B6B01CC49410964BF203C28FABA461F804FFC3FE73B1EC38391663"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel08.asset",
+    "Hash": "56707BABEC1AF3A761F223FFEE1507593CB1EC807E522FE8C6BE8A022AB9ADAE"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel08.asset.meta",
+    "Hash": "5E299A0BE77D47F22B7C05B83BCAD5071A3A8C892F1A2AC1D23F4AC410BDB4CD"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel09.asset",
+    "Hash": "EC028B7EC53FA7E6454A70B59F538E61FA06B8F34DCEAD57F1938A3D066B8068"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel09.asset.meta",
+    "Hash": "9643F15600804685DF97AAEBB8E2168F3D63E8E6BCA0D7C2134DA75E839BAC02"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel10.asset",
+    "Hash": "337E83D4574D0906D14852F571C473589061F6D5FEA6D3C471654E0FFF268949"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel10.asset.meta",
+    "Hash": "37C0A22519606AAD4C6FB5299F88081FE4D03EFB620A35AE018D66425483E321"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel11.asset",
+    "Hash": "945679B2FA3D2AFD75287F7C21205F33180D4BF8974773EE04A1D587B90195B6"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel11.asset.meta",
+    "Hash": "66F1BE6CF3A07D2C206162882403E121820821B7AC15B08E1FCA535913B3DCDF"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel12.asset",
+    "Hash": "C12FD4869329FAC3DA3314829508D3B786C5237F58F82B1E3DBF0CEA89CF8BA1"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel12.asset.meta",
+    "Hash": "EC6418A6822862A6BB3A7AC3AB0BDDA87DB3EDB19515010E806E8B331DFC62EC"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel13.asset",
+    "Hash": "5C5DC9A3C5D5421441C2361E6D7762EB682394D7C3C5F5232A6CFEA5ED57917A"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel13.asset.meta",
+    "Hash": "38CAA3292F2A8AA2C82B151D309B85E912660D032A3DEE5B7B46B028D87B3BAD"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel14.asset",
+    "Hash": "4DE57971E72EF607EF9FDF3DEF21BDCE40D2DF0FCA6BD7F5E2A14BF8BAD2039C"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel14.asset.meta",
+    "Hash": "3CE93CD82BBFCCA690BEF5347CBF0E246FBB8D3D157B3E56EAB45472D475B43C"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel15.asset",
+    "Hash": "DFA30E6A8029F6C716C61A3FAF01FAC29B75791C33F2B85512D9B54D17944417"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel15.asset.meta",
+    "Hash": "4D17547711C0B9C95B7C67776B7E9974A601F49506E7DD188CD0BFC9D2A3A07A"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel16.asset",
+    "Hash": "C54BD1CFD0A8CCF01580DBB0620C50F703920BF30AB42732BB8596155F4E65F2"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel16.asset.meta",
+    "Hash": "A8764CF2771C4462B5EFF534953FC00A5570116AB580C03920C252FDF97A7B20"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel17.asset",
+    "Hash": "24560708C403DA2392E49F5E0F4FEFDB0E165FD3169226DCC2C9848D85C0755F"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel17.asset.meta",
+    "Hash": "835711824D7CC5BED70E6389015B920B84E2DFC37D7CC78EB92002F0AAC601D7"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel18.asset",
+    "Hash": "686D8FC0C0625CD3CD7950684B20060807728F97080BBED6C7BE38F005D643D1"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel18.asset.meta",
+    "Hash": "EE7FD429900F58F95FD07F8EF617D81B2D46C76294B1C46502CA6816749CA2A9"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel19.asset",
+    "Hash": "F4CD3BD5B412928DEFF4EFB509A01D0F5AFA4CDD5A128FF4ED68B5A750980C0E"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel19.asset.meta",
+    "Hash": "2BEE08FEF7BF4498DFA80B5690F76780532629E5D2CDCE6EC8EC1CAD47FE98EB"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel20.asset",
+    "Hash": "D7A71EFFC93AE1BBBFEA3F794B25295F1C4D73D5AE4096A4FE7ECE9EE614B451"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel20.asset.meta",
+    "Hash": "120ADE8DAEC40104064ADCE94C254F6778CBD1B9A386340D23C86C523D80D860"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel21.asset",
+    "Hash": "B3A98D887914ADE9DBD323FE7B6615555D33F319CED9E0A8B78F187B04042EF3"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel21.asset.meta",
+    "Hash": "122443C84D8B1455DE2E88B346673950BCF4603ADAAE71F624796E558A0D0CEA"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel22.asset",
+    "Hash": "E8309819506F082D1212CB30EEA5BA6D0360A09A3B9E38A397EACC0758078222"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel22.asset.meta",
+    "Hash": "3AEA27D6F64D71C3B03CA02B6481FD26D30A6EDFD8AEFDEA7636DFD630D41F58"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel23.asset",
+    "Hash": "7BE12050A4B075EF9C6A18E36AFA5B29058EA99769BC21AB952326D725883326"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel23.asset.meta",
+    "Hash": "87D4E59A0274A7002C5E989A15F41D93309F0D3D33105F72C9423DF2B289E020"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel24.asset",
+    "Hash": "BC1AED21C924AB728D3EF133D4AFF8E22EB09180996D277569B7AE862180195E"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel24.asset.meta",
+    "Hash": "6619EE83EBED797220E26C0460D1DA6C8F0AA4265E3508CC5768E8CA6B08D243"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel25.asset",
+    "Hash": "8B5C40C5551C4075D9604063C0A05D1DBE38D891C5761C370DAA4BB5BD28C11B"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel25.asset.meta",
+    "Hash": "4F2BC3EEB74130D8D30C2A0E9ABB38A11600810A00FE105076F650658B96B3DA"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel26.asset",
+    "Hash": "E288880E4CFDE642A89A420CAD5B98511599C18221F2C3C313C485D34207EE32"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel26.asset.meta",
+    "Hash": "ACDF056C110F6A353D495A2BFFDF8A2592E860AA7D1CE45A78992BE0744006A6"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel27.asset",
+    "Hash": "ECAFDCD7D988D6F6DD3662E90BC8DBA78DE75AF698AD4D1CD253057EF313E82A"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel27.asset.meta",
+    "Hash": "D25726952129686E033E513DD3F6836A4884DEBA4B5C72E6A6185EBDB1C3931D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel28.asset",
+    "Hash": "6DAF15A6D213571DC5CA8CA381712427230051864EFF561846CEE270740DF8FB"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel28.asset.meta",
+    "Hash": "E2A5F38B67B211D6DB5C349AF8E63238270726A6BAF13A852164C2E9973BAB11"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel29.asset",
+    "Hash": "583B8947C89140A47FB981E042381D3C555E3FBBA32A43245447BB89AFD66DB8"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel29.asset.meta",
+    "Hash": "4EDF671081400C93E91EEEA836563D3EF97CBC287408243A1D1A9F78DC1E6145"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel30.asset",
+    "Hash": "188596AA8BC493C4A38CB989FBB749FAB96BB381A8607C463DDD278832B3DC5A"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Levels\\LevelData_Citadel30.asset.meta",
+    "Hash": "2271E7FF0D0260353084CDD0EB83E85896DC06FCD59440FC59A78E81765FF6A0"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_armored.prefab",
+    "Hash": "6609CF51294C4B6C604DF6A0E68307277C044B672814F8B4AB660CF9C01BCEFB"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_armored.prefab.meta",
+    "Hash": "C0259FFF2F51F691C03085538F826CC8DD61FB9B140145B1FE59562C8F2EF204"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_CitadelBall.prefab",
+    "Hash": "695FF57DEC313233F112F144D3E68458F5A0E132865696764A5EF6A3741F9523"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_CitadelBall.prefab.meta",
+    "Hash": "85E3825B62722C4A3268BEE9779F83190A35EEAFCE41601A29F0A7D7EB492669"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_CitadelStand.prefab",
+    "Hash": "188F82023002F35B9DE3D6F9FE891BCB5083FE92680B77A6498400CBAB8A35DA"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_CitadelStand.prefab.meta",
+    "Hash": "B2A107CB06EA833EC1F7F06ADBA10C005EEE10A3CDB0448E0F57E46D886629D6"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_core.prefab",
+    "Hash": "CEE0064A82EB936C456634021345F71214DD7C98C7584353305D0B00864C55B9"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_core.prefab.meta",
+    "Hash": "B379FE6A9362DB79D6D31A9BAE54AAAC5ED28EF67939B6680ECAE816F217EBEF"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_crystal.prefab",
+    "Hash": "9E0D52D6FA29CFB5C9BD4997822961D6761A0501ECA303B2A8E4CDFBB05A1FE7"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_crystal.prefab.meta",
+    "Hash": "B1BC9A29F4B033715666954D40E3FFEB93F19C9DF3B6D3F17A35824C90E50E92"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_stone.prefab",
+    "Hash": "A610EC0FBF482388FD3C4805765724B4B4B2967AD5D8E7DACCC7F65E4B3E2BCE"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_stone.prefab.meta",
+    "Hash": "69D8A4075E733EC8D0B47327B7F61B01426182C254D39BDA07CFC1C9BE6A250C"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_wood.prefab",
+    "Hash": "A96C7AE1D00327AE53B93CB0B517502F41C3F13DF404715A9E14101C299C4514"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Prefabs\\PF_wood.prefab.meta",
+    "Hash": "32767E3BB30B0A70724ECA5F474C504028BCA0DF72CB4F02FE33A49541AAD87F"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\BallOrbit.asset",
+    "Hash": "65A659A5A2E275967172B48D3D2A7F4CED269E70E1277C641A7E233CBA64B5B8"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\BallOrbit.asset.meta",
+    "Hash": "7C3CE139CA62A360C67F9E5A0B1D996C2212CAE656D3F19C72B6B09F71894F9F"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_0.asset",
+    "Hash": "E2092B32C058B918C9DBE331FF4AB2A069C1E0528FEB0CF5F296B3E7681D83D6"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_0.asset.meta",
+    "Hash": "44137615CF1665FAE83B2EA51BEF15E186033BE95E00AACEAFE28020AE911F66"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_1.asset",
+    "Hash": "5E513F6DBBB1E67D836BB3098646D8E50D08B8F9306399B40E973D3B342B2040"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_1.asset.meta",
+    "Hash": "1746A509EF5578EDA91911AC16DD5E00E4DF0621A89F4ECEE8BFDBAB2D14E786"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_2.asset",
+    "Hash": "47E3DED94EE38B38F3B191DC8B49B42C206F0D6652777B984294F6DDCFC26710"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_2.asset.meta",
+    "Hash": "1133416CBD2BF91D6E27A0A931B662B7048EBB7B8EE141FF682F44A534A0C00B"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_3.asset",
+    "Hash": "128D407DE6D0E8D52FCE3D5BC96AA825CF62E8463C7F77F4E85A4E640BFFE2F4"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_armored_3.asset.meta",
+    "Hash": "B8269F49DBA09BF8263A4B2BE3A826505A0F02B6D930E537177A69429FA8FEC1"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_0.asset",
+    "Hash": "E6D4476B5853832FECB63C5A1FDF97CB61C20BAE9159FB90CFE4CDC0A578C30E"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_0.asset.meta",
+    "Hash": "39D027E8F92AC7F9797851CAFF69027162785699FCC4F1E628BFF3283CCA879E"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_1.asset",
+    "Hash": "F782F7AFCF3EAFF6C3D26F7411D018C1B1B6243C2731F46665FE44B885B497B9"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_1.asset.meta",
+    "Hash": "0B468330AA3F5D5A37140F6B62537510F837AB1D11B7080B6AC6ECF0FD1812F3"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_2.asset",
+    "Hash": "AF83E35E09263D3B92170BF14A6F1DC6E66FC8BC4AE52BE826EAD950FF893CD2"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_2.asset.meta",
+    "Hash": "8270C156B7A169F8D6689CCCA05156AF56316F9C34B9D0724E02D16AA662EC85"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_3.asset",
+    "Hash": "615C4B6F64B27518A1BB58F7C335BD14BF0084E0EECB6C1FEE7F9050FC7A43E1"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_3.asset.meta",
+    "Hash": "104DBBBCC0344DAE1784309EEAFFD182AF6B68839D097715D20EB96E702537CA"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_4.asset",
+    "Hash": "A4D38661C7152F4DAE2E4A4AE1DC580C6FEF070CEC26492CC5B175800BAB62C7"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_core_4.asset.meta",
+    "Hash": "6F4444E8393EE8D155B4BA4935ADCE212AFB71F07E644AA7E8F397F0B96A0336"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_crystal_0.asset",
+    "Hash": "9AC03458BF2BF1DD8FA073D145F6EC60C756CFA22DB55BCD046188A028E9A0EE"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_crystal_0.asset.meta",
+    "Hash": "05344DDB2E7215A94ED3A25B4F49F9D2312F12AF50F09977A99FDB9318BC73C1"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_crystal_1.asset",
+    "Hash": "90074D5DDC9B92FB479D0145B26067EB80C104AF8E3749CEAE01998A6525A3D5"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_crystal_1.asset.meta",
+    "Hash": "A33FA35F48980760D26ED26BD97B9045ABAFCEE208C3454DD9282E3CDFBB08A3"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_crystal_2.asset",
+    "Hash": "67625887F4C06B2C835D84917036A17E23FFA4332E4C55FDBF5AB75FF0BE2B2D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_crystal_2.asset.meta",
+    "Hash": "67B9CE8009DE54704A73D20DBC0A565C3AA267698CCA0C6895103D4C512A1F0D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_stone_0.asset",
+    "Hash": "0DA8E6F9794383ECF323F4F3050C04621555C392785891DC76B78C00BF8598B3"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_stone_0.asset.meta",
+    "Hash": "2AA7F77089D437A06C9169ED01F8DD925E9CE8058A7052FD26F57850B522A580"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_stone_1.asset",
+    "Hash": "46D88F1FE309500557EDF887E0B12E5B10A8BD6823519FABAEA281273939079A"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_stone_1.asset.meta",
+    "Hash": "D1F730FE0F27D3D71A77EFE174C51655820B5824D7B0AFFBE82004E23C952A8D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_stone_2.asset",
+    "Hash": "10672C5B247EF83AEF95D53BCF38F672502585353A82D0BD7AECD0A4CD913CF3"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_stone_2.asset.meta",
+    "Hash": "9F0973396AB70633C078623D46EE63EFBB40734859F7E55F989149807F94CF35"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_wood_0.asset",
+    "Hash": "152BDC29AA9E9AD9406C143351B983AEB1DB5A10377DB8A515BA4B1D2DC794BA"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_wood_0.asset.meta",
+    "Hash": "020A72831DB31AA7E3005F4D063D88717A5E6B76EEAD92D27C3289F2FBAAA9BD"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_wood_1.asset",
+    "Hash": "216029884C2714FEB323D3F810192CC82FBA4F947DE4FECC7866D028D565AE4C"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_wood_1.asset.meta",
+    "Hash": "92A6DEF4D392B45AAB2003EF813067825450739587193F0EAFBED138E87A0F09"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_wood_2.asset",
+    "Hash": "C81901FF63B179999D7613FE67117C633746E1760B0BB73FD7521965B2C10755"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\Citadel_wood_2.asset.meta",
+    "Hash": "1360CFF71AB6AC5A15FB2E0C0481375E91B535F98139BA48C725BE2BFA14A220"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\CitadelBeveledCube.asset",
+    "Hash": "F4A178164F81BCA220E2942D5308B71279A3D90677BF4C78602E79181D5F7F3A"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\CitadelBeveledCube.asset.meta",
+    "Hash": "90C9759B12443CA9AF56F01430CE73687566304ED99DC7281A82E884E63877C5"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\CitadelSocketRing.asset",
+    "Hash": "A72788F113924B435F4BF79B32B22E54CE2EEAA4984220C6A7045C3EC58BECCE"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Art\\SkyCitadel\\Meshes\\CitadelSocketRing.asset.meta",
+    "Hash": "011F0EEB27E4254DC566E441944F59F6D54F12706354DA3A1E2FC72875F22906"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\EnvironmentConfig.cs",
+    "Hash": "456223D3B3DC7554C11EB312C990297115D01B04F523DE80140D93038B6820BB"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\EnvironmentConfig.cs.meta",
+    "Hash": "95A5DD51130624C962D228950798F2CDCF2C5C2C4B5BEA4A2F2AAECFB73A1BA3"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\EnvironmentTheme.cs",
+    "Hash": "4152149A3703AD5B1D55FC480FF300009134BFB89B9E3ED7DB09BA235BFABE60"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\EnvironmentTheme.cs.meta",
+    "Hash": "222B328381FB921DED2B3E33AF0A209C7D4E840B49FB799D559310034CA27594"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\EnvironmentThemeManager.cs",
+    "Hash": "5C7AB586B8396427A1CA41F96897C09BBDA7AD33AE0E0D5C657F150FC8EB8AD3"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\EnvironmentThemeManager.cs.meta",
+    "Hash": "DEF3526D412214949E1BEF1AD5358F93981F0628377FCBA2F0D1EFDECAA4BADA"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\InputHandler.cs",
+    "Hash": "CF2B59721C9922496E773454EF5480EC79D16A3BCE2956EDD9C12022BCA452B0"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\InputHandler.cs.meta",
+    "Hash": "A3E6D6D18460C93CB9EA5AB0DBFE7BC17E8195C77B68111EA6ADC9899351810D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\LevelStartPhysicsGate.cs",
+    "Hash": "CF9D3A48EF5401296A57E8478571A4975E24E291016277C5AF203135E4FF87FF"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\LevelStartPhysicsGate.cs.meta",
+    "Hash": "1E3B5295CC2ADC9853FE1B21B50CCB2B0B331AC2017E058FA47A1A69C9E90A26"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\MortarConfig.cs",
+    "Hash": "FF34C7A47D8B6DAEEC05D8EBD361A9355698583F6B338339E29366F5E35E1D7D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\MortarConfig.cs.meta",
+    "Hash": "3B85F1FABFD31CB40CFE80527DBC3F21D545E0AC38016B01AE391C39025B3C12"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\MortarController.cs",
+    "Hash": "B63B30ABEA1C0F952B962C3BEC243B342AE40071B2E5668298A45950A5E553FB"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\MortarController.cs.meta",
+    "Hash": "541A34B61A8B42C6567B6F051E3553ABEF4950155D17587C10B5994634D39075"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ObjectConfig.cs",
+    "Hash": "33F7ABB87890CE070D18872472F0DBF1E3F397E138930131298231E36B94F964"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ObjectConfig.cs.meta",
+    "Hash": "5194145FA84A5A863E499EEC27F29C918C53BAACD3A4A1E73D33CB41C399005F"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ObjectState.cs",
+    "Hash": "CF728D68265DEFA6DF7CF28D91232E3FBF8917DFF4DF28F3121B4868DF2DD19C"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ObjectState.cs.meta",
+    "Hash": "C6BFEF6891D40CC299ED8861F7312A3B79CDAD247ECC00E1A7DB9386660E0525"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\PaintBottleObject.cs",
+    "Hash": "DC463E688683418040AB31F182E8BFC76A511B4B832F5BB5B9D5845C7B081E3D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\PaintBottleObject.cs.meta",
+    "Hash": "9C3FEC9D82C97303CBA24B120D58F3EC801794BFC7E3C50883A34DA3FD625477"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\PhysicsObject.cs",
+    "Hash": "B5D37FC0AACB3407ECE8FA5510972C8077C68C06AA03CC58A3BF2B50E16C6C4D"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\PhysicsObject.cs.meta",
+    "Hash": "EC845C40C0FAD41697A740FCC1810C1C8F75FF9E0A5E06790190302E80216AAC"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\PlaygroundController.cs",
+    "Hash": "1801AF1CCFD601845FC6C1FE4C7AC98BC4D3A05D56C64A6CFAFBC3747AACBA01"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\PlaygroundController.cs.meta",
+    "Hash": "2DAD845E2DA82A5D7FE186BC7AFEF7E87757FDE57DE4E64552D916CF745309AE"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ProjectileConfig.cs",
+    "Hash": "85F0EA4A4E0BD179D1FF90AED75EA0E33D969035B8747AC43E16CBDD2DF2C60A"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ProjectileConfig.cs.meta",
+    "Hash": "2FC40CB0FEBC39B462C6FF57BB28C850A8934F314672E52B7295AA4B8C817E14"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ProjectileController.cs",
+    "Hash": "BE30901542FD56A560E86501F6DA849581B295D0D907A4B302A18F5A322302F4"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ProjectileController.cs.meta",
+    "Hash": "5B966654786D673ADC9FF9F8AB1E01510EBBE734FEB7D3B0D4568F03048A4F77"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ScreenShake.cs",
+    "Hash": "FB3765447E6AA8E0292F77E254EAC9A4F35B9223485C7E0172052F6D102CB766"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\ScreenShake.cs.meta",
+    "Hash": "D4199081D6AF8483ADD23A43774B693FA518ADB7CD95CF1DFD33ECD68936DB72"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\SkyCitadelPreview.cs",
+    "Hash": "0F2A12A7FC2839785863C03FF5787F41A290F1819BC70DDEDDD238D8458D9B07"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\SkyCitadelPreview.cs.meta",
+    "Hash": "4338C41196B1AD409FCC898A78A4FF4B4F59CE23A278F259E61A70A1CFC0E6B5"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\StandConfig.cs",
+    "Hash": "94BC588BA0E9FAD2CF1CBECCBE4B166D74E91334B8D81AD77C5961149E90E1DD"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\StandConfig.cs.meta",
+    "Hash": "9A64BB4F42E9E38F808CF4A601CD3D216ADA9B7A8B59C23E7422E371718E5E3F"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\StandController.cs",
+    "Hash": "0F316DA8A78687F8F6DC984222E723E6BEDBEE6D025F3F7545AE435806057FF1"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\StandController.cs.meta",
+    "Hash": "FA26290E50CAC6205748CEC661AB2DB81AE7C00B71FDF1B2E64CC7B3AE1AD992"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\TrajectoryPredictor.cs",
+    "Hash": "F080E8F24D614B985773974DD11859D8227373E4EF3C60EA544FF2EF06B4AB99"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Gameplay\\TrajectoryPredictor.cs.meta",
+    "Hash": "5EAAC69DAD45C4E440F27151C3CECCEB9F22D3F2FE1B0ADA936E4D4FFC4D7543"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelData.cs",
+    "Hash": "329D296FF4FD12B5597A7AEC67A2B894537B2FBF94CD7DF7364901059870A787"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelData.cs.meta",
+    "Hash": "6C9B4A88E2C6D72CD94B75A92608E0CE95C67D1BA7194DA6615D6CD989535790"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelDatabase.cs",
+    "Hash": "B228CCC17E9906528D573A072A1877851BEF802B333102654FA9BD090FD0CDAF"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelDatabase.cs.meta",
+    "Hash": "8E4E6CFA5B68DE63BF3B732B1B50C9AB126C642FDFE462073BEAB4C816F01725"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelLoader.cs",
+    "Hash": "14149637A78D026D6C663D8346B0BBBFE6124C267D07A6230B9D727F88B6B4F6"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelLoader.cs.meta",
+    "Hash": "12EDE132E5AD44AAD9D5FB869C0A470373673D15F968BD6CC8C99C74670C4A15"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelManager.cs",
+    "Hash": "A31FD3B15FF358B7CF663BC4A79B3FEECAAC9D5A8C0BDA1875F4D44259AD02C5"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Scripts\\Levels\\LevelManager.cs.meta",
+    "Hash": "C9249D7F56F669B0F2044F8E38BCC1E276A4C2F2BAD5CDCA1CE71C489C4DB1C0"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\_Project\\Prefabs\\Gameplay\\Mortar.prefab",
+    "Hash": "9857A4E96E716D2C4774261EC0DA2EFECBADD638DE22121AA4C398C91838CBEC"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\Settings\\PC_RPAsset.asset",
+    "Hash": "08A9C221B335A0DBCA1B6967B7DE5C42B957C5F0D5E43DA9EDB36CA8FCE5966B"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\Assets\\Settings\\Mobile_RPAsset.asset",
+    "Hash": "2D5182D2B8884AC88BC6ED033A0A722C23CFB15A7BC8B7DAA38DB37227BAFD09"
+  },
+  {
+    "Path": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\ProjectSettings\\DynamicsManager.asset",
+    "Hash": "E9A224EB78AA19E4A2709DB1523DCAB0A060CE44C8816BFED1E876882907F317"
+  }
+]
