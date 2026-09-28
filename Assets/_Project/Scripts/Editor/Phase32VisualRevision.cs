@@ -139,7 +139,10 @@ namespace RoyalSmash.Editor
             var reflection = AssetDatabase.LoadAssetAtPath<Cubemap>(ReflectionPath);
             if (reflection == null)
                 throw new InvalidOperationException("Baked reflection did not import as a Cubemap.");
-            probe.bakedTexture = reflection;
+            // A manually assigned bakedTexture is not persisted without scene lighting data.
+            // Keep the editor-baked asset in the serialized custom slot across reloads/builds.
+            probe.mode = ReflectionProbeMode.Custom;
+            probe.customBakedTexture = reflection;
             EditorUtility.SetDirty(probe);
             EditorUtility.SetDirty(fill);
 

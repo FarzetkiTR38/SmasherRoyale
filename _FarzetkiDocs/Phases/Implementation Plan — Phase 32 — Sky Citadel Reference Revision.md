@@ -3,7 +3,7 @@
 **Başlangıç:** 27 Eylül 2026  
 **Durum:** Devam ediyor — **32.1, 32.2, 32.3 ve öncelikli 32.6 zemin tamamlandı (4/12)**.  
 **Son tamamlanan aşama:** **32.6 — Zemin**, 27 Eylül 2026.  
-**Devam noktası:** **32.4 — Mortar namlu/gövde revizyonu.** Zemini yeniden üretme; mevcut doğrulanan teknik çıktıları koru.  
+**Devam noktası:** **32.4 — Mortar namlu/gövde revizyonu (uygulanıyor, 28 Eylül 2026).** Zemini yeniden üretme; mevcut doğrulanan teknik çıktıları koru.  
 **Kullanıcı isteği:** Mevcut mortar, stand, zemin ve blokları revize ederek verilen ilk görselin canlılığına, yüzey kalitesine ve hacimli detaylarına yaklaştırmak. Çalışmayı kalıcı aşamalara bölmek; sonraki oturumda tamamlanmayan aşamadan devam etmek.
 
 ## Referanslar ve kapsam
@@ -41,7 +41,7 @@ Referans bir sanat hedefidir. Görseldeki **22 bölüm, 15 top ve 5×3 blok düz
 | **32.1** | Güncel sahne, referans, runtime müdahaleleri, fizik ve asset envanteri; yedek ve aynı kamera ile başlangıç görüntüsü | MCP/başlangıç doğrulandı, riskler ve geri dönüş yolu kayıtlı | **Tamam** |
 | **32.2** | Işık, yansıma ve malzeme temeli: kontrollü baked reflection probe, altın/safir/çelik ayrımı, mermer parlaklığı, ölçülü bloom | Aynı level 30 önce/sonra; materyal/ışık dışındaki oyun verileri değişmez; konsol temiz | **Tamam** |
 | **32.3** | Stand ön kiriş ve ayaklar: pahlı zırh, koyu şase, merkez elmas, cyan kanallar, mekanik kaideler ve arma panelleri | Mevcut stand prefabında görünür revizyon; aynı üst yüzey/collider; farklı stand ölçeklerinde bozulma yok | **Tamam** |
-| **32.4** | Mortar namlu/gövde: mavi kaplama, kalın altın bilezikler, fildişi zırh, koyu bağlantılar, detaylı enerji haznesi | Mevcut pivotlar, FirePoint, nişan ve recoil korunur; ön planda referansa yakın hacim | Bekliyor |
+| **32.4** | Mortar namlu/gövde: mavi kaplama, kalın altın bilezikler, fildişi zırh, koyu bağlantılar, detaylı enerji haznesi | Mevcut pivotlar, FirePoint ve nişan korunur; ön planda referansa yakın hacim (mevcut projede recoil yok) | Devam ediyor |
 | **32.5** | Mortar platformu: açılı yan raylar, zırh panelleri, kenar altınları, cyan ışık yuvaları | Disk görünümü azalır; hareket sınırlarında HUD/oyun alanını kapatmaz | Bekliyor |
 | **32.6** | **ÖNCELİKLİ — Zemin:** mevcut mermeri revize eden doku, altın derz/safir kakma ve yüzeye göre parlaklık | Perspektif/tiling tutarlı; tekrar dikişi yok; yeni collider yok; aşırı ayna etkisi yok | **Tamam** |
 | **32.7** | Ahşap/taş/zırhlı bloklar: damar, derz, merkez elmas, kalın metal köşeler ve pahlı kenarlar | 3 varyant ayırt edilebilir; aynı unit collider, root ve config; birleşik mesh/materyal sayısı kontrollü | Bekliyor |
@@ -134,3 +134,11 @@ Planlanan güncel test aracı: `Assets/_Project/Scripts/Editor/Phase32VisualVeri
 - Kullanıcı çalışma sırasında `074e1b7` backup commit'ini oluşturdu; sonraki dosyalar çalışma ağacında bırakıldı. Agent tarafından commit yapılmadı.
 
 **Sıradaki iş:** 32.4 mortar namlu ve gövde. Tüm referans sahne hedefi henüz tamamlanmadı; bu oturumun zemin önceliği tamamlandı.
+
+### 32.4 — Başladı, 2026-09-28
+
+- Güncel HEAD: `e635311`; kullanıcının Phase 33 level designer ve yenilenmiş 30 bölüm çalışması korunur.
+- Önceki mimari not düzeltmesi: `CitadelMount` artık Gameplay/Mortar.prefab içinde. MainGame ek `TrajectoryPredictor` çocuğunu referanslarıyla içeriyor. Mevcut kodda recoil animasyonu yok; bu görsel aşamada yeni recoil sistemi eklenmiyor.
+- MainGame başlangıçta dirty; `[LevelDesigner_WorkingRoot]` aktif. Kaydedilmemiş sahne dahil yedek: `C:/Users/Farzetki/.codex/local-backups/Phase32Mortar-20260928/`. Oyuncu kayıtları ve gameplay/level/config hash listesi aynı klasörde.
+- Dar kapsam: namlu ve taşıyıcı yan zırhlar; platform 32.5'e, enerji shader revizyonu 32.8'e ait. Tamamlanan floor korunur.
+- MCP yeniden bağlandı; yerel HTTP MCP oturumu ile Unity araçları kullanılabiliyor. Başlangıç Console: 0 hata / 0 uyarı.
