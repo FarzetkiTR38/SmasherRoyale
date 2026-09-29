@@ -142,3 +142,15 @@ Planlanan güncel test aracı: `Assets/_Project/Scripts/Editor/Phase32VisualVeri
 - MainGame başlangıçta dirty; `[LevelDesigner_WorkingRoot]` aktif. Kaydedilmemiş sahne dahil yedek: `C:/Users/Farzetki/.codex/local-backups/Phase32Mortar-20260928/`. Oyuncu kayıtları ve gameplay/level/config hash listesi aynı klasörde.
 - Dar kapsam: namlu ve taşıyıcı yan zırhlar; platform 32.5'e, enerji shader revizyonu 32.8'e ait. Tamamlanan floor korunur.
 - MCP yeniden bağlandı; yerel HTTP MCP oturumu ile Unity araçları kullanılabiliyor. Başlangıç Console: 0 hata / 0 uyarı.
+
+### 32.4 uygulama checkpoint'i ve otomatik devam — 2026-09-29
+
+- 28 Eylül uygulaması mevcut `Assets/_Project/Prefabs/Gameplay/Mortar.prefab` üzerinde kaydedildi: safir namlu segmentleri, fildişi zırh, pahlı altın bilezikler, açık namlu ağzı, cyan kanallar ve mekanik yan taşıyıcılar. Eski objeler silinmedi; 22 eski renderer kapatıldı.
+- Araç: `Phase32MortarRevision.Apply()`. Mevcut 43 transform ve gameplay componentleri korunarak 10 birleşik art renderer, 38.896 vertex / 19.060 üçgen, 0 dekoratif collider eklendi. Kanıt: `32-04-mortar-geometry.json`.
+- `Phase32MortarVerification.CaptureBaseline()` ve `Finish()` çalıştı: `32-04-mortar-preservation.json` PASSED. Prefab GUID/TRS/config, sahne bağlantıları ve o andaki Phase33 authoring ağacı aynı.
+- Yansıma bağlantısının domain/scene reload'da boş kalması görüldü. `Phase32VisualRevision.cs` artık önceden bake edilmiş Cubemap'i `ReflectionProbeMode.Custom` + `customBakedTexture` ile kalıcı bağlar. 28 Eylül açık MainGame'de bu bağlantı uygulandı; sonraki oturumda kaydedilmiş sahneden yeniden kontrol edilmelidir. Tüm eski lighting builder'ı körlemesine tekrar çalıştırma.
+- Henüz tamamlanmayanlar: yeni mortar'ın Play Mode görsel kontrolü ve rötuşu; `Phase32MortarVerification.BeginAimTest()`; `Phase32VisualVerification.Begin()` idle/miss/impact; iki ekran oranı; prefab koleksiyonu export'u (32.10). Mevcut enerji yüzeyi 32.8'e aittir. **32.4 hâlâ tamamlanmadı, tekrar üretmeden testten devam et.**
+- İlk karşılaştırma görüntüsü: `32-04-before-mortar-clean-1080x1920.png`. Test öncesi açık OutOfLivesDialog yalnız Play oturumunda Hide ile kapatıldı; Lives=3 ve level Playing idi, satın alma/ekonomi işlemi yapılmadı.
+- 29 Eylül kontrolünde Unity MainMenu'de Edit Mode; kullanıcı arada sahne/Git değişiklikleri yaptı. **28 Eylül PlayerSave yedeğini artık otomatik geri yükleme.** Yeni testten önce o anki kayıtları yedekle, sahne dirty durumunu koru ve güncel checkpoint'i temel al.
+- Kullanıcının açık isteğiyle aynı sohbete **6 saatte bir** otomatik devam görevi oluşturuldu: `phase-32-tamamlanana-kadar-devam`, ACTIVE. Her çalışmada bu dosya asıl ilerleme kaynağıdır. Tüm Phase32 kabul kriterleri tamamlandığında görevi otomasyon aracıyla devre dışı bırak; yeni faz başlatma.
+- Zamanlayıcı token yenilenmesini garanti etmez; kullanım limiti veya MCP engelinde test edilmeyen aşamalar tamam sayılmaz. Yerel makine/app/proje ve Unity MCP erişilebilir olmalıdır.

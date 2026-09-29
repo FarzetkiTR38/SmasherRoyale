@@ -1,0 +1,48 @@
+{
+    "status": "passed",
+    "reason": "Left/right/center aiming preserved FirePoint and rigid art follow without spending ammunition.",
+    "startedUtc": "2026-09-29T10:12:27.9246521Z",
+    "finishedUtc": "2026-09-29T10:12:29.4130847Z",
+    "recoil": "Not tested: current mortar has no recoil implementation.",
+    "passed": true,
+    "ballsBefore": 32,
+    "ballsAfter": 32,
+    "firesBefore": 0,
+    "firesAfter": 0,
+    "visualRenderers": 37,
+    "samples": [
+        {
+            "requestedYaw": -45.0,
+            "expectedYaw": -45.0,
+            "actualYaw": -44.999961853027347,
+            "elapsedSeconds": 0.6045722961425781,
+            "firePointWorld": {
+                "x": -0.6640411019325256,
+                "y": 1.266365647315979,
+                "z": -1.8559579849243165
+            }
+        },
+        {
+            "requestedYaw": 45.0,
+            "expectedYaw": 45.0,
+            "actualYaw": 44.999996185302737,
+            "elapsedSeconds": 0.6001424789428711,
+            "firePointWorld": {
+                "x": 0.6640414595603943,
+                "y": 1.266365647315979,
+                "z": -1.855958342552185
+            }
+        },
+        {
+            "requestedYaw": 0.0,
+            "expectedYaw": 0.0,
+            "actualYaw": 0.00001159854764409829,
+            "elapsedSeconds": 0.6056346893310547,
+            "firePointWorld": {
+                "x": 1.9010398943919427e-7,
+                "y": 1.266365647315979,
+                "z": -1.58090341091156
+            }
+        }
+    ]
+}

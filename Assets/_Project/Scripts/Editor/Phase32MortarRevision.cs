@@ -403,12 +403,31 @@ namespace RoyalSmash.Editor
             public void Ring(Material material, float z0, float z1, float outer, float inner, float bevel,
                 Vector3 position, Quaternion rotation, int segments)
             {
-                Mesh mesh = Lathe(new[]
-                {
-                    P(outer - bevel, z0), P(outer, z0 + bevel), P(outer, z1 - bevel), P(outer - bevel, z1),
-                    P(inner + bevel, z1), P(inner, z1 - bevel), P(inner, z0 + bevel), P(inner + bevel, z0)
-                }, 0, 360, segments);
+                // A short circular fillet gives the metal a curved highlight instead of
+                // one broad 45-degree chamfer. Endpoints keep the original ring bounds.
+                var profile = new List<Vector2>();
+                var normals = new List<Vector2>();
+                AddFillet(profile, normals, P(outer - bevel, z0 + bevel), bevel, -90f);
+                AddFillet(profile, normals, P(outer - bevel, z1 - bevel), bevel, 0f);
+                AddFillet(profile, normals, P(inner + bevel, z1 - bevel), bevel, 90f);
+                AddFillet(profile, normals, P(inner + bevel, z0 + bevel), bevel, 180f);
+                // Analytic circumferential normals allow a slightly lower radial count:
+                // 48 -> 40 and 24 -> 20 keep the extra fillet geometry modest.
+                int angularSegments = segments >= 24 ? Mathf.RoundToInt(segments * 5f / 6f) : segments;
+                Mesh mesh = Lathe(profile.ToArray(), 0, 360, angularSegments, normals.ToArray());
                 _temporary.Add(mesh); Add(mesh, material, position, rotation, Vector3.one);
+            }
+
+            private static void AddFillet(List<Vector2> profile, List<Vector2> normals,
+                Vector2 center, float radius, float startAngle)
+            {
+                for (int point = 0; point < 3; point++)
+                {
+                    float angle = (startAngle + point * 45f) * Mathf.Deg2Rad;
+                    Vector2 normal = P(Mathf.Cos(angle), Mathf.Sin(angle));
+                    profile.Add(center + normal * radius);
+                    normals.Add(normal);
+                }
             }
 
             public void Profile(Material material, Vector2[] profile, float start, float sweep, int segments)
@@ -447,19 +466,25 @@ namespace RoyalSmash.Editor
                 _temporary.Clear();
             }
 
-            private static Mesh Lathe(Vector2[] profile, float start, float sweep, int segments)
+            private static Mesh Lathe(Vector2[] profile, float start, float sweep, int segments,
+                Vector2[] profileNormals = null)
             {
                 var data = new MeshData();
                 for (int arc = 0; arc < segments; arc++)
                 {
                     float a = (start + sweep * arc / segments) * Mathf.Deg2Rad;
                     float next = (start + sweep * (arc + 1) / segments) * Mathf.Deg2Rad;
-                    Vector3 radial = V(Mathf.Cos((a + next) * .5f), Mathf.Sin((a + next) * .5f), 0);
                     for (int edge = 0; edge < profile.Length; edge++)
                     {
-                        Vector2 p = profile[edge], q = profile[(edge + 1) % profile.Length];
-                        Vector3 normal = radial * (q.y - p.y) - Vector3.forward * (q.x - p.x);
-                        data.Face(normal, Point(p, a), Point(p, next), Point(q, next), Point(q, a));
+                        int nextEdge = (edge + 1) % profile.Length;
+                        Vector2 p = profile[edge], q = profile[nextEdge];
+                        Vector2 edgeNormal = P(q.y - p.y, p.x - q.x).normalized;
+                        // Shell contours keep hard profile corners; rounded ring fillets
+                        // supply exact curve normals. Neither path averages across caps.
+                        Vector2 pNormal = profileNormals == null ? edgeNormal : profileNormals[edge];
+                        Vector2 qNormal = profileNormals == null ? edgeNormal : profileNormals[nextEdge];
+                        data.Surface(new[] { Point(p, a), Point(p, next), Point(q, next), Point(q, a) },
+                            new[] { Normal(pNormal, a), Normal(pNormal, next), Normal(qNormal, next), Normal(qNormal, a) });
                     }
                 }
                 if (sweep < 359.9f)
@@ -479,6 +504,7 @@ namespace RoyalSmash.Editor
             }
 
             private static Vector3 Point(Vector2 p, float angle) => V(p.x * Mathf.Cos(angle), p.x * Mathf.Sin(angle), p.y);
+            private static Vector3 Normal(Vector2 p, float angle) => V(p.x * Mathf.Cos(angle), p.x * Mathf.Sin(angle), p.y).normalized;
 
             private static int[] Triangulate(Vector2[] points)
             {
@@ -526,16 +552,27 @@ namespace RoyalSmash.Editor
         private sealed class MeshData
         {
             private readonly List<Vector3> _vertices = new List<Vector3>();
+            private readonly List<Vector3> _normals = new List<Vector3>();
             private readonly List<int> _triangles = new List<int>();
             private readonly List<Vector2> _uv = new List<Vector2>();
             public void Face(Vector3 normal, params Vector3[] points)
             {
-                if (Vector3.Dot(Vector3.Cross(points[1] - points[0], points[2] - points[0]), normal) < 0)
-                    Array.Reverse(points);
+                var normals = new Vector3[points.Length];
+                for (int i = 0; i < normals.Length; i++) normals[i] = normal.normalized;
+                Surface(points, normals);
+            }
+            public void Surface(Vector3[] points, Vector3[] normals)
+            {
+                Vector3 hint = Vector3.zero;
+                foreach (Vector3 normal in normals) hint += normal;
+                if (Vector3.Dot(Vector3.Cross(points[1] - points[0], points[2] - points[0]), hint) < 0)
+                { Array.Reverse(points); Array.Reverse(normals); }
                 int first = _vertices.Count;
-                foreach (Vector3 point in points)
+                for (int i = 0; i < points.Length; i++)
                 {
+                    Vector3 point = points[i];
                     _vertices.Add(point);
+                    _normals.Add(normals[i]);
                     _uv.Add(new Vector2(Mathf.Atan2(point.y, point.x) / (Mathf.PI * 2f), point.z));
                 }
                 for (int i = 1; i < points.Length - 1; i++)
@@ -544,8 +581,8 @@ namespace RoyalSmash.Editor
             public Mesh Build()
             {
                 var mesh = new Mesh();
-                mesh.SetVertices(_vertices); mesh.SetTriangles(_triangles, 0); mesh.SetUVs(0, _uv);
-                mesh.RecalculateNormals(); mesh.RecalculateBounds(); mesh.RecalculateTangents();
+                mesh.SetVertices(_vertices); mesh.SetNormals(_normals); mesh.SetTriangles(_triangles, 0); mesh.SetUVs(0, _uv);
+                mesh.RecalculateBounds(); mesh.RecalculateTangents();
                 return mesh;
             }
         }
