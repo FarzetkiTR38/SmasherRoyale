@@ -45,6 +45,28 @@ namespace RoyalSmash.UI
         {
             if (Instance == null) Instance = this;
             _timeRemaining = _countdownDurationSeconds;
+
+            if (_closeButton == null)
+            {
+                var closeTrans = transform.Find("ShopFrameContainer/CloseButton");
+                if (closeTrans != null) _closeButton = closeTrans.GetComponent<Button>();
+            }
+
+            if (_limitedOfferTimerText == null)
+            {
+                var timerTrans = transform.Find("ShopFrameContainer/ContentScrollView/Viewport/Content/Card_KingsDeal/TimerText");
+                if (timerTrans != null) _limitedOfferTimerText = timerTrans.GetComponent<TextMeshProUGUI>();
+            }
+
+            if (_feedbackDialog == null)
+            {
+                _feedbackDialog = FindFirstObjectByType<PurchaseFeedbackDialog>(FindObjectsInactive.Include);
+            }
+
+            if (_itemCards == null || _itemCards.Count == 0)
+            {
+                _itemCards = new List<ShopItemCardUI>(GetComponentsInChildren<ShopItemCardUI>(true));
+            }
         }
 
         private void Start()
@@ -57,6 +79,7 @@ namespace RoyalSmash.UI
 
             if (_closeButton != null)
             {
+                _closeButton.onClick.RemoveListener(HandleCloseClicked);
                 _closeButton.onClick.AddListener(HandleCloseClicked);
             }
 

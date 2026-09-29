@@ -8,8 +8,8 @@ using RoyalSmash.Save;
 namespace RoyalSmash.UI
 {
     /// <summary>
-    /// Component representing an individual shop product card.
-    /// Handles price display, badge presentation, owned state for No Ads,
+    /// Component representing an individual shop product card or buy button.
+    /// Handles price display, localized currency text, owned state for No Ads,
     /// and purchase triggering with double-tap lock.
     /// </summary>
     public class ShopItemCardUI : MonoBehaviour
@@ -29,8 +29,19 @@ namespace RoyalSmash.UI
 
         private void Awake()
         {
+            if (_buyButton == null)
+            {
+                _buyButton = GetComponent<Button>();
+            }
+
+            if (_priceText == null)
+            {
+                _priceText = GetComponentInChildren<TextMeshProUGUI>(true);
+            }
+
             if (_buyButton != null)
             {
+                _buyButton.onClick.RemoveListener(HandleBuyClicked);
                 _buyButton.onClick.AddListener(HandleBuyClicked);
             }
         }
@@ -40,14 +51,18 @@ namespace RoyalSmash.UI
             if (IAPManager.Instance != null)
             {
                 IAPManager.Instance.OnPurchaseStateChanged += HandlePurchaseStateChanged;
+                IAPManager.Instance.OnStoreInitialized += HandleStoreInitialized;
             }
+
+            RefreshDisplay();
         }
 
         private void OnDestroy()
         {
-            if (IAPManager.Instance != null)
+            if (IAPManager.HasInstance)
             {
                 IAPManager.Instance.OnPurchaseStateChanged -= HandlePurchaseStateChanged;
+                IAPManager.Instance.OnStoreInitialized -= HandleStoreInitialized;
             }
             if (_buyButton != null)
             {
@@ -68,14 +83,14 @@ namespace RoyalSmash.UI
             _titleText = titleTxt;
             _descriptionText = descTxt;
             _priceText = priceTxt;
-            _buyButton = buyBtn;
+            _buyButton = buyBtn != null ? buyBtn : GetComponent<Button>();
             _iconImage = iconImg;
             _badgeRoot = badgeRt;
             _badgeText = badgeTxt;
 
             if (_buyButton != null)
             {
-                _buyButton.onClick.RemoveAllListeners();
+                _buyButton.onClick.RemoveListener(HandleBuyClicked);
                 _buyButton.onClick.AddListener(HandleBuyClicked);
             }
 
@@ -118,12 +133,20 @@ namespace RoyalSmash.UI
                 {
                     _buyButton.interactable = false;
                     var img = _buyButton.GetComponent<Image>();
-                    if (img != null) img.color = new Color(0.4f, 0.4f, 0.45f);
+                    if (img != null) img.color = new Color(0.4f, 0.4f, 0.45f, 0.8f);
                 }
             }
             else
             {
-                if (_priceText != null) _priceText.text = _itemData.PriceString;
+                // Check for live store localized price if available, else fallback to configured price string
+                string priceToDisplay = _itemData.PriceString;
+                if (IAPManager.Instance != null && IAPManager.Instance.IsInitialized && !string.IsNullOrEmpty(_itemData.ProductId))
+                {
+                    priceToDisplay = IAPManager.Instance.GetLocalizedPriceString(_itemData.ProductId, _itemData.PriceString);
+                }
+
+                if (_priceText != null) _priceText.text = priceToDisplay;
+
                 if (_buyButton != null)
                 {
                     _buyButton.interactable = IAPManager.Instance == null || !IAPManager.Instance.IsPurchaseInProgress;
@@ -133,11 +156,21 @@ namespace RoyalSmash.UI
 
         private void HandleBuyClicked()
         {
-            if (_itemData == null) return;
+            if (_itemData == null)
+            {
+                Debug.LogWarning($"[ShopItemCardUI] Cannot buy: ItemData is null on {gameObject.name}");
+                return;
+            }
+
+            Debug.Log($"[ShopItemCardUI] Buy clicked for '{_itemData.Title}' (Id={_itemData.Id}, ProductId={_itemData.ProductId}, Price={_itemData.PriceString})");
 
             if (IAPManager.Instance != null)
             {
                 IAPManager.Instance.PurchaseItem(_itemData);
+            }
+            else
+            {
+                Debug.LogError("[ShopItemCardUI] IAPManager.Instance is null! Cannot initiate purchase.");
             }
         }
 
@@ -152,6 +185,11 @@ namespace RoyalSmash.UI
 
                 _buyButton.interactable = !inProgress && !isNoAdsOwned;
             }
+        }
+
+        private void HandleStoreInitialized()
+        {
+            RefreshDisplay();
         }
     }
 }

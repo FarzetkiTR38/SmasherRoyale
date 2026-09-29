@@ -66,10 +66,22 @@ namespace RoyalSmash.Economy
         [Header("Value Bundles")]
         public List<ShopItemData> Bundles = new List<ShopItemData>();
 
+        public List<ShopItemData> GetAllItems()
+        {
+            var list = new List<ShopItemData>();
+            if (LimitedTimeOffer != null) list.Add(LimitedTimeOffer);
+            if (NoAdsItem != null) list.Add(NoAdsItem);
+            if (GoldPacks != null) list.AddRange(GoldPacks);
+            if (SkillPacks != null) list.AddRange(SkillPacks);
+            if (Bundles != null) list.AddRange(Bundles);
+            return list;
+        }
+
         public ShopItemData FindItemById(string id)
         {
-            if (LimitedTimeOffer != null && LimitedTimeOffer.Id == id) return LimitedTimeOffer;
-            if (NoAdsItem != null && NoAdsItem.Id == id) return NoAdsItem;
+            if (string.IsNullOrEmpty(id)) return null;
+            if (LimitedTimeOffer != null && (LimitedTimeOffer.Id == id || LimitedTimeOffer.ProductId == id)) return LimitedTimeOffer;
+            if (NoAdsItem != null && (NoAdsItem.Id == id || NoAdsItem.ProductId == id)) return NoAdsItem;
 
             if (GoldPacks != null)
             {
@@ -99,3 +111,4 @@ namespace RoyalSmash.Economy
         }
     }
 }
+
