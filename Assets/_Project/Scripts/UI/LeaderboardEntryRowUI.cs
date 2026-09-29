@@ -141,7 +141,7 @@ namespace RoyalSmash.UI
             // 3. Stage / Level Text
             if (_stageLabelText != null)
             {
-                _stageLabelText.text = "Aşama";
+                _stageLabelText.text = "Level";
                 if (data.Rank == 1) _stageLabelText.color = new Color(1.0f, 0.90f, 0.65f);
                 else if (data.Rank == 2) _stageLabelText.color = new Color(0.90f, 0.95f, 1.0f);
                 else if (data.Rank == 3) _stageLabelText.color = new Color(1.0f, 0.85f, 0.70f);
@@ -150,8 +150,8 @@ namespace RoyalSmash.UI
 
             if (_levelText != null)
             {
-                int stageScore = data.Level >= 1000 ? data.Level : (data.Level > 0 ? (data.Level * 1000 + Mathf.Max(0, 30 - data.Rank) * 23 + 109) : 22133);
-                _levelText.text = stageScore.ToString();
+                int displayLevel = Mathf.Clamp(data.Level, 1, 30);
+                _levelText.text = displayLevel.ToString();
                 if (data.Rank == 1) _levelText.color = new Color(1.0f, 0.88f, 0.3f);
                 else if (data.Rank == 2) _levelText.color = Color.white;
                 else if (data.Rank == 3) _levelText.color = new Color(1.0f, 0.75f, 0.5f);

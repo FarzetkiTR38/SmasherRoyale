@@ -69,7 +69,15 @@ namespace RoyalSmash.Cloud
             {
                 if (_provider == null)
                 {
-                    _provider = _useUGS ? (ICloudSyncProvider)new UGSCloudProvider(Config) : new SimulatedCloudProvider(Config);
+                    bool hasCloudId = !string.IsNullOrEmpty(Application.cloudProjectId);
+                    if (_useUGS && hasCloudId)
+                    {
+                        _provider = new UGSCloudProvider(Config);
+                    }
+                    else
+                    {
+                        _provider = new SimulatedCloudProvider(Config);
+                    }
                 }
                 return _provider;
             }

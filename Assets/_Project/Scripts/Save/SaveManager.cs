@@ -144,6 +144,10 @@ namespace RoyalSmash.Save
             {
                 _data.RewardedLevelIds = new System.Collections.Generic.List<int>();
             }
+            if (string.IsNullOrEmpty(_data.PlayerId))
+            {
+                _data.PlayerId = "player_" + System.Guid.NewGuid().ToString("N").Substring(0, 8);
+            }
             if (string.IsNullOrEmpty(_data.Username))
             {
                 _data.Username = "Player";

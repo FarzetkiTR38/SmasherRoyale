@@ -40,6 +40,7 @@ namespace RoyalSmash.Save
         public bool VibrationEnabled = true;
 
         // Profile (Section 18)
+        public string PlayerId = "";
         public string Username = "Player";
         public int AvatarId = 0;
         public int FrameId = 0;

@@ -56,6 +56,38 @@ namespace RoyalSmash.Cloud
             {
                 DontDestroyOnLoad(gameObject);
             }
+
+            HookSaveUpdates();
+        }
+
+        private void Start()
+        {
+            HookSaveUpdates();
+        }
+
+        private void HookSaveUpdates()
+        {
+            if (SaveManager.HasInstance)
+            {
+                SaveManager.Instance.OnSaveUpdated -= HandleSaveUpdated;
+                SaveManager.Instance.OnSaveUpdated += HandleSaveUpdated;
+            }
+        }
+
+        private void HandleSaveUpdated(PlayerSaveData data)
+        {
+            if (data == null) return;
+            var syncMgr = CloudSyncManager.Instance ?? FindFirstObjectByType<CloudSyncManager>();
+            if (syncMgr != null)
+            {
+                syncMgr.TriggerSync((success, msg) =>
+                {
+                    if (success)
+                    {
+                        FetchLeaderboard(null);
+                    }
+                });
+            }
         }
 
         private void OnApplicationQuit()
@@ -65,6 +97,10 @@ namespace RoyalSmash.Cloud
 
         private void OnDestroy()
         {
+            if (SaveManager.HasInstance)
+            {
+                SaveManager.Instance.OnSaveUpdated -= HandleSaveUpdated;
+            }
             if (_instance == this)
             {
                 _instance = null;
@@ -80,20 +116,17 @@ namespace RoyalSmash.Cloud
             var syncMgr = CloudSyncManager.Instance ?? UnityEngine.Object.FindFirstObjectByType<CloudSyncManager>();
             if (syncMgr == null || syncMgr.Provider == null)
             {
-                // Fallback to local cache
                 LoadFromCacheAndNotify(onComplete);
                 return;
             }
 
             if (!syncMgr.IsOnline)
             {
-                // Explicitly offline -> load cached
                 Debug.Log("[LeaderboardManager] Offline: Loading cached leaderboard data.");
                 LoadFromCacheAndNotify(onComplete);
                 return;
             }
 
-            // Attempt online fetch
             syncMgr.Provider.FetchLeaderboard((success, entries, msg) =>
             {
                 if (success && entries != null && entries.Count > 0)
@@ -101,7 +134,6 @@ namespace RoyalSmash.Cloud
                     _isCurrentDataCached = false;
                     _currentEntries = ProcessAndSortEntries(entries);
 
-                    // Save to local cache
                     syncMgr.SaveCache(_currentEntries);
 
                     OnLeaderboardUpdated?.Invoke(_currentEntries, false);
@@ -135,15 +167,25 @@ namespace RoyalSmash.Cloud
             var list = rawEntries != null ? new List<LeaderboardEntryData>(rawEntries) : new List<LeaderboardEntryData>();
             var saveMgr = SaveManager.Instance;
 
-            string localPlayerId = "local_player";
+            string localPlayerId = (saveMgr != null && saveMgr.Data != null && !string.IsNullOrEmpty(saveMgr.Data.PlayerId))
+                ? saveMgr.Data.PlayerId
+                : "local_player";
+
             string localUsername = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.Username : "Player";
             int localLevel = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.CurrentLevel : 1;
             int localAvatar = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.AvatarIndex : 0;
             int localFrame = saveMgr != null && saveMgr.Data != null ? saveMgr.Data.FrameIndex : 0;
 
+            // Clear IsLocalPlayer flags on incoming entries except the actual local player
+            foreach (var e in list)
+            {
+                e.IsLocalPlayer = (!string.IsNullOrEmpty(localPlayerId) && e.PlayerId == localPlayerId);
+            }
+
             var playerEntry = list.FirstOrDefault(e => e.IsLocalPlayer || e.PlayerId == localPlayerId);
             if (playerEntry != null)
             {
+                playerEntry.PlayerId = localPlayerId;
                 playerEntry.Username = localUsername;
                 playerEntry.Level = localLevel;
                 playerEntry.AvatarIndex = localAvatar;
@@ -184,6 +226,15 @@ namespace RoyalSmash.Cloud
         public LeaderboardEntryData GetLocalPlayerEntry()
         {
             return _currentEntries.FirstOrDefault(e => e.IsLocalPlayer);
+        }
+
+        /// <summary>
+        /// Returns the exact current rank of the local player (1-indexed), or -1 if not found.
+        /// </summary>
+        public int GetLocalPlayerRank()
+        {
+            var entry = GetLocalPlayerEntry();
+            return entry != null ? entry.Rank : -1;
         }
     }
 }

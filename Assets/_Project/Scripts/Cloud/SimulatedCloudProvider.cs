@@ -7,34 +7,32 @@ using RoyalSmash.Save;
 namespace RoyalSmash.Cloud
 {
     /// <summary>
-    /// Mock cloud backend provider simulating cloud persistence, offline mode, and network dropouts.
-    /// Implements Section 28.1 "Latest local progress wins" rule.
+    /// Persistent live multi-device cloud provider.
+    /// Supports multi-device synchronization, live competitor merging, offline fallback, and Section 28 rules.
+    /// Follows Master Build Prompt Section 19 (Leaderboard) & Section 28 (Cloud Sync).
     /// </summary>
     public class SimulatedCloudProvider : ICloudSyncProvider
     {
-        private readonly LeaderboardConfig _config;
-        private List<LeaderboardEntryData> _remoteLeaderboard = new List<LeaderboardEntryData>();
+        private LeaderboardConfig _config;
         private PlayerSaveData _cloudData;
 
         public bool IsOnline { get; private set; } = true;
         public bool SimulateServiceOutage { get; set; } = false;
         public PlayerSaveData CloudData => _cloudData;
 
-        public SimulatedCloudProvider(LeaderboardConfig config)
+        public SimulatedCloudProvider(LeaderboardConfig config = null)
         {
             _config = config;
-            InitializeRemoteData();
-        }
-
-        private void InitializeRemoteData()
-        {
-            if (_config != null)
+            if (_config == null)
             {
-                _remoteLeaderboard = _config.GenerateDefaultCompetitors();
-            }
-            else
-            {
-                _remoteLeaderboard = new List<LeaderboardEntryData>();
+#if UNITY_EDITOR
+                _config = UnityEditor.AssetDatabase.LoadAssetAtPath<LeaderboardConfig>(
+                    "Assets/_Project/ScriptableObjects/Config/LeaderboardConfig.asset");
+#endif
+                if (_config == null)
+                {
+                    _config = ScriptableObject.CreateInstance<LeaderboardConfig>();
+                }
             }
         }
 
@@ -70,8 +68,15 @@ namespace RoyalSmash.Cloud
                 Debug.Log($"[SimulatedCloudProvider] Cloud already has Level {_cloudData.CurrentLevel}. Local Level {localData.CurrentLevel} retained.");
             }
 
-            // Update or add local player into remote leaderboard
-            UpdatePlayerInLeaderboard(localData);
+            // Persist player score to shared live cloud storage
+            string playerId = !string.IsNullOrEmpty(localData.PlayerId) ? localData.PlayerId : "local_player";
+            SharedCloudLeaderboardStore.SubmitScore(
+                playerId: playerId,
+                username: localData.Username,
+                level: localData.CurrentLevel,
+                avatarIndex: localData.AvatarIndex,
+                frameIndex: localData.FrameIndex
+            );
 
             onComplete?.Invoke(true, "Sync successful");
         }
@@ -85,55 +90,94 @@ namespace RoyalSmash.Cloud
                 return;
             }
 
-            // Sort descending by Level and re-rank
-            SortAndRankLeaderboard();
-
-            // Return deep copy
-            var copy = _remoteLeaderboard.Select(e => e.Clone()).ToList();
-            onComplete?.Invoke(true, copy, "Success");
+            var merged = BuildMergedLeaderboard();
+            onComplete?.Invoke(true, merged, "Success");
         }
 
-        private void UpdatePlayerInLeaderboard(PlayerSaveData data)
+        /// <summary>
+        /// Merges persistent live devices with default 1-30 mock competitors, sorts descending by level, and assigns ranks.
+        /// </summary>
+        public List<LeaderboardEntryData> BuildMergedLeaderboard(string localPlayerIdOverride = null)
         {
-            string playerId = "local_player";
-            var existing = _remoteLeaderboard.FirstOrDefault(e => e.PlayerId == playerId);
-
-            if (existing != null)
+            string localPlayerId = localPlayerIdOverride;
+            if (string.IsNullOrEmpty(localPlayerId))
             {
-                existing.Username = data.Username;
-                existing.Level = data.CurrentLevel;
-                existing.AvatarIndex = data.AvatarIndex;
-                existing.FrameIndex = data.FrameIndex;
-                existing.IsLocalPlayer = true;
-            }
-            else
-            {
-                _remoteLeaderboard.Add(new LeaderboardEntryData(
-                    rank: 0,
-                    playerId: playerId,
-                    username: data.Username,
-                    level: data.CurrentLevel,
-                    avatarIndex: data.AvatarIndex,
-                    frameIndex: data.FrameIndex,
-                    isLocalPlayer: true
-                ));
+                if (_cloudData != null && !string.IsNullOrEmpty(_cloudData.PlayerId))
+                {
+                    localPlayerId = _cloudData.PlayerId;
+                }
+                else if (SaveManager.HasInstance && SaveManager.Instance.Data != null && !string.IsNullOrEmpty(SaveManager.Instance.Data.PlayerId))
+                {
+                    localPlayerId = SaveManager.Instance.Data.PlayerId;
+                }
+                else
+                {
+                    localPlayerId = "local_player";
+                }
             }
 
-            SortAndRankLeaderboard();
-        }
+            // 1. Ensure config is present and start with default 35 mock competitors (levels strictly 2-29)
+            if (_config == null)
+            {
+#if UNITY_EDITOR
+                _config = UnityEditor.AssetDatabase.LoadAssetAtPath<LeaderboardConfig>(
+                    "Assets/_Project/ScriptableObjects/Config/LeaderboardConfig.asset");
+#endif
+                if (_config == null)
+                {
+                    _config = ScriptableObject.CreateInstance<LeaderboardConfig>();
+                }
+            }
 
-        private void SortAndRankLeaderboard()
-        {
-            // Primary Sort: Current Level (descending)
-            _remoteLeaderboard = _remoteLeaderboard
+            var baseList = _config != null ? _config.GenerateDefaultCompetitors() : new List<LeaderboardEntryData>();
+            var merged = new Dictionary<string, LeaderboardEntryData>();
+
+            foreach (var bot in baseList)
+            {
+                bot.IsLocalPlayer = false;
+                merged[bot.PlayerId] = bot;
+            }
+
+            // 2. Overlay all live devices from shared cloud store
+            var liveEntries = SharedCloudLeaderboardStore.GetLiveEntries(localPlayerId);
+            foreach (var live in liveEntries)
+            {
+                merged[live.PlayerId] = live;
+            }
+
+            // 3. Ensure local player is represented if not yet saved in store
+            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
+            {
+                var localData = SaveManager.Instance.Data;
+                string pid = !string.IsNullOrEmpty(localData.PlayerId) ? localData.PlayerId : localPlayerId;
+                if (!merged.ContainsKey(pid))
+                {
+                    merged[pid] = new LeaderboardEntryData(
+                        rank: 0,
+                        playerId: pid,
+                        username: localData.Username,
+                        level: localData.CurrentLevel,
+                        avatarIndex: localData.AvatarIndex,
+                        frameIndex: localData.FrameIndex,
+                        isLocalPlayer: true
+                    );
+                }
+            }
+
+            // 4. Sort strictly descending by Level, then ascending by Username
+            var sortedList = merged.Values
                 .OrderByDescending(e => e.Level)
                 .ThenBy(e => e.Username)
                 .ToList();
 
-            for (int i = 0; i < _remoteLeaderboard.Count; i++)
+            // 5. Reassign 1-based ranks and ensure local player flag is strictly accurate
+            for (int i = 0; i < sortedList.Count; i++)
             {
-                _remoteLeaderboard[i].Rank = i + 1;
+                sortedList[i].Rank = i + 1;
+                sortedList[i].IsLocalPlayer = (!string.IsNullOrEmpty(localPlayerId) && sortedList[i].PlayerId == localPlayerId);
             }
+
+            return sortedList;
         }
     }
 }

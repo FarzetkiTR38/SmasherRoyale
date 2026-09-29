@@ -274,7 +274,7 @@ namespace RoyalSmash.EditorTools
                 valTmp.fontStyle = FontStyles.Bold;
                 valTmp.alignment = TextAlignmentOptions.Center;
                 valTmp.color = new Color(1f, 0.96f, 0.45f);
-                valTmp.text = "33709";
+                valTmp.text = "30";
 
                 var rowUI = root.GetComponent<LeaderboardEntryRowUI>();
                 if (rowUI == null) rowUI = root.AddComponent<LeaderboardEntryRowUI>();
@@ -640,14 +640,14 @@ namespace RoyalSmash.EditorTools
             // Pre-populate sample rows for editor preview matching mockup exactly
             var sampleEntries = new System.Collections.Generic.List<LeaderboardEntryData>
             {
-                new LeaderboardEntryData(1, "p1", "MARBT", 33709, 0, 0, false),
-                new LeaderboardEntryData(2, "p2", "koreakim", 27017, 1, 1, false),
-                new LeaderboardEntryData(3, "p3", "RubyRush", 26665, 2, 2, false),
-                new LeaderboardEntryData(4, "p4", "csy", 24846, 0, 3, false),
-                new LeaderboardEntryData(5, "p5", "Bdclinic", 23656, 1, 3, false),
-                new LeaderboardEntryData(6, "p6", "Meme", 23510, 3, 3, false),
-                new LeaderboardEntryData(7, "p7", "QuasarQ", 23290, 0, 3, false),
-                new LeaderboardEntryData(8, "p8", "ali hikmet", 22133, 2, 3, false),
+                new LeaderboardEntryData(1, "p1", "MARBT", 30, 0, 0, false),
+                new LeaderboardEntryData(2, "p2", "koreakim", 28, 1, 1, false),
+                new LeaderboardEntryData(3, "p3", "RubyRush", 27, 2, 2, false),
+                new LeaderboardEntryData(4, "p4", "csy", 25, 0, 3, false),
+                new LeaderboardEntryData(5, "p5", "Bdclinic", 24, 1, 3, false),
+                new LeaderboardEntryData(6, "p6", "Meme", 23, 3, 3, false),
+                new LeaderboardEntryData(7, "p7", "QuasarQ", 22, 0, 3, false),
+                new LeaderboardEntryData(8, "p8", "ali hikmet", 20, 2, 3, false),
             };
             lbUI.PopulateList(sampleEntries, false);
         }
