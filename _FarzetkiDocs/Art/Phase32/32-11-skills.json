@@ -1,0 +1,130 @@
+{
+    "status": "passed",
+    "reason": "Normal/Mega/three rapid shots verified; Infinity expired and each skill consumed exactly one use.",
+    "startedUtc": "2026-09-30T11:14:56.6349344Z",
+    "finishedUtc": "2026-09-30T11:15:01.9796181Z",
+    "passed": true,
+    "ballsBefore": 32,
+    "ballsAfter": 27,
+    "firesBefore": 0,
+    "firesAfter": 5,
+    "megaUsesBefore": 23,
+    "megaUsesAfter": 22,
+    "infinityUsesBefore": 13,
+    "infinityUsesAfter": 12,
+    "configuredNormalCooldown": 0.15000000596046449,
+    "configuredRapidCooldown": 0.05999999865889549,
+    "configuredInfinityDuration": 5.0,
+    "infinityElapsed": 5.000640869140625,
+    "megaConsumed": true,
+    "infinityExpired": true,
+    "missGateHeld": true,
+    "scope": "Five real miss shots: normal, Mega, three Infinity shots. Does not replace contact/impact or UI pointer tests. Consumes one saved use of each skill.",
+    "shots": [
+        {
+            "kind": "Normal",
+            "primaryRenderer": "PF_CitadelBall(Clone)",
+            "shader": "RoyalSmash/Citadel Energy Reference",
+            "mega": false,
+            "primaryEnabled": true,
+            "scale": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "mass": 1.2000000476837159,
+            "cooldown": 0.15000000596046449,
+            "time": 357.3174133300781,
+            "baseColor": {
+                "r": 0.014999999664723874,
+                "g": 0.19999989867210389,
+                "b": 0.9200000166893005,
+                "a": 1.0
+            }
+        },
+        {
+            "kind": "Mega",
+            "primaryRenderer": "PF_CitadelBall(Clone)",
+            "shader": "RoyalSmash/Citadel Energy Reference",
+            "mega": true,
+            "primaryEnabled": true,
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "mass": 3.0,
+            "cooldown": 0.15000000596046449,
+            "time": 357.5026550292969,
+            "baseColor": {
+                "r": 1.0,
+                "g": 0.6499999761581421,
+                "b": 0.09999997168779373,
+                "a": 1.0
+            }
+        },
+        {
+            "kind": "Infinity",
+            "primaryRenderer": "PF_CitadelBall(Clone)",
+            "shader": "RoyalSmash/Citadel Energy Reference",
+            "mega": false,
+            "primaryEnabled": true,
+            "scale": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "mass": 1.2000000476837159,
+            "cooldown": 0.05999999865889549,
+            "time": 357.6539001464844,
+            "baseColor": {
+                "r": 0.014999999664723874,
+                "g": 0.19999989867210389,
+                "b": 0.9200000166893005,
+                "a": 1.0
+            }
+        },
+        {
+            "kind": "Infinity",
+            "primaryRenderer": "PF_CitadelBall(Clone)",
+            "shader": "RoyalSmash/Citadel Energy Reference",
+            "mega": false,
+            "primaryEnabled": true,
+            "scale": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "mass": 1.2000000476837159,
+            "cooldown": 0.05999999865889549,
+            "time": 357.7155456542969,
+            "baseColor": {
+                "r": 0.014999999664723874,
+                "g": 0.19999989867210389,
+                "b": 0.9200000166893005,
+                "a": 1.0
+            }
+        },
+        {
+            "kind": "Infinity",
+            "primaryRenderer": "PF_CitadelBall(Clone)",
+            "shader": "RoyalSmash/Citadel Energy Reference",
+            "mega": false,
+            "primaryEnabled": true,
+            "scale": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "mass": 1.2000000476837159,
+            "cooldown": 0.05999999865889549,
+            "time": 357.77630615234377,
+            "baseColor": {
+                "r": 0.014999999664723874,
+                "g": 0.19999989867210389,
+                "b": 0.9200000166893005,
+                "a": 1.0
+            }
+        }
+    ]
+}

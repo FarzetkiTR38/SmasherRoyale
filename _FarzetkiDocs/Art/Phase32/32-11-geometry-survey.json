@@ -1,0 +1,737 @@
+{
+    "capturedUtc": "2026-09-30T11:08:22.1258823Z",
+    "scope": "Read-only collider AABB survey. Footprint and AABB overlaps are review flags, not exact support/penetration tests or a gameplay pass.",
+    "levels": [
+        {
+            "level": 1,
+            "targets": 13,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.2983124256134033,
+                "y": 0.5121986865997315,
+                "width": 0.40337514877319338,
+                "height": 0.2268548607826233
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.2983124256134033,
+                "y": 0.5097589492797852,
+                "width": 0.40337514877319338,
+                "height": 0.18148386478424073
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 2,
+            "targets": 16,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 4,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.2965829372406006,
+                "y": 0.5121986865997315,
+                "width": 0.40683412551879885,
+                "height": 0.2268548607826233
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.2965829372406006,
+                "y": 0.5097589492797852,
+                "width": 0.40683412551879885,
+                "height": 0.18148386478424073
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": [
+                "Review overlapping world AABBs; rotated shapes can produce false positives."
+            ]
+        },
+        {
+            "level": 3,
+            "targets": 16,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.24763883650302888,
+                "y": 0.5121986865997315,
+                "width": 0.5047223567962647,
+                "height": 0.2268548607826233
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.24763883650302888,
+                "y": 0.5097589492797852,
+                "width": 0.5047223567962647,
+                "height": 0.18148386478424073
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 4,
+            "targets": 18,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19951994717121125,
+                "y": 0.5121986865997315,
+                "width": 0.6009601354598999,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19951994717121125,
+                "y": 0.5097589492797852,
+                "width": 0.6009601354598999,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 5,
+            "targets": 18,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19951994717121125,
+                "y": 0.5121986865997315,
+                "width": 0.6009601354598999,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19951994717121125,
+                "y": 0.5097589492797852,
+                "width": 0.6009601354598999,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 6,
+            "targets": 18,
+            "stands": 2,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.09749902784824372,
+                "y": 0.5121986865997315,
+                "width": 0.805001974105835,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.09749902784824372,
+                "y": 0.5097589492797852,
+                "width": 0.805001974105835,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 7,
+            "targets": 20,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19951994717121125,
+                "y": 0.5121986865997315,
+                "width": 0.6009601354598999,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19951994717121125,
+                "y": 0.5097589492797852,
+                "width": 0.6009601354598999,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 8,
+            "targets": 20,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.24547481536865235,
+                "y": 0.5121986865997315,
+                "width": 0.5090503692626953,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.24547481536865235,
+                "y": 0.5097589492797852,
+                "width": 0.5090503692626953,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 9,
+            "targets": 20,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19436666369438172,
+                "y": 0.5121986865997315,
+                "width": 0.6112666130065918,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19436666369438172,
+                "y": 0.5097589492797852,
+                "width": 0.6112666130065918,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 10,
+            "targets": 22,
+            "stands": 2,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 2,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.09398733824491501,
+                "y": 0.5121986865997315,
+                "width": 0.8120253086090088,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.09398733824491501,
+                "y": 0.5097589492797852,
+                "width": 0.8120253086090088,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": [
+                "Review overlapping world AABBs; rotated shapes can produce false positives."
+            ]
+        },
+        {
+            "level": 11,
+            "targets": 20,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5121986865997315,
+                "width": 0.6060695648193359,
+                "height": 0.2268548607826233
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5097589492797852,
+                "width": 0.6060695648193359,
+                "height": 0.18148386478424073
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 12,
+            "targets": 21,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5121986865997315,
+                "width": 0.6060695648193359,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5097589492797852,
+                "width": 0.6060695648193359,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 13,
+            "targets": 22,
+            "stands": 2,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.23515519499778748,
+                "y": 0.5051006078720093,
+                "width": 0.5296896696090698,
+                "height": 0.3532935380935669
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.23515519499778748,
+                "y": 0.5040804743766785,
+                "width": 0.5296896696090698,
+                "height": 0.2826348543167114
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 14,
+            "targets": 22,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5121986865997315,
+                "width": 0.6060695648193359,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5097589492797852,
+                "width": 0.6060695648193359,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 15,
+            "targets": 24,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 16,
+            "targets": 23,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5121986865997315,
+                "width": 0.6060695648193359,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5097589492797852,
+                "width": 0.6060695648193359,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 17,
+            "targets": 24,
+            "stands": 2,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.032293252646923068,
+                "y": 0.5121986865997315,
+                "width": 0.9354134798049927,
+                "height": 0.2268548607826233
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.032293252646923068,
+                "y": 0.5097589492797852,
+                "width": 0.9354134798049927,
+                "height": 0.18148386478424073
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 18,
+            "targets": 24,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5121986865997315,
+                "width": 0.6060695648193359,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5097589492797852,
+                "width": 0.6060695648193359,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 19,
+            "targets": 25,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 2,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5121986865997315,
+                "width": 0.6060695648193359,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.19696523249149323,
+                "y": 0.5097589492797852,
+                "width": 0.6060695648193359,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": [
+                "Review overlapping world AABBs; rotated shapes can produce false positives."
+            ]
+        },
+        {
+            "level": 20,
+            "targets": 26,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 21,
+            "targets": 25,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 22,
+            "targets": 26,
+            "stands": 2,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 18,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.03517893701791763,
+                "y": 0.5121986865997315,
+                "width": 0.9296420812606812,
+                "height": 0.2268548607826233
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.03517893701791763,
+                "y": 0.5097589492797852,
+                "width": 0.9296420812606812,
+                "height": 0.18148386478424073
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": [
+                "Review overlapping world AABBs; rotated shapes can produce false positives."
+            ]
+        },
+        {
+            "level": 23,
+            "targets": 26,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14927361905574799,
+                "y": 0.5121986865997315,
+                "width": 0.7014527320861816,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14927361905574799,
+                "y": 0.5097589492797852,
+                "width": 0.7014527320861816,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 24,
+            "targets": 26,
+            "stands": 2,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.23277078568935395,
+                "y": 0.5051006078720093,
+                "width": 0.5344583988189697,
+                "height": 0.2961110472679138
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.23277078568935395,
+                "y": 0.5040804743766785,
+                "width": 0.5344583988189697,
+                "height": 0.23688888549804688
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 25,
+            "targets": 27,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 26,
+            "targets": 26,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 27,
+            "targets": 28,
+            "stands": 2,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 18,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.056395504623651507,
+                "y": 0.5121986865997315,
+                "width": 0.8872089385986328,
+                "height": 0.28615784645080569
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.056395504623651507,
+                "y": 0.5097589492797852,
+                "width": 0.8872089385986328,
+                "height": 0.22892624139785767
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": [
+                "Review overlapping world AABBs; rotated shapes can produce false positives."
+            ]
+        },
+        {
+            "level": 28,
+            "targets": 28,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 29,
+            "targets": 28,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629168808460236,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        },
+        {
+            "level": 30,
+            "targets": 28,
+            "stands": 1,
+            "unsupportedFootprints": 0,
+            "overlapCandidates": 0,
+            "viewport9x16": {
+                "serializedVersion": "2",
+                "x": 0.14629165828227998,
+                "y": 0.5121986865997315,
+                "width": 0.7074166536331177,
+                "height": 0.34650474786758425
+            },
+            "viewport9x20": {
+                "serializedVersion": "2",
+                "x": 0.14629165828227998,
+                "y": 0.5097589492797852,
+                "width": 0.7074166536331177,
+                "height": 0.2772037982940674
+            },
+            "targetsInside9x16": true,
+            "targetsInside9x20": true,
+            "notes": []
+        }
+    ],
+    "errors": []
+}

@@ -1,9 +1,9 @@
 # Phase 32 — Sky Citadel referans görseline göre revizyon
 
 **Başlangıç:** 27 Eylül 2026  
-**Durum:** Devam ediyor — **32.1, 32.2, 32.3 ve öncelikli 32.6 zemin tamamlandı (4/12)**.  
-**Son tamamlanan aşama:** **32.6 — Zemin**, 27 Eylül 2026.  
-**Devam noktası:** **32.4 — Mortar namlu/gövde revizyonu (uygulanıyor, 28 Eylül 2026).** Zemini yeniden üretme; mevcut doğrulanan teknik çıktıları koru.  
+**Durum:** Devam ediyor — **32.1, 32.2, 32.3, 32.4 ve öncelikli 32.6 tamamlandı (5/12)**.  
+**Son tamamlanan aşama:** **32.4 — Mortar gövdesi**, 29 Eylül testleri; kayıt 30 Eylül 2026.  
+**Devam noktası:** **32.5 platform uygulandı; uç nişan açılarında son görsel kontrol. 32.7–32.8 blok/enerji uygulandı; son katman ve runtime kontrolleri bekliyor.** 9:20'de stand kenarları kesiliyor; 32.9 kadrajında düzelt. Zemin ve tamamlanan meshleri yeniden üretme.  
 **Kullanıcı isteği:** Mevcut mortar, stand, zemin ve blokları revize ederek verilen ilk görselin canlılığına, yüzey kalitesine ve hacimli detaylarına yaklaştırmak. Çalışmayı kalıcı aşamalara bölmek; sonraki oturumda tamamlanmayan aşamadan devam etmek.
 
 ## Referanslar ve kapsam
@@ -41,11 +41,11 @@ Referans bir sanat hedefidir. Görseldeki **22 bölüm, 15 top ve 5×3 blok düz
 | **32.1** | Güncel sahne, referans, runtime müdahaleleri, fizik ve asset envanteri; yedek ve aynı kamera ile başlangıç görüntüsü | MCP/başlangıç doğrulandı, riskler ve geri dönüş yolu kayıtlı | **Tamam** |
 | **32.2** | Işık, yansıma ve malzeme temeli: kontrollü baked reflection probe, altın/safir/çelik ayrımı, mermer parlaklığı, ölçülü bloom | Aynı level 30 önce/sonra; materyal/ışık dışındaki oyun verileri değişmez; konsol temiz | **Tamam** |
 | **32.3** | Stand ön kiriş ve ayaklar: pahlı zırh, koyu şase, merkez elmas, cyan kanallar, mekanik kaideler ve arma panelleri | Mevcut stand prefabında görünür revizyon; aynı üst yüzey/collider; farklı stand ölçeklerinde bozulma yok | **Tamam** |
-| **32.4** | Mortar namlu/gövde: mavi kaplama, kalın altın bilezikler, fildişi zırh, koyu bağlantılar, detaylı enerji haznesi | Mevcut pivotlar, FirePoint ve nişan korunur; ön planda referansa yakın hacim (mevcut projede recoil yok) | Devam ediyor |
-| **32.5** | Mortar platformu: açılı yan raylar, zırh panelleri, kenar altınları, cyan ışık yuvaları | Disk görünümü azalır; hareket sınırlarında HUD/oyun alanını kapatmaz | Bekliyor |
+| **32.4** | Mortar namlu/gövde: mavi kaplama, kalın altın bilezikler, fildişi zırh, koyu bağlantılar, detaylı enerji haznesi | Mevcut pivotlar, FirePoint ve nişan korunur; ön planda referansa yakın hacim (mevcut projede recoil yok) | **Tamam** |
+| **32.5** | Mortar platformu: açılı yan raylar, zırh panelleri, kenar altınları, cyan ışık yuvaları | Disk görünümü azalır; hareket sınırlarında HUD/oyun alanını kapatmaz | Uygulandı; son görsel kontrol |
 | **32.6** | **ÖNCELİKLİ — Zemin:** mevcut mermeri revize eden doku, altın derz/safir kakma ve yüzeye göre parlaklık | Perspektif/tiling tutarlı; tekrar dikişi yok; yeni collider yok; aşırı ayna etkisi yok | **Tamam** |
-| **32.7** | Ahşap/taş/zırhlı bloklar: damar, derz, merkez elmas, kalın metal köşeler ve pahlı kenarlar | 3 varyant ayırt edilebilir; aynı unit collider, root ve config; birleşik mesh/materyal sayısı kontrollü | Bekliyor |
-| **32.8** | Crystal/core/top enerji yüzeyleri: belirgin soket, parlak çekirdek, iç akış ve kontrollü kenar ışığı | Beyaza patlamayan cyan; top/skill renk davranışı ve kırılma/kaybolma korunur | Bekliyor |
+| **32.7** | Ahşap/taş/zırhlı bloklar: damar, derz, merkez elmas, kalın metal köşeler ve pahlı kenarlar | 3 varyant ayırt edilebilir; aynı unit collider, root ve config; birleşik mesh/materyal sayısı kontrollü | Uygulandı; elmas katman rötuşu kontrol edilecek |
+| **32.8** | Crystal/core/top enerji yüzeyleri: belirgin soket, parlak çekirdek, iç akış ve kontrollü kenar ışığı | Beyaza patlamayan cyan; top/skill renk davranışı ve kırılma/kaybolma korunur | Uygulandı; runtime/görsel kontrol bekliyor |
 | **32.9** | Kompozisyon ve HUD uyumu: sahne ölçeği, arka plan-zemin geçişi, hedef/stand/mortar ekran payları | 1/15/22/30. bölümler kadrajda; dinamik HUD değerleri okunur; nişan alanı açık | Bekliyor |
 | **32.10** | Prefab koleksiyonu ve sanat önizlemesi; güncel stand/mortar/tüm blokların tek yerde incelenmesi | Mevcut prefab/preview koleksiyonları revize ve görünür; kopya gameplay sistemleri yok | Bekliyor |
 | **32.11** | Fizik/oynanış ve mobil bütçe doğrulaması | 30 yerleşim/geometri; idle + boş atış + gerçek temas; normal/Mega/Infinity; 9:16 ve 9:20; ölçülen render maliyeti | Bekliyor |
@@ -154,3 +154,30 @@ Planlanan güncel test aracı: `Assets/_Project/Scripts/Editor/Phase32VisualVeri
 - 29 Eylül kontrolünde Unity MainMenu'de Edit Mode; kullanıcı arada sahne/Git değişiklikleri yaptı. **28 Eylül PlayerSave yedeğini artık otomatik geri yükleme.** Yeni testten önce o anki kayıtları yedekle, sahne dirty durumunu koru ve güncel checkpoint'i temel al.
 - Kullanıcının açık isteğiyle aynı sohbete **6 saatte bir** otomatik devam görevi oluşturuldu: `phase-32-tamamlanana-kadar-devam`, ACTIVE. Her çalışmada bu dosya asıl ilerleme kaynağıdır. Tüm Phase32 kabul kriterleri tamamlandığında görevi otomasyon aracıyla devre dışı bırak; yeni faz başlatma.
 - Zamanlayıcı token yenilenmesini garanti etmez; kullanım limiti veya MCP engelinde test edilmeyen aşamalar tamam sayılmaz. Yerel makine/app/proje ve Unity MCP erişilebilir olmalıdır.
+
+### 29 Eylül uygulama ve testleri — 30 Eylül checkpoint kurtarma kaydı
+
+Önceki çalışmada kullanım limiti doküman kapanışından önce doldu. Aşağıdaki sonuçlar diskteki gerçek raporlar ve incelenen ekran görüntülerinden toparlandı; test edilmemiş işler tamamlanmış sayılmadı.
+
+- **32.4 tamamlandı:** namlu yüzey normalleri ve bilezik geçişleri rötuşlandı; 10 art renderer, 38.640 vertex / 18.932 üçgen. `32-04-mortar-geometry-polished.json`. Mevcut pivot/FirePoint ve sahne bağlantıları korundu.
+- **32.5 uygulandı:** `Phase32MortarPlatformRevision.Apply()`; 7 art renderer, 8.116 vertex / 4.012 üçgen, 0 collider. Sabit kaide + nişanla dönen zırhlı platform. `32-05-platform-geometry.json`, `32-05-mortar-preservation.json`.
+- **Gerçek nişan testi PASSED:** -45 / +45 / 0 derece, FirePoint ve görsel takip doğru; 32→32 top, 0 atış. `32-05-platform-aim.json`. Mevcut projede recoil yok; recoil test edildi denmez.
+- **Gerçek Level24 fizik testi PASSED:** 26 hedef, 3 saniye idle + 3 saniye hedef dışı atışta 0.000m hareket; gerçek projectile teması gate'i açtı, 32→30 top. `32-05-platform-smoke.json`. Yeni blok yüzeyleriyle tekrar geçti: `32-07-block-smoke.json`.
+- **Görsel kontrol:** `32-05-platform-review-1080x1920.png` ve `32-07-08-surface-review-1080x2400-1.png`. Mortar/platform görünür ve zemin korunuyor. 9:20'de geniş stand kenarları kesiliyor; 32.9 kapsamında düzeltilecek. Altın yüzeylerin hacim/ışık hissi 32.12'de iyileştirilecek.
+- **32.7 uygulandı:** wood/stone/armored mevcut GUID'leri, root collider'ları, gameplay componentleri ve ilk renderer davranışı korundu. Sırasıyla 3/5/5 renderer, 4.140/3.948/4.620 üçgen, unit collider sınırları içinde. `32-07-block-geometry.json`. Yeni wood dokusu Repeat/Trilinear/1024; mobil ASTC6x6. Imagegen prompt/kaynak: `32-07-imagegen-manifest.json`.
+- Taş elmasında mavi altlık cyan fasetleri örtüyordu; `Phase32BlockRevision.cs` altlık derinliği düzeltildi. Son prefab uygulamasında bu rötuşun bulunduğu görsel olarak tekrar kontrol edilecek.
+- **32.8 uygulandı:** `Phase32EnergyRevision.cs` ve `CitadelEnergyReference.shader`: koyu mavi hacim, ince akış çizgileri, kontrollü kenar ışığı; eski materyal GUID ve 7 property korunuyor. Float renk roundtrip farkı yaklaşık 3e-8 için 1e-6 tolerans ve geri alma koruması eklendi. Shader compile hatası 0. `32-08-energy-material.json`.
+- Crystal/core soket geometrisi mevcut prefablar üzerinde kaydedildi: 4/5 renderer, 4.188/4.884 üçgen, 0 dekoratif collider; unit sınırları, ilk renderer ve enerji renderer kimliği korunuyor. `32-08-energy-block-geometry.json`. Bu son soket geometrisinin Play/görsel testi henüz yapılmadı.
+- Önceki testlerin sonunda Play kapatıldı; 29 Eylül güncel `Phase32-20260929-Heartbeat1/PlayerSave2` kayıtları geri yüklendi. 30 Eylül'de artık bu eski yedek kullanılmaz.
+- 30 Eylül yeni yedek: `C:/Users/Farzetki/.codex/local-backups/Phase32-20260930-Heartbeat/`. Kullanıcı MainGame/MainMenu, font, ProjectSettings ve Plastic değişiklikleri korunur. HEAD hâlâ `e1ef435`.
+- 30 Eylül başlangıç kullanım: 5 saatlik %3, haftalık %79 kullanılmış; ordinaryUsageAllowed=true. Yerel MCP sunucusu açılışta reddetti; ardından bağlantı kuruldu. Geçici reconnect scripti kaldırıldı; proje koduna kalıcı MCP bağımlılığı eklenmedi.
+- **Sıradaki:** 32.5 uç nişan görselleri; 32.7 elmas ve 32.8 soket/skill/destruction kontrolleri; ardından 32.9 kadraj, 32.10 koleksiyon, 32.11 QA ve 32.12 son cila. `Phase32FinalVerification.cs` hazırlanmış; Unity derleme/API kontrolü olmadan çalıştı kabul edilmez.
+
+### 30 Eylül doğrulama checkpoint'i — 11:15 UTC
+
+- `32-11-idle-1080x2400.json`: **30/30 bölüm PASSED**, her bölümde 2 gerçek fizik saniyesi; tüm hedefler kinematic, maksimum hareket 0, hiçbir atış/top tüketimi yok. 1/15/22/30 görüntüleri raporda benzersiz dosya adlarıyla kayıtlı.
+- `32-11-skills.json`: **PASSED**. Normal + Mega + üç Infinity atışı; 32→27 top, 5 fire event; Mega çap 2x, kütle 2.5x (3kg), altın runtime renk; Infinity 0.06s cooldown ve 5s süre. Her skill tam 1 kullanım tüketti. Tüm hedef dışı atışlarda gate kapalı kaldı. Bu sonuç gerçek çarpışma testinin yerine geçmez.
+- `PortraitSceneFraming.cs` Main Camera'ya eklendi. 9:16 referansı 56°; 9:20 67.218956°. Kameranın yeri/nişan rayı kökü ve level verileri değişmez. Mevcut backdrop alt birleşimi sabit kalırken üstü ekranı doldurur. Geometri taramasında hedeflerin tamamı her iki oranda kadraj içinde.
+- **32.9 henüz tamamlanmadı:** geniş standın dekoratif kenarları bazı bölümlerde hâlâ kesiliyor (15/22/30 dahil); 9:20 hedef kesilmesi giderildi fakat stand kapsamı ayrıca çözülmeli. 44 AABB overlap adayı gerçek penetrasyon olarak yorumlanmaz; döndürülmüş nesnelerde ayrıntılı kontrol gerektirir.
+- `Phase32PrefabCollectionRevision.Apply()` başarıyla çalıştı: bağımsız complete mortar ve showcase güncellendi; 7 prefab variant ve 26 bloklu tower kalıtımı korundu. Tüm export GUID'leri, kaynak prefablar, sahne kökleri ve dirty durumu aynı. Rapor: `32-10-prefab-collection.json`. Koleksiyon görsel incelemesi henüz yapılmadı.
+- Son konsol kontrolü: **0 hata / 0 uyarı**. Mevcut çalışmada PlayerSave2 yedeği alınarak Play başladı; kapanışta `Phase32-20260930-Heartbeat/PlayerSave2` geri yüklenecek. 9:16 survey şu anda çalıştırılıyor; tamamlanmadan geçmiş sayılmaz.

@@ -1,23 +1,23 @@
 {
     "status": "passed",
     "reason": "Left/right/center aiming preserved FirePoint and rigid art follow without spending ammunition.",
-    "startedUtc": "2026-09-29T10:12:27.9246521Z",
-    "finishedUtc": "2026-09-29T10:12:29.4130847Z",
+    "startedUtc": "2026-09-30T11:09:40.0536312Z",
+    "finishedUtc": "2026-09-30T11:09:41.5898084Z",
     "recoil": "Not tested: current mortar has no recoil implementation.",
     "passed": true,
     "ballsBefore": 32,
     "ballsAfter": 32,
     "firesBefore": 0,
     "firesAfter": 0,
-    "visualRenderers": 37,
+    "visualRenderers": 42,
     "samples": [
         {
             "requestedYaw": -45.0,
             "expectedYaw": -45.0,
-            "actualYaw": -44.999961853027347,
-            "elapsedSeconds": 0.6045722961425781,
+            "actualYaw": -44.99996566772461,
+            "elapsedSeconds": 0.6017494201660156,
             "firePointWorld": {
-                "x": -0.6640411019325256,
+                "x": -0.6640411615371704,
                 "y": 1.266365647315979,
                 "z": -1.8559579849243165
             }
@@ -25,21 +25,21 @@
         {
             "requestedYaw": 45.0,
             "expectedYaw": 45.0,
-            "actualYaw": 44.999996185302737,
-            "elapsedSeconds": 0.6001424789428711,
+            "actualYaw": 45.0,
+            "elapsedSeconds": 0.6358184814453125,
             "firePointWorld": {
-                "x": 0.6640414595603943,
+                "x": 0.6640415787696838,
                 "y": 1.266365647315979,
-                "z": -1.855958342552185
+                "z": -1.8559584617614747
             }
         },
         {
             "requestedYaw": 0.0,
             "expectedYaw": 0.0,
-            "actualYaw": 0.00001159854764409829,
-            "elapsedSeconds": 0.6056346893310547,
+            "actualYaw": 0.000012454099305614363,
+            "elapsedSeconds": 0.6070480346679688,
             "firePointWorld": {
-                "x": 1.9010398943919427e-7,
+                "x": 2.0412676349224058e-7,
                 "y": 1.266365647315979,
                 "z": -1.58090341091156
             }

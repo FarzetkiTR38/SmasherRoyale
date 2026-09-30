@@ -1,5 +1,5 @@
 {
-    "capturedUtc": "2026-09-28T08:07:11.1300523Z",
+    "capturedUtc": "2026-09-29T16:03:16.7291789Z",
     "scenePath": "Assets/_Project/Scenes/MainGame.unity",
     "prefabGuid": "72d80e0ac066bc24bb7a97cbbc4952aa",
     "workingRootHash": "6ff4882fcf18f09bc5988bd210a1f83dcd989598535ad9cc7837a6fd96f0efdd",
@@ -946,6 +946,294 @@
                     "y": -0.10452846437692642,
                     "z": 0.0,
                     "w": 0.9945219159126282
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 17,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Ivory[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 0,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Gold[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 1,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Steel[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 2,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Sapphire[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 3,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Energy[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 4,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 3,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Ivory[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 0,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Gold[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 1,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Steel[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 2,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Sapphire[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 3,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Energy[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 4,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
                 },
                 "components": []
             },
@@ -2020,6 +2308,294 @@
                     "y": -0.10452846437692642,
                     "z": 0.0,
                     "w": 0.9945219159126282
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 17,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Ivory[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 0,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Gold[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 1,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Steel[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 2,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Sapphire[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 3,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/BarrelPivot[0]/Phase32BarrelDetails[0]/Energy[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 4,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 3,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Ivory[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 0,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Gold[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 1,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Steel[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 2,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Sapphire[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 3,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "components": []
+            },
+            {
+                "path": "Visuals[0]/Phase32CradleDetails[0]/Energy[0]",
+                "tag": "Untagged",
+                "layer": 0,
+                "siblingIndex": 4,
+                "active": true,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
                 },
                 "components": []
             },

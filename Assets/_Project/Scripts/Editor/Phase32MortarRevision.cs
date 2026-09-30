@@ -411,9 +411,10 @@ namespace RoyalSmash.Editor
                 AddFillet(profile, normals, P(outer - bevel, z1 - bevel), bevel, 0f);
                 AddFillet(profile, normals, P(inner + bevel, z1 - bevel), bevel, 90f);
                 AddFillet(profile, normals, P(inner + bevel, z0 + bevel), bevel, 180f);
-                // Analytic circumferential normals allow a slightly lower radial count:
-                // 48 -> 40 and 24 -> 20 keep the extra fillet geometry modest.
-                int angularSegments = segments >= 24 ? Mathf.RoundToInt(segments * 5f / 6f) : segments;
+                // The profile grows from 8 to 12 points, so reduce the angular count by
+                // the inverse ratio. Triangle count does not grow (48 -> 32, 24 -> 16).
+                // Analytic circumferential normals retain a smooth metal highlight.
+                int angularSegments = Mathf.Max(8, (segments * 2 / 3) / 4 * 4);
                 Mesh mesh = Lathe(profile.ToArray(), 0, 360, angularSegments, normals.ToArray());
                 _temporary.Add(mesh); Add(mesh, material, position, rotation, Vector3.one);
             }
