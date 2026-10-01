@@ -33,6 +33,11 @@ namespace RoyalSmash.Editor
             }
 
             var livesMgr = LivesManager.Instance ?? UnityEngine.Object.FindFirstObjectByType<LivesManager>();
+            if (livesMgr == null)
+            {
+                var goLives = new GameObject("LivesManager");
+                livesMgr = goLives.AddComponent<LivesManager>();
+            }
             var adMgr = AdManager.Instance ?? UnityEngine.Object.FindFirstObjectByType<AdManager>();
 
             if (adMgr == null)

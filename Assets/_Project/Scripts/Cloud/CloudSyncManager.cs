@@ -221,6 +221,65 @@ namespace RoyalSmash.Cloud
         }
 
         /// <summary>
+        /// Queries the cloud backend using the unique Device ID.
+        /// If a cloud save exists with higher/existing progress (e.g. after app reinstall),
+        /// restores the stats into SaveManager adhering to Section 28 "Latest/highest progress wins".
+        /// </summary>
+        public void CheckAndRestoreDeviceProgress(string deviceIdOverride = null, Action<bool, PlayerSaveData> onComplete = null)
+        {
+            string deviceId = !string.IsNullOrEmpty(deviceIdOverride) ? deviceIdOverride : RoyalSmash.Utils.DeviceIdProvider.GetDeviceId();
+
+            if (Provider == null)
+            {
+                onComplete?.Invoke(false, null);
+                return;
+            }
+
+            Provider.LoadProgress(deviceId, (success, cloudData, msg) =>
+            {
+                if (success && cloudData != null)
+                {
+                    var saveMgr = SaveManager.Instance ?? UnityEngine.Object.FindFirstObjectByType<SaveManager>();
+                    if (saveMgr != null)
+                    {
+                        // Check if cloud save has higher or existing progress than local
+                        bool shouldRestore = false;
+                        if (saveMgr.Data == null)
+                        {
+                            shouldRestore = true;
+                        }
+                        else if (cloudData.CurrentLevel > saveMgr.Data.CurrentLevel)
+                        {
+                            shouldRestore = true;
+                        }
+                        else if (cloudData.CurrentLevel == saveMgr.Data.CurrentLevel && (cloudData.Gold > saveMgr.Data.Gold || cloudData.NoAdsPurchased && !saveMgr.Data.NoAdsPurchased))
+                        {
+                            shouldRestore = true;
+                        }
+
+                        if (shouldRestore)
+                        {
+                            saveMgr.ApplyCloudSave(cloudData, true);
+                            Debug.Log($"[CloudSyncManager] Progress restored from cloud for Device ID '{deviceId}' (Level {cloudData.CurrentLevel}, Gold {cloudData.Gold}).");
+                            onComplete?.Invoke(true, cloudData);
+                            return;
+                        }
+                        else
+                        {
+                            // Local progress is newer or equal; push local to cloud to ensure cloud is current
+                            TriggerSync();
+                        }
+                    }
+                    onComplete?.Invoke(true, cloudData);
+                }
+                else
+                {
+                    onComplete?.Invoke(false, null);
+                }
+            });
+        }
+
+        /// <summary>
         /// Saves leaderboard entries to local disk cache for offline availability.
         /// </summary>
         public void SaveCache(List<LeaderboardEntryData> entries)

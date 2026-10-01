@@ -6,8 +6,8 @@ using RoyalSmash.UI;
 namespace RoyalSmash.Ads
 {
     /// <summary>
-    /// Central manager for all game advertisements (Interstitials and Rewarded Videos).
-    /// Enforces No Ads purchase bypass, cooldown rules, idempotency, and safe fallback handling.
+    /// Central manager for all game advertisements (Hybrid Mediation: AdMob + Unity Ads + Fallback).
+    /// Enforces No Ads purchase bypass, cooldown rules, idempotency, banner management, and safe fallback handling.
     /// Follows Master Build Prompt Section 15 & Section 35 (Phase 14).
     /// </summary>
     public class AdManager : MonoBehaviour
@@ -38,16 +38,23 @@ namespace RoyalSmash.Ads
         [SerializeField] private AdConfig _config;
 
         private IAdProvider _provider;
+        private HybridMediationRouter _hybridRouter;
         private bool _isAdShowing = false;
+        private bool _isBannerVisible = false;
         private float _lastInterstitialTime = -999f;
 
         // Events
         public event Action<string> OnInterstitialShown;
         public event Action<string> OnRewardedAdCompleted;
         public event Action<string> OnAdFailed;
+        public event Action<AdNetworkType> OnAdNetworkServed;
 
         public bool IsAdShowing => _isAdShowing;
+        public bool IsBannerVisible => _isBannerVisible;
         public AdConfig Config => _config;
+        public HybridMediationRouter HybridRouter => _hybridRouter;
+        public AdNetworkType ActiveNetwork => _hybridRouter != null ? _hybridRouter.LastServedNetwork : (_provider != null ? _provider.NetworkType : AdNetworkType.None);
+
         public IAdProvider Provider
         {
             get
@@ -76,6 +83,16 @@ namespace RoyalSmash.Ads
             }
 
             InitializeManager();
+            SubscribeToSaveEvents();
+        }
+
+        private void Start()
+        {
+            // Auto-display banner in MainMenu if enabled and player doesn't own No Ads
+            if (_config != null && _config.AutoShowBannerInMainMenu && CanShowBanner())
+            {
+                ShowBanner(_config.BannerPosition);
+            }
         }
 
         private void OnApplicationQuit()
@@ -85,9 +102,34 @@ namespace RoyalSmash.Ads
 
         private void OnDestroy()
         {
+            UnsubscribeFromSaveEvents();
             if (_instance == this)
             {
                 _instance = null;
+            }
+        }
+
+        private void SubscribeToSaveEvents()
+        {
+            if (SaveManager.HasInstance)
+            {
+                SaveManager.Instance.OnSaveUpdated += HandleSaveUpdated;
+            }
+        }
+
+        private void UnsubscribeFromSaveEvents()
+        {
+            if (SaveManager.HasInstance)
+            {
+                SaveManager.Instance.OnSaveUpdated -= HandleSaveUpdated;
+            }
+        }
+
+        private void HandleSaveUpdated(PlayerSaveData data)
+        {
+            if (data != null && data.NoAdsPurchased)
+            {
+                HideBanner();
             }
         }
 
@@ -105,12 +147,19 @@ namespace RoyalSmash.Ads
                 }
             }
 
-            // By default or in simulation mode, initialize SimulatedAdProvider
-            if (_config.EnableSimulationMode || _provider == null)
+            // In simulation mode, use pure SimulatedAdProvider
+            if (_config.EnableSimulationMode)
             {
                 var simProvider = new SimulatedAdProvider();
                 _provider = simProvider;
                 _provider.Initialize(_config);
+            }
+            else
+            {
+                // Production Hybrid Mediation Router (AdMob + Unity Ads + Fallback)
+                _hybridRouter = new HybridMediationRouter();
+                _hybridRouter.Initialize(_config);
+                _provider = _hybridRouter;
             }
         }
 
@@ -123,16 +172,26 @@ namespace RoyalSmash.Ads
             {
                 simProvider.SetDialog(dialog);
             }
+            else if (_hybridRouter != null && _hybridRouter.Simulated != null)
+            {
+                _hybridRouter.Simulated.SetDialog(dialog);
+            }
         }
 
         /// <summary>
-        /// Replaces the active ad provider (e.g. when connecting real Google Mobile Ads SDK).
+        /// Replaces the active ad provider (e.g. For custom test harness).
         /// </summary>
         public void SetProvider(IAdProvider provider)
         {
             _provider = provider;
+            if (provider is HybridMediationRouter hybrid)
+            {
+                _hybridRouter = hybrid;
+            }
             _provider?.Initialize(_config);
         }
+
+        #region Interstitial Logic
 
         /// <summary>
         /// Returns whether an interstitial ad can be displayed right now.
@@ -154,7 +213,7 @@ namespace RoyalSmash.Ads
                 return false;
             }
 
-            return _provider != null && _provider.IsInterstitialReady();
+            return Provider != null && Provider.IsInterstitialReady();
         }
 
         /// <summary>
@@ -164,7 +223,19 @@ namespace RoyalSmash.Ads
         public bool CanShowRewarded()
         {
             if (_isAdShowing) return false;
-            return _provider != null && _provider.IsRewardedReady();
+            return Provider != null && Provider.IsRewardedReady();
+        }
+
+        /// <summary>
+        /// Returns whether a banner ad can be shown right now.
+        /// </summary>
+        public bool CanShowBanner()
+        {
+            if (SaveManager.Instance != null && SaveManager.Instance.Data != null && SaveManager.Instance.Data.NoAdsPurchased)
+            {
+                return false;
+            }
+            return Provider != null && Provider.IsBannerReady();
         }
 
         /// <summary>
@@ -201,7 +272,7 @@ namespace RoyalSmash.Ads
         }
 
         /// <summary>
-        /// Displays an interstitial ad if allowed. Calls onComplete immediately if skipped or failed.
+        /// Displays an interstitial ad via hybrid mediation waterfall. Calls onComplete immediately if skipped or failed.
         /// </summary>
         public void ShowInterstitial(string placement, Action onComplete = null)
         {
@@ -215,11 +286,12 @@ namespace RoyalSmash.Ads
             _isAdShowing = true;
             _lastInterstitialTime = Time.unscaledTime;
 
-            _provider.ShowInterstitial(
+            Provider.ShowInterstitial(
                 onClosed: () =>
                 {
                     _isAdShowing = false;
                     OnInterstitialShown?.Invoke(placement);
+                    OnAdNetworkServed?.Invoke(ActiveNetwork);
                     onComplete?.Invoke();
                 },
                 onError: (err) =>
@@ -232,8 +304,12 @@ namespace RoyalSmash.Ads
             );
         }
 
+        #endregion
+
+        #region Rewarded Video Logic
+
         /// <summary>
-        /// Displays a rewarded ad. Enforces idempotent reward granting (only once per view).
+        /// Displays a rewarded ad via hybrid mediation waterfall. Enforces idempotent reward granting (only once per view).
         /// Section 15.2 & 15.3: Available with No Ads; reward ONLY on successful completion.
         /// </summary>
         public void ShowRewarded(string placement, Action onRewardGranted, Action onClosed = null, Action<string> onFailed = null)
@@ -245,7 +321,7 @@ namespace RoyalSmash.Ads
                 return;
             }
 
-            if (_provider == null || !_provider.IsRewardedReady())
+            if (Provider == null || !Provider.IsRewardedReady())
             {
                 Debug.LogWarning("[AdManager] Rewarded ad not ready.");
                 onFailed?.Invoke("Ad not ready");
@@ -255,16 +331,16 @@ namespace RoyalSmash.Ads
             _isAdShowing = true;
             bool rewardClaimed = false;
 
-            _provider.ShowRewarded(
+            Provider.ShowRewarded(
                 onRewarded: () =>
                 {
-                    // Idempotent safeguard: grant exactly once
                     if (!rewardClaimed)
                     {
                         rewardClaimed = true;
                         Debug.Log($"[AdManager] Rewarded ad '{placement}' completed! Granting reward.");
                         onRewardGranted?.Invoke();
                         OnRewardedAdCompleted?.Invoke(placement);
+                        OnAdNetworkServed?.Invoke(ActiveNetwork);
                     }
                 },
                 onClosed: () =>
@@ -281,6 +357,95 @@ namespace RoyalSmash.Ads
                 }
             );
         }
+
+        #endregion
+
+        #region Banner Logic
+
+        /// <summary>
+        /// Displays a banner ad via hybrid mediation. Bypassed permanently if player owns No Ads.
+        /// </summary>
+        public void ShowBanner(BannerPosition? position = null, Action onLoaded = null, Action<string> onError = null)
+        {
+            if (!CanShowBanner())
+            {
+                Debug.Log("[AdManager] ShowBanner ignored: Banner not allowed (No Ads owned or not ready).");
+                return;
+            }
+
+            BannerPosition pos = position ?? (_config != null ? _config.BannerPosition : BannerPosition.BottomCenter);
+            _isBannerVisible = true;
+            Provider.ShowBanner(pos, onLoaded, onError);
+        }
+
+        /// <summary>
+        /// Hides the active banner ad.
+        /// </summary>
+        public void HideBanner()
+        {
+            _isBannerVisible = false;
+            Provider?.HideBanner();
+        }
+
+        /// <summary>
+        /// Destroys the active banner ad and releases native resources.
+        /// </summary>
+        public void DestroyBanner()
+        {
+            _isBannerVisible = false;
+            Provider?.DestroyBanner();
+        }
+
+        #endregion
+
+        #region Rewarded Interstitial Logic
+
+        /// <summary>
+        /// Displays a hybrid rewarded interstitial ad.
+        /// </summary>
+        public void ShowRewardedInterstitial(string placement, Action onRewardGranted, Action onClosed = null, Action<string> onFailed = null)
+        {
+            if (_isAdShowing)
+            {
+                onFailed?.Invoke("Ad already active");
+                return;
+            }
+
+            if (Provider == null || !Provider.IsRewardedInterstitialReady())
+            {
+                onFailed?.Invoke("Rewarded Interstitial not ready");
+                return;
+            }
+
+            _isAdShowing = true;
+            bool rewardClaimed = false;
+
+            Provider.ShowRewardedInterstitial(
+                onRewarded: () =>
+                {
+                    if (!rewardClaimed)
+                    {
+                        rewardClaimed = true;
+                        onRewardGranted?.Invoke();
+                        OnRewardedAdCompleted?.Invoke(placement);
+                        OnAdNetworkServed?.Invoke(ActiveNetwork);
+                    }
+                },
+                onClosed: () =>
+                {
+                    _isAdShowing = false;
+                    onClosed?.Invoke();
+                },
+                onError: (err) =>
+                {
+                    _isAdShowing = false;
+                    OnAdFailed?.Invoke(err);
+                    onFailed?.Invoke(err);
+                }
+            );
+        }
+
+        #endregion
 
         // Test Helper
         public void ResetInterstitialCooldownForTesting()

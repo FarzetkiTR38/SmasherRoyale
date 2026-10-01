@@ -1,12 +1,12 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using RoyalSmash.UI;
 
 namespace RoyalSmash.Ads
 {
     /// <summary>
-    /// Mock/Simulated implementation of IAdProvider for Unity Editor, automated testing, and development builds.
+    /// Mock/Simulated implementation of IAdProvider for Unity Editor, automated testing, development builds,
+    /// and graceful offline fallback when no external ad networks are available.
     /// Follows Master Build Prompt Section 15.
     /// </summary>
     public class SimulatedAdProvider : IAdProvider
@@ -14,10 +14,16 @@ namespace RoyalSmash.Ads
         private AdConfig _config;
         private SimulatedAdDialog _dialog;
 
+        public AdNetworkType NetworkType => AdNetworkType.Simulated;
+
         // Test hooks
         public bool SimulateLoadFailureNext { get; set; } = false;
         public bool SimulateUserCancelNext { get; set; } = false;
         public bool InstantCompleteInTests { get; set; } = false;
+        public bool ForceNotReady { get; set; } = false;
+        public bool SimulateDoubleRewardCallback { get; set; } = false;
+        public bool IsBannerVisible { get; private set; } = false;
+        public BannerPosition CurrentBannerPosition { get; private set; } = BannerPosition.BottomCenter;
 
         public void Initialize(AdConfig config, Action onInitialized = null)
         {
@@ -31,15 +37,22 @@ namespace RoyalSmash.Ads
             _dialog = dialog;
         }
 
-        public bool ForceNotReady { get; set; } = false;
-        public bool SimulateDoubleRewardCallback { get; set; } = false;
-
         public bool IsInterstitialReady()
         {
             return !ForceNotReady;
         }
 
         public bool IsRewardedReady()
+        {
+            return !ForceNotReady;
+        }
+
+        public bool IsBannerReady()
+        {
+            return !ForceNotReady;
+        }
+
+        public bool IsRewardedInterstitialReady()
         {
             return !ForceNotReady;
         }
@@ -98,7 +111,7 @@ namespace RoyalSmash.Ads
                 if (SimulateDoubleRewardCallback)
                 {
                     SimulateDoubleRewardCallback = false;
-                    onRewarded?.Invoke(); // Duplicate call to test idempotency
+                    onRewarded?.Invoke();
                 }
                 onClosed?.Invoke();
                 return;
@@ -113,10 +126,68 @@ namespace RoyalSmash.Ads
                     onRewarded?.Invoke();
                     onClosed?.Invoke();
                 },
-                onCancelled: () =>
+                onCancelled: () => onClosed?.Invoke(),
+                onError: (err) => onError?.Invoke(err)
+            );
+        }
+
+        public void ShowBanner(BannerPosition position = BannerPosition.BottomCenter, Action onLoaded = null, Action<string> onError = null)
+        {
+            if (SimulateLoadFailureNext)
+            {
+                SimulateLoadFailureNext = false;
+                Debug.LogWarning("[SimulatedAdProvider] Banner load failed (Simulated).");
+                onError?.Invoke("Simulated Banner Load Failure");
+                return;
+            }
+
+            IsBannerVisible = true;
+            CurrentBannerPosition = position;
+            Debug.Log($"[SimulatedAdProvider] Displaying Simulated Banner at {position}.");
+            onLoaded?.Invoke();
+        }
+
+        public void HideBanner()
+        {
+            IsBannerVisible = false;
+            Debug.Log("[SimulatedAdProvider] Hidden Simulated Banner.");
+        }
+
+        public void DestroyBanner()
+        {
+            IsBannerVisible = false;
+            Debug.Log("[SimulatedAdProvider] Destroyed Simulated Banner.");
+        }
+
+        public void ShowRewardedInterstitial(Action onRewarded, Action onClosed = null, Action<string> onError = null)
+        {
+            if (SimulateLoadFailureNext)
+            {
+                SimulateLoadFailureNext = false;
+                Debug.LogWarning("[SimulatedAdProvider] Rewarded Interstitial load failed (Simulated).");
+                onError?.Invoke("Simulated Rewarded Interstitial Failure");
+                return;
+            }
+
+            Debug.Log("[SimulatedAdProvider] Displaying Simulated Rewarded Interstitial Ad.");
+
+            if (InstantCompleteInTests || _dialog == null)
+            {
+                onRewarded?.Invoke();
+                onClosed?.Invoke();
+                return;
+            }
+
+            float duration = _config != null ? _config.SimulatedAdDuration : 1.5f;
+            _dialog.ShowSimulatedAd(
+                isRewarded: true,
+                duration: duration,
+                onCompleted: () =>
                 {
+                    onRewarded?.Invoke();
                     onClosed?.Invoke();
                 },
+                onCancelled: () => onClosed?.Invoke(),
                 onError: (err) => onError?.Invoke(err)
             );
         }

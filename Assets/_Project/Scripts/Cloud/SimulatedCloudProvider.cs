@@ -68,6 +68,10 @@ namespace RoyalSmash.Cloud
                 Debug.Log($"[SimulatedCloudProvider] Cloud already has Level {_cloudData.CurrentLevel}. Local Level {localData.CurrentLevel} retained.");
             }
 
+            // Persist full player save data to remote cloud device storage (enables uninstall/reinstall stats recovery)
+            string deviceId = !string.IsNullOrEmpty(localData.DeviceId) ? localData.DeviceId : RoyalSmash.Utils.DeviceIdProvider.GetDeviceId();
+            SharedCloudSaveStore.SaveDeviceProgress(deviceId, localData);
+
             // Persist player score to shared live cloud storage
             string playerId = !string.IsNullOrEmpty(localData.PlayerId) ? localData.PlayerId : "local_player";
             SharedCloudLeaderboardStore.SubmitScore(
@@ -79,6 +83,42 @@ namespace RoyalSmash.Cloud
             );
 
             onComplete?.Invoke(true, "Sync successful");
+        }
+
+        public void LoadProgress(string deviceId, Action<bool, PlayerSaveData, string> onComplete)
+        {
+            if (!IsOnline || SimulateServiceOutage)
+            {
+                Debug.LogWarning("[SimulatedCloudProvider] LoadProgress failed: Network offline or service outage.");
+                onComplete?.Invoke(false, null, "Offline or service unavailable");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(deviceId))
+            {
+                deviceId = RoyalSmash.Utils.DeviceIdProvider.GetDeviceId();
+            }
+
+            if (SharedCloudSaveStore.HasDeviceProgress(deviceId))
+            {
+                var cloudSave = SharedCloudSaveStore.LoadDeviceProgress(deviceId);
+                if (cloudSave != null)
+                {
+                    _cloudData = cloudSave.Clone();
+                    Debug.Log($"[SimulatedCloudProvider] Loaded remote cloud save for Device ID '{deviceId}' (Level {cloudSave.CurrentLevel}, Gold {cloudSave.Gold}).");
+                    onComplete?.Invoke(true, cloudSave, "Success");
+                    return;
+                }
+            }
+
+            // If in-memory cloudData matches device or exists as fallback
+            if (_cloudData != null && (_cloudData.DeviceId == deviceId || string.IsNullOrEmpty(_cloudData.DeviceId)))
+            {
+                onComplete?.Invoke(true, _cloudData.Clone(), "Success from memory");
+                return;
+            }
+
+            onComplete?.Invoke(false, null, $"No cloud save found for Device ID: {deviceId}");
         }
 
         public void FetchLeaderboard(Action<bool, List<LeaderboardEntryData>, string> onComplete)
@@ -146,7 +186,7 @@ namespace RoyalSmash.Cloud
             }
 
             // 3. Ensure local player is represented if not yet saved in store
-            if (SaveManager.HasInstance && SaveManager.Instance.Data != null)
+            if (string.IsNullOrEmpty(localPlayerIdOverride) && SaveManager.HasInstance && SaveManager.Instance.Data != null)
             {
                 var localData = SaveManager.Instance.Data;
                 string pid = !string.IsNullOrEmpty(localData.PlayerId) ? localData.PlayerId : localPlayerId;

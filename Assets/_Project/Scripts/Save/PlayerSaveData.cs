@@ -39,8 +39,9 @@ namespace RoyalSmash.Save
         public bool SfxEnabled = true;
         public bool VibrationEnabled = true;
 
-        // Profile (Section 18)
+        // Profile & Identity (Section 18 & Section 28)
         public string PlayerId = "";
+        public string DeviceId = "";
         public string Username = "Player";
         public int AvatarId = 0;
         public int FrameId = 0;
