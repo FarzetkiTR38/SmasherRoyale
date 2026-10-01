@@ -356,12 +356,18 @@ namespace RoyalSmash.Editor
                     var parts = group.Value.ToArray();
                     Matrix4x4 fromRoot = target.worldToLocalMatrix * root.localToWorldMatrix;
                     for (int i = 0; i < parts.Length; i++) parts[i].transform = fromRoot * parts[i].transform;
-                    Mesh mesh = new Mesh { name = "Phase32_Block_" + _variant + "_" + _names[group.Key], indexFormat = IndexFormat.UInt16 };
-                    mesh.CombineMeshes(parts, true, true); mesh.RecalculateBounds(); mesh.RecalculateTangents();
-                    string path = ART + "/Meshes/" + mesh.name + ".asset";
+                    string meshName = "Phase32_Block_" + _variant + "_" + _names[group.Key];
+                    string path = ART + "/Meshes/" + meshName + ".asset";
                     Mesh stored = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-                    if (stored == null) { stored = mesh; AssetDatabase.CreateAsset(stored, path); }
-                    else { EditorUtility.CopySerialized(mesh, stored); UnityEngine.Object.DestroyImmediate(mesh); EditorUtility.SetDirty(stored); }
+                    bool isNew = stored == null;
+                    if (isNew) stored = new Mesh { name = meshName, indexFormat = IndexFormat.UInt16 };
+                    // Rebuild through Mesh APIs: CopySerialized can leave an existing renderer's
+                    // graphics buffers stale even when the saved vertices already contain the revision.
+                    else stored.Clear();
+                    stored.CombineMeshes(parts, true, true); stored.RecalculateBounds(); stored.RecalculateTangents();
+                    stored.UploadMeshData(false);
+                    if (isNew) AssetDatabase.CreateAsset(stored, path);
+                    else EditorUtility.SetDirty(stored);
                     AssetDatabase.SaveAssetIfDirty(stored);
                     MeshFilter filter = target.GetComponent<MeshFilter>();
                     if (filter == null) filter = target.gameObject.AddComponent<MeshFilter>();

@@ -44,7 +44,7 @@ namespace RoyalSmash.Editor
                 throw new InvalidOperationException("Open MainGame in Edit Mode before revising energy blocks.");
             Material ivory = RequireMaterial("IvoryStone"), gold = RequireMaterial("AntiqueGold");
             Material steel = RequireMaterial("ObsidianSteel"), blue = RequireMaterial("RoyalSapphire");
-            Material energy = RequireMaterial("ArcaneEnergy");
+            Material energy = RequireMaterial("ArcaneEnergy"), cyan = RequireMaterial("Phase32StandCyan");
             Mesh bevel = AssetDatabase.LoadAssetAtPath<Mesh>(ART + "/Meshes/CitadelBeveledCube.asset");
             if (bevel == null || !energy.HasProperty("_BaseColor"))
                 throw new InvalidOperationException("The beveled mesh and compatible existing energy material are required.");
@@ -54,8 +54,8 @@ namespace RoyalSmash.Editor
                     throw new InvalidOperationException("The existing source block is missing: " + variant);
 
             var reports = new List<BlockReport>();
-            reports.Add(Revise("crystal", bevel, ivory, gold, steel, blue, energy));
-            reports.Add(Revise("core", bevel, ivory, gold, steel, blue, energy));
+            reports.Add(Revise("crystal", bevel, ivory, gold, steel, blue, energy, cyan));
+            reports.Add(Revise("core", bevel, ivory, gold, steel, blue, energy, cyan));
             bool materialUnchanged = EditorJsonUtility.ToJson(energy) == energyBefore;
             if (!materialUnchanged) throw new InvalidOperationException("The shared energy material changed during geometry revision.");
             AssetDatabase.SaveAssets();
@@ -66,7 +66,7 @@ namespace RoyalSmash.Editor
         }
 
         private static BlockReport Revise(string variant, Mesh bevel, Material ivory, Material gold,
-            Material steel, Material blue, Material energy)
+            Material steel, Material blue, Material energy, Material cyan)
         {
             string path = PrefabPath(variant), guid = AssetDatabase.AssetPathToGUID(PrefabPath(variant));
             GameObject root = PrefabUtility.LoadPrefabContents(path);
@@ -85,9 +85,9 @@ namespace RoyalSmash.Editor
                 if (collider == null || collider.size != Vector3.one || collider.center != Vector3.zero)
                     throw new InvalidOperationException("Expected the existing unit BoxCollider on " + path);
 
-                using (var b = new Builder(variant, bevel, ivory, gold, steel, blue, energy))
+                using (var b = new Builder(variant, bevel, ivory, gold, steel, blue, energy, cyan))
                 {
-                    if (variant == "crystal") BuildCrystal(b, gold, steel, blue, energy);
+                    if (variant == "crystal") BuildCrystal(b, gold, steel, blue, energy, cyan);
                     else BuildCore(b, ivory, gold, steel, blue, energy);
                     Transform details = OwnRoot(root.transform, DETAILS);
                     b.Bake(root.transform, details);
@@ -112,7 +112,7 @@ namespace RoyalSmash.Editor
             finally { PrefabUtility.UnloadPrefabContents(root); }
         }
 
-        private static void BuildCrystal(Builder b, Material gold, Material steel, Material blue, Material energy)
+        private static void BuildCrystal(Builder b, Material gold, Material steel, Material blue, Material energy, Material cyan)
         {
             b.Box(blue, Vector3.zero, Vector3.one * .89f);
             foreach (Quaternion face in Faces)
@@ -131,7 +131,7 @@ namespace RoyalSmash.Editor
                 b.FaceBox(steel, face, V(0, 0, -.477f), V(.254f, .254f, .018f), 45);
                 b.FaceBox(gold, face, V(0, 0, -.483f), V(.217f, .217f, .014f), 45);
                 b.FaceBox(blue, face, V(0, 0, -.487f), V(.157f, .157f, .010f), 45);
-                b.Gem(energy, face, V(0, 0, -.493f), V(.158f, .226f, .012f));
+                b.Gem(cyan, face, V(0, 0, -.493f), V(.158f, .226f, .012f));
                 FaceBolts(b, face, steel, .414f, .036f);
             }
             CornerCaps(b, gold, .180f);
@@ -290,12 +290,17 @@ namespace RoyalSmash.Editor
                     CombineInstance[] parts = group.Value.ToArray();
                     for (int i = 0; i < parts.Length; i++) parts[i].transform = toTarget * parts[i].transform;
                     string meshName = "Phase32_EnergyBlock_" + _variant + "_" + group.Key.name;
-                    Mesh combined = new Mesh { name = meshName, indexFormat = IndexFormat.UInt16 };
-                    combined.CombineMeshes(parts, true, true); combined.RecalculateBounds(); combined.RecalculateTangents();
                     string path = ART + "/Meshes/" + meshName + ".asset";
                     Mesh stored = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-                    if (stored == null) { stored = combined; AssetDatabase.CreateAsset(stored, path); }
-                    else { EditorUtility.CopySerialized(combined, stored); UnityEngine.Object.DestroyImmediate(combined); EditorUtility.SetDirty(stored); }
+                    bool isNew = stored == null;
+                    if (isNew) stored = new Mesh { name = meshName, indexFormat = IndexFormat.UInt16 };
+                    // Rebuild through Mesh APIs so existing renderers receive new graphics buffers
+                    // as well as serialized vertices; keep the Mesh object and asset GUID intact.
+                    else stored.Clear();
+                    stored.CombineMeshes(parts, true, true); stored.RecalculateBounds(); stored.RecalculateTangents();
+                    stored.UploadMeshData(false);
+                    if (isNew) AssetDatabase.CreateAsset(stored, path);
+                    else EditorUtility.SetDirty(stored);
                     AssetDatabase.SaveAssetIfDirty(stored);
                     MeshFilter filter = target.GetComponent<MeshFilter>();
                     if (filter == null) filter = target.gameObject.AddComponent<MeshFilter>();
