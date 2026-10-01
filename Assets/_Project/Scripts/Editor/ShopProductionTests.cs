@@ -67,7 +67,9 @@ namespace RoyalSmash.Editor
             var config = AssetDatabase.LoadAssetAtPath<ShopConfig>(ShopSystemSetup.CONFIG_PATH);
             iapMgr.SetConfig(config);
 
-            var shopPage = GameObject.Find("ShopPage");
+            var canvas = GameObject.Find("MainMenuCanvas");
+            var shopPageTrans = canvas != null ? canvas.transform.Find("PagesRoot/ShopPage") : null;
+            var shopPage = shopPageTrans != null ? shopPageTrans.gameObject : GameObject.Find("ShopPage");
             var shopUI = shopPage != null ? shopPage.GetComponent<ShopUI>() : null;
 
             // -------------------------------------------------------------

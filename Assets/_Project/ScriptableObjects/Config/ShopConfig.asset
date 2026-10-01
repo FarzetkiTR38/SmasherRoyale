@@ -30,7 +30,7 @@ MonoBehaviour:
     BadgeText: "%60 \u0130ND\u0130R\u0130M"
   NoAdsItem:
     Id: no_ads_pass
-    ProductId: no_ads_pass
+    ProductId: noadspass
     Title: No Ads Pass
     Description: "Zorunlu reklamlar\u0131 \xF6m\xFCr boyu kald\u0131r\u0131n!"
     ItemType: 4
@@ -46,7 +46,7 @@ MonoBehaviour:
     BadgeText: "\xD6M\xDCR BOYU"
   GoldPacks:
   - Id: gold_pouch_800
-    ProductId: gold_pouch_800
+    ProductId: gold_douch_800
     Title: "Alt\u0131n \xC7antas\u0131"
     Description: "800 Alt\u0131n"
     ItemType: 0

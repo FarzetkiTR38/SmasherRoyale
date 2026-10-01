@@ -77,7 +77,7 @@ namespace RoyalSmash.Editor
             config.NoAdsItem = new ShopItemData
             {
                 Id = "no_ads_pass",
-                ProductId = "no_ads_pass",
+                ProductId = "noadspass", // Exact Google Play Console Product ID
                 Title = "No Ads Pass",
                 Description = "Zorunlu reklamları ömür boyu kaldırın!",
                 ItemType = ShopItemType.NoAds,
@@ -98,7 +98,7 @@ namespace RoyalSmash.Editor
                 new ShopItemData
                 {
                     Id = "gold_pouch_800",
-                    ProductId = "gold_pouch_800",
+                    ProductId = "gold_douch_800", // Exact Google Play Console Product ID (Gold Douch 800)
                     Title = "Altın Çantası",
                     Description = "800 Altın",
                     ItemType = ShopItemType.GoldPack,
@@ -238,8 +238,10 @@ namespace RoyalSmash.Editor
                 EditorUtility.SetDirty(iap);
             }
 
-            // 2. Find ShopPage
-            var shopPageGo = GameObject.Find("ShopPage");
+            // 2. Find ShopPage (supports inactive objects)
+            var canvas = GameObject.Find("MainMenuCanvas");
+            var shopPageTrans = canvas != null ? canvas.transform.Find("PagesRoot/ShopPage") : null;
+            var shopPageGo = shopPageTrans != null ? shopPageTrans.gameObject : GameObject.Find("ShopPage");
             if (shopPageGo == null)
             {
                 return "ShopPage not found in MainMenu.unity!";

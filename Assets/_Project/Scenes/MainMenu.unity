@@ -4920,7 +4920,7 @@ MonoBehaviour:
   _badgeText: {fileID: 0}
   _itemData:
     Id: gold_pouch_800
-    ProductId: gold_pouch_800
+    ProductId: gold_douch_800
     Title: "Alt\u0131n \xC7antas\u0131"
     Description: "800 Alt\u0131n"
     ItemType: 0
@@ -37082,10 +37082,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Skills.SkillManager
   _config: {fileID: 0}
   _megaBallUnlocked: 0
-  _megaBallUses: 23
+  _megaBallUses: 58
   _megaBallActive: 0
   _infinityBallUnlocked: 0
-  _infinityBallUses: 13
+  _infinityBallUses: 48
   _infinityBallActive: 0
   _infinityBallTimeRemaining: 0
 --- !u!4 &1251393224
@@ -46935,7 +46935,7 @@ MonoBehaviour:
   _badgeText: {fileID: 0}
   _itemData:
     Id: no_ads_pass
-    ProductId: no_ads_pass
+    ProductId: noadspass
     Title: No Ads Pass
     Description: "Zorunlu reklamlar\u0131 \xF6m\xFCr boyu kald\u0131r\u0131n!"
     ItemType: 4
