@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.ObjectConfig
   _objectType: 1
   _displayName: Citadel stone
-  _mass: 5
-  _bounciness: 0.05
-  _friction: 0.7
+  _mass: 5.5
+  _bounciness: 0.03
+  _friction: 0.75
   _isBreakable: 0
   _breakForceThreshold: 0
   _shrinkDuration: 0.5

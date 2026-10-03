@@ -110,6 +110,22 @@ namespace RoyalSmash.Gameplay
             {
                 _rigidbody.useGravity = true;
             }
+
+            if (collision.rigidbody != null && !collision.rigidbody.isKinematic)
+            {
+                float impulse = _config != null ? _config.ImpactImpulse : 35f;
+                if (impulse > 0f)
+                {
+                    Vector3 hitDir = _rigidbody != null && _rigidbody.linearVelocity.sqrMagnitude > 0.1f
+                        ? _rigidbody.linearVelocity.normalized
+                        : (collision.contacts.Length > 0 ? -collision.contacts[0].normal : transform.forward);
+
+                    if (_isMegaBall) impulse *= 2.0f;
+
+                    Vector3 hitPos = collision.contacts.Length > 0 ? collision.contacts[0].point : transform.position;
+                    collision.rigidbody.AddForceAtPosition(hitDir * impulse, hitPos, ForceMode.Impulse);
+                }
+            }
         }
 
         /// <summary>
@@ -141,7 +157,7 @@ namespace RoyalSmash.Gameplay
             // Direct linear velocity towards target point
             Vector3 origin = transform.position;
             Vector3 direction = (targetPoint - origin).normalized;
-            float launchSpeed = _config != null ? Mathf.Max(_config.LaunchSpeed, 26f) : 26f;
+            float launchSpeed = _config != null ? _config.LaunchSpeed : 25f;
 
             _rigidbody.linearVelocity = direction * launchSpeed;
 

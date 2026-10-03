@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.ProjectileConfig
   _launchSpeed: 22
   _mass: 1.2
-  _bounciness: 0.45
-  _friction: 0.3
+  _impactImpulse: 25
+  _bounciness: 0.4
+  _friction: 0.35
   _lifetime: 5
   _fadeDuration: 1
   _fireCooldown: 0.15

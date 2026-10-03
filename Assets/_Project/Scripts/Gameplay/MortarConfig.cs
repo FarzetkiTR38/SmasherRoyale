@@ -24,7 +24,7 @@ namespace RoyalSmash.Gameplay
 
         [Header("Targeting Settings")]
         [Tooltip("Default Z depth distance in world space where the target plane sits.")]
-        [SerializeField] private float _defaultTargetDistance = 7.5f;
+        [SerializeField] private float _defaultTargetDistance = 9.0f;
 
         [Tooltip("Target layer mask for raycasting against physics objects / stands.")]
         [SerializeField] private LayerMask _targetLayerMask = ~0;

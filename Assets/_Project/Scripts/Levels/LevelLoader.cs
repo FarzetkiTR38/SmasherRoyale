@@ -70,13 +70,19 @@ namespace RoyalSmash.Levels
             if (existingSceneStand != null)
             {
                 existingSceneStand.SetActive(true);
-                existingSceneStand.transform.position = new Vector3(0, 0, 7.50f);
+                existingSceneStand.transform.position = new Vector3(0, 0, 9.00f);
                 existingSceneStand.transform.localScale = Vector3.one;
                 existingSceneStand.transform.rotation = Quaternion.identity;
             }
 
             if (_levelRoot != null)
             {
+#if UNITY_EDITOR
+                if (!Application.isPlaying && UnityEditor.Selection.activeTransform != null && UnityEditor.Selection.activeTransform.IsChildOf(_levelRoot))
+                {
+                    UnityEditor.Selection.activeObject = null;
+                }
+#endif
                 for (int i = _levelRoot.childCount - 1; i >= 0; i--)
                 {
                     var child = _levelRoot.GetChild(i).gameObject;
@@ -131,7 +137,7 @@ namespace RoyalSmash.Levels
             else if (existingSceneStand != null)
             {
                 existingSceneStand.SetActive(true);
-                existingSceneStand.transform.position = new Vector3(0, 0, 7.50f);
+                existingSceneStand.transform.position = new Vector3(0, 0, 9.00f);
                 existingSceneStand.transform.localScale = Vector3.one;
                 existingSceneStand.transform.rotation = Quaternion.identity;
                 _spawnedStands.Add(existingSceneStand);

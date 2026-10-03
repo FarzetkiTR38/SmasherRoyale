@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.ObjectConfig
   _objectType: 3
   _displayName: Cone
-  _mass: 0.8
-  _bounciness: 0.25
-  _friction: 0.35
+  _mass: 2
+  _bounciness: 0.2
+  _friction: 0.4
   _isBreakable: 0
   _breakForceThreshold: 0
   _shrinkDuration: 0.5

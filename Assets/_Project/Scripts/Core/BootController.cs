@@ -39,6 +39,9 @@ namespace RoyalSmash.Core
         [Tooltip("Glowing loading slider/progress bar at lower screen.")]
         [SerializeField] private Slider _loadingSlider;
 
+        [Tooltip("Direct reference to the fill Image (used for Type.Filled horizontal reveal without squishing).")]
+        [SerializeField] private Image _sliderFillImage;
+
         [Tooltip("Gameplay hint/tip above the progress bar.")]
         [SerializeField] private TextMeshProUGUI _hintText;
 
@@ -75,6 +78,7 @@ namespace RoyalSmash.Core
         public Image BackgroundImage => _backgroundImage;
         public Image LogoImage => _logoImage;
         public Slider LoadingSlider => _loadingSlider;
+        public Image SliderFillImage => _sliderFillImage;
         public TextMeshProUGUI HintText => _hintText;
         public TextMeshProUGUI StatusText => _statusText;
         public float DisplayedProgress => _displayedProgress;
@@ -88,6 +92,7 @@ namespace RoyalSmash.Core
                 return;
             }
             _instance = this;
+            EnsureUIReferences();
         }
 
         private void Start()
@@ -129,6 +134,11 @@ namespace RoyalSmash.Core
                 _loadingSlider.value = progress01;
             }
 
+            if (_sliderFillImage != null)
+            {
+                _sliderFillImage.fillAmount = progress01;
+            }
+
             if (_percentText != null)
             {
                 _percentText.text = $"{Mathf.RoundToInt(progress01 * 100f)}%";
@@ -138,6 +148,23 @@ namespace RoyalSmash.Core
         private void EnsureUIReferences()
         {
             if (_loadingSlider == null) _loadingSlider = GetComponentInChildren<Slider>();
+
+            if (_sliderFillImage == null && _loadingSlider != null)
+            {
+                var fillTr = _loadingSlider.transform.Find("Fill Area/Fill");
+                if (fillTr != null) _sliderFillImage = fillTr.GetComponent<Image>();
+            }
+
+            if (_sliderFillImage != null)
+            {
+                if (_sliderFillImage.type != Image.Type.Filled)
+                {
+                    _sliderFillImage.type = Image.Type.Filled;
+                    _sliderFillImage.fillMethod = Image.FillMethod.Horizontal;
+                    _sliderFillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
+                }
+            }
+
             if (_hintText == null)
             {
                 var texts = GetComponentsInChildren<TextMeshProUGUI>();

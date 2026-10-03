@@ -32,11 +32,11 @@ namespace RoyalSmash.Editor
         private const string LEVELS_FOLDER = "Assets/_Project/Art/SkyCitadel/Levels";
 
         private const float BASE_STAND_TOP_Y = 1.475f;
-        private const float BLOCK_SIZE = 0.74f;
-        private const float STEP_X = 0.755f;
-        private const float STEP_Y = 0.745f;
-        private const float STEP_Z = 0.755f;
-        private const float STAND_Z = 7.50f;
+        private const float BLOCK_SIZE = 0.78f;
+        private const float STEP_X = 0.78f;
+        private const float STEP_Y = 0.78f;
+        private const float STEP_Z = 0.78f;
+        private const float STAND_Z = 9.00f;
 
         // Editor State
         [SerializeField] private int _selectedLevelId = 1;
@@ -145,6 +145,11 @@ namespace RoyalSmash.Editor
             };
             EditorGUILayout.LabelField("🏰 ROYAL SMASH LEVEL DESIGNER", titleStyle);
             EditorGUILayout.LabelField("Visual Multi-Stand & Minecraft-Style Block Builder", EditorStyles.centeredGreyMiniLabel);
+            EditorGUILayout.Space(2);
+            if (GUILayout.Button("⚙ Open Game Designer (Physics & Balance)", GUILayout.Height(24)))
+            {
+                GameDesignerWindow.OpenWindow();
+            }
             EditorGUILayout.EndVertical();
         }
 
@@ -563,6 +568,7 @@ namespace RoyalSmash.Editor
             var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, blocksRoot);
             instance.transform.position = pos;
             instance.transform.rotation = Quaternion.identity;
+            instance.transform.localScale = Vector3.one * BLOCK_SIZE;
             instance.name = $"{type}_{blocksRoot.childCount + 1}";
 
             var rb = instance.GetComponent<Rigidbody>();
@@ -892,6 +898,10 @@ namespace RoyalSmash.Editor
         private static void ClearChildren(Transform t)
         {
             if (t == null) return;
+            if (Selection.activeTransform != null && Selection.activeTransform.IsChildOf(t))
+            {
+                Selection.activeObject = null;
+            }
             for (int i = t.childCount - 1; i >= 0; i--)
             {
                 DestroyImmediate(t.GetChild(i).gameObject);

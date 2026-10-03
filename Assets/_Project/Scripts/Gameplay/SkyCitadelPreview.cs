@@ -63,7 +63,7 @@ namespace RoyalSmash.Gameplay
                 return;
             }
 
-            const float standZ = 7.50f;
+            const float standZ = 9.00f;
 
             // Majestic 20-block Grand Citadel layout matching Level 30 ("The Crown Citadel")
             // Incorporates all 5 Citadel block types across 5 towering tiers:

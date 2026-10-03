@@ -50,5 +50,24 @@ namespace RoyalSmash.Gameplay
         public float ShrinkDuration => _shrinkDuration;
         public float FallOffThresholdY => _fallOffThresholdY;
         public string ImpactSoundKey => _impactSoundKey;
+
+        public void SetPhysicsProperties(float mass, float bounciness, float friction)
+        {
+            _mass = mass;
+            _bounciness = bounciness;
+            _friction = friction;
+        }
+
+        public void SetBreakable(bool isBreakable, float breakForceThreshold)
+        {
+            _isBreakable = isBreakable;
+            _breakForceThreshold = breakForceThreshold;
+        }
+
+        public void SetDestructionSettings(float shrinkDuration, float fallOffThresholdY)
+        {
+            _shrinkDuration = shrinkDuration;
+            _fallOffThresholdY = fallOffThresholdY;
+        }
     }
 }
