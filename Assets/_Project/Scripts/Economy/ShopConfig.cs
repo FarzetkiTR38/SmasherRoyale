@@ -87,7 +87,7 @@ namespace RoyalSmash.Economy
             {
                 foreach (var item in GoldPacks)
                 {
-                    if (item.Id == id || item.ProductId == id) return item;
+                    if (item != null && (item.Id == id || item.ProductId == id)) return item;
                 }
             }
 
@@ -95,7 +95,7 @@ namespace RoyalSmash.Economy
             {
                 foreach (var item in SkillPacks)
                 {
-                    if (item.Id == id || item.ProductId == id) return item;
+                    if (item != null && (item.Id == id || item.ProductId == id)) return item;
                 }
             }
 
@@ -103,7 +103,7 @@ namespace RoyalSmash.Economy
             {
                 foreach (var item in Bundles)
                 {
-                    if (item.Id == id || item.ProductId == id) return item;
+                    if (item != null && (item.Id == id || item.ProductId == id)) return item;
                 }
             }
 
@@ -111,4 +111,3 @@ namespace RoyalSmash.Economy
         }
     }
 }
-

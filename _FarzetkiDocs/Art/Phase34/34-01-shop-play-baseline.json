@@ -1,0 +1,63 @@
+{
+  "capturedUtc": "2026-10-03T09:25:00.661421Z",
+  "scope": "Existing Shop real Play baseline, no purchase input",
+  "screenWidth": 1080,
+  "screenHeight": 1920,
+  "tab": "Shop",
+  "shopActive": true,
+  "cardCount": 8,
+  "cards": [
+    {
+      "name": "BuyButton_Deal",
+      "id": "deal_kings_royal",
+      "productId": "deal_kings_royal",
+      "price": "$0.01"
+    },
+    {
+      "name": "BuyButton_NoAds",
+      "id": "no_ads_pass",
+      "productId": "noadspass",
+      "price": "OWNED"
+    },
+    {
+      "name": "BuyButton_Pouch",
+      "id": "gold_pouch_800",
+      "productId": "gold_douch_800",
+      "price": "$0.01"
+    },
+    {
+      "name": "BuyButton_Chest",
+      "id": "gold_chest_1600",
+      "productId": "gold_chest_1600",
+      "price": "$0.01"
+    },
+    {
+      "name": "BuyButton_Mega",
+      "id": "skill_mega_5",
+      "productId": "skill_mega_5",
+      "price": "$0.01"
+    },
+    {
+      "name": "BuyButton_Infinity",
+      "id": "skill_infinity_5",
+      "productId": "skill_infinity_5",
+      "price": "$0.01"
+    },
+    {
+      "name": "BuyButton_Warrior",
+      "id": "bundle_warrior",
+      "productId": "bundle_warrior",
+      "price": "$0.01"
+    },
+    {
+      "name": "BuyButton_Champion",
+      "id": "bundle_champion",
+      "productId": "bundle_champion",
+      "price": "$0.01"
+    }
+  ],
+  "initialScreenWidth": 437,
+  "initialScreenHeight": 539,
+  "screenshot": "_FarzetkiDocs/Art/Phase34/34-01-shop-before-portrait.png",
+  "screenshotExists": true
+}

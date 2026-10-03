@@ -1,0 +1,19 @@
+{
+  "capturedUtc": "2026-10-03T09:45:44.0977579Z",
+  "passed": true,
+  "scope": "Real Play migrated8bindings plus transient UI on deep-cloned catalog. No buy click or fulfillment; dynamic reward access verified, reward row widgets arrive34.4.",
+  "checks": {
+    "all8ResolveAuthoritativeReference": true,
+    "legacySetupCompatible": true,
+    "liveTextAndRewardValues": true,
+    "iapFallbackFromCurrentItem": true,
+    "inGameGoldCostAuthoritative": true,
+    "replacedCatalogDefinitionResolved": true,
+    "billingAliasRejectedWithoutChangingBinding": true,
+    "nullListEntrySkipped": true,
+    "removedItemFailsClosed": true,
+    "lostCatalogDoesNotUseLegacyCopy": true,
+    "explicitLegacyModeCanBeRestored": true
+  },
+  "purchaseInProgress": false
+}

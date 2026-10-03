@@ -4918,6 +4918,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: gold_pouch_800
   _itemData:
     Id: gold_pouch_800
     ProductId: gold_douch_800
@@ -12568,6 +12570,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: bundle_champion
   _itemData:
     Id: bundle_champion
     ProductId: bundle_champion
@@ -16372,6 +16376,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: gold_chest_1600
   _itemData:
     Id: gold_chest_1600
     ProductId: gold_chest_1600
@@ -25629,6 +25635,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: skill_mega_5
   _itemData:
     Id: skill_mega_5
     ProductId: skill_mega_5
@@ -33343,6 +33351,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: skill_infinity_5
   _itemData:
     Id: skill_infinity_5
     ProductId: skill_infinity_5
@@ -34878,6 +34888,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: bundle_warrior
   _itemData:
     Id: bundle_warrior
     ProductId: bundle_warrior
@@ -46933,6 +46945,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: no_ads_pass
   _itemData:
     Id: no_ads_pass
     ProductId: noadspass
@@ -50927,6 +50941,8 @@ MonoBehaviour:
   _iconImage: {fileID: 0}
   _badgeRoot: {fileID: 0}
   _badgeText: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 29dffb3de8f4ae24d8ac8f00aac648c2, type: 2}
+  _catalogItemId: deal_kings_royal
   _itemData:
     Id: deal_kings_royal
     ProductId: deal_kings_royal

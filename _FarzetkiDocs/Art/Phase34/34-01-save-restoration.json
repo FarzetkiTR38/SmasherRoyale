@@ -1,0 +1,80 @@
+{
+  "capturedUtc": "2026-10-03T09:31:39.6340315Z",
+  "sessionBackup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\PlayerSave-Baseline",
+  "files": [
+    {
+      "file": "leaderboard_cache.json",
+      "beforeHash": "8499C1BD93FEC09F7EDB7C89C73429C51AE4A5AAE7796B3428F752D1ADA8A094",
+      "afterHash": "8499C1BD93FEC09F7EDB7C89C73429C51AE4A5AAE7796B3428F752D1ADA8A094",
+      "restored": true
+    },
+    {
+      "file": "live_cloud_device_saves.json",
+      "beforeHash": "C137E638D2955FAF88C91D4BA6607ADD5D0F73C3CC4EA9EFDC4D3328C37D0874",
+      "afterHash": "C137E638D2955FAF88C91D4BA6607ADD5D0F73C3CC4EA9EFDC4D3328C37D0874",
+      "restored": true
+    },
+    {
+      "file": "live_cloud_leaderboard.json",
+      "beforeHash": "FFBE4E4C5ACC21A9EEFFEDA922FD682D0FA483E5DB296CF3CB7A0AFD14CE4345",
+      "afterHash": "FFBE4E4C5ACC21A9EEFFEDA922FD682D0FA483E5DB296CF3CB7A0AFD14CE4345",
+      "restored": true
+    },
+    {
+      "file": "player_save_backup.json",
+      "beforeHash": "CE68135177A7BBA0CEBA8540E082B835BA9F97DBC58315BE1822A68E35D49B63",
+      "afterHash": "CE68135177A7BBA0CEBA8540E082B835BA9F97DBC58315BE1822A68E35D49B63",
+      "restored": true
+    },
+    {
+      "file": "player_save.json",
+      "beforeHash": "7F3BE60F510B02145A7A6AE99B7ABF44459907F5DB839D4F52762D886387E69A",
+      "afterHash": "7F3BE60F510B02145A7A6AE99B7ABF44459907F5DB839D4F52762D886387E69A",
+      "restored": true
+    }
+  ],
+  "projectFiles": [
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainGame.unity",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopItemCardUI.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopUI.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/BottomNavigationUI.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/IAPManager.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/ShopConfig.cs",
+      "unchanged": true
+    }
+  ],
+  "allRestored": true,
+  "allProjectUnchanged": true
+}
