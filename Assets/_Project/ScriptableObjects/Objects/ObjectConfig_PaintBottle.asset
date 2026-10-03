@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.ObjectConfig
   _objectType: 4
   _displayName: Paint Bottle
-  _mass: 0.5
-  _bounciness: 0.1
-  _friction: 0.4
+  _mass: 0.6
+  _bounciness: 0.08
+  _friction: 0.45
   _isBreakable: 1
   _breakForceThreshold: 4
   _shrinkDuration: 0.4

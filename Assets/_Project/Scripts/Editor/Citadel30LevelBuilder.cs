@@ -202,15 +202,19 @@ namespace RoyalSmash.Editor
                     name = "The Royal Step Pyramid";
                     balls = 27;
                     stands = SingleDeepStand(1.35f);
-                    // 8 base pyramid blocks doubled = 16 thick blocks
-                    AddThickBlock(objs, ObjectType.Stone, -1.5f * STEP_X, 0);
-                    AddThickBlock(objs, ObjectType.Box,   -0.5f * STEP_X, 0);
-                    AddThickBlock(objs, ObjectType.Box,    0.5f * STEP_X, 0);
-                    AddThickBlock(objs, ObjectType.Stone,  1.5f * STEP_X, 0);
-                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
-                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
-                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
-                    AddThickBlock(objs, ObjectType.Cone, 0f, 2);
+                    // Authentic 3-tier stepped pyramid: 5 foundation, 3 terrace, 1 capstone = 9 thick blocks (18 blocks)
+                    // Layer 0: 5-block wide foundation
+                    AddThickBlock(objs, ObjectType.Stone, -2.0f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,   -1.0f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone,  0.0f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,    1.0f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone,  2.0f * STEP_X, 0);
+                    // Layer 1: 3-block wide terrace (directly atop -1, 0, 1)
+                    AddThickBlock(objs, ObjectType.Column,      -1.0f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.0f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,       1.0f * STEP_X, 1);
+                    // Layer 2: 1-block royal apex capstone (directly atop 0)
+                    AddThickBlock(objs, ObjectType.Cone, 0.0f * STEP_X, 2);
                     break;
 
                 case 5:
@@ -218,16 +222,23 @@ namespace RoyalSmash.Editor
                     balls = 28;
                     stands = SingleDeepStand(1.35f);
                     events.Add(new LevelEvent { Type = LevelEventType.UnlockMegaBall, Data = "Mega Ball Unlocked!" });
-                    // 9 base bastion blocks doubled = 18 thick blocks
+                    // Majestic castle gate with flanking towers: 11 thick blocks (22 blocks)
+                    // Layer 0: 4-block foundation (wings and gate posts)
                     AddThickBlock(objs, ObjectType.Stone, -1.5f * STEP_X, 0);
                     AddThickBlock(objs, ObjectType.Stone, -0.5f * STEP_X, 0);
                     AddThickBlock(objs, ObjectType.Stone,  0.5f * STEP_X, 0);
                     AddThickBlock(objs, ObjectType.Stone,  1.5f * STEP_X, 0);
-                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
-                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
-                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
-                    AddThickBlock(objs, ObjectType.Box, 0f, 2);
-                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
+                    // Layer 1: Flanking tower columns and center gate arch lintels
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,    -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,     0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    // Layer 2: Tower capstones and central gatehouse core
+                    AddThickBlock(objs, ObjectType.Cone,        -1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.0f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone,         1.5f * STEP_X, 2);
+                    // Layer 3: Central gatehouse crown
+                    AddThickBlock(objs, ObjectType.Cone, 0.0f * STEP_X, 3);
                     break;
 
                 // =========================================================================

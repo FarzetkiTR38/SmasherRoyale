@@ -68,7 +68,7 @@ namespace RoyalSmash.Editor
                 builder.Bake(root.transform, variant);
                 root.AddComponent<BoxCollider>().size = Vector3.one;
                 var rigidbody = root.AddComponent<Rigidbody>();
-                rigidbody.mass = variant == "armored" ? 2.5f : 1f;
+                rigidbody.mass = variant == "armored" ? 1.5f : 1f;
                 rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
                 rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 root.AddComponent<PhysicsObject>();

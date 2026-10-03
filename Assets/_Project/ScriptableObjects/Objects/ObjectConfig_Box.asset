@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.ObjectConfig
   _objectType: 0
   _displayName: Box
-  _mass: 1
-  _bounciness: 0.2
-  _friction: 0.4
+  _mass: 1.5
+  _bounciness: 0.15
+  _friction: 0.45
   _isBreakable: 0
   _breakForceThreshold: 0
   _shrinkDuration: 0.5

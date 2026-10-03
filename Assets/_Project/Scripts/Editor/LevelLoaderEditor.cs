@@ -71,6 +71,11 @@ namespace RoyalSmash.Editor
             {
                 LevelDesignerWindow.OpenWindow();
             }
+
+            if (GUILayout.Button("⚙ Open Game Designer (Physics & Balance)", GUILayout.Height(26)))
+            {
+                GameDesignerWindow.OpenWindow();
+            }
         }
     }
 }

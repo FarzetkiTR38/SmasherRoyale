@@ -145,6 +145,11 @@ namespace RoyalSmash.Editor
             };
             EditorGUILayout.LabelField("🏰 ROYAL SMASH LEVEL DESIGNER", titleStyle);
             EditorGUILayout.LabelField("Visual Multi-Stand & Minecraft-Style Block Builder", EditorStyles.centeredGreyMiniLabel);
+            EditorGUILayout.Space(2);
+            if (GUILayout.Button("⚙ Open Game Designer (Physics & Balance)", GUILayout.Height(24)))
+            {
+                GameDesignerWindow.OpenWindow();
+            }
             EditorGUILayout.EndVertical();
         }
 
@@ -893,6 +898,10 @@ namespace RoyalSmash.Editor
         private static void ClearChildren(Transform t)
         {
             if (t == null) return;
+            if (Selection.activeTransform != null && Selection.activeTransform.IsChildOf(t))
+            {
+                Selection.activeObject = null;
+            }
             for (int i = t.childCount - 1; i >= 0; i--)
             {
                 DestroyImmediate(t.GetChild(i).gameObject);
