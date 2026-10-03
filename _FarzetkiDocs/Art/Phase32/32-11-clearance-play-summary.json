@@ -1,0 +1,60 @@
+{
+  "capturedUtc": "2026-10-02T17:00:31.2967573Z",
+  "scope": "Real Play Mode on corrected L2/L10/L19/L22/L27; sequential idle, miss, deliberate projectile contact; no concurrent Unity job.",
+  "levels": 5,
+  "passed": true,
+  "allIdleAndMissZero": true,
+  "allReleasedOnRealContact": true,
+  "reports": [
+    {
+      "level": 10,
+      "passed": true,
+      "hits": 2,
+      "ballsBefore": 28,
+      "ballsAfter": 26,
+      "idleSeconds": 3.0200042724609375,
+      "missSeconds": 3.0799942016601562,
+      "hitDisplacement": 0.01215649489313364
+    },
+    {
+      "level": 19,
+      "passed": true,
+      "hits": 2,
+      "ballsBefore": 30,
+      "ballsAfter": 28,
+      "idleSeconds": 3.0400009155273438,
+      "missSeconds": 3.0400009155273438,
+      "hitDisplacement": 0.03184325993061066
+    },
+    {
+      "level": 2,
+      "passed": true,
+      "hits": 2,
+      "ballsBefore": 25,
+      "ballsAfter": 23,
+      "idleSeconds": 3.0399932861328125,
+      "missSeconds": 3.0400009155273438,
+      "hitDisplacement": 0.02132846601307392
+    },
+    {
+      "level": 22,
+      "passed": true,
+      "hits": 2,
+      "ballsBefore": 32,
+      "ballsAfter": 30,
+      "idleSeconds": 3.05999755859375,
+      "missSeconds": 3.0199966430664062,
+      "hitDisplacement": 0.014974239282310009
+    },
+    {
+      "level": 27,
+      "passed": true,
+      "hits": 2,
+      "ballsBefore": 35,
+      "ballsAfter": 33,
+      "idleSeconds": 3.0,
+      "missSeconds": 3.0,
+      "hitDisplacement": 0.025612618774175644
+    }
+  ]
+}

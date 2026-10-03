@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_ArcaneEnergy
-  m_Shader: {fileID: 4800000, guid: fede5f36d2de3c74e94b9a10f93e34a1, type: 3}
+  m_Shader: {fileID: 4800000, guid: e7ee4e63908172d4797bfa5799ef5eb9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,15 +22,23 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _EnergyTex:
+        m_Texture: {fileID: 2800000, guid: 1c2db0015d66e464d89a9df72883fa11, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _DepthStrength: 0.65
+    - _FilamentStrength: 0.88
+    - _FilamentWidth: 0.012
     - _FlowSpeed: 0.13
     - _NoiseScale: 8
     - _RimStrength: 0.34
     - _SpecularStrength: 0.28
+    - _TextureStrength: 1.65
     m_Colors:
-    - _BaseColor: {r: 0.015, g: 0.2, b: 0.92, a: 1}
+    - _BaseColor: {r: 0.015, g: 0.1999999, b: 0.92, a: 1}
     - _CoreColor: {r: 0.3, g: 1.65, b: 2.25, a: 1}
     - _GlowColor: {r: 0.025, g: 1.15, b: 1.8, a: 1}
   m_BuildTextureStacks: []

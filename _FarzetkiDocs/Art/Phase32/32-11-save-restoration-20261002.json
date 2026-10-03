@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "leaderboard_cache.json",
+    "Match": true
+  },
+  {
+    "Name": "live_cloud_device_saves.json",
+    "Match": true
+  },
+  {
+    "Name": "live_cloud_leaderboard.json",
+    "Match": true
+  },
+  {
+    "Name": "player_save_backup.json",
+    "Match": true
+  },
+  {
+    "Name": "player_save.json",
+    "Match": true
+  }
+]

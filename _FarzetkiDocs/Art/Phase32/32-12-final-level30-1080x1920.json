@@ -1,0 +1,122 @@
+{
+  "level": 30,
+  "width": 1080,
+  "height": 1920,
+  "targetCount": 28,
+  "standCount": 1,
+  "safeArea": {
+    "serializedVersion": "2",
+    "x": 0.0,
+    "y": 0.0,
+    "width": 1080.0,
+    "height": 1920.0
+  },
+  "targetViewport": {
+    "serializedVersion": "2",
+    "x": 0.2247200608253479,
+    "y": 0.509493887424469,
+    "width": 0.5505598783493042,
+    "height": 0.26967352628707886
+  },
+  "standViewport": {
+    "serializedVersion": "2",
+    "x": 0.04000004380941391,
+    "y": 0.41420984268188477,
+    "width": 0.9199999570846558,
+    "height": 0.10423970222473145
+  },
+  "screenshot": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\_FarzetkiDocs\\Art\\Phase32\\32-12-final-level30-1080x1920.png",
+  "screenshotExists": true,
+  "hud": [
+    {
+      "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+      "text": "AŞAMA",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 65.0,
+        "y": 1841.0,
+        "width": 170.0,
+        "height": 40.0
+      }
+    },
+    {
+      "path": "MainCanvas/HUD_BallCounter/CountText",
+      "text": "35",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 531.0,
+        "y": 1760.0,
+        "width": 98.0,
+        "height": 72.0
+      }
+    },
+    {
+      "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+      "text": "10",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 194.5,
+        "y": 256.5,
+        "width": 55.0,
+        "height": 55.0
+      }
+    },
+    {
+      "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+      "text": "30",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 71.0,
+        "y": 1715.0,
+        "width": 158.0,
+        "height": 110.0
+      }
+    },
+    {
+      "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+      "text": "MEGA",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 59.0,
+        "y": 272.5,
+        "width": 176.0,
+        "height": 43.0
+      }
+    },
+    {
+      "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+      "text": "INFINITY",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 845.0,
+        "y": 272.5,
+        "width": 176.0,
+        "height": 43.0
+      }
+    },
+    {
+      "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+      "text": "TOP",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 522.0,
+        "y": 1832.0,
+        "width": 110.0,
+        "height": 26.0
+      }
+    },
+    {
+      "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+      "text": "10",
+      "screenRect": {
+        "serializedVersion": "2",
+        "x": 980.5,
+        "y": 256.5,
+        "width": 55.0,
+        "height": 55.0
+      }
+    }
+  ],
+  "screenshotVerifiedUtc": "2026-10-02T17:40:32.9919737Z",
+  "screenshotVerificationNote": "Post-write verification; original capture-time flag preceded asynchronous PNG write."
+}

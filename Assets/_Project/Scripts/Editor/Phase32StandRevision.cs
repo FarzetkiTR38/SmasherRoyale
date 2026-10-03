@@ -37,41 +37,43 @@ namespace RoyalSmash.Editor
             Mesh gem = ResolveMesh("Gem", BuildGem);
             Material cyan = ResolveCyan(lit);
 
-            var b = new Builder(bevel, octagon, shield, gem);
-            b.Register("Ivory", ivory); b.Register("Gold", gold); b.Register("Steel", steel);
-            b.Register("Sapphire", blue); b.Register("Energy", cyan);
-            BuildBeam(b, ivory, gold, steel, blue, cyan);
-            for (int side = -1; side <= 1; side += 2)
+            using (var b = new Builder(bevel, octagon, shield, gem))
             {
-                BuildFoot(b, side * 1.425f, ivory, gold, steel, blue, cyan);
-                BuildBanner(b, side * 2.605f, ivory, gold, steel, blue, cyan);
-            }
-
-            GameObject contents = PrefabUtility.LoadPrefabContents(PREFAB);
-            try
-            {
-                Transform details = contents.transform.Find(DETAILS);
-                if (details == null)
+                b.Register("Ivory", ivory); b.Register("Gold", gold); b.Register("Steel", steel);
+                b.Register("Sapphire", blue); b.Register("Energy", cyan);
+                BuildBeam(b, ivory, gold, steel, blue, cyan);
+                for (int side = -1; side <= 1; side += 2)
                 {
-                    details = new GameObject(DETAILS).transform;
-                    details.SetParent(contents.transform, false);
+                    BuildFoot(b, side * 1.425f, ivory, gold, steel, blue, cyan);
+                    BuildBanner(b, side * 2.605f, ivory, gold, steel, blue, cyan);
                 }
-                details.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                details.localScale = Vector3.one;
-                details.gameObject.layer = contents.layer;
-                // Keep legacy objects, colliders, scripts and the entire presentation transform.
-                foreach (Renderer renderer in contents.GetComponentsInChildren<Renderer>(true))
+    
+                GameObject contents = PrefabUtility.LoadPrefabContents(PREFAB);
+                try
                 {
-                    if (renderer.transform.IsChildOf(details)) continue;
-                    string name = renderer.gameObject.name;
-                    if (name == "SapphireFrieze" || name == "LowerGoldEdge" ||
-                        name == "FriezeDiamond" || name == "GoldCornice") renderer.enabled = false;
+                    Transform details = contents.transform.Find(DETAILS);
+                    if (details == null)
+                    {
+                        details = new GameObject(DETAILS).transform;
+                        details.SetParent(contents.transform, false);
+                    }
+                    details.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                    details.localScale = Vector3.one;
+                    details.gameObject.layer = contents.layer;
+                    // Keep legacy objects, colliders, scripts and the entire presentation transform.
+                    foreach (Renderer renderer in contents.GetComponentsInChildren<Renderer>(true))
+                    {
+                        if (renderer.transform.IsChildOf(details)) continue;
+                        string name = renderer.gameObject.name;
+                        if (name == "SapphireFrieze" || name == "LowerGoldEdge" ||
+                            name == "FriezeDiamond" || name == "GoldCornice") renderer.enabled = false;
+                    }
+                    b.Bake(details);
+                    if (PrefabUtility.SaveAsPrefabAsset(contents, PREFAB) == null)
+                        throw new InvalidOperationException("Could not save the revised stand prefab.");
                 }
-                b.Bake(details);
-                if (PrefabUtility.SaveAsPrefabAsset(contents, PREFAB) == null)
-                    throw new InvalidOperationException("Could not save the revised stand prefab.");
+                finally { PrefabUtility.UnloadPrefabContents(contents); }
             }
-            finally { PrefabUtility.UnloadPrefabContents(contents); }
             Debug.Log("[Phase32StandRevision] Stand decorative meshes updated in place; physics, root, presentation and scene overrides preserved.");
         }
 
@@ -79,27 +81,27 @@ namespace RoyalSmash.Editor
         {
             // Dimensions are in prefab-root coordinates: gameplay stand Z scale is 0.5.
             // All upper trim stays below the unchanged collider top at Y = 1.475.
-            b.Box(ivory, V(0, 1.255f, 0), V(5.66f, .38f, 1.89f));
+            b.RoundedBox(ivory, V(0, 1.255f, 0), V(5.66f, .38f, 1.89f));
             b.Box(steel, V(0, 1.078f, 0), V(5.73f, .17f, 1.96f));
-            b.Box(gold, V(0, 1.436f, 0), V(5.74f, .065f, 1.97f));
-            b.Box(gold, V(0, 1.022f, -.99f), V(5.65f, .054f, .11f));
+            b.RoundedBox(gold, V(0, 1.436f, 0), V(5.74f, .065f, 1.97f));
+            b.RoundedBox(gold, V(0, 1.022f, -.99f), V(5.65f, .054f, .11f));
             for (int side = -1; side <= 1; side += 2)
             {
                 b.Box(steel, V(side * 1.49f, 1.235f, -.974f), V(2.13f, .18f, .058f));
-                b.Box(blue, V(side * 1.47f, 1.225f, -1.017f), V(1.99f, .105f, .046f));
+                b.RoundedBox(blue, V(side * 1.47f, 1.225f, -1.017f), V(1.99f, .105f, .046f));
                 b.Box(cyan, V(side * 1.43f, 1.226f, -1.045f), V(1.64f, .027f, .016f));
-                b.Box(gold, V(side * 1.65f, 1.137f, -1.047f), V(1.73f, .042f, .071f));
-                b.Box(gold, V(side * 2.46f, 1.267f, -1.049f), V(.31f, .071f, .095f), side * 39f);
-                b.Box(gold, V(side * .62f, 1.139f, -1.045f), V(.30f, .055f, .071f), side * -35f);
-                b.Box(gold, V(side * 2.60f, 1.392f, 0), V(.52f, .13f, 2.02f));
+                b.RoundedBox(gold, V(side * 1.65f, 1.137f, -1.047f), V(1.73f, .042f, .071f));
+                b.RoundedBox(gold, V(side * 2.46f, 1.267f, -1.049f), V(.31f, .071f, .095f), side * 39f);
+                b.RoundedBox(gold, V(side * .62f, 1.139f, -1.045f), V(.30f, .055f, .071f), side * -35f);
+                b.RoundedBox(gold, V(side * 2.60f, 1.392f, 0), V(.52f, .13f, 2.02f));
                 b.Box(steel, V(side * 2.76f, 1.24f, -1.045f), V(.13f, .20f, .095f));
                 b.Oct(cyan, V(side * 2.76f, 1.26f, -1.108f), V(.054f, .016f, .054f), Quaternion.Euler(90, 0, 0));
                 for (int bolt = 0; bolt < 3; bolt++)
                     b.Oct(gold, V(side * (.88f + bolt * .55f), 1.32f, -1.052f), V(.036f, .017f, .036f), Quaternion.Euler(90, 0, 0));
             }
             b.Box(steel, V(0, 1.12f, -1.028f), V(.565f, .45f, .095f));
-            b.Box(gold, V(0, 1.115f, -1.115f), V(.49f, .49f, .15f), 45f);
-            b.Box(blue, V(0, 1.115f, -1.207f), V(.378f, .378f, .062f), 45f);
+            b.RoundedBox(gold, V(0, 1.115f, -1.115f), V(.49f, .49f, .15f), 45f);
+            b.RoundedBox(blue, V(0, 1.115f, -1.207f), V(.378f, .378f, .062f), 45f);
             b.Gem(cyan, V(0, 1.115f, -1.247f), V(.415f, .49f, .26f));
         }
 
@@ -114,15 +116,15 @@ namespace RoyalSmash.Editor
             b.Oct(gold, V(x, 1.095f, 0), V(.97f, .10f, 1.49f));
             b.Oct(steel, V(x, 1.14f, 0), V(1.02f, .047f, 1.52f));
             b.Box(steel, V(x, .704f, -.682f), V(.225f, .65f, .078f));
-            b.Box(blue, V(x, .704f, -.731f), V(.15f, .58f, .048f));
+            b.RoundedBox(blue, V(x, .704f, -.731f), V(.15f, .58f, .048f));
             b.Box(cyan, V(x, .715f, -.762f), V(.068f, .45f, .022f));
-            b.Box(gold, V(x, .397f, -.755f), V(.24f, .05f, .075f));
-            b.Box(gold, V(x, 1.012f, -.755f), V(.24f, .05f, .075f));
-            b.Box(blue, V(x, .155f, -.912f), V(.52f, .135f, .045f));
+            b.RoundedBox(gold, V(x, .397f, -.755f), V(.24f, .05f, .075f));
+            b.RoundedBox(gold, V(x, 1.012f, -.755f), V(.24f, .05f, .075f));
+            b.RoundedBox(blue, V(x, .155f, -.912f), V(.52f, .135f, .045f));
             b.Box(cyan, V(x, .163f, -.944f), V(.35f, .037f, .015f));
             for (int side = -1; side <= 1; side += 2)
             {
-                b.Box(gold, V(x + side * .455f, .164f, -.632f), V(.105f, .17f, .10f), -side * 12f);
+                b.RoundedBox(gold, V(x + side * .455f, .164f, -.632f), V(.105f, .17f, .10f), -side * 12f);
                 b.Oct(gold, V(x + side * .315f, .189f, -.867f), V(.055f, .021f, .055f), Quaternion.Euler(90, 0, 0));
             }
         }
@@ -132,7 +134,7 @@ namespace RoyalSmash.Editor
             b.Shield(steel, V(x, .99f, -1.125f), V(.455f, .765f, .085f));
             b.Shield(gold, V(x, .99f, -1.168f), V(.424f, .735f, .065f));
             b.Shield(blue, V(x, .997f, -1.211f), V(.343f, .631f, .035f));
-            b.Box(gold, V(x, 1.343f, -1.235f), V(.47f, .080f, .079f));
+            b.RoundedBox(gold, V(x, 1.343f, -1.235f), V(.47f, .080f, .079f));
             b.Box(ivory, V(x, 1.035f, -1.239f), V(.14f, .14f, .018f), 45f);
             b.Box(blue, V(x, 1.035f, -1.255f), V(.084f, .084f, .015f), 45f);
             b.Gem(cyan, V(x, 1.035f, -1.268f), V(.060f, .083f, .030f));
@@ -176,7 +178,17 @@ namespace RoyalSmash.Editor
             Mesh existing = AssetDatabase.LoadAssetAtPath<Mesh>(path);
             mesh.name = "Phase32_Stand_" + name;
             if (existing == null) { AssetDatabase.CreateAsset(mesh, path); existing = mesh; }
-            else { EditorUtility.CopySerialized(mesh, existing); UnityEngine.Object.DestroyImmediate(mesh); EditorUtility.SetDirty(existing); }
+            else
+            {
+                // Update native vertex buffers as well as serialized data, keeping the mesh GUID.
+                existing.Clear();
+                existing.indexFormat = mesh.indexFormat;
+                existing.CombineMeshes(new[] { new CombineInstance { mesh = mesh, transform = Matrix4x4.identity } }, true, true);
+                existing.RecalculateBounds(); existing.RecalculateTangents();
+                UnityEngine.Object.DestroyImmediate(mesh);
+                EditorUtility.SetDirty(existing);
+            }
+            existing.UploadMeshData(false);
             AssetDatabase.SaveAssetIfDirty(existing);
             return existing;
         }
@@ -248,14 +260,27 @@ namespace RoyalSmash.Editor
             }
         }
 
-        private sealed class Builder
+        private sealed class Builder : IDisposable
         {
             private readonly Mesh _box, _octagon, _shield, _gem;
+            private readonly List<Mesh> _temporary = new List<Mesh>();
             private readonly Dictionary<Material, List<CombineInstance>> _parts = new Dictionary<Material, List<CombineInstance>>();
             private readonly Dictionary<Material, string> _names = new Dictionary<Material, string>();
             public Builder(Mesh box, Mesh octagon, Mesh shield, Mesh gem) { _box = box; _octagon = octagon; _shield = shield; _gem = gem; }
             public void Register(string name, Material material) { _parts.Add(material, new List<CombineInstance>()); _names.Add(material, name); }
             public void Box(Material m, Vector3 p, Vector3 s, float angle = 0) => Add(_box, m, p, s, Quaternion.Euler(0, 0, angle));
+            public void RoundedBox(Material material, Vector3 position, Vector3 size, float angle = 0)
+            {
+                // Build at final dimensions; shared helper uses radius .22 * min(size) and 2 or 3 fillet segments.
+                Mesh mesh = Phase32DimensionalBevel.Create(size);
+                _temporary.Add(mesh);
+                Add(mesh, material, position, Vector3.one, Quaternion.Euler(0, 0, angle));
+            }
+            public void Dispose()
+            {
+                foreach (Mesh mesh in _temporary) UnityEngine.Object.DestroyImmediate(mesh);
+                _temporary.Clear();
+            }
             public void Oct(Material m, Vector3 p, Vector3 s) => Add(_octagon, m, p, s, Quaternion.identity);
             public void Oct(Material m, Vector3 p, Vector3 s, Quaternion q) => Add(_octagon, m, p, s, q);
             public void Shield(Material m, Vector3 p, Vector3 s) => Add(_shield, m, p, s, Quaternion.identity);

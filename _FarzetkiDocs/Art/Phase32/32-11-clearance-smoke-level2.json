@@ -1,0 +1,37 @@
+{
+    "status": "passed",
+    "reason": "Idle and missed shot held; real projectile impact released the gate and changed the puzzle.",
+    "startedUtc": "2026-10-02T16:58:12.9744212Z",
+    "finishedUtc": "2026-10-02T16:58:19.5027162Z",
+    "hitTargetName": "PF_wood(Clone)",
+    "passed": true,
+    "idleHeld": true,
+    "missHeld": true,
+    "releasedOnImpact": true,
+    "level": 2,
+    "objects": 16,
+    "heldBodies": 16,
+    "ballsBefore": 25,
+    "ballsAfter": 23,
+    "firesBefore": 0,
+    "firesAfter": 2,
+    "projectileHits": 2,
+    "removedObjects": 0,
+    "idleSeconds": 3.0399932861328127,
+    "missSeconds": 3.0400009155273439,
+    "hitSeconds": 0.4199981689453125,
+    "totalSeconds": 6.499992370605469,
+    "maxIdleDisplacement": 0.0,
+    "maxMissDisplacement": 0.0,
+    "maxHitDisplacement": 0.02132846601307392,
+    "missTarget": {
+        "x": 12.0,
+        "y": 8.0,
+        "z": 8.0
+    },
+    "hitTarget": {
+        "x": 0.0,
+        "y": 1.8450000286102296,
+        "z": 7.5
+    }
+}

@@ -1,0 +1,86 @@
+{
+  "capturedUtc": "2026-10-03T09:59:24.1571661Z",
+  "backupRoot": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924",
+  "project": [
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scenes__MainMenu.unity",
+      "sha256": "A9EE6FBC450D1E1D8C73B791F19BB7403C67FBBC269AD6AB78E09BDDE4CC9E8A"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scenes__MainMenu.unity.meta",
+      "sha256": "3335FB2E82D70AA7BB093DF7017952847C954492249682D6138AEC223C5A59ED"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainGame.unity",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scenes__MainGame.unity",
+      "sha256": "89E3BD56247260500D53678B2F02B8DFC59C21254F9035CAA062B2AA3F9972DC"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__ScriptableObjects__Config__ShopConfig.asset",
+      "sha256": "7712A0DA5DF5E280607B5F74D74A774B3A262C7D3134BF9FC4E2EC8787BFC20A"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__ScriptableObjects__Config__ShopConfig.asset.meta",
+      "sha256": "6CCA9BBCD0262139101CF908BA66CB7402DAA028862633DFE1BE3C69C4594353"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopPresentationConfig.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__ScriptableObjects__Config__ShopPresentationConfig.asset",
+      "sha256": "78D66641B9085DC924B378A76615E00D1FECA1E8776A0226AD79D3FC1FF2AEBF"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopItemCardUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scripts__UI__ShopItemCardUI.cs",
+      "sha256": "6ADB6A21655D38D262322B1239B08D33645EED6166BCFD29260FBF1547B8FB27"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scripts__UI__ShopUI.cs",
+      "sha256": "DE73E3AA44D736C762411459FFBD50E9AB3B4F9E1643765D972E2D39157A24C3"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopPresentationConfig.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scripts__UI__ShopPresentationConfig.cs",
+      "sha256": "46F9321646406469B5213B7E925FC9DFF229310CCC20D3BC38BC94F163D89430"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/BottomNavigationUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scripts__UI__BottomNavigationUI.cs",
+      "sha256": "74E21090E0A1A1CA0365DDE7849775F40F2C4F22B2A5D8BF67ABE633AA700E8B"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/IAPManager.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scripts__Economy__IAPManager.cs",
+      "sha256": "C635657D2DECDD298C84EA303F0E1F62322D3ED67650FDDABF7CD88EE4EEF386"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/ShopConfig.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Scripts__Economy__ShopConfig.cs",
+      "sha256": "D5E84C34B0A26C21AB752EA695E7E6CC69AA40333071F02E24BB9DD3E0ED107B"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets__TextMesh Pro__Examples & Extras__Resources__Fonts & Materials__Roboto-Bold SDF.asset",
+      "sha256": "DE666F266EF930045D40C64E9A5414307E85881E1B54D9F1EFCE15A91041521C"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets__TextMesh Pro__Resources__Fonts & Materials__LiberationSans SDF - Fallback.asset",
+      "sha256": "8CAD4B078C4B7CC977140A9BAE4A4A899D1F30BDEA11FD2A05821D13B2B11034"
+    },
+    {
+      "path": "Assets/_Project/Fonts/Fazo_Font_Blueoutline.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Fonts__Fazo_Font_Blueoutline.asset",
+      "sha256": "60E840234FC8765D6D7472A156057FB95DBE58C15F35D8C5AFEDA959B6E9DE58"
+    },
+    {
+      "path": "Assets/_Project/Fonts/Fazo_Font_Settings.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Continuation-20261003-125924\\Assets___Project__Fonts__Fazo_Font_Settings.asset",
+      "sha256": "637BC778CD00FABEC1057269327736A44FE4B3E971D70F04EF9CB507016B944E"
+    }
+  ]
+}

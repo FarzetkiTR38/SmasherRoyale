@@ -1,0 +1,612 @@
+{
+  "capturedUtc": "2026-10-02T17:37:03.0902591Z",
+  "scope": "Windows Unity Editor, final V2 metal/rounded mesh assets, 60 distinct warm idle Play frames. Includes editor rendering/shadows; not a mobile-device FPS certification.",
+  "level": 30,
+  "width": 1080,
+  "height": 1920,
+  "pipeline": "Mobile_RPAsset",
+  "renderScale": 0.8,
+  "realtimeReflectionProbes": false,
+  "samples": [
+    {
+      "frame": 26807,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0459078,
+      "renderTime": 0.0031986
+    },
+    {
+      "frame": 26808,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455066,
+      "renderTime": 0.0032174
+    },
+    {
+      "frame": 26809,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0457262,
+      "renderTime": 0.0030547
+    },
+    {
+      "frame": 26810,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0459137,
+      "renderTime": 0.0030035
+    },
+    {
+      "frame": 26811,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455144,
+      "renderTime": 0.0030851
+    },
+    {
+      "frame": 26812,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456448,
+      "renderTime": 0.0029441
+    },
+    {
+      "frame": 26813,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0459529,
+      "renderTime": 0.0033136
+    },
+    {
+      "frame": 26814,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455917,
+      "renderTime": 0.0033446
+    },
+    {
+      "frame": 26815,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0454369,
+      "renderTime": 0.0031122
+    },
+    {
+      "frame": 26816,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0506019,
+      "renderTime": 0.0031663
+    },
+    {
+      "frame": 26817,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0405858,
+      "renderTime": 0.0007626
+    },
+    {
+      "frame": 26818,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455878,
+      "renderTime": 0.0030799
+    },
+    {
+      "frame": 26819,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456964,
+      "renderTime": 0.003671
+    },
+    {
+      "frame": 26820,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456585,
+      "renderTime": 0.0028983
+    },
+    {
+      "frame": 26821,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455583,
+      "renderTime": 0.0028628
+    },
+    {
+      "frame": 26822,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0461138,
+      "renderTime": 0.0029634
+    },
+    {
+      "frame": 26823,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0450158,
+      "renderTime": 0.0027417
+    },
+    {
+      "frame": 26824,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455695,
+      "renderTime": 0.0032204
+    },
+    {
+      "frame": 26825,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.045384,
+      "renderTime": 0.0030457
+    },
+    {
+      "frame": 26826,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0459007,
+      "renderTime": 0.0075208
+    },
+    {
+      "frame": 26827,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0458408,
+      "renderTime": 0.0031668
+    },
+    {
+      "frame": 26828,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0457136,
+      "renderTime": 0.0033931
+    },
+    {
+      "frame": 26829,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.045403,
+      "renderTime": 0.003347
+    },
+    {
+      "frame": 26830,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0457581,
+      "renderTime": 0.0029954
+    },
+    {
+      "frame": 26831,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456202,
+      "renderTime": 0.0035374
+    },
+    {
+      "frame": 26832,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456267,
+      "renderTime": 0.0029378
+    },
+    {
+      "frame": 26833,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0458,
+      "renderTime": 0.003127
+    },
+    {
+      "frame": 26834,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0457332,
+      "renderTime": 0.002592
+    },
+    {
+      "frame": 26835,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.045753,
+      "renderTime": 0.0030293
+    },
+    {
+      "frame": 26836,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456718,
+      "renderTime": 0.007771
+    },
+    {
+      "frame": 26837,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0458874,
+      "renderTime": 0.0026676
+    },
+    {
+      "frame": 26838,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0459971,
+      "renderTime": 0.0029283
+    },
+    {
+      "frame": 26839,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0457016,
+      "renderTime": 0.0033552
+    },
+    {
+      "frame": 26840,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0460191,
+      "renderTime": 0.0018621
+    },
+    {
+      "frame": 26841,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.045724,
+      "renderTime": 0.0033681
+    },
+    {
+      "frame": 26842,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0460502,
+      "renderTime": 0.0046259
+    },
+    {
+      "frame": 26843,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0458674,
+      "renderTime": 0.0030518
+    },
+    {
+      "frame": 26844,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456814,
+      "renderTime": 0.0028298
+    },
+    {
+      "frame": 26845,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0457542,
+      "renderTime": 0.002656
+    },
+    {
+      "frame": 26846,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0459384,
+      "renderTime": 0.0025224
+    },
+    {
+      "frame": 26847,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0482703,
+      "renderTime": 0.0024712
+    },
+    {
+      "frame": 26848,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0433362,
+      "renderTime": 0.0082662
+    },
+    {
+      "frame": 26849,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.04604,
+      "renderTime": 0.0026589
+    },
+    {
+      "frame": 26850,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0461549,
+      "renderTime": 0.0027043
+    },
+    {
+      "frame": 26851,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0451035,
+      "renderTime": 0.0020585
+    },
+    {
+      "frame": 26852,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456981,
+      "renderTime": 0.002641
+    },
+    {
+      "frame": 26853,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0512618,
+      "renderTime": 0.0084309
+    },
+    {
+      "frame": 26854,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0403828,
+      "renderTime": 0.0026404
+    },
+    {
+      "frame": 26855,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0458322,
+      "renderTime": 0.0036716
+    },
+    {
+      "frame": 26856,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455539,
+      "renderTime": 0.002583
+    },
+    {
+      "frame": 26857,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0488095,
+      "renderTime": 0.0028329
+    },
+    {
+      "frame": 26858,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0454254,
+      "renderTime": 0.0191053
+    },
+    {
+      "frame": 26859,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0445113,
+      "renderTime": 0.0031704
+    },
+    {
+      "frame": 26860,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0459053,
+      "renderTime": 0.0077282
+    },
+    {
+      "frame": 26861,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0446245,
+      "renderTime": 0.0066937
+    },
+    {
+      "frame": 26862,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0449039,
+      "renderTime": 0.0019226
+    },
+    {
+      "frame": 26863,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456335,
+      "renderTime": 0.0093164
+    },
+    {
+      "frame": 26864,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456961,
+      "renderTime": 0.0093152
+    },
+    {
+      "frame": 26865,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0456804,
+      "renderTime": 0.0042879
+    },
+    {
+      "frame": 26866,
+      "drawCalls": 376,
+      "setPassCalls": 42,
+      "triangles": 327508,
+      "vertices": 690806,
+      "shadowCasters": 171,
+      "frameTime": 0.0455775,
+      "renderTime": 0.0031444
+    }
+  ]
+}

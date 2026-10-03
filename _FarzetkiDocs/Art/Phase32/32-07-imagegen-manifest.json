@@ -1,0 +1,11 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "generate",
+  "prompt": "Use case: stylized-concept. Asset type: seamless tileable albedo texture for wooden crate planks in a polished 3D fantasy mobile game. Create a square full-bleed texture of clean warm honey oak, grain running vertically. Golden medium brown and amber, subtle caramel darker fine grain and gently wavy growth lines, a few small elegant knots, readable hand-painted material detail at small gameplay scale. Match premium fantasy castle crates with blue and gold hardware, but ONLY wood surface in this texture. Orthographic straight-on continuous solid wood field, flat diffuse lighting, no perspective, no cast shadow, no specular highlights, no ambient occlusion, no vignette, no planks or gaps or seams, no trim, nails, metal, text, icons, objects or background. Balanced restrained contrast, warmer richer brown rather than flat bright orange; it will be lit and separated into modeled planks by Unity. Ensure all four edges tile seamlessly, vertically oriented grain. Opaque PNG.",
+  "output": "Assets/_Project/Art/SkyCitadel/Textures/T_CitadelWood_Reference.png",
+  "source": "C:/Users/Farzetki/.codex/generated_images/01a0bfa3-57f0-7130-a86e-d16793ced969/exec-2aaca893-3376-4b2d-81ab-08460a28d3b0.png",
+  "sourceDimensions": [
+    1254,
+    1254
+  ]
+}

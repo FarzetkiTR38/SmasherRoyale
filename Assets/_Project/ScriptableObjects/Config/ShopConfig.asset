@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ShopConfig
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Economy.ShopConfig
   LimitedTimeOffer:
-    Id: limited_deal
-    ProductId: com.royalsmash.limited_deal
+    Id: deal_kings_royal
+    ProductId: deal_kings_royal
     Title: King's Royal Deal
-    Description: 3,500 Gold + 10 Mega Balls + 10 Infinity Balls
+    Description: "3.500 Alt\u0131n + 10 Sonsuz Top + 10 Mega Top"
     ItemType: 3
     Currency: 0
     PriceString: $4.99
@@ -27,12 +27,12 @@ MonoBehaviour:
     GrantsNoAds: 0
     Icon: {fileID: 0}
     ThemeColor: {r: 1, g: 0.85, b: 0.2, a: 1}
-    BadgeText: 60% OFF
+    BadgeText: "%60 \u0130ND\u0130R\u0130M"
   NoAdsItem:
-    Id: no_ads
-    ProductId: com.royalsmash.no_ads
+    Id: no_ads_pass
+    ProductId: noadspass
     Title: No Ads Pass
-    Description: Permanently remove all forced interstitial ads!
+    Description: "Zorunlu reklamlar\u0131 \xF6m\xFCr boyu kald\u0131r\u0131n!"
     ItemType: 4
     Currency: 0
     PriceString: $2.99
@@ -42,135 +42,75 @@ MonoBehaviour:
     InfinityBallReward: 0
     GrantsNoAds: 1
     Icon: {fileID: 0}
-    ThemeColor: {r: 0.9, g: 0.35, b: 0.35, a: 1}
-    BadgeText: LIFETIME
+    ThemeColor: {r: 0.95, g: 0.35, b: 0.35, a: 1}
+    BadgeText: "\xD6M\xDCR BOYU"
   GoldPacks:
-  - Id: gold_pouch
-    ProductId: com.royalsmash.gold_pouch
-    Title: Pouch of Gold
-    Description: 500 Gold
+  - Id: gold_pouch_800
+    ProductId: gold_douch_800
+    Title: "Alt\u0131n \xC7antas\u0131"
+    Description: "800 Alt\u0131n"
     ItemType: 0
     Currency: 0
     PriceString: $0.99
     CostInGold: 0
-    GoldReward: 500
+    GoldReward: 800
     MegaBallReward: 0
     InfinityBallReward: 0
     GrantsNoAds: 0
     Icon: {fileID: 0}
     ThemeColor: {r: 0.95, g: 0.75, b: 0.2, a: 1}
     BadgeText: 
-  - Id: gold_chest
-    ProductId: com.royalsmash.gold_chest
-    Title: Chest of Gold
-    Description: 1,500 Gold
+  - Id: gold_chest_1600
+    ProductId: gold_chest_1600
+    Title: "Alt\u0131n Sand\u0131\u011F\u0131"
+    Description: "1.600 Alt\u0131n"
     ItemType: 0
     Currency: 0
     PriceString: $2.99
     CostInGold: 0
-    GoldReward: 1500
+    GoldReward: 1600
     MegaBallReward: 0
     InfinityBallReward: 0
     GrantsNoAds: 0
     Icon: {fileID: 0}
     ThemeColor: {r: 0.95, g: 0.8, b: 0.2, a: 1}
-    BadgeText: +10% BONUS
-  - Id: gold_vault
-    ProductId: com.royalsmash.gold_vault
-    Title: Vault of Gold
-    Description: 5,000 Gold
-    ItemType: 0
-    Currency: 0
-    PriceString: $7.99
-    CostInGold: 0
-    GoldReward: 5000
-    MegaBallReward: 0
-    InfinityBallReward: 0
-    GrantsNoAds: 0
-    Icon: {fileID: 0}
-    ThemeColor: {r: 1, g: 0.85, b: 0.25, a: 1}
-    BadgeText: +25% BONUS
-  - Id: gold_treasury
-    ProductId: com.royalsmash.gold_treasury
-    Title: Royal Treasury
-    Description: 15,000 Gold
-    ItemType: 0
-    Currency: 0
-    PriceString: $19.99
-    CostInGold: 0
-    GoldReward: 15000
-    MegaBallReward: 0
-    InfinityBallReward: 0
-    GrantsNoAds: 0
-    Icon: {fileID: 0}
-    ThemeColor: {r: 1, g: 0.9, b: 0.3, a: 1}
-    BadgeText: BEST VALUE
+    BadgeText: +%10 BONUS
   SkillPacks:
   - Id: skill_mega_5
-    ProductId: com.royalsmash.skill_mega_5
-    Title: Mega Ball (5x)
-    Description: +5 Mega Ball uses
+    ProductId: skill_mega_5
+    Title: Mega Top (x5)
+    Description: +5 Mega Top
     ItemType: 1
-    Currency: 1
-    PriceString: 200 Gold
-    CostInGold: 200
+    Currency: 0
+    PriceString: $4.99
+    CostInGold: 0
     GoldReward: 0
     MegaBallReward: 5
     InfinityBallReward: 0
     GrantsNoAds: 0
     Icon: {fileID: 0}
     ThemeColor: {r: 0.95, g: 0.45, b: 0.2, a: 1}
-    BadgeText: 
+    BadgeText: +%20 BONUS
   - Id: skill_infinity_5
-    ProductId: com.royalsmash.skill_infinity_5
-    Title: Infinity Ball (5x)
-    Description: +5 Infinity Ball uses
+    ProductId: skill_infinity_5
+    Title: Sonsuz Top (x5)
+    Description: +5 Sonsuz Top
     ItemType: 1
-    Currency: 1
-    PriceString: 300 Gold
-    CostInGold: 300
+    Currency: 0
+    PriceString: $6.99
+    CostInGold: 0
     GoldReward: 0
     MegaBallReward: 0
     InfinityBallReward: 5
     GrantsNoAds: 0
     Icon: {fileID: 0}
     ThemeColor: {r: 0.3, g: 0.75, b: 0.95, a: 1}
-    BadgeText: 
-  - Id: skill_mega_15
-    ProductId: com.royalsmash.skill_mega_15
-    Title: Mega Ball (15x)
-    Description: +15 Mega Ball uses
-    ItemType: 1
-    Currency: 1
-    PriceString: 500 Gold
-    CostInGold: 500
-    GoldReward: 0
-    MegaBallReward: 15
-    InfinityBallReward: 0
-    GrantsNoAds: 0
-    Icon: {fileID: 0}
-    ThemeColor: {r: 0.95, g: 0.45, b: 0.2, a: 1}
-    BadgeText: +20% BONUS
-  - Id: skill_infinity_15
-    ProductId: com.royalsmash.skill_infinity_15
-    Title: Infinity Ball (15x)
-    Description: +15 Infinity Ball uses
-    ItemType: 1
-    Currency: 1
-    PriceString: 750 Gold
-    CostInGold: 750
-    GoldReward: 0
-    MegaBallReward: 0
-    InfinityBallReward: 15
-    GrantsNoAds: 0
-    Icon: {fileID: 0}
-    ThemeColor: {r: 0.3, g: 0.75, b: 0.95, a: 1}
-    BadgeText: +20% BONUS
+    BadgeText: +%20 BONUS
   Bundles:
   - Id: bundle_warrior
-    ProductId: com.royalsmash.bundle_warrior
-    Title: Warrior Bundle
-    Description: 2,000 Gold + 5 Mega + 5 Infinity
+    ProductId: bundle_warrior
+    Title: "Sava\u015F\xE7\u0131 Paketi"
+    Description: "2.000 Alt\u0131n + 5 Mega Top + 5 Sonsuz Top"
     ItemType: 2
     Currency: 0
     PriceString: $4.99
@@ -181,19 +121,19 @@ MonoBehaviour:
     GrantsNoAds: 0
     Icon: {fileID: 0}
     ThemeColor: {r: 0.85, g: 0.4, b: 0.85, a: 1}
-    BadgeText: POPULAR
+    BadgeText: +%40 BONUS
   - Id: bundle_champion
-    ProductId: com.royalsmash.bundle_champion
-    Title: Champion Bundle
-    Description: 6,000 Gold + 15 Mega + 15 Infinity
+    ProductId: bundle_champion
+    Title: "\u015Eampiyon Paketi"
+    Description: "8.000 Alt\u0131n + 15 Mega Top + 15 Sonsuz Top"
     ItemType: 2
     Currency: 0
     PriceString: $11.99
     CostInGold: 0
-    GoldReward: 6000
+    GoldReward: 8000
     MegaBallReward: 15
     InfinityBallReward: 15
     GrantsNoAds: 0
     Icon: {fileID: 0}
     ThemeColor: {r: 0.95, g: 0.75, b: 0.25, a: 1}
-    BadgeText: ULTIMATE
+    BadgeText: +%50 BONUS

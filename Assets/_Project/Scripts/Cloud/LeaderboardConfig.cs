@@ -49,8 +49,9 @@ namespace RoyalSmash.Cloud
 
             for (int i = 0; i < _defaultMockCompetitorCount && i < RoyalNames.Length; i++)
             {
-                // Top competitors range from level 30 down to level 1
-                int level = Mathf.Max(1, 30 - (i * 28 / _defaultMockCompetitorCount));
+                // Top competitors range realistically from level 29 down to level 2
+                int countMinusOne = Mathf.Max(1, _defaultMockCompetitorCount - 1);
+                int level = Mathf.Clamp(29 - (i * 27 / countMinusOne), 2, 29);
                 int avatar = rnd.Next(0, 8);
                 int frame = rnd.Next(0, 4);
                 string id = $"bot_{i + 1:D3}";

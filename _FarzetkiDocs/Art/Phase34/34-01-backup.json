@@ -1,0 +1,79 @@
+{
+  "capturedUtc": "2026-10-03T09:23:20.9673914Z",
+  "backupRoot": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320",
+  "playerBackup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\PlayerSave-Baseline",
+  "project": [
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scenes__MainMenu.unity",
+      "sha256": "340813DCD232A7BE66378ED95D5D89FA47F6D3283CA92E83E502A9BE0D302ED6"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scenes__MainMenu.unity.meta",
+      "sha256": "3335FB2E82D70AA7BB093DF7017952847C954492249682D6138AEC223C5A59ED"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainGame.unity",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scenes__MainGame.unity",
+      "sha256": "89E3BD56247260500D53678B2F02B8DFC59C21254F9035CAA062B2AA3F9972DC"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__ScriptableObjects__Config__ShopConfig.asset",
+      "sha256": "7712A0DA5DF5E280607B5F74D74A774B3A262C7D3134BF9FC4E2EC8787BFC20A"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__ScriptableObjects__Config__ShopConfig.asset.meta",
+      "sha256": "6CCA9BBCD0262139101CF908BA66CB7402DAA028862633DFE1BE3C69C4594353"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopItemCardUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scripts__UI__ShopItemCardUI.cs",
+      "sha256": "7E9337338291E4186B608F6E898987D80284755E495C1C9A7100FC3B2CADE1A6"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scripts__UI__ShopUI.cs",
+      "sha256": "DE73E3AA44D736C762411459FFBD50E9AB3B4F9E1643765D972E2D39157A24C3"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/BottomNavigationUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scripts__UI__BottomNavigationUI.cs",
+      "sha256": "74E21090E0A1A1CA0365DDE7849775F40F2C4F22B2A5D8BF67ABE633AA700E8B"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/IAPManager.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scripts__Economy__IAPManager.cs",
+      "sha256": "C635657D2DECDD298C84EA303F0E1F62322D3ED67650FDDABF7CD88EE4EEF386"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/ShopConfig.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-20261003-092320\\Assets___Project__Scripts__Economy__ShopConfig.cs",
+      "sha256": "A621355149C24F3AA13A0CA399865BD7F06AB6235620DC4D488E9781F1283576"
+    }
+  ],
+  "playerFiles": [
+    {
+      "file": "leaderboard_cache.json",
+      "sha256": "8499C1BD93FEC09F7EDB7C89C73429C51AE4A5AAE7796B3428F752D1ADA8A094"
+    },
+    {
+      "file": "live_cloud_device_saves.json",
+      "sha256": "C137E638D2955FAF88C91D4BA6607ADD5D0F73C3CC4EA9EFDC4D3328C37D0874"
+    },
+    {
+      "file": "live_cloud_leaderboard.json",
+      "sha256": "FFBE4E4C5ACC21A9EEFFEDA922FD682D0FA483E5DB296CF3CB7A0AFD14CE4345"
+    },
+    {
+      "file": "player_save_backup.json",
+      "sha256": "CE68135177A7BBA0CEBA8540E082B835BA9F97DBC58315BE1822A68E35D49B63"
+    },
+    {
+      "file": "player_save.json",
+      "sha256": "7F3BE60F510B02145A7A6AE99B7ABF44459907F5DB839D4F52762D886387E69A"
+    }
+  ]
+}

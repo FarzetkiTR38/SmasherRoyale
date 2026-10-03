@@ -134,17 +134,22 @@ namespace RoyalSmash.Cloud
                 return;
             }
 
+            // Always back up to persistent device cloud store (serves as resilient local cloud cache)
+            string deviceId = !string.IsNullOrEmpty(localData.DeviceId) ? localData.DeviceId : RoyalSmash.Utils.DeviceIdProvider.GetDeviceId();
+            SharedCloudSaveStore.SaveDeviceProgress(deviceId, localData);
+
             if (!IsOnline)
             {
-                Debug.LogWarning("[UGSCloudProvider] SyncProgress aborted: Device is offline.");
-                onComplete?.Invoke(false, "Offline");
+                Debug.LogWarning("[UGSCloudProvider] SyncProgress network offline: cached to SharedCloudSaveStore.");
+                onComplete?.Invoke(true, "Saved to offline cloud cache");
                 return;
             }
 
             bool ready = await EnsureInitializedAsync();
             if (!ready)
             {
-                onComplete?.Invoke(false, "UGS services unavailable");
+                Debug.LogWarning("[UGSCloudProvider] UGS services unavailable: cached to SharedCloudSaveStore.");
+                onComplete?.Invoke(true, "Saved to cloud cache");
                 return;
             }
 
@@ -177,6 +182,99 @@ namespace RoyalSmash.Cloud
             {
                 Debug.LogWarning($"[UGSCloudProvider] SyncProgress failed: {ex.Message}");
                 onComplete?.Invoke(false, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the saved player progress from Unity Cloud Save for this account/device.
+        /// </summary>
+        public async void LoadProgress(string deviceId, Action<bool, PlayerSaveData, string> onComplete)
+        {
+            if (string.IsNullOrEmpty(deviceId))
+            {
+                deviceId = RoyalSmash.Utils.DeviceIdProvider.GetDeviceId();
+            }
+
+            if (!IsOnline)
+            {
+                if (SharedCloudSaveStore.HasDeviceProgress(deviceId))
+                {
+                    var fallback = SharedCloudSaveStore.LoadDeviceProgress(deviceId);
+                    if (fallback != null)
+                    {
+                        onComplete?.Invoke(true, fallback, "Success from offline fallback");
+                        return;
+                    }
+                }
+                onComplete?.Invoke(false, null, "Offline");
+                return;
+            }
+
+            bool ready = await EnsureInitializedAsync();
+            if (!ready)
+            {
+                // Fallback to SharedCloudSaveStore if UGS is unavailable or in editor without login
+                if (SharedCloudSaveStore.HasDeviceProgress(deviceId))
+                {
+                    var fallback = SharedCloudSaveStore.LoadDeviceProgress(deviceId);
+                    if (fallback != null)
+                    {
+                        onComplete?.Invoke(true, fallback, "Success from fallback");
+                        return;
+                    }
+                }
+
+                onComplete?.Invoke(false, null, "UGS services unavailable");
+                return;
+            }
+
+            try
+            {
+                var keys = new HashSet<string> { SAVE_DATA_KEY };
+                var playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(keys);
+
+                if (playerData != null && playerData.TryGetValue(SAVE_DATA_KEY, out var item))
+                {
+                    string json = item.Value.GetAsString();
+                    if (!string.IsNullOrEmpty(json))
+                    {
+                        var data = JsonUtility.FromJson<PlayerSaveData>(json);
+                        if (data != null)
+                        {
+                            Debug.Log($"[UGSCloudProvider] Successfully loaded player save from Unity Cloud Save (Level {data.CurrentLevel}).");
+                            onComplete?.Invoke(true, data, "Success");
+                            return;
+                        }
+                    }
+                }
+
+                // Fallback to local SharedCloudSaveStore if available
+                if (SharedCloudSaveStore.HasDeviceProgress(deviceId))
+                {
+                    var fallback = SharedCloudSaveStore.LoadDeviceProgress(deviceId);
+                    if (fallback != null)
+                    {
+                        onComplete?.Invoke(true, fallback, "Success from fallback");
+                        return;
+                    }
+                }
+
+                onComplete?.Invoke(false, null, "No cloud save data found");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[UGSCloudProvider] LoadProgress notice: {ex.Message}");
+                // Fallback to local SharedCloudSaveStore on exception
+                if (SharedCloudSaveStore.HasDeviceProgress(deviceId))
+                {
+                    var fallback = SharedCloudSaveStore.LoadDeviceProgress(deviceId);
+                    if (fallback != null)
+                    {
+                        onComplete?.Invoke(true, fallback, "Success from fallback");
+                        return;
+                    }
+                }
+                onComplete?.Invoke(false, null, ex.Message);
             }
         }
 

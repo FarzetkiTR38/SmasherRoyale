@@ -34,6 +34,7 @@ namespace RoyalSmash.Gameplay
         // State tracking
         private Vector2 _touchStartPosition;
         private Vector2 _lastTouchPosition;
+        private float _touchStartTime;
         private bool _isPressed;
         private bool _isDragging;
         private bool _isPointerOverUI;
@@ -69,6 +70,7 @@ namespace RoyalSmash.Gameplay
                 _isPressed = true;
                 _touchStartPosition = currentPosition;
                 _lastTouchPosition = currentPosition;
+                _touchStartTime = Time.unscaledTime;
                 _isDragging = false;
 
                 // Check if pointer began over a UI element (e.g. skill buttons, pause menu)
@@ -110,7 +112,7 @@ namespace RoyalSmash.Gameplay
 
                 _lastTouchPosition = currentPosition;
             }
-            // 3. Touch / Press Released - Fire!
+            // 3. Touch / Press Released
             else if (!isCurrentlyPressed && _isPressed)
             {
                 _isPressed = false;
@@ -121,13 +123,24 @@ namespace RoyalSmash.Gameplay
                     return;
                 }
 
+                float threshold = _config != null ? _config.DragThresholdPixels : 12f;
+                bool wasDragOrHold = _isDragging 
+                    || (Vector2.Distance(_touchStartPosition, currentPosition) > threshold)
+                    || (Time.unscaledTime - _touchStartTime > 0.35f);
+
                 if (_isDragging)
                 {
                     _isDragging = false;
                     OnDragEnded?.Invoke();
                 }
 
-                // Fire at the aimed/released world coordinate
+                // If user was dragging/moving to aim or holding down, do NOT fire on release!
+                if (wasDragOrHold)
+                {
+                    return;
+                }
+
+                // Fire only on quick click / tap!
                 HandleTap(currentPosition);
             }
         }

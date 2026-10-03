@@ -1,0 +1,37 @@
+{
+    "status": "passed",
+    "reason": "Idle and missed shot held; real projectile impact released the gate and changed the puzzle.",
+    "startedUtc": "2026-10-02T16:58:35.6109780Z",
+    "finishedUtc": "2026-10-02T16:58:42.0423852Z",
+    "hitTargetName": "PF_stone(Clone)",
+    "passed": true,
+    "idleHeld": true,
+    "missHeld": true,
+    "releasedOnImpact": true,
+    "level": 19,
+    "objects": 25,
+    "heldBodies": 25,
+    "ballsBefore": 30,
+    "ballsAfter": 28,
+    "firesBefore": 4,
+    "firesAfter": 6,
+    "projectileHits": 2,
+    "removedObjects": 0,
+    "idleSeconds": 3.0400009155273439,
+    "missSeconds": 3.0400009155273439,
+    "hitSeconds": 0.4199981689453125,
+    "totalSeconds": 6.5,
+    "maxIdleDisplacement": 0.0,
+    "maxMissDisplacement": 0.0,
+    "maxHitDisplacement": 0.03184325993061066,
+    "missTarget": {
+        "x": 12.0,
+        "y": 8.0,
+        "z": 8.0
+    },
+    "hitTarget": {
+        "x": -0.3774999976158142,
+        "y": 1.8450000286102296,
+        "z": 7.5
+    }
+}

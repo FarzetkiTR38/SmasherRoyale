@@ -1,0 +1,423 @@
+{
+  "capturedUtc": "2026-10-03T09:11:58.7625612Z",
+  "scope": "Read-only MainMenu preview scene inventory, no runtime or purchases",
+  "shopChildren": [
+    {
+      "name": "DimBackground",
+      "parent": "ShopPage",
+      "image": null,
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FrameBackground",
+      "parent": "ShopFrameContainer",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Frame_Shop.png",
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "HeaderLogo",
+      "parent": "ShopFrameContainer",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Logo_RoyalBazar.png",
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        -65.0
+      ],
+      "size": [
+        640.0,
+        300.0
+      ]
+    },
+    {
+      "name": "CloseButton",
+      "parent": "ShopFrameContainer",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Button_Close.png",
+      "text": null,
+      "cardItem": null,
+      "button": true,
+      "anchored": [
+        -60.0,
+        -95.0
+      ],
+      "size": [
+        100.0,
+        100.0
+      ]
+    },
+    {
+      "name": "Card_KingsDeal",
+      "parent": "Content",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Card_KingsDeal.png",
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        271.0
+      ]
+    },
+    {
+      "name": "TimerText",
+      "parent": "Card_KingsDeal",
+      "image": null,
+      "text": "23:59:55",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        -225.0,
+        -107.0
+      ],
+      "size": [
+        130.0,
+        36.0
+      ]
+    },
+    {
+      "name": "BuyButton_Deal",
+      "parent": "Card_KingsDeal",
+      "image": null,
+      "text": null,
+      "cardItem": "deal_kings_royal",
+      "button": true,
+      "anchored": [
+        233.0,
+        -94.0
+      ],
+      "size": [
+        260.0,
+        60.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_Deal",
+      "image": null,
+      "text": "$4.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Card_NoAds",
+      "parent": "Content",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Card_NoAds.png",
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        219.0
+      ]
+    },
+    {
+      "name": "BuyButton_NoAds",
+      "parent": "Card_NoAds",
+      "image": null,
+      "text": null,
+      "cardItem": "no_ads_pass",
+      "button": true,
+      "anchored": [
+        266.0,
+        -70.0
+      ],
+      "size": [
+        210.0,
+        58.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_NoAds",
+      "image": null,
+      "text": "$2.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Section_GoldPacks",
+      "parent": "Content",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Section_GoldPacks.png",
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        219.0
+      ]
+    },
+    {
+      "name": "BuyButton_Pouch",
+      "parent": "Section_GoldPacks",
+      "image": null,
+      "text": null,
+      "cardItem": "gold_pouch_800",
+      "button": true,
+      "anchored": [
+        -106.0,
+        -62.0
+      ],
+      "size": [
+        175.0,
+        49.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_Pouch",
+      "image": null,
+      "text": "$0.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "BuyButton_Chest",
+      "parent": "Section_GoldPacks",
+      "image": null,
+      "text": null,
+      "cardItem": "gold_chest_1600",
+      "button": true,
+      "anchored": [
+        286.0,
+        -62.0
+      ],
+      "size": [
+        170.0,
+        48.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_Chest",
+      "image": null,
+      "text": "$2.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Section_BallPacks",
+      "parent": "Content",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Section_BallPacks.png",
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        218.0
+      ]
+    },
+    {
+      "name": "BuyButton_Mega",
+      "parent": "Section_BallPacks",
+      "image": null,
+      "text": null,
+      "cardItem": "skill_mega_5",
+      "button": true,
+      "anchored": [
+        -99.0,
+        -64.0
+      ],
+      "size": [
+        170.0,
+        48.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_Mega",
+      "image": null,
+      "text": "$4.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "BuyButton_Infinity",
+      "parent": "Section_BallPacks",
+      "image": null,
+      "text": null,
+      "cardItem": "skill_infinity_5",
+      "button": true,
+      "anchored": [
+        292.0,
+        -64.0
+      ],
+      "size": [
+        160.0,
+        46.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_Infinity",
+      "image": null,
+      "text": "$6.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Section_ValueBundles",
+      "parent": "Content",
+      "image": "Assets/_Project/Art/Sprites/UI/Shop/Section_ValueBundles.png",
+      "text": null,
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        276.0
+      ]
+    },
+    {
+      "name": "BuyButton_Warrior",
+      "parent": "Section_ValueBundles",
+      "image": null,
+      "text": null,
+      "cardItem": "bundle_warrior",
+      "button": true,
+      "anchored": [
+        -105.0,
+        -97.0
+      ],
+      "size": [
+        180.0,
+        54.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_Warrior",
+      "image": null,
+      "text": "$4.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "BuyButton_Champion",
+      "parent": "Section_ValueBundles",
+      "image": null,
+      "text": null,
+      "cardItem": "bundle_champion",
+      "button": true,
+      "anchored": [
+        282.0,
+        -98.0
+      ],
+      "size": [
+        184.0,
+        53.0
+      ]
+    },
+    {
+      "name": "PriceText",
+      "parent": "BuyButton_Champion",
+      "image": null,
+      "text": "$11.99",
+      "cardItem": null,
+      "button": false,
+      "anchored": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "cardCount": 8
+}

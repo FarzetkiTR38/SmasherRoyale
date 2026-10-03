@@ -12,14 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded32e3d62c6f1849a444dea1ecf221e, type: 3}
   m_Name: AdConfig
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Ads.AdConfig
-  _enableSimulationMode: 1
+  _waterfallStrategy: 0
+  _enableSimulationMode: 0
   _simulatedAdDuration: 1.5
   _interstitialLevelInterval: 5
   _showInterstitialOnLose: 1
   _interstitialCooldownSeconds: 20
-  _adMobAppIdAndroid: ca-app-pub-3940256099942544~3347511713
-  _interstitialAdUnitIdAndroid: ca-app-pub-3940256099942544/1033173712
-  _rewardedAdUnitIdAndroid: ca-app-pub-3940256099942544/5224354917
+  _bannerPosition: 1
+  _autoShowBannerInMainMenu: 1
+  _adMobAppIdAndroid: ca-app-pub-3581074606829094~9819287835
+  _bannerAdUnitIdAndroid: ca-app-pub-3581074606829094/5880042827
+  _interstitialAdUnitIdAndroid: ca-app-pub-3581074606829094/8701733002
+  _rewardedInterstitialAdUnitIdAndroid: ca-app-pub-3581074606829094/2731135308
+  _rewardedAdUnitIdAndroid: ca-app-pub-3581074606829094/8510161316
   _adMobAppIdIOS: ca-app-pub-3940256099942544~1458002511
-  _interstitialAdUnitIdIOS: ca-app-pub-3940256099942544/4411468910
-  _rewardedAdUnitIdIOS: ca-app-pub-3940256099942544/1712485313
+  _bannerAdUnitIdIOS: ca-app-pub-3581074606829094/5880042827
+  _interstitialAdUnitIdIOS: ca-app-pub-3581074606829094/8701733002
+  _rewardedInterstitialAdUnitIdIOS: ca-app-pub-3581074606829094/2731135308
+  _rewardedAdUnitIdIOS: ca-app-pub-3581074606829094/8510161316
+  _unityAdsGameIdAndroid: 5728491
+  _unityAdsGameIdIOS: 5728490
+  _unityAdsBannerPlacement: Banner_Android
+  _unityAdsInterstitialPlacement: Interstitial_Android
+  _unityAdsRewardedPlacement: Rewarded_Android
+  _unityAdsTestMode: 0

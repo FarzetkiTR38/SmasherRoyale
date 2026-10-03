@@ -139,7 +139,10 @@ namespace RoyalSmash.Editor
             var reflection = AssetDatabase.LoadAssetAtPath<Cubemap>(ReflectionPath);
             if (reflection == null)
                 throw new InvalidOperationException("Baked reflection did not import as a Cubemap.");
-            probe.bakedTexture = reflection;
+            // A manually assigned bakedTexture is not persisted without scene lighting data.
+            // Keep the editor-baked asset in the serialized custom slot across reloads/builds.
+            probe.mode = ReflectionProbeMode.Custom;
+            probe.customBakedTexture = reflection;
             EditorUtility.SetDirty(probe);
             EditorUtility.SetDirty(fill);
 
@@ -156,7 +159,11 @@ namespace RoyalSmash.Editor
         {
             string path = ArtRoot + "/Materials/M_" + name + ".mat";
             var material = AssetDatabase.LoadAssetAtPath<Material>(path);
-            if (material == null || material.shader.name != "Universal Render Pipeline/Lit")
+            bool polishedMetal = material != null && material.shader != null &&
+                (name == "AntiqueGold" || name == "RoyalSapphire") &&
+                material.shader.name == "RoyalSmash/Citadel Polished Metal";
+            if (material == null || material.shader == null ||
+                (material.shader.name != "Universal Render Pipeline/Lit" && !polishedMetal))
                 throw new InvalidOperationException("Expected existing URP Lit material: " + path);
             return material;
         }

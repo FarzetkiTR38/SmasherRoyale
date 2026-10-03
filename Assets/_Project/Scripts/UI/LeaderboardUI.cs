@@ -123,6 +123,20 @@ namespace RoyalSmash.UI
 
             if (entries == null) return;
 
+            // Collect any pre-existing children in _rowContainer into _spawnedRows if not already tracked
+            if (_rowContainer != null)
+            {
+                for (int c = 0; c < _rowContainer.childCount; c++)
+                {
+                    var child = _rowContainer.GetChild(c);
+                    var existingRow = child.GetComponent<LeaderboardEntryRowUI>();
+                    if (existingRow != null && !_spawnedRows.Contains(existingRow))
+                    {
+                        _spawnedRows.Add(existingRow);
+                    }
+                }
+            }
+
             // 2. Clean nulls & Hide existing spawned rows
             _spawnedRows.RemoveAll(r => r == null);
             foreach (var row in _spawnedRows)

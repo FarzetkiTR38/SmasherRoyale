@@ -1,0 +1,67 @@
+{
+  "scope": "Analytical albedo and added-polish contribution only; excludes existing PBR/probe radiance, fog, bloom and tonemapping. Not a rendered visual pass.",
+  "frontFacingNdotL": 0.5674549516354737,
+  "lightDirection": [
+    0.35458516816926033,
+    0.7431448286698628,
+    -0.5674549516354737
+  ],
+  "materials": [
+    {
+      "name": "gold",
+      "baseLinear": [
+        1,
+        0.49190504085677866,
+        0.039681909478526005
+      ],
+      "albedoMinimum": [
+        0.5704161048593184,
+        0.25945910901712843,
+        0.0177647118837194
+      ],
+      "albedoMaximum": [
+        0.9435161048593184,
+        0.46134185683515894,
+        0.03680012386056833
+      ],
+      "maxAddedPolishPlanar": [
+        0.292769454829757,
+        0.1562630535014448,
+        0.03114487533733906
+      ],
+      "maxAddedPolishWithCappedCurvature": [
+        0.35059799636936306,
+        0.1871285154936072,
+        0.03729668758236464
+      ]
+    },
+    {
+      "name": "sapphire",
+      "baseLinear": [
+        0.0019349845201238392,
+        0.024515013703524748,
+        0.34239163959260344
+      ],
+      "albedoMinimum": [
+        0.0011819464411348232,
+        0.016405580352174903,
+        0.26577370522720495
+      ],
+      "albedoMaximum": [
+        0.0018359712089366807,
+        0.023448743789197566,
+        0.3323175203820275
+      ],
+      "maxAddedPolishPlanar": [
+        0.0019498832693148052,
+        0.011414839629534834,
+        0.052931471851047504
+      ],
+      "maxAddedPolishWithCappedCurvature": [
+        0.002374030262363648,
+        0.013897844628446027,
+        0.06444535320824304
+      ]
+    }
+  ]
+}

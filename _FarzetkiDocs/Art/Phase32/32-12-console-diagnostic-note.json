@@ -1,0 +1,10 @@
+{
+  "capturedUtc": "2026-10-02T17:41:18.7580126Z",
+  "runtimeConsoleBeforeDiagnostic": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "diagnosticWarnings": 4,
+  "reason": "One-off final report queried two incorrect polish property names on each material; no asset was changed. Report was corrected to _ShadeTint (Vector) and _HighlightTint (Color). These are diagnostic query warnings, not gameplay or shader compilation failures.",
+  "correctedReport": "32-12-metal-polish-v2-final.json"
+}

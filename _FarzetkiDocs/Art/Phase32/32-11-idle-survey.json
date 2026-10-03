@@ -1,0 +1,3972 @@
+{
+    "status": "passed",
+    "reason": "All 30 layouts remained held and motionless for two real physics seconds each.",
+    "startedUtc": "2026-10-02T17:00:58.4562344Z",
+    "finishedUtc": "2026-10-02T17:02:00.2058031Z",
+    "passed": true,
+    "originalLevel": 27,
+    "captureRun": "20261002-170058456",
+    "scope": "Two real physics seconds per level, no shots. Actual shot/impact behavior requires the separate Phase32VisualVerification smoke test.",
+    "levels": [
+        {
+            "level": 1,
+            "objects": 13,
+            "expectedObjects": 13,
+            "heldBodies": 13,
+            "balls": 50,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 1,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 13,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2983124256134033,
+                    "y": 0.5097589492797852,
+                    "width": 0.40337514877319338,
+                    "height": 0.18148386478424073
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.0923752635717392,
+                    "y": 0.41181427240371706,
+                    "width": 0.8152494430541992,
+                    "height": 0.10715043544769287
+                },
+                "screenshot": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\_FarzetkiDocs\\Art\\Phase32\\32-11-idle-level01-1080x2400-20261002-170058456.png",
+                "screenshotExists": true,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "50",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "1",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "objects": 16,
+            "expectedObjects": 16,
+            "heldBodies": 16,
+            "balls": 25,
+            "seconds": 2.0200042724609377,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 2,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 16,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2790547013282776,
+                    "y": 0.5084714293479919,
+                    "width": 0.4418905973434448,
+                    "height": 0.1575404405593872
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.423448771238327,
+                    "width": 0.9199999570846558,
+                    "height": 0.09301391243934632
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "25",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "2",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "objects": 16,
+            "expectedObjects": 16,
+            "heldBodies": 16,
+            "balls": 25,
+            "seconds": 2.0399932861328127,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 3,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 16,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.26267769932746889,
+                    "y": 0.5091773867607117,
+                    "width": 0.47464457154273989,
+                    "height": 0.17066878080368043
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.4170694947242737,
+                    "width": 0.9199999570846558,
+                    "height": 0.10076504945755005
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "25",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "3",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "objects": 18,
+            "expectedObjects": 18,
+            "heldBodies": 18,
+            "balls": 26,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 4,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 18,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.22872930765151978,
+                    "y": 0.50881028175354,
+                    "width": 0.5425413846969605,
+                    "height": 0.2066725492477417
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.42038673162460329,
+                    "width": 0.9199999570846558,
+                    "height": 0.09673446416854859
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "26",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "4",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "objects": 18,
+            "expectedObjects": 18,
+            "heldBodies": 18,
+            "balls": 26,
+            "seconds": 2.019989013671875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 5,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 18,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.24882344901561738,
+                    "y": 0.5081576704978943,
+                    "width": 0.5023530721664429,
+                    "height": 0.19136351346969605
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.4262840151786804,
+                    "width": 0.9199999570846558,
+                    "height": 0.08956891298294068
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "26",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "5",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 6,
+            "objects": 18,
+            "expectedObjects": 18,
+            "heldBodies": 18,
+            "balls": 26,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 6,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 18,
+                "standCount": 2,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.20049278438091279,
+                    "y": 0.5072618126869202,
+                    "width": 0.599014401435852,
+                    "height": 0.17034757137298585
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.4343796372413635,
+                    "width": 0.9199999570846558,
+                    "height": 0.07973229885101319
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "26",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "6",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 7,
+            "objects": 20,
+            "expectedObjects": 20,
+            "heldBodies": 20,
+            "balls": 26,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 7,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 20,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.23916275799274445,
+                    "y": 0.5084714293479919,
+                    "width": 0.5216745138168335,
+                    "height": 0.1987236738204956
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.423448771238327,
+                    "width": 0.9199999570846558,
+                    "height": 0.09301391243934632
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "26",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "7",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 8,
+            "objects": 20,
+            "expectedObjects": 20,
+            "heldBodies": 20,
+            "balls": 26,
+            "seconds": 2.019989013671875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 8,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 20,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2702169418334961,
+                    "y": 0.50881028175354,
+                    "width": 0.4595661163330078,
+                    "height": 0.2066725492477417
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.42038673162460329,
+                    "width": 0.9199999570846558,
+                    "height": 0.09673446416854859
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "26",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "8",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 9,
+            "objects": 20,
+            "expectedObjects": 20,
+            "heldBodies": 20,
+            "balls": 26,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 9,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 20,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.25364014506340029,
+                    "y": 0.5078663229942322,
+                    "width": 0.4927196800708771,
+                    "height": 0.18452906608581544
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000008478760719,
+                    "y": 0.42891672253608706,
+                    "width": 0.9199998378753662,
+                    "height": 0.08637002110481262
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "26",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "9",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 10,
+            "objects": 22,
+            "expectedObjects": 22,
+            "heldBodies": 22,
+            "balls": 28,
+            "seconds": 2.03997802734375,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 10,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 22,
+                "standCount": 2,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.19787968695163728,
+                    "y": 0.5072618126869202,
+                    "width": 0.6042406558990479,
+                    "height": 0.17034757137298585
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.4343796372413635,
+                    "width": 0.9199999570846558,
+                    "height": 0.07973229885101319
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "28",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 11,
+            "objects": 20,
+            "expectedObjects": 20,
+            "heldBodies": 20,
+            "balls": 27,
+            "seconds": 2.02001953125,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 11,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 20,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.23694507777690888,
+                    "y": 0.5084714293479919,
+                    "width": 0.5261098146438599,
+                    "height": 0.1575404405593872
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.423448771238327,
+                    "width": 0.9199999570846558,
+                    "height": 0.09301391243934632
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "27",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "11",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 12,
+            "objects": 21,
+            "expectedObjects": 21,
+            "heldBodies": 21,
+            "balls": 27,
+            "seconds": 2.03997802734375,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 12,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 21,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2466879040002823,
+                    "y": 0.5081576704978943,
+                    "width": 0.5066242218017578,
+                    "height": 0.19136351346969605
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.4262840151786804,
+                    "width": 0.9199999570846558,
+                    "height": 0.08956891298294068
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "27",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "12",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 13,
+            "objects": 22,
+            "expectedObjects": 22,
+            "heldBodies": 22,
+            "balls": 28,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 13,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 22,
+                "standCount": 2,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.23515519499778748,
+                    "y": 0.5040804743766785,
+                    "width": 0.5296896696090698,
+                    "height": 0.2826348543167114
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.06809693574905396,
+                    "y": 0.3995751142501831,
+                    "width": 0.8638061285018921,
+                    "height": 0.16986942291259767
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "28",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "13",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 14,
+            "objects": 22,
+            "expectedObjects": 22,
+            "heldBodies": 22,
+            "balls": 28,
+            "seconds": 2.019989013671875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 14,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 22,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.23694507777690888,
+                    "y": 0.5084714293479919,
+                    "width": 0.5261098146438599,
+                    "height": 0.1987236738204956
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.423448771238327,
+                    "width": 0.9199999570846558,
+                    "height": 0.09301391243934632
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "28",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "14",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 15,
+            "objects": 24,
+            "expectedObjects": 24,
+            "heldBodies": 24,
+            "balls": 28,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 15,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 24,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.21488867700099946,
+                    "y": 0.5078663229942322,
+                    "width": 0.5702226161956787,
+                    "height": 0.18452906608581544
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000008478760719,
+                    "y": 0.42891672253608706,
+                    "width": 0.9199998378753662,
+                    "height": 0.08637002110481262
+                },
+                "screenshot": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\_FarzetkiDocs\\Art\\Phase32\\32-11-idle-level15-1080x2400-20261002-170058456.png",
+                "screenshotExists": true,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "28",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "15",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 16,
+            "objects": 23,
+            "expectedObjects": 23,
+            "heldBodies": 23,
+            "balls": 29,
+            "seconds": 2.019989013671875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 16,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 23,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2466879040002823,
+                    "y": 0.5081576704978943,
+                    "width": 0.5066242218017578,
+                    "height": 0.19136351346969605
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.4262840151786804,
+                    "width": 0.9199999570846558,
+                    "height": 0.08956891298294068
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "29",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "16",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 17,
+            "objects": 24,
+            "expectedObjects": 24,
+            "heldBodies": 24,
+            "balls": 30,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 17,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 24,
+                "standCount": 2,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.15978863835334779,
+                    "y": 0.5070986747741699,
+                    "width": 0.6804226636886597,
+                    "height": 0.13201195001602174
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.43585342168807986,
+                    "width": 0.9199999570846558,
+                    "height": 0.07794159650802612
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "30",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "17",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 18,
+            "objects": 24,
+            "expectedObjects": 24,
+            "heldBodies": 24,
+            "balls": 30,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 18,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 24,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2466879040002823,
+                    "y": 0.5081576704978943,
+                    "width": 0.5066242218017578,
+                    "height": 0.19136351346969605
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.4262840151786804,
+                    "width": 0.9199999570846558,
+                    "height": 0.08956891298294068
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "30",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "18",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 19,
+            "objects": 25,
+            "expectedObjects": 25,
+            "heldBodies": 25,
+            "balls": 30,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 19,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 25,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2466879040002823,
+                    "y": 0.5081576704978943,
+                    "width": 0.5066242218017578,
+                    "height": 0.23171955347061158
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.4262840151786804,
+                    "width": 0.9199999570846558,
+                    "height": 0.08956891298294068
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "30",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "19",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 20,
+            "objects": 26,
+            "expectedObjects": 26,
+            "heldBodies": 26,
+            "balls": 32,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 20,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 26,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.21488867700099946,
+                    "y": 0.5078663229942322,
+                    "width": 0.5702226161956787,
+                    "height": 0.22344380617141725
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000008478760719,
+                    "y": 0.42891672253608706,
+                    "width": 0.9199998378753662,
+                    "height": 0.08637002110481262
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "32",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "20",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 21,
+            "objects": 25,
+            "expectedObjects": 25,
+            "heldBodies": 25,
+            "balls": 32,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 21,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 25,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2247200757265091,
+                    "y": 0.5075951218605042,
+                    "width": 0.5505598783493042,
+                    "height": 0.1781659722328186
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.4313678741455078,
+                    "width": 0.9199999570846558,
+                    "height": 0.08339178562164307
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "32",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "21",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 22,
+            "objects": 26,
+            "expectedObjects": 26,
+            "heldBodies": 26,
+            "balls": 32,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 22,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 26,
+                "standCount": 2,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.12871359288692475,
+                    "y": 0.5070986747741699,
+                    "width": 0.7425727844238281,
+                    "height": 0.13201195001602174
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000004380941391,
+                    "y": 0.43585342168807986,
+                    "width": 0.9199999570846558,
+                    "height": 0.07794159650802612
+                },
+                "screenshot": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\_FarzetkiDocs\\Art\\Phase32\\32-11-idle-level22-1080x2400-20261002-170058456.png",
+                "screenshotExists": true,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "32",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "22",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 23,
+            "objects": 26,
+            "expectedObjects": 26,
+            "heldBodies": 26,
+            "balls": 32,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 23,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 26,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.21729229390621186,
+                    "y": 0.5078663229942322,
+                    "width": 0.5654153823852539,
+                    "height": 0.22344380617141725
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000008478760719,
+                    "y": 0.42891672253608706,
+                    "width": 0.9199998378753662,
+                    "height": 0.08637002110481262
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "32",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "23",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 24,
+            "objects": 26,
+            "expectedObjects": 26,
+            "heldBodies": 26,
+            "balls": 32,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 24,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 26,
+                "standCount": 2,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.23277078568935395,
+                    "y": 0.5040804743766785,
+                    "width": 0.5344583988189697,
+                    "height": 0.23688888549804688
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.06809693574905396,
+                    "y": 0.3995751142501831,
+                    "width": 0.8638061285018921,
+                    "height": 0.16986942291259767
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "32",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "24",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 25,
+            "objects": 27,
+            "expectedObjects": 27,
+            "heldBodies": 27,
+            "balls": 34,
+            "seconds": 2.0,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 25,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 27,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2247200757265091,
+                    "y": 0.5075951218605042,
+                    "width": 0.5505598783493042,
+                    "height": 0.21573883295059205
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.4313678741455078,
+                    "width": 0.9199999570846558,
+                    "height": 0.08339178562164307
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "34",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "25",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 26,
+            "objects": 26,
+            "expectedObjects": 26,
+            "heldBodies": 26,
+            "balls": 34,
+            "seconds": 2.05999755859375,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 26,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 26,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.21488867700099946,
+                    "y": 0.5078663229942322,
+                    "width": 0.5702226161956787,
+                    "height": 0.22344380617141725
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000008478760719,
+                    "y": 0.42891672253608706,
+                    "width": 0.9199998378753662,
+                    "height": 0.08637002110481262
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "34",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "26",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 27,
+            "objects": 28,
+            "expectedObjects": 28,
+            "heldBodies": 28,
+            "balls": 35,
+            "seconds": 2.03997802734375,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 27,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 28,
+                "standCount": 2,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.15865518152713777,
+                    "y": 0.5070198774337769,
+                    "width": 0.6826896667480469,
+                    "height": 0.16467249393463136
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000008478760719,
+                    "y": 0.4365657866001129,
+                    "width": 0.9199998378753662,
+                    "height": 0.07707604765892029
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "35",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "27",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 28,
+            "objects": 28,
+            "expectedObjects": 28,
+            "heldBodies": 28,
+            "balls": 35,
+            "seconds": 2.02001953125,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 28,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 28,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.21488867700099946,
+                    "y": 0.5078663229942322,
+                    "width": 0.5702226161956787,
+                    "height": 0.22344380617141725
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000008478760719,
+                    "y": 0.42891672253608706,
+                    "width": 0.9199998378753662,
+                    "height": 0.08637002110481262
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "35",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "28",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 29,
+            "objects": 28,
+            "expectedObjects": 28,
+            "heldBodies": 28,
+            "balls": 35,
+            "seconds": 2.03997802734375,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 29,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 28,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2247200757265091,
+                    "y": 0.5075951218605042,
+                    "width": 0.5505598783493042,
+                    "height": 0.21573883295059205
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.4313678741455078,
+                    "width": 0.9199999570846558,
+                    "height": 0.08339178562164307
+                },
+                "screenshot": "",
+                "screenshotExists": false,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "35",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "29",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "level": 30,
+            "objects": 28,
+            "expectedObjects": 28,
+            "heldBodies": 28,
+            "balls": 35,
+            "seconds": 2.040008544921875,
+            "maximumDrift": 0.0,
+            "passed": true,
+            "gateHeld": true,
+            "allKinematic": true,
+            "frame": {
+                "level": 30,
+                "width": 1080,
+                "height": 2400,
+                "targetCount": 28,
+                "standCount": 1,
+                "safeArea": {
+                    "serializedVersion": "2",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "width": 1080.0,
+                    "height": 2400.0
+                },
+                "targetViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.2247200459241867,
+                    "y": 0.5075951218605042,
+                    "width": 0.5505598783493042,
+                    "height": 0.21573883295059205
+                },
+                "standViewport": {
+                    "serializedVersion": "2",
+                    "x": 0.04000000283122063,
+                    "y": 0.4313678741455078,
+                    "width": 0.9199999570846558,
+                    "height": 0.08339178562164307
+                },
+                "screenshot": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\_FarzetkiDocs\\Art\\Phase32\\32-11-idle-level30-1080x2400-20261002-170058456.png",
+                "screenshotExists": true,
+                "hud": [
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/Label",
+                        "text": "MEGA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 65.96401977539063,
+                            "y": 304.66424560546877,
+                            "width": 196.77398681640626,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/CountText",
+                        "text": "35",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 529.9376831054688,
+                            "y": 2221.114501953125,
+                            "width": 109.5673828125,
+                            "height": 80.49853515625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Level",
+                        "text": "30",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 79.38042449951172,
+                            "y": 2170.802978515625,
+                            "width": 176.64935302734376,
+                            "height": 122.98388671875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/Label",
+                        "text": "INFINITY",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 817.2620239257813,
+                            "y": 304.66424560546877,
+                            "width": 196.77392578125,
+                            "height": 48.075439453125
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkyCitadelStage/Sky_Title",
+                        "text": "AŞAMA",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 72.6722183227539,
+                            "y": 2311.675537109375,
+                            "width": 190.0657958984375,
+                            "height": 44.72119140625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_BallCounter/Sky_CounterTitle",
+                        "text": "TOP",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 519.8753662109375,
+                            "y": 2301.613037109375,
+                            "width": 122.9837646484375,
+                            "height": 29.06884765625
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_InfinityBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 968.755615234375,
+                            "y": 286.7757263183594,
+                            "width": 61.4918212890625,
+                            "height": 61.49188232421875
+                        }
+                    },
+                    {
+                        "path": "MainCanvas/HUD_SkillBar/SkillBtn_MegaBall/UsesBadge/UsesText",
+                        "text": "10",
+                        "screenRect": {
+                            "serializedVersion": "2",
+                            "x": 217.45761108398438,
+                            "y": 286.7757263183594,
+                            "width": 61.49188232421875,
+                            "height": 61.49188232421875
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+{
+    "WoodTextureApplied": true,
+    "WoodTexturePath": "Assets/_Project/Art/SkyCitadel/Textures/T_CitadelWood_Reference.png",
+    "Blocks": [
+        {
+            "Variant": "wood",
+            "PrefabPath": "Assets/_Project/Art/SkyCitadel/Prefabs/PF_wood.prefab",
+            "Guid": "59e21526864fb884986f0028e549555f",
+            "PrimaryRendererPath": "M_WarmWood",
+            "ExistingTransformsPreserved": true,
+            "GameplayComponentsPreserved": true,
+            "PrimaryRendererPreserved": true,
+            "DisabledLegacyRenderers": 2,
+            "EnabledRenderers": 3,
+            "Vertices": 9216,
+            "Triangles": 4140,
+            "DecorativeColliders": 0,
+            "VisualBoundsMin": {
+                "x": -0.5,
+                "y": -0.5,
+                "z": -0.5
+            },
+            "VisualBoundsMax": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            }
+        },
+        {
+            "Variant": "stone",
+            "PrefabPath": "Assets/_Project/Art/SkyCitadel/Prefabs/PF_stone.prefab",
+            "Guid": "3c6007676d3743d4c920eb1ee314bfa5",
+            "PrimaryRendererPath": "M_IvoryStone",
+            "ExistingTransformsPreserved": true,
+            "GameplayComponentsPreserved": true,
+            "PrimaryRendererPreserved": true,
+            "DisabledLegacyRenderers": 2,
+            "EnabledRenderers": 5,
+            "Vertices": 8784,
+            "Triangles": 3948,
+            "DecorativeColliders": 0,
+            "VisualBoundsMin": {
+                "x": -0.5,
+                "y": -0.5,
+                "z": -0.5
+            },
+            "VisualBoundsMax": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            }
+        },
+        {
+            "Variant": "armored",
+            "PrefabPath": "Assets/_Project/Art/SkyCitadel/Prefabs/PF_armored.prefab",
+            "Guid": "87713388821782840b7688472acccc46",
+            "PrimaryRendererPath": "M_IvoryStone",
+            "ExistingTransformsPreserved": true,
+            "GameplayComponentsPreserved": true,
+            "PrimaryRendererPreserved": true,
+            "DisabledLegacyRenderers": 3,
+            "EnabledRenderers": 5,
+            "Vertices": 10224,
+            "Triangles": 4620,
+            "DecorativeColliders": 0,
+            "VisualBoundsMin": {
+                "x": -0.5,
+                "y": -0.5,
+                "z": -0.5
+            },
+            "VisualBoundsMax": {
+                "x": 0.5,
+                "y": 0.49999988079071047,
+                "z": 0.5
+            }
+        }
+    ]
+}

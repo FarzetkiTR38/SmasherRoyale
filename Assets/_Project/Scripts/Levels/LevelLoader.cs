@@ -44,6 +44,37 @@ namespace RoyalSmash.Levels
             _spawnedObjects.Clear();
             _spawnedStands.Clear();
 
+            // Guarantee any editor showcase preview or level designer working root is completely cleaned up
+            var preview = GameObject.Find("SkyCitadelPreview");
+            if (preview != null)
+            {
+                preview.SetActive(false);
+                if (Application.isPlaying)
+                    Destroy(preview);
+                else
+                    DestroyImmediate(preview);
+            }
+
+            var designerRoot = GameObject.Find("[LevelDesigner_WorkingRoot]");
+            if (designerRoot != null)
+            {
+                designerRoot.SetActive(false);
+                if (Application.isPlaying)
+                    Destroy(designerRoot);
+                else
+                    DestroyImmediate(designerRoot);
+            }
+
+            // Restore scene stand to active state and default transform
+            var existingSceneStand = GameObject.Find("Stand");
+            if (existingSceneStand != null)
+            {
+                existingSceneStand.SetActive(true);
+                existingSceneStand.transform.position = new Vector3(0, 0, 7.50f);
+                existingSceneStand.transform.localScale = Vector3.one;
+                existingSceneStand.transform.rotation = Quaternion.identity;
+            }
+
             if (_levelRoot != null)
             {
                 for (int i = _levelRoot.childCount - 1; i >= 0; i--)
@@ -81,21 +112,29 @@ namespace RoyalSmash.Levels
                 _levelRoot = rootGo.transform;
             }
 
-            // 1. Stand setup: Use existing scene stand if present, otherwise spawn from prefab
+            // 1. Stand setup: Support custom stand scaling and multi-stand setups from LevelData
             var existingSceneStand = GameObject.Find("Stand");
-            if (existingSceneStand != null)
+            if (data.Stands != null && data.Stands.Length > 0 && _standPrefab != null)
             {
-                // The scene already has the Royal Stand platform (at Z=7.50)
-                _spawnedStands.Add(existingSceneStand);
-            }
-            else if (data.Stands != null && _standPrefab != null)
-            {
+                if (existingSceneStand != null)
+                {
+                    existingSceneStand.SetActive(false);
+                }
+
                 foreach (var standCfg in data.Stands)
                 {
                     var stand = Instantiate(_standPrefab, standCfg.Position, Quaternion.Euler(standCfg.Rotation), _levelRoot);
                     stand.transform.localScale = standCfg.Scale;
                     _spawnedStands.Add(stand);
                 }
+            }
+            else if (existingSceneStand != null)
+            {
+                existingSceneStand.SetActive(true);
+                existingSceneStand.transform.position = new Vector3(0, 0, 7.50f);
+                existingSceneStand.transform.localScale = Vector3.one;
+                existingSceneStand.transform.rotation = Quaternion.identity;
+                _spawnedStands.Add(existingSceneStand);
             }
 
             // 2. Spawn Target Objects

@@ -57,13 +57,13 @@ namespace RoyalSmash.Core
         [SerializeField] private string[] _hints = new string[]
         {
             "Her Rift bir zayıf nokta saklar.",
-            "Mega Ball en ağır sütun ve taş blokları bile devirebilir!",
-            "Zayıf noktalara vurarak devasa zincirleme tepkiler başlatın!",
-            "Infinity Ball 5 saniye boyunca sınırsız ve beklemesiz atış kazandırır.",
-            "Topları standın kenarından sektirerek arkadaki hedefleri vurun!",
-            "Boya şişeleri kırıldığında etrafa kaygan boya saçar.",
-            "Seviyeyi daha az topla bitirmek ekstra altın bonusu kazandırır!",
-            "Havanı sürükleyerek nişan alın; dokunduğunuz noktaya ateş edersiniz."
+            "Mega Ball en ağır blokları devirir.",
+            "Zayıf noktalara vur, zinciri başlat!",
+            "Infinity Ball sınırsız atış sağlar.",
+            "Topları kenardan sektirip hedefi vur.",
+            "Boya şişeleri zemini kayganlaştırır.",
+            "Daha az topla bitir, çok altın kazan!",
+            "Havanı sürükle ve hedefine ateş et."
         };
 
         private float _targetProgress = 0f;

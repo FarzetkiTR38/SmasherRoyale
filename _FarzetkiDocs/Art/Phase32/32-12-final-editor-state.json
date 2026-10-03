@@ -1,0 +1,49 @@
+{
+  "capturedUtc": "2026-10-02T17:38:25.9743726Z",
+  "playStopped": true,
+  "scene": "Assets/_Project/Scenes/MainGame.unity",
+  "sceneDirty": false,
+  "shaderChecks": [
+    {
+      "path": "Assets/_Project/Art/SkyCitadel/Shaders/CitadelPolishedMetal.shader",
+      "present": true,
+      "supported": true,
+      "errors": [],
+      "batchCode": 0
+    },
+    {
+      "path": "Assets/_Project/Art/SkyCitadel/Shaders/CitadelEnergyReference.shader",
+      "present": true,
+      "supported": true,
+      "errors": [],
+      "batchCode": 0
+    },
+    {
+      "path": "Assets/_Project/Art/SkyCitadel/Shaders/CitadelFloor.shader",
+      "present": true,
+      "supported": true,
+      "errors": [],
+      "batchCode": 0
+    }
+  ],
+  "prefabChecks": [
+    {
+      "path": "Assets/_Project/Prefabs/SkyCitadel/PF_00_SkyCitadel_Showcase.prefab",
+      "guid": "807ba67a2ab2a8d43806c56f5b9bc44d",
+      "present": true,
+      "missingScripts": 0
+    },
+    {
+      "path": "Assets/_Project/Prefabs/SkyCitadel/PF_02_Mortar_Complete.prefab",
+      "guid": "efcdbfbc1cecf1448812e810083fb77c",
+      "present": true,
+      "missingScripts": 0
+    },
+    {
+      "path": "Assets/_Project/Prefabs/SkyCitadel/PF_01_Tower_26Blocks.prefab",
+      "guid": "988e532c97f70c945a45ed216c50d5fa",
+      "present": true,
+      "missingScripts": 0
+    }
+  ]
+}

@@ -1,0 +1,1215 @@
+{
+    "startedUtc": "2026-10-02T16:55:48.2376888Z",
+    "finishedUtc": "2026-10-02T16:55:49.4136579Z",
+    "database": "Assets/_Project/Art/SkyCitadel/Levels/CitadelLevelDatabase.asset",
+    "databaseGuid": "d5de8b30fa1dde34f908619a42b846e6",
+    "backupDirectory": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase32PlacementClearance-20261002T165548622Z",
+    "reportPath": "_FarzetkiDocs/Art/Phase32/32-11-placement-clearance-fix-20261002T165549414Z.json",
+    "scope": "Targeted authored X-spacing correction for L2/L10/L19/L22/L27 only. No level generation, SetData, scene save, player save, gameplay call, collider or prefab modification. Numeric box checks are not a Unity physics acceptance result.",
+    "preflightPassed": true,
+    "success": true,
+    "alreadyCorrect": false,
+    "otherFieldsPreserved": true,
+    "unrelatedLevelsPreserved": true,
+    "databasePreserved": true,
+    "mainScenePreserved": true,
+    "rollbackAttempted": false,
+    "rollbackVerified": false,
+    "changedAssets": 5,
+    "changedPlacements": 60,
+    "levels": [
+        {
+            "level": 2,
+            "objects": 16,
+            "stands": 1,
+            "changedPlacements": 12,
+            "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel02.asset",
+            "guid": "a22b19c900f3c90439e6fe15ad958414",
+            "stateBefore": "original",
+            "fileHashBefore": "b1769e79a9bc4149ce6f292871410fd6793c34fafb5a03425fcd37c8a30fdc02",
+            "fileHashAfter": "1f593a6233955700b01fac59306c6f9fe73a979a4aed8d64f1a44cdf66ef9553",
+            "otherFieldsHashBefore": "d74bb4ab296b672a694cac2ac930cd5a15397002bc2039dafe6da1a83f39a1f9",
+            "otherFieldsHashAfter": "d74bb4ab296b672a694cac2ac930cd5a15397002bc2039dafe6da1a83f39a1f9",
+            "maximumAbsoluteDx": 0.377500057220459,
+            "placements": [
+                {
+                    "index": 0,
+                    "type": "Stone",
+                    "before": {
+                        "x": -1.1324999332427979,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.5099999904632569,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.377500057220459
+                },
+                {
+                    "index": 1,
+                    "type": "Box",
+                    "before": {
+                        "x": -0.3774999976158142,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -0.7549999952316284,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.3774999976158142
+                },
+                {
+                    "index": 2,
+                    "type": "Stone",
+                    "before": {
+                        "x": -1.1324999332427979,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.5099999904632569,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.377500057220459
+                },
+                {
+                    "index": 3,
+                    "type": "Column",
+                    "before": {
+                        "x": -0.3774999976158142,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -0.7549999952316284,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.3774999976158142
+                },
+                {
+                    "index": 4,
+                    "type": "Column",
+                    "before": {
+                        "x": -1.1324999332427979,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.5099999904632569,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": -0.377500057220459
+                },
+                {
+                    "index": 5,
+                    "type": "PaintBottle",
+                    "before": {
+                        "x": -0.3774999976158142,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -0.7549999952316284,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": -0.3774999976158142
+                },
+                {
+                    "index": 6,
+                    "type": "Box",
+                    "before": {
+                        "x": 0.3774999976158142,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 0.7549999952316284,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.3774999976158142
+                },
+                {
+                    "index": 7,
+                    "type": "Stone",
+                    "before": {
+                        "x": 1.1324999332427979,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.5099999904632569,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.377500057220459
+                },
+                {
+                    "index": 8,
+                    "type": "Column",
+                    "before": {
+                        "x": 0.3774999976158142,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 0.7549999952316284,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.3774999976158142
+                },
+                {
+                    "index": 9,
+                    "type": "Stone",
+                    "before": {
+                        "x": 1.1324999332427979,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.5099999904632569,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.377500057220459
+                },
+                {
+                    "index": 10,
+                    "type": "PaintBottle",
+                    "before": {
+                        "x": 0.3774999976158142,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 0.7549999952316284,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": 0.3774999976158142
+                },
+                {
+                    "index": 11,
+                    "type": "Column",
+                    "before": {
+                        "x": 1.1324999332427979,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.5099999904632569,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": 0.377500057220459
+                }
+            ]
+        },
+        {
+            "level": 10,
+            "objects": 22,
+            "stands": 2,
+            "changedPlacements": 2,
+            "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel10.asset",
+            "guid": "7217688a6b5699847a51aa640e78c6d5",
+            "stateBefore": "original",
+            "fileHashBefore": "3f1cb8b4aef231a6c9a8067f000e7161c00c2bea112504e5ca2628c70a48cd18",
+            "fileHashAfter": "4d811d4f157a2225b71963a1ff29aa9d0dcd7bfc563da3eff48943b329ec6341",
+            "otherFieldsHashBefore": "6870731badcd691b7c2426b2861b4569ff3a2c574a712c153d820df032efbf1a",
+            "otherFieldsHashAfter": "6870731badcd691b7c2426b2861b4569ff3a2c574a712c153d820df032efbf1a",
+            "maximumAbsoluteDx": 0.377500057220459,
+            "placements": [
+                {
+                    "index": 9,
+                    "type": "PaintBottle",
+                    "before": {
+                        "x": -2.200000047683716,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.8224999904632569,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": 0.377500057220459
+                },
+                {
+                    "index": 19,
+                    "type": "PaintBottle",
+                    "before": {
+                        "x": 2.200000047683716,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.8224999904632569,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": -0.377500057220459
+                }
+            ]
+        },
+        {
+            "level": 19,
+            "objects": 25,
+            "stands": 1,
+            "changedPlacements": 2,
+            "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel19.asset",
+            "guid": "9e6b8df3b4e6c8d4dafc85f023011c62",
+            "stateBefore": "original",
+            "fileHashBefore": "ab1fa3a50bb77a373ce68ccfbac1e36a6b8eafd1de35e1b70158977d4eb94550",
+            "fileHashAfter": "ea606a54509874ba5e973599b69a24f07c73a68ab5e1941f27c1f3b63310aef6",
+            "otherFieldsHashBefore": "b7529fe8784a8dab3524c88f739033211c4edbf334f81fbccfbdcbad91fcfca0",
+            "otherFieldsHashAfter": "b7529fe8784a8dab3524c88f739033211c4edbf334f81fbccfbdcbad91fcfca0",
+            "maximumAbsoluteDx": 0.1887500286102295,
+            "placements": [
+                {
+                    "index": 21,
+                    "type": "Column",
+                    "before": {
+                        "x": -0.5662499666213989,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -0.7549999952316284,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": -0.1887500286102295
+                },
+                {
+                    "index": 23,
+                    "type": "Column",
+                    "before": {
+                        "x": 0.5662499666213989,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 0.7549999952316284,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": 0.1887500286102295
+                }
+            ]
+        },
+        {
+            "level": 22,
+            "objects": 26,
+            "stands": 2,
+            "changedPlacements": 24,
+            "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel22.asset",
+            "guid": "4defaa11b18e0ee4481cb5fa1c606be2",
+            "stateBefore": "original",
+            "fileHashBefore": "19bbc37b87846f114736039b14f3814246d2709b9f935591678b98d8842ac678",
+            "fileHashAfter": "f61769e12afa0a34314541606ee19b81a98e5e3feb3148d6a920a929414f3a63",
+            "otherFieldsHashBefore": "b06cf69b99492b22a559d181410ed7f66dba319d7c404e0cbb52934aaae7b5e3",
+            "otherFieldsHashAfter": "b06cf69b99492b22a559d181410ed7f66dba319d7c404e0cbb52934aaae7b5e3",
+            "maximumAbsoluteDx": 0.3397500514984131,
+            "placements": [
+                {
+                    "index": 0,
+                    "type": "Stone",
+                    "before": {
+                        "x": -3.092749834060669,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -3.432499885559082,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.3397500514984131
+                },
+                {
+                    "index": 1,
+                    "type": "Stone",
+                    "before": {
+                        "x": -2.5642499923706056,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -2.677500009536743,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 2,
+                    "type": "Stone",
+                    "before": {
+                        "x": -2.035749912261963,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.9224998950958253,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                },
+                {
+                    "index": 3,
+                    "type": "Stone",
+                    "before": {
+                        "x": -1.5072499513626099,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.1675000190734864,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.33974993228912356
+                },
+                {
+                    "index": 4,
+                    "type": "Box",
+                    "before": {
+                        "x": -3.092749834060669,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -3.432499885559082,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.3397500514984131
+                },
+                {
+                    "index": 5,
+                    "type": "Box",
+                    "before": {
+                        "x": -2.5642499923706056,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -2.677500009536743,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 6,
+                    "type": "Box",
+                    "before": {
+                        "x": -2.035749912261963,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.9224998950958253,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                },
+                {
+                    "index": 7,
+                    "type": "Box",
+                    "before": {
+                        "x": -1.5072499513626099,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.1675000190734864,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.33974993228912356
+                },
+                {
+                    "index": 8,
+                    "type": "Cone",
+                    "before": {
+                        "x": -2.8284997940063478,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -3.054999828338623,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 10,
+                    "type": "Cone",
+                    "before": {
+                        "x": -1.7714999914169312,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.5449999570846558,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 11,
+                    "type": "Column",
+                    "before": {
+                        "x": -2.5642499923706056,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -2.677500009536743,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 12,
+                    "type": "Column",
+                    "before": {
+                        "x": -2.035749912261963,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.9224998950958253,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                },
+                {
+                    "index": 13,
+                    "type": "Stone",
+                    "before": {
+                        "x": 1.5072499513626099,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.1675000190734864,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.33974993228912356
+                },
+                {
+                    "index": 14,
+                    "type": "Stone",
+                    "before": {
+                        "x": 2.035749912261963,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.9224998950958253,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 15,
+                    "type": "Stone",
+                    "before": {
+                        "x": 2.5642499923706056,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 2.677500009536743,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                },
+                {
+                    "index": 16,
+                    "type": "Stone",
+                    "before": {
+                        "x": 3.092749834060669,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 3.432499885559082,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.3397500514984131
+                },
+                {
+                    "index": 17,
+                    "type": "Box",
+                    "before": {
+                        "x": 1.5072499513626099,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.1675000190734864,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.33974993228912356
+                },
+                {
+                    "index": 18,
+                    "type": "Box",
+                    "before": {
+                        "x": 2.035749912261963,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.9224998950958253,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 19,
+                    "type": "Box",
+                    "before": {
+                        "x": 2.5642499923706056,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 2.677500009536743,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                },
+                {
+                    "index": 20,
+                    "type": "Box",
+                    "before": {
+                        "x": 3.092749834060669,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 3.432499885559082,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.3397500514984131
+                },
+                {
+                    "index": 21,
+                    "type": "Cone",
+                    "before": {
+                        "x": 1.7714999914169312,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.5449999570846558,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 23,
+                    "type": "Cone",
+                    "before": {
+                        "x": 2.8284997940063478,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 3.054999828338623,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 24,
+                    "type": "Column",
+                    "before": {
+                        "x": 2.035749912261963,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.9224998950958253,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 25,
+                    "type": "Column",
+                    "before": {
+                        "x": 2.5642499923706056,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 2.677500009536743,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                }
+            ]
+        },
+        {
+            "level": 27,
+            "objects": 28,
+            "stands": 2,
+            "changedPlacements": 20,
+            "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel27.asset",
+            "guid": "5ba82a88f56dc4746bfe9e9a91c4e4c5",
+            "stateBefore": "original",
+            "fileHashBefore": "3172af1f6e5e58c4b2b837960ff34fbe24fe583d18ff7f8eed5d051f9cdd9527",
+            "fileHashAfter": "219dedbc6d3cfa69fa997714c852fcfe6384b1eb2881ebc2c862b8427963d762",
+            "otherFieldsHashBefore": "82e7dcae12e24112bacc4e8d746499dd7e25585fc3e66f2dfd8a1a3f99cb7d1b",
+            "otherFieldsHashAfter": "82e7dcae12e24112bacc4e8d746499dd7e25585fc3e66f2dfd8a1a3f99cb7d1b",
+            "maximumAbsoluteDx": 0.2265000343322754,
+            "placements": [
+                {
+                    "index": 0,
+                    "type": "Stone",
+                    "before": {
+                        "x": -2.878499984741211,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -3.1050000190734865,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 2,
+                    "type": "Column",
+                    "before": {
+                        "x": -1.8214999437332154,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.59499990940094,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 3,
+                    "type": "Stone",
+                    "before": {
+                        "x": -2.878499984741211,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -3.1050000190734865,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 5,
+                    "type": "Column",
+                    "before": {
+                        "x": -1.8214999437332154,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.59499990940094,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 6,
+                    "type": "Stone",
+                    "before": {
+                        "x": -2.878499984741211,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -3.1050000190734865,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 8,
+                    "type": "Column",
+                    "before": {
+                        "x": -1.8214999437332154,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.59499990940094,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 9,
+                    "type": "Stone",
+                    "before": {
+                        "x": -2.878499984741211,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -3.1050000190734865,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 11,
+                    "type": "Column",
+                    "before": {
+                        "x": -1.8214999437332154,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.59499990940094,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 12,
+                    "type": "Cone",
+                    "before": {
+                        "x": -2.6142499446868898,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -2.7274999618530275,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 13,
+                    "type": "PaintBottle",
+                    "before": {
+                        "x": -2.085749864578247,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": -1.9724998474121094,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                },
+                {
+                    "index": 14,
+                    "type": "Column",
+                    "before": {
+                        "x": 1.8214999437332154,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.59499990940094,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 16,
+                    "type": "Stone",
+                    "before": {
+                        "x": 2.878499984741211,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 3.1050000190734865,
+                        "y": 1.8450000286102296,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 17,
+                    "type": "Column",
+                    "before": {
+                        "x": 1.8214999437332154,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.59499990940094,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 19,
+                    "type": "Stone",
+                    "before": {
+                        "x": 2.878499984741211,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 3.1050000190734865,
+                        "y": 2.5910000801086427,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 20,
+                    "type": "Column",
+                    "before": {
+                        "x": 1.8214999437332154,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.59499990940094,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 22,
+                    "type": "Stone",
+                    "before": {
+                        "x": 2.878499984741211,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 3.1050000190734865,
+                        "y": 3.3369998931884767,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 23,
+                    "type": "Column",
+                    "before": {
+                        "x": 1.8214999437332154,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.59499990940094,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": -0.2265000343322754
+                },
+                {
+                    "index": 25,
+                    "type": "Stone",
+                    "before": {
+                        "x": 2.878499984741211,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 3.1050000190734865,
+                        "y": 4.083000183105469,
+                        "z": 7.5
+                    },
+                    "dx": 0.2265000343322754
+                },
+                {
+                    "index": 26,
+                    "type": "PaintBottle",
+                    "before": {
+                        "x": 2.085749864578247,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 1.9724998474121094,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": -0.1132500171661377
+                },
+                {
+                    "index": 27,
+                    "type": "Cone",
+                    "before": {
+                        "x": 2.6142499446868898,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "after": {
+                        "x": 2.7274999618530275,
+                        "y": 4.828999996185303,
+                        "z": 7.5
+                    },
+                    "dx": 0.1132500171661377
+                }
+            ]
+        }
+    ],
+    "predictedBoxChecks": [
+        {
+            "level": 1,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 2,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 3,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 4,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 5,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 6,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 7,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 8,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 9,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 10,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 11,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 12,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 13,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 14,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 15,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 16,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 17,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 18,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 19,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 20,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 21,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 22,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 23,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 24,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 25,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 26,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 27,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 28,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 29,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        },
+        {
+            "level": 30,
+            "targetPairs": 0,
+            "targetStandPairs": 0,
+            "unsupportedProjectedFootprints": 0,
+            "maximumDepth": 0.0
+        }
+    ],
+    "errors": []
+}

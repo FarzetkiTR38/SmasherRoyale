@@ -1,0 +1,50 @@
+{
+    "PrefabPath": "Assets/_Project/Prefabs/Gameplay/Mortar.prefab",
+    "ExistingTransformsPreserved": true,
+    "GameplayComponentsPreserved": true,
+    "OriginalTransforms": 64,
+    "DisabledLegacyRenderers": 5,
+    "ArtRenderers": 7,
+    "ArtVertices": 10228,
+    "ArtTriangles": 6124,
+    "FixedTriangles": 972,
+    "SwivelTriangles": 5152,
+    "ArtColliders": 0,
+    "Meshes": [
+        {
+            "Name": "Phase32_MortarPlatform_Fixed_Steel",
+            "Vertices": 624,
+            "Triangles": 364
+        },
+        {
+            "Name": "Phase32_MortarPlatform_Fixed_Gold",
+            "Vertices": 1024,
+            "Triangles": 608
+        },
+        {
+            "Name": "Phase32_MortarPlatform_Swivel_Steel",
+            "Vertices": 2756,
+            "Triangles": 1624
+        },
+        {
+            "Name": "Phase32_MortarPlatform_Swivel_Gold",
+            "Vertices": 1616,
+            "Triangles": 936
+        },
+        {
+            "Name": "Phase32_MortarPlatform_Swivel_Ivory",
+            "Vertices": 252,
+            "Triangles": 132
+        },
+        {
+            "Name": "Phase32_MortarPlatform_Swivel_Sapphire",
+            "Vertices": 1348,
+            "Triangles": 840
+        },
+        {
+            "Name": "Phase32_MortarPlatform_Swivel_Energy",
+            "Vertices": 2608,
+            "Triangles": 1620
+        }
+    ]
+}

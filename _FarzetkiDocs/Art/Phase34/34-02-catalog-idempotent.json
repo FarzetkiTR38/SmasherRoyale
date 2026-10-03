@@ -1,0 +1,61 @@
+{
+    "capturedUtc": "2026-10-03T09:42:43.0411970Z",
+    "scenePath": "Assets/_Project/Scenes/MainMenu.unity",
+    "catalogPath": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset",
+    "catalogItemCount": 8,
+    "cardCount": 8,
+    "changedCount": 0,
+    "catalogUnchanged": true,
+    "sceneWasDirty": false,
+    "sceneSaved": false,
+    "bindings": [
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Card_KingsDeal/BuyButton_Deal",
+            "stableItemId": "deal_kings_royal",
+            "productId": "deal_kings_royal",
+            "changed": false
+        },
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Card_NoAds/BuyButton_NoAds",
+            "stableItemId": "no_ads_pass",
+            "productId": "noadspass",
+            "changed": false
+        },
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Section_GoldPacks/BuyButton_Pouch",
+            "stableItemId": "gold_pouch_800",
+            "productId": "gold_douch_800",
+            "changed": false
+        },
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Section_GoldPacks/BuyButton_Chest",
+            "stableItemId": "gold_chest_1600",
+            "productId": "gold_chest_1600",
+            "changed": false
+        },
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Section_BallPacks/BuyButton_Mega",
+            "stableItemId": "skill_mega_5",
+            "productId": "skill_mega_5",
+            "changed": false
+        },
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Section_BallPacks/BuyButton_Infinity",
+            "stableItemId": "skill_infinity_5",
+            "productId": "skill_infinity_5",
+            "changed": false
+        },
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Section_ValueBundles/BuyButton_Warrior",
+            "stableItemId": "bundle_warrior",
+            "productId": "bundle_warrior",
+            "changed": false
+        },
+        {
+            "hierarchyPath": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer/ContentScrollView/Viewport/Content/Section_ValueBundles/BuyButton_Champion",
+            "stableItemId": "bundle_champion",
+            "productId": "bundle_champion",
+            "changed": false
+        }
+    ]
+}

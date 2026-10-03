@@ -29,5 +29,11 @@ namespace RoyalSmash.Cloud
         /// Fetches the current global leaderboard entries from cloud storage.
         /// </summary>
         void FetchLeaderboard(Action<bool, List<LeaderboardEntryData>, string> onComplete);
+
+        /// <summary>
+        /// Retrieves the saved player progress from the cloud for the specified Device ID.
+        /// Used during app reinstall or cross-session recovery.
+        /// </summary>
+        void LoadProgress(string deviceId, Action<bool, PlayerSaveData, string> onComplete);
     }
 }

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "leaderboard_cache.json",
+    "match": true,
+    "hash": "B8FB919FE4AE7BEF35CE27CDF9468A5BEC5D84C90929E27AB9F52DC4276E7FBA"
+  },
+  {
+    "name": "live_cloud_leaderboard.json",
+    "match": true,
+    "hash": "CC2D9BCF15826044804840298A824717861091522D207D69759181B94F700638"
+  },
+  {
+    "name": "player_save_backup.json",
+    "match": true,
+    "hash": "0F28D27A6E2DFB99596C0FC3922EB6A0BE57847E0741526C43E82B1A728FF7A3"
+  },
+  {
+    "name": "player_save.json",
+    "match": true,
+    "hash": "D39438283D2E8061C9982C8E7B7C1194DF038F105C593998E7A2FB2528B2961B"
+  }
+]
