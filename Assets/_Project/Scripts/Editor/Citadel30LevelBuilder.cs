@@ -17,13 +17,14 @@ namespace RoyalSmash.Editor
     /// </summary>
     public static class Citadel30LevelBuilder
     {
-        private const float BASE_Y = 1.85f;
-        private const float STEP_Y = 0.76f;
+        private const float BASE_Y = 1.86f;
+        private const float STEP_Y = 0.78f;
         private const float STEP_X = 0.78f;
+        private const float STEP_Z = 0.78f;
         private const float STAND_Z = 9.00f;
-        private const float FRONT_Z = 8.55f;
-        private const float BACK_Z = 9.45f;
-        private static readonly Vector3 BLOCK_SCALE = new Vector3(0.74f, 0.74f, 0.74f);
+        private const float FRONT_Z = 8.61f; // 9.00f - (0.78f * 0.5f) -> 0 gap with BACK_Z
+        private const float BACK_Z = 9.39f;  // 9.00f + (0.78f * 0.5f) -> perfectly flush twin row
+        private static readonly Vector3 BLOCK_SCALE = new Vector3(0.78f, 0.78f, 0.78f);
 
         [MenuItem("Tools/Royal Smash/Generate All 30 Citadel Levels")]
         [MenuItem("RoyalSmash/Levels/Generate All 30 Citadel Levels")]

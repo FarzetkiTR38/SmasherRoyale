@@ -32,9 +32,9 @@ namespace RoyalSmash.Editor
         private const string LEVELS_FOLDER = "Assets/_Project/Art/SkyCitadel/Levels";
 
         private const float BASE_STAND_TOP_Y = 1.475f;
-        private const float BLOCK_SIZE = 0.74f;
+        private const float BLOCK_SIZE = 0.78f;
         private const float STEP_X = 0.78f;
-        private const float STEP_Y = 0.76f;
+        private const float STEP_Y = 0.78f;
         private const float STEP_Z = 0.78f;
         private const float STAND_Z = 9.00f;
 
