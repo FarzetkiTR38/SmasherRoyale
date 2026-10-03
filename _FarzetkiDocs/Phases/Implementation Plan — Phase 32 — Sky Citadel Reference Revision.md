@@ -1,9 +1,9 @@
 # Phase 32 — Sky Citadel referans görseline göre revizyon
 
 **Başlangıç:** 27 Eylül 2026  
-**Durum:** Devam ediyor — **32.1–32.11 tamamlandı (11/12)**.  
-**Son tamamlanan aşama:** **32.11 fizik, yerleşim ve kadraj doğrulaması**, 2 Ekim 2026.  
-**Devam noktası:** **32.12 — altın/safir yüzey cilası, nihai karşılaştırma ve devir**. Gerçek ComputePenetration incelemesinde 30 bölümün tamamında 0 hedef/stand kesişimi; düzeltilen beş bölüm gerçek idle/miss/contact testini geçti. Son yerleşimlerle tüm bölümler iki oranda idle/kadraj testini tekrar geçti. Altın/safir hâlâ düz göründüğü için görsel kabul maddesi 7 tamamlanmadı; materyal cilası Assets dışındaki taslaktan uygulanıp Play'de karşılaştırılacak.  
+**Durum:** **Tamamlandı — 32.1–32.12 (12/12)**.
+**Son tamamlanan aşama:** **32.12 metal cilası, nihai karşılaştırma ve devir**. Son Unity testleri 2 Ekim; doküman kapanışı 3 Ekim 2026.
+**Devam noktası:** Bu fazda açık uygulama aşaması yok. Son V2 metal preset'i uygulanmış ve gerçek Play'de doğrulanmıştır; yeniden üretmeyin. 30 bölümde 0 collider kesişimi, iki ekran oranında 30/30 idle/kadraj PASS, son atış/nişan/skill/destruction kontrolleri PASS. Nihai görüntüler ve sınırlar aşağıdaki 32.12 kapanış kaydında.
 **Kullanıcı isteği:** Mevcut mortar, stand, zemin ve blokları revize ederek verilen ilk görselin canlılığına, yüzey kalitesine ve hacimli detaylarına yaklaştırmak. Çalışmayı kalıcı aşamalara bölmek; sonraki oturumda tamamlanmayan aşamadan devam etmek.
 
 ## Referanslar ve kapsam
@@ -49,20 +49,20 @@ Referans bir sanat hedefidir. Görseldeki **22 bölüm, 15 top ve 5×3 blok düz
 | **32.9** | Kompozisyon ve HUD uyumu: sahne ölçeği, arka plan-zemin geçişi, hedef/stand/mortar ekran payları | 1/15/22/30. bölümler kadrajda; dinamik HUD değerleri okunur; nişan alanı açık | **Tamam**; son yuvarlatılmış geometriyle 30/30, iki oran, temas sonrası FOV sabit |
 | **32.10** | Prefab koleksiyonu ve sanat önizlemesi; güncel stand/mortar/tüm blokların tek yerde incelenmesi | Mevcut prefab/preview koleksiyonları revize ve görünür; kopya gameplay sistemleri yok | **Tamam** |
 | **32.11** | Fizik/oynanış ve mobil bütçe doğrulaması | 30 yerleşim/geometri; idle + boş atış + gerçek temas; normal/Mega/Infinity; 9:16 ve 9:20; ölçülen render maliyeti | **Tamam**; 5 bölüm dar kapsamlı X düzeltmesi, 0 gerçek kesişim, 5/5 gerçek atış ve 30/30 iki oran; Editor maliyeti kayıtlı |
-| **32.12** | Referans karşılaştırması, son düzeltmeler, kalıcı kanıt ve devir kaydı | Aşağıdaki kabul maddeleri gerçek sonuçlarla işaretli; kalan farklar açıkça yazılı | Bekliyor |
+| **32.12** | Referans karşılaştırması, son düzeltmeler, kalıcı kanıt ve devir kaydı | Aşağıdaki kabul maddeleri gerçek sonuçlarla işaretli; kalan farklar açıkça yazılı | **Tamam**; V2 metal, 8 son Play görüntüsü, final smoke/render/save ve bağımsız görsel denetim PASS |
 
 ## 3. Kabul kriterleri ve test yöntemi
 
-1. [ ] Stand, mortar, zemin ve beş blok varyantının her biri aynı kamerada belirgin olarak revize edilmiş olmalı; yalnızca saturation artışı tamamlanma sayılmaz.
-2. [ ] Mevcut scene/prefab/material GUID'leri ve gameplay referansları korunmalı; yeni sanat varlıkları düzenli adlandırılmalı.
-3. [ ] Stand üst yüzeyi, root collider'lar ve 30 bölümün veri/ödül/top sayıları istemsiz değişmemeli.
-4. [ ] Play Mode: hiç atış yokken ve hedef dışına atışta başlangıç düzeni sabit; gerçek temasta fizik tepki veriyor.
-5. [ ] Mortar aim/drag, FirePoint, trajectory ve recoil; normal/Mega/Infinity; shrink ve destroy state'leri çalışıyor.
-6. [ ] 1080×1920 ve 1080×2400 görüntüleri, özellikle geniş/tall yerleşimlerde kesilme ve UI engellemesi göstermiyor.
-7. [ ] Altın plastik sarıya, enerji beyaz lekeye, mermer düz griye dönüşmüyor. Ahşap damarı ve stone derzleri oyun ölçeğinde okunuyor.
-8. [ ] Runtime reflection render her kare çalışmıyor; dekoratif collider yok; yeni mesh/material/texture maliyeti kaydedilmiş. Gerçek cihaz testi yoksa 60 FPS garantisi verilmez.
-9. [ ] Console/shader hata ve uyarıları kontrol edilmiş; mevcut uyarılar varsa ayrıştırılmış.
-10. [ ] Play testleri sonunda oyuncunun kayıt dosyaları test öncesi byte'larına geri getirilmiş.
+1. [x] Stand, mortar, zemin ve beş blok varyantı mesh/yüzey revizyonu aldı; geometri raporları ve son Play görüntüleriyle doğrulandı.
+2. [x] Mevcut scene/prefab/material GUID'leri ve gameplay referansları korundu; prefab koleksiyonu ve preservation raporları PASS.
+3. [x] Stand üst yüzeyi, root collider'lar ve bölüm ödül/top/veri alanları istemsiz değişmedi. Belgelenen 5 bölümün 60 Position.x düzeltmesi dışında yerleşim alanları korundu.
+4. [x] Play Mode: idle ve miss düzeni sabit; gerçek projectile teması fiziği açıyor. 30/30 idle ve 5/5 düzeltilen bölüm contact PASS.
+5. [x] Mortar nişanı, mevcut input/drag event bağlantıları, FirePoint, trajectory, normal/Mega/Infinity ve shrink/destroy PASS. Input testi programatiktir; fiziksel dokunma emülasyonu değildir. Mevcut projede recoil olmadığı için recoil iddiası yok.
+6. [x] 1080×1920 ve 1080×2400: tüm 30 bölüm kadrajda; son 1/15/22/30 Play görüntülerinde hedef/stand/HUD okunur. Ön plan mortar'ın alt kesimi kompozisyonun parçasıdır.
+7. [x] V2 metal yüzeylerinde parlak kenar/koyu gövde ayrımı var; cyan enerji, mermer damarı, ahşap/stone detayları oyun ölçeğinde okunuyor. Bağımsız son görsel denetim PASS; referansla kalan kalite farkları aşağıda açıklandı.
+8. [x] Runtime reflection yok, dekoratif collider yok; son mesh/material/texture ve Editor render maliyeti kayıtlı. Gerçek telefon FPS garantisi verilmedi.
+9. [x] Runtime konsolu ve üç shader derleme denetimi temiz. Tek seferlik rapor sorgusunun 4 yanlış-property uyarısı ayrıştırıldı, sorgu düzeltildi; son preset denetimi 0 hata/0 uyarı.
+10. [x] Son Play sonunda aynı oturumun 5 JSON dosyası byte/hash doğrulamasıyla geri yüklendi. 3 Ekim'de eski yedek yeniden uygulanmadı.
 
 Planlanan güncel test aracı: `Assets/_Project/Scripts/Editor/Phase32VisualVerification.cs`; sonuçlar `_FarzetkiDocs/Art/Phase32/` altında. Eski `Phase26PlayModeTest` ilk atışta gate açılması beklediği için güncel kabul testi değildir. `Phase31QAVerificationTest.RunAllTests` kayıt/ekonomi değiştirir ve gerçek 30 bölümlük Play testi sayılmaz; körlemesine çağrılmaz.
 
@@ -236,3 +236,19 @@ Planlanan güncel test aracı: `Assets/_Project/Scripts/Editor/Phase32VisualVeri
 - Geçici runtime güçlü tint ve magenta sentinel yalnız klon materyalde denendi; sonra 41 renderer orijinal asset'e döndürüldü ve Play kapatıldı. Bu tanı görüntüleri teslim edilen renkler değildir. Güncel 5JSON `Phase32-20261002-MetalFinal/PlayerSave` yedeğinden geri yüklendi, `32-12-metal-save-restoration.json` PASS.
 - `Phase32VisualRevision` lighting materyal koruması yeni gold/sapphire shader'ını kabul edecek şekilde dar kapsamlı revize edildi; lighting builder yeniden çalıştırılmadı. Reddedilen gritty gold bitmap artık `Docs/Art/Phase32/Candidates` altında, runtime ataması yok; manifest güncellendi.
 - `32-12-current-project-preservation.json`: yeni 526 dosyalık baseline'a göre mevcut Gameplay/Core/Levels ve MainGame/MainMenu aynı; yalnız bilinçli Editor/Citadel30LevelBuilder ve Editor/Phase32VisualRevision farklı. Beş Citadel level X alanı ayrı utility fingerprint raporunda doğrulandı.
+
+### 32.12 — Tamamlandı; testler 2 Ekim, devir kaydı 3 Ekim 2026
+
+- İlk metal preset'i yerine **V2** parça yüzeyinin UV'sinde geniş highlight/body ayrımı kullanıyor. Altın ve safir mevcut baseColor/metallic/smoothness/map/keyword/render state/GUID'lerini korudu. `32-12-metal-polish-v2-final.json`: gerçek değerler ve idempotent Apply PASS. Önceki V1 rollback yedeği `C:/Users/Farzetki/.codex/local-backups/Phase32MetalPolish/20261002-172206-948-a1ba1ca9`; orijinal Lit yedeği önceki kayıtta.
+- **8 gerçek Play görüntüsü:** `32-12-final-level{01,15,22,30}-1080x{1920,2400}.png`. `32-12-final-capture-summary.json`: tüm hedef/stand kadrajları ve görüntü dosyaları PASS. Her JSON'un screenshotExists alanı async PNG tamamlandıktan sonra tekrar doğrulandı ve zaman damgası eklendi; eski capture-time false değeri eksik görüntü anlamına gelmiyordu. Güncel L30 **28 hedef/1 stand**, koleksiyon tower'ı ise ayrı **26 blok** örneğidir.
+- Bağımsız görsel inceleme ve kök incelemesi PASS: metal kenar/gövde ayrımı, mavi kaplama, iç akışlı enerji, yuvarlatılmış mortar/stand kenarları ve okunur ahşap/taş/mermer. Referans **birebir** veya aynı render kalitesinde değildir: referansın daha güçlü zemin yansıması, derin temas gölgeleri ve zengin elmas/plasma ayrıntıları kalır. Bunlar kabul edilmiş görsel sınırdır; telefon performansı iddiası değildir.
+- `32-12-input-trajectory-smoke.json`: mevcut InputHandler aim API'si ve bağlı drag-start/end event'leri üzerinden sol/sağ/merkez nişan; 38/38/32 trajectory noktası, FirePoint origin hatası0, top35→35, atış0. Geçici trajectory gösterimi önceki false değerine döndürüldü. `32-12-rounded-mortar-aim.json`: -45/+45/0 gerçek pivot/FirePoint takibi PASS. Fiziksel fare/dokunma hareketi emüle edilmedi; recoil özelliği eklenmedi.
+- `32-12-final-impact-smoke.json`: son V2 ve güncel L30 ile idle/miss drift0; gerçek iki projectile teması, gate açılışı, top35→33, kalan projectile0 PASS. `32-12-final-destruction.json`: armored gerçek hedefinde explicit TriggerDestroyCondition ile shrink/primary alpha/collider-off/kinematic/removal PASS; projectile kill testi olarak sunulmaz. Normal/Mega/Infinity kanıtı `32-08-plasma-skills.json`.
+- `32-12-final-render-cost.json`: son V2 ile 12 frame ısınma ardından 60 farklı Play frame; Windows Unity Editor/Mobile_RPAsset/renderScale.8, **376 draw call, 42 SetPass, 327.508 çizilen üçgen** (gölgeler/Editor dahil), realtimeReflectionProbes=false. V1 öncesi 39 SetPass ölçümüne göre son metal shader +3 SetPass; draw/triangle aynı. Gerçek mobil cihaz FPS/bellek sertifikası değildir.
+- `32-12-final-editor-state.json`: MainGame temiz, Play kapalı; metal/energy/floor shader hata0 ve SRP Batcher code0; showcase/complete mortar/26-block tower prefabları mevcut, missing script0. Showcase Project penceresinde seçilip ping edildi. Koleksiyon yolu: `Assets/_Project/Prefabs/SkyCitadel/PF_00_SkyCitadel_Showcase.prefab`; mortar: `PF_02_Mortar_Complete.prefab`; tower: `PF_01_Tower_26Blocks.prefab`.
+- `32-12-final-project-preservation.json`: 526 dosyalık fresh baseline'da yalnız beklenen iki Editor helper farklı. Gameplay/Core/Levels/Ads/Save, MainGame ve kullanıcı MainMenu kaydı korunuyor; user MainMenu/Plastic farkları faz commit'ine alınmayacak.
+- Son gerçek Play 2 Ekim 17:38 UTC'de kapandı. `Phase32-20261002-MetalV2/PlayerSave` içindeki **aynı oturumun 5 JSON** dosyası geri yüklendi, tüm SHA256 PASS: `32-12-final-save-restoration.json`. 3 Ekim kapanışında tekrar Play açılmadı ve bu eski yedek yeni kullanıcı ilerlemesine uygulanmadı.
+- Son runtime konsolu0 hata/uyarı. Nihai raporu ilk okuyan diagnostic kod iki olmayan property'yi sorgulayarak4 uyarı üretmişti; varlık değiştirmedi. `32-12-console-diagnostic-note.json` kaydı korundu, gerçek property isimleriyle rapor düzeltildi; temiz konsolda mevcut preset tekrar kontrol edildi,0 hata/uyarı. Üretim kodu bu yanlış property'leri kullanmaz.
+- **12/12 aşama ve 10/10 kabul maddesi tamamlandı.** 3 Ekim kapanışında Phase32 otomasyonu için delete çağrısı `not_found` döndü: görev zaten uygulamada mevcut değil, yeniden oluşturulmadı. Yeni mağaza isteği ayrı Phase34 planında yürütülür. Phase33 level designer kapsamı korunur.
+
+- Kapanış öncesi kullanıcı yedek commit'i `5314740` Phase32 sanat çıktıları ve kanıtlarını içerir; korunmuştur. Bu kapanış commit'i yalnız bu fazın devir dokümanını günceller.
