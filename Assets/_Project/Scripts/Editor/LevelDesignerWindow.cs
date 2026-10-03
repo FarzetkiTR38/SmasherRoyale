@@ -307,7 +307,7 @@ namespace RoyalSmash.Editor
             DrawBlockButton(ObjectType.Stone, "Stone", new Color(0.85f, 0.85f, 0.85f), "2");
             DrawBlockButton(ObjectType.Cone, "Armored", new Color(0.7f, 0.7f, 0.5f), "3");
             DrawBlockButton(ObjectType.Column, "Crystal", new Color(0.2f, 0.6f, 1.0f), "4");
-            DrawBlockButton(ObjectType.PaintBottle, "Core", new Color(0.9f, 0.3f, 0.9f), "5");
+            DrawBlockButton(ObjectType.PaintBottle, "Core", new Color(0.08f, 0.35f, 0.88f), "5");
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.Space(4);
@@ -592,7 +592,7 @@ namespace RoyalSmash.Editor
                 ObjectType.Stone => new Color(0.9f, 0.9f, 0.9f),
                 ObjectType.Cone => new Color(0.75f, 0.75f, 0.55f),
                 ObjectType.Column => new Color(0.2f, 0.6f, 1.0f),
-                ObjectType.PaintBottle => new Color(0.95f, 0.3f, 0.95f),
+                ObjectType.PaintBottle => new Color(0.08f, 0.35f, 0.88f),
                 _ => Color.white
             };
         }
