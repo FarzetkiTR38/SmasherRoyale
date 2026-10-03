@@ -1,0 +1,392 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using RoyalSmash.Economy;
+
+namespace RoyalSmash.UI
+{
+    /// <summary>
+    /// Creates the visible shop from authoritative catalog lists and reusable prefabs.
+    /// Rebuild is also safe for an explicit Editor preview: it never purchases or saves.
+    /// </summary>
+    public sealed class ShopCatalogPresenter : MonoBehaviour
+    {
+        private static readonly ShopSectionKind[] DefaultSections =
+        {
+            ShopSectionKind.Featured, ShopSectionKind.NoAds, ShopSectionKind.Gold,
+            ShopSectionKind.Skills, ShopSectionKind.Bundles
+        };
+
+        [Header("Data")]
+        [SerializeField] private ShopConfig _catalog;
+        [SerializeField] private ShopPresentationConfig _presentation;
+        [SerializeField] private ShopUI _shopUI;
+
+        [Header("Editable Panel")]
+        [SerializeField] private RectTransform _contentRoot;
+        [SerializeField] private TextMeshProUGUI _shopTitle;
+        [SerializeField] private Image _frameImage;
+        [SerializeField] private Image _headerImage;
+
+        [Header("Reusable Prefabs")]
+        [SerializeField] private ShopItemCardUI _featuredPrefab;
+        [SerializeField] private ShopItemCardUI _noAdsPrefab;
+        [SerializeField] private ShopItemCardUI _compactPrefab;
+        [SerializeField] private ShopItemCardUI _bundlePrefab;
+        [SerializeField] private GameObject _sectionHeaderPrefab;
+
+        [SerializeField, HideInInspector] private RectTransform _generatedRoot;
+        [SerializeField, HideInInspector] private List<ShopItemCardUI> _cards = new List<ShopItemCardUI>();
+
+        private readonly List<HeaderBinding> _headers = new List<HeaderBinding>();
+        private string _layoutSignature;
+        private double _nextRefreshAt;
+        private bool _isRebuilding;
+
+        public IReadOnlyList<ShopItemCardUI> Cards => _cards;
+        public TextMeshProUGUI LimitedOfferTimerText { get; private set; }
+
+        private sealed class HeaderBinding
+        {
+            public ShopSectionKind Section;
+            public TextMeshProUGUI Title;
+            public Image Background;
+        }
+
+        private void OnEnable()
+        {
+            if (Application.isPlaying) RefreshCatalog();
+        }
+
+        private void Update()
+        {
+            if (Time.realtimeSinceStartupAsDouble < _nextRefreshAt) return;
+            _nextRefreshAt = Time.realtimeSinceStartupAsDouble + .5d;
+            RefreshCatalog();
+        }
+
+        /// <summary>Explicit refresh for Inspector tools, catalog edits and tests.</summary>
+        [ContextMenu("Refresh Catalog Preview")]
+        public void RefreshPreview() => Rebuild();
+
+        public void RefreshCatalog()
+        {
+            if (_isRebuilding) return;
+            string signature = BuildLayoutSignature();
+            if (_generatedRoot == null || signature != _layoutSignature)
+            {
+                Rebuild();
+                return;
+            }
+            RefreshPresentation();
+            foreach (ShopItemCardUI card in _cards)
+            {
+                if (card == null) continue;
+                card.BindPresentation(_presentation);
+            }
+        }
+
+        /// <summary>Only the presenter's own generated subtree is replaced.</summary>
+        public void Rebuild()
+        {
+            if (_isRebuilding) return;
+            _isRebuilding = true;
+            try
+            {
+                ClearGeneratedContent();
+                _layoutSignature = BuildLayoutSignature();
+                if (_contentRoot == null || _catalog == null)
+                {
+                    RefreshPresentation();
+                    PublishCards();
+                    return;
+                }
+
+                _generatedRoot = CreateRect("DynamicCatalog", _contentRoot);
+                var layout = _generatedRoot.gameObject.AddComponent<VerticalLayoutGroup>();
+                layout.childControlHeight = true;
+                layout.childControlWidth = true;
+                layout.childForceExpandHeight = false;
+                layout.childForceExpandWidth = true;
+                layout.spacing = _presentation != null ? Mathf.Max(0f, _presentation.SectionSpacing) : 22f;
+                var fitter = _generatedRoot.gameObject.AddComponent<ContentSizeFitter>();
+                fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+                fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+                IList<ShopSectionKind> sections = _presentation != null && _presentation.SectionOrder != null
+                    ? (IList<ShopSectionKind>)_presentation.SectionOrder : DefaultSections;
+                var seenSections = new HashSet<ShopSectionKind>();
+                var seenProducts = new HashSet<string>(StringComparer.Ordinal);
+                foreach (ShopSectionKind section in sections)
+                {
+                    if (!seenSections.Add(section)) continue;
+                    BuildSection(section, seenProducts);
+                }
+                RefreshPresentation();
+                PublishCards();
+                LayoutRebuilder.MarkLayoutForRebuild(_contentRoot);
+            }
+            finally
+            {
+                _isRebuilding = false;
+            }
+        }
+
+        private void BuildSection(ShopSectionKind section, HashSet<string> seenProducts)
+        {
+            ShopItemCardUI prefab = GetPrefab(section);
+            if (prefab == null) return;
+            var products = new List<ShopItemData>();
+            foreach (ShopItemData item in GetItems(section))
+            {
+                if (item == null || string.IsNullOrWhiteSpace(item.Id)) continue;
+                ShopItemData resolved = _catalog.FindItemById(item.Id);
+                // Match the exact stable Id, including the same fail-closed alias rule as a card.
+                if (resolved == null || !string.Equals(resolved.Id, item.Id, StringComparison.Ordinal)) continue;
+                if (seenProducts.Add(item.Id)) products.Add(resolved);
+            }
+            if (products.Count == 0) return;
+
+            if (section == ShopSectionKind.Gold || section == ShopSectionKind.Skills || section == ShopSectionKind.Bundles)
+                CreateHeader(section);
+
+            int columns = section == ShopSectionKind.Featured || section == ShopSectionKind.NoAds ? 1 : 2;
+            RectTransform row = null;
+            float cardHeight = GetCardHeight(section);
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (i % columns == 0) row = CreateRow(section, cardHeight);
+                ShopItemCardUI card = Instantiate(prefab, row, false);
+                card.name = "Card_" + products[i].Id;
+                card.gameObject.SetActive(true);
+                LayoutElement sizing = card.GetComponent<LayoutElement>();
+                if (sizing == null) sizing = card.gameObject.AddComponent<LayoutElement>();
+                sizing.minWidth = 0f;
+                sizing.preferredWidth = 0f;
+                sizing.flexibleWidth = 1f;
+                sizing.minHeight = cardHeight;
+                sizing.preferredHeight = cardHeight;
+                sizing.flexibleHeight = 0f;
+                card.BindPresentation(_presentation);
+                card.BindProduct(_catalog, products[i].Id);
+                _cards.Add(card);
+                if (section == ShopSectionKind.Featured && LimitedOfferTimerText == null)
+                    LimitedOfferTimerText = card.TimerText;
+            }
+
+            // Keep an odd final product at one column's width.
+            if (columns == 2 && products.Count % 2 != 0 && row != null)
+            {
+                RectTransform spacer = CreateRect("EmptyColumn", row);
+                LayoutElement sizing = spacer.gameObject.AddComponent<LayoutElement>();
+                sizing.minWidth = 0f;
+                sizing.preferredWidth = 0f;
+                sizing.flexibleWidth = 1f;
+            }
+        }
+
+        private RectTransform CreateRow(ShopSectionKind section, float height)
+        {
+            RectTransform row = CreateRect(section + "Row", _generatedRoot);
+            var layout = row.gameObject.AddComponent<HorizontalLayoutGroup>();
+            layout.spacing = _presentation != null ? Mathf.Max(0f, _presentation.ColumnSpacing) : 18f;
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            layout.childForceExpandWidth = true;
+            layout.childForceExpandHeight = false;
+            LayoutElement sizing = row.gameObject.AddComponent<LayoutElement>();
+            sizing.minHeight = height;
+            sizing.preferredHeight = height;
+            sizing.flexibleHeight = 0f;
+            return row;
+        }
+
+        private void CreateHeader(ShopSectionKind section)
+        {
+            if (_sectionHeaderPrefab == null) return;
+            GameObject header = Instantiate(_sectionHeaderPrefab, _generatedRoot, false);
+            header.name = "Header_" + section;
+            header.SetActive(true);
+            LayoutElement sizing = header.GetComponent<LayoutElement>();
+            if (sizing == null) sizing = header.AddComponent<LayoutElement>();
+            sizing.preferredHeight = _presentation != null ? Mathf.Max(32f, _presentation.SectionHeaderHeight) : 66f;
+            sizing.minHeight = sizing.preferredHeight;
+            sizing.flexibleHeight = 0f;
+            _headers.Add(new HeaderBinding
+            {
+                Section = section,
+                Title = header.GetComponentInChildren<TextMeshProUGUI>(true),
+                Background = header.GetComponent<Image>()
+            });
+        }
+
+        private void RefreshPresentation()
+        {
+            if (_shopTitle != null)
+            {
+                _shopTitle.text = _presentation != null ? _presentation.ShopTitle : "ROYAL BAZAR";
+                ApplyTitleStyle(_shopTitle);
+            }
+            if (_presentation != null)
+            {
+                SetSkin(_frameImage, _presentation.ShopFrame);
+                SetSkin(_headerImage, _presentation.HeaderBackground);
+            }
+            foreach (HeaderBinding header in _headers)
+            {
+                if (header.Title != null)
+                {
+                    header.Title.text = _presentation != null ? _presentation.GetSectionTitle(header.Section) : DefaultSectionTitle(header.Section);
+                    ApplyTitleStyle(header.Title);
+                }
+                if (_presentation != null) SetSkin(header.Background, _presentation.SectionBackground);
+            }
+        }
+
+        private void PublishCards()
+        {
+            if (_shopUI != null)
+                _shopUI.SetCatalogCards(this, _presentation, _cards, LimitedOfferTimerText);
+        }
+
+        private void ClearGeneratedContent()
+        {
+            if (_generatedRoot != null)
+            {
+                _generatedRoot.gameObject.SetActive(false);
+                if (Application.isPlaying) Destroy(_generatedRoot.gameObject);
+                else DestroyImmediate(_generatedRoot.gameObject);
+            }
+            _generatedRoot = null;
+            _cards.Clear();
+            _headers.Clear();
+            LimitedOfferTimerText = null;
+        }
+
+        private ShopItemCardUI GetPrefab(ShopSectionKind section)
+        {
+            switch (section)
+            {
+                case ShopSectionKind.Featured: return _featuredPrefab;
+                case ShopSectionKind.NoAds: return _noAdsPrefab;
+                case ShopSectionKind.Bundles: return _bundlePrefab != null ? _bundlePrefab : _compactPrefab;
+                default: return _compactPrefab;
+            }
+        }
+
+        private IEnumerable<ShopItemData> GetItems(ShopSectionKind section)
+        {
+            if (_catalog == null) yield break;
+            if (section == ShopSectionKind.Featured)
+            {
+                yield return _catalog.LimitedTimeOffer;
+                yield break;
+            }
+            if (section == ShopSectionKind.NoAds)
+            {
+                yield return _catalog.NoAdsItem;
+                yield break;
+            }
+            List<ShopItemData> list = section == ShopSectionKind.Gold ? _catalog.GoldPacks
+                : section == ShopSectionKind.Skills ? _catalog.SkillPacks
+                : section == ShopSectionKind.Bundles ? _catalog.Bundles : null;
+            if (list == null) yield break;
+            foreach (ShopItemData item in list) yield return item;
+        }
+
+        private float GetCardHeight(ShopSectionKind section)
+        {
+            if (_presentation == null)
+            {
+                switch (section)
+                {
+                    case ShopSectionKind.Featured: return 360f;
+                    case ShopSectionKind.NoAds: return 240f;
+                    case ShopSectionKind.Bundles: return 410f;
+                    default: return 330f;
+                }
+            }
+            float height = section == ShopSectionKind.Featured ? _presentation.FeaturedCardHeight
+                : section == ShopSectionKind.NoAds ? _presentation.NoAdsCardHeight
+                : section == ShopSectionKind.Bundles ? _presentation.BundleCardHeight
+                : _presentation.CompactCardHeight;
+            return Mathf.Max(100f, height);
+        }
+
+        private string BuildLayoutSignature()
+        {
+            var key = new StringBuilder();
+            key.Append(_catalog != null ? _catalog.GetInstanceID() : 0).Append('|');
+            key.Append(_contentRoot != null ? _contentRoot.GetInstanceID() : 0).Append('|');
+            key.Append(_featuredPrefab != null ? _featuredPrefab.GetInstanceID() : 0).Append('|');
+            key.Append(_noAdsPrefab != null ? _noAdsPrefab.GetInstanceID() : 0).Append('|');
+            key.Append(_compactPrefab != null ? _compactPrefab.GetInstanceID() : 0).Append('|');
+            key.Append(_bundlePrefab != null ? _bundlePrefab.GetInstanceID() : 0).Append('|');
+            key.Append(_sectionHeaderPrefab != null ? _sectionHeaderPrefab.GetInstanceID() : 0).Append('|');
+            if (_presentation != null)
+            {
+                key.Append(_presentation.FeaturedCardHeight).Append('|').Append(_presentation.NoAdsCardHeight).Append('|')
+                    .Append(_presentation.CompactCardHeight).Append('|').Append(_presentation.BundleCardHeight).Append('|')
+                    .Append(_presentation.SectionHeaderHeight).Append('|').Append(_presentation.SectionSpacing).Append('|')
+                    .Append(_presentation.ColumnSpacing).Append('|');
+            }
+            IList<ShopSectionKind> sections = _presentation != null && _presentation.SectionOrder != null
+                ? (IList<ShopSectionKind>)_presentation.SectionOrder : DefaultSections;
+            foreach (ShopSectionKind section in sections)
+            {
+                key.Append((int)section).Append(':');
+                foreach (ShopItemData item in GetItems(section))
+                {
+                    if (item == null) key.Append("<null>;");
+                    else
+                    {
+                        key.Append(item.Id != null ? item.Id.Length : 0).Append('#').Append(item.Id).Append(';');
+                    }
+                }
+                key.Append('|');
+            }
+            return key.ToString();
+        }
+
+        private void ApplyTitleStyle(TextMeshProUGUI text)
+        {
+            if (_presentation == null || text == null) return;
+            if (_presentation.Font != null && text.font != _presentation.Font) text.font = _presentation.Font;
+            text.color = _presentation.TitleColor;
+        }
+
+        private static void SetSkin(Image image, Sprite sprite)
+        {
+            if (image == null) return;
+            image.sprite = sprite;
+            image.type = sprite != null && sprite.border.sqrMagnitude > 0f ? Image.Type.Sliced : Image.Type.Simple;
+        }
+
+        private static RectTransform CreateRect(string name, Transform parent)
+        {
+            var root = new GameObject(name, typeof(RectTransform));
+            var rect = (RectTransform)root.transform;
+            rect.SetParent(parent, false);
+            rect.anchorMin = new Vector2(0f, 1f);
+            rect.anchorMax = Vector2.one;
+            rect.pivot = new Vector2(.5f, 1f);
+            rect.sizeDelta = Vector2.zero;
+            return rect;
+        }
+
+        private static string DefaultSectionTitle(ShopSectionKind section)
+        {
+            switch (section)
+            {
+                case ShopSectionKind.Gold: return "ALTIN PAKETLERİ";
+                case ShopSectionKind.Skills: return "TOP PAKETLERİ";
+                case ShopSectionKind.Bundles: return "DEĞER PAKETLERİ";
+                default: return string.Empty;
+            }
+        }
+    }
+}
+
