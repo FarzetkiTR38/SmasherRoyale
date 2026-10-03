@@ -113,12 +113,12 @@ TextureImporter:
       name: ChatGPT Image 19 Eyl 2026 23_01_11 (7)_0
       rect:
         serializedVersion: 2
-        x: 137
-        y: 322
-        width: 1327
-        height: 79
+        x: 105
+        y: 209
+        width: 1520
+        height: 303
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,6 +146,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       ChatGPT Image 19 Eyl 2026 23_01_11 (7)_0: -127052619
+      ChatGPT Image 19 Eyl 2026 23_01_11 (7)_1: -192405027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
