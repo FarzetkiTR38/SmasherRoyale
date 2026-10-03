@@ -263,16 +263,13 @@ MonoBehaviour:
   _hintCycleInterval: 3
   _hints:
   - "Her Rift bir zay\u0131f nokta saklar."
-  - "Mega Ball en a\u011F\u0131r s\xFCtun ve ta\u015F bloklar\u0131 bile devirebilir!"
-  - "Zay\u0131f noktalara vurarak devasa zincirleme tepkiler ba\u015Flat\u0131n!"
-  - "Infinity Ball 5 saniye boyunca s\u0131n\u0131rs\u0131z ve beklemesiz at\u0131\u015F
-    kazand\u0131r\u0131r."
-  - "Toplar\u0131 stand\u0131n kenar\u0131ndan sektirerek arkadaki hedefleri vurun!"
-  - "Boya \u015Fi\u015Feleri k\u0131r\u0131ld\u0131\u011F\u0131nda etrafa kaygan
-    boya sa\xE7ar."
-  - "Seviyeyi daha az topla bitirmek ekstra alt\u0131n bonusu kazand\u0131r\u0131r!"
-  - "Havan\u0131 s\xFCr\xFCkleyerek ni\u015Fan al\u0131n; dokundu\u011Funuz noktaya
-    ate\u015F edersiniz."
+  - "Mega Ball en a\u011F\u0131r bloklar\u0131 devirir."
+  - "Zay\u0131f noktalara vur, zinciri ba\u015Flat!"
+  - "Infinity Ball s\u0131n\u0131rs\u0131z at\u0131\u015F sa\u011Flar."
+  - "Toplar\u0131 kenardan sektirip hedefi vur."
+  - "Boya \u015Fi\u015Feleri zemini kayganla\u015Ft\u0131r\u0131r."
+  - "Daha az topla bitir, \xE7ok alt\u0131n kazan!"
+  - "Havan\u0131 s\xFCr\xFCkle ve hedefine ate\u015F et."
 --- !u!4 &261501157
 Transform:
   m_ObjectHideFlags: 0
@@ -911,6 +908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Economy.IAPManager
   _config: {fileID: 0}
+  UseFakeStoreUIInEditor: 0
 --- !u!4 &1131919290
 Transform:
   m_ObjectHideFlags: 0
@@ -1047,10 +1045,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1359706776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 88}
-  m_SizeDelta: {x: 920, y: 70}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 85}
+  m_SizeDelta: {x: 0, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1178231516
 CanvasRenderer:
@@ -1251,8 +1249,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294309069
+  m_fontColor: {r: 0.8043076, g: 0.95761, b: 0.9622642, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1269,8 +1267,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.2
-  m_fontSizeBase: 48.2
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1336,10 +1334,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1359706776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -92}
-  m_SizeDelta: {x: 920, y: 50}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -83}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1341166377
 GameObject:
