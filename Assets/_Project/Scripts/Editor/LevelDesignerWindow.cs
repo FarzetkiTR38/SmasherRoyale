@@ -36,7 +36,7 @@ namespace RoyalSmash.Editor
         private const float STEP_X = 0.78f;
         private const float STEP_Y = 0.76f;
         private const float STEP_Z = 0.78f;
-        private const float STAND_Z = 7.50f;
+        private const float STAND_Z = 9.00f;
 
         // Editor State
         [SerializeField] private int _selectedLevelId = 1;
@@ -563,6 +563,7 @@ namespace RoyalSmash.Editor
             var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, blocksRoot);
             instance.transform.position = pos;
             instance.transform.rotation = Quaternion.identity;
+            instance.transform.localScale = Vector3.one * BLOCK_SIZE;
             instance.name = $"{type}_{blocksRoot.childCount + 1}";
 
             var rb = instance.GetComponent<Rigidbody>();

@@ -199,7 +199,7 @@ namespace RoyalSmash.Gameplay
                 return false;
             }
 
-            float targetZ = _standController != null ? _standController.transform.position.z : (_config != null ? _config.DefaultTargetDistance : 7.5f);
+            float targetZ = _standController != null ? _standController.transform.position.z : (_config != null ? _config.DefaultTargetDistance : 9.0f);
             Plane targetPlane = new Plane(Vector3.back, new Vector3(0f, 0f, targetZ));
             if (targetPlane.Raycast(ray, out float enterDistance))
             {
@@ -300,7 +300,7 @@ namespace RoyalSmash.Gameplay
             }
 
             // 2. Intersect with virtual gameplay target plane at gameplay depth
-            float targetZ = _standController != null ? _standController.transform.position.z : (_config != null ? _config.DefaultTargetDistance : 7.5f);
+            float targetZ = _standController != null ? _standController.transform.position.z : (_config != null ? _config.DefaultTargetDistance : 9.0f);
             Plane targetPlane = new Plane(Vector3.back, new Vector3(0f, 0f, targetZ));
 
             if (targetPlane.Raycast(ray, out float enterDistance))

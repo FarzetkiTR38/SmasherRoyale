@@ -70,7 +70,7 @@ namespace RoyalSmash.Levels
             if (existingSceneStand != null)
             {
                 existingSceneStand.SetActive(true);
-                existingSceneStand.transform.position = new Vector3(0, 0, 7.50f);
+                existingSceneStand.transform.position = new Vector3(0, 0, 9.00f);
                 existingSceneStand.transform.localScale = Vector3.one;
                 existingSceneStand.transform.rotation = Quaternion.identity;
             }
@@ -131,7 +131,7 @@ namespace RoyalSmash.Levels
             else if (existingSceneStand != null)
             {
                 existingSceneStand.SetActive(true);
-                existingSceneStand.transform.position = new Vector3(0, 0, 7.50f);
+                existingSceneStand.transform.position = new Vector3(0, 0, 9.00f);
                 existingSceneStand.transform.localScale = Vector3.one;
                 existingSceneStand.transform.rotation = Quaternion.identity;
                 _spawnedStands.Add(existingSceneStand);

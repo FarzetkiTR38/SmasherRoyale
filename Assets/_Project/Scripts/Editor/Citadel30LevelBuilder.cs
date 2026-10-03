@@ -9,19 +9,20 @@ namespace RoyalSmash.Editor
     /// <summary>
     /// Master builder for all 30 Royal Smash Citadel levels.
     /// Overhauled to ensure:
-    /// 1. ZERO overlapping or interpenetrating blocks (clean 0.78m X step, 0.76m Y step, 0.90m Z row step).
-    /// 2. Deep single stands (Scale.z = 1.25) with authentic 2-row layout (front row Z=7.05, back row Z=7.95).
-    /// 3. Perfectly aligned side-by-side dual stands (Y=0.0 on both, no floating upper platform).
-    /// 4. Rich, satisfying physical puzzle progression for MVP.
+    /// 1. All stands and blocks moved to Z = 9.00m (pushed back from 7.50m for improved perspective & ball arc).
+    /// 2. Deep double-row stands (Scale.z = 1.35) have 100% IDENTICAL front and back rows:
+    ///    Every block at (x, y, FRONT_Z=8.55) has an exact twin at (x, y, BACK_Z=9.45) for true physical thickness.
+    /// 3. ZERO overlapping or interpenetrating blocks across all 30 levels.
+    /// 4. Side-by-side dual stands perfectly aligned at Y = 0.0m.
     /// </summary>
     public static class Citadel30LevelBuilder
     {
         private const float BASE_Y = 1.85f;
         private const float STEP_Y = 0.76f;
         private const float STEP_X = 0.78f;
-        private const float STAND_Z = 7.50f;
-        private const float FRONT_Z = 7.05f;
-        private const float BACK_Z = 7.95f;
+        private const float STAND_Z = 9.00f;
+        private const float FRONT_Z = 8.55f;
+        private const float BACK_Z = 9.45f;
         private static readonly Vector3 BLOCK_SCALE = new Vector3(0.74f, 0.74f, 0.74f);
 
         [MenuItem("Tools/Royal Smash/Generate All 30 Citadel Levels")]
@@ -44,6 +45,15 @@ namespace RoyalSmash.Editor
                 BuildLevelData(levelId, levelData);
                 EditorUtility.SetDirty(levelData);
                 levelList.Add(levelData);
+
+                // Also keep legacy ScriptableObjects/Levels/ folder in exact sync
+                string legacyPath = $"Assets/_Project/ScriptableObjects/Levels/LevelData_{levelId:D2}.asset";
+                LevelData legacyLevelData = AssetDatabase.LoadAssetAtPath<LevelData>(legacyPath);
+                if (legacyLevelData != null)
+                {
+                    BuildLevelData(levelId, legacyLevelData);
+                    EditorUtility.SetDirty(legacyLevelData);
+                }
             }
 
             var citadelDb = AssetDatabase.LoadAssetAtPath<LevelDatabase>("Assets/_Project/Art/SkyCitadel/Levels/CitadelLevelDatabase.asset");
@@ -63,7 +73,7 @@ namespace RoyalSmash.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            Debug.Log("[Citadel30LevelBuilder] Successfully regenerated all 30 Citadel levels with zero overlaps and calibrated 2-row layouts!");
+            Debug.Log("[Citadel30LevelBuilder] Successfully regenerated all 30 Citadel levels at Z=9.00m with identical 2-row thickness!");
         }
 
         private static float GetLayerY(int layer) => BASE_Y + (layer * STEP_Y);
@@ -83,14 +93,24 @@ namespace RoyalSmash.Editor
             };
         }
 
-        private static StandPlacement[] SingleDeepStand(float scaleX = 1.3f)
+        /// <summary>
+        /// Creates a thick block pair: identical block placed at FRONT_Z and BACK_Z.
+        /// Guaranteed identical facade and back row for physical depth and structural thickness.
+        /// </summary>
+        private static void AddThickBlock(List<ObjectPlacement> objs, ObjectType type, float x, int layer, bool isRequired = true)
+        {
+            objs.Add(CreateBlock(type, x, layer, FRONT_Z, isRequired));
+            objs.Add(CreateBlock(type, x, layer, BACK_Z, isRequired));
+        }
+
+        private static StandPlacement[] SingleDeepStand(float scaleX = 1.35f)
         {
             return new[]
             {
                 new StandPlacement
                 {
                     Position = new Vector3(0f, 0f, STAND_Z),
-                    Scale = new Vector3(scaleX, 1.0f, 1.25f),
+                    Scale = new Vector3(scaleX, 1.0f, 1.35f),
                     Rotation = Vector3.zero
                 }
             };
@@ -117,7 +137,7 @@ namespace RoyalSmash.Editor
 
         public static void BuildLevelData(int id, LevelData data)
         {
-            var stands = SingleDeepStand(1.2f);
+            var stands = SingleDeepStand(1.25f);
             var objs = new List<ObjectPlacement>();
             var events = new List<LevelEvent>();
             int balls = 25;
@@ -132,21 +152,15 @@ namespace RoyalSmash.Editor
                 case 1:
                     name = "The Grand Gateway";
                     balls = 25;
-                    stands = SingleDeepStand(1.2f);
-                    // Front row: 3 low barriers
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, 0f, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, STEP_X, 0, FRONT_Z));
-                    // Back row: 2 stone pillars + keystone + paint bottle + roof cones
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, 0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0.5f * STEP_X, 3, BACK_Z));
+                    stands = SingleDeepStand(1.25f);
+                    // 7 base blocks, doubled front & back = 14 thick blocks
+                    AddThickBlock(objs, ObjectType.Stone, -STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,   0f,      0);
+                    AddThickBlock(objs, ObjectType.Stone,  STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 2);
                     break;
 
                 case 2:
@@ -172,46 +186,31 @@ namespace RoyalSmash.Editor
                 case 3:
                     name = "Stone Fortress Wall";
                     balls = 26;
-                    stands = SingleDeepStand(1.25f);
-                    // Front row: 4 foundation blocks
-                    objs.Add(CreateBlock(ObjectType.Box, -1.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -0.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  0.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  1.5f * STEP_X, 0, FRONT_Z));
-                    // Back row: stone defense with central paint bottle
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 3, BACK_Z));
+                    stands = SingleDeepStand(1.30f);
+                    // 8 base blocks doubled = 16 thick blocks
+                    AddThickBlock(objs, ObjectType.Stone, -1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,   -0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,    0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone,  1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 2);
                     break;
 
                 case 4:
                     name = "The Royal Step Pyramid";
                     balls = 27;
-                    stands = SingleDeepStand(1.3f);
-                    // Front row: 3 step blocks
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,     0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,     1, FRONT_Z));
-                    // Back row: 5-3-1 Pyramid
-                    objs.Add(CreateBlock(ObjectType.Stone, -2f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,   -1f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0f,          0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    1f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  2f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 3, BACK_Z));
+                    stands = SingleDeepStand(1.35f);
+                    // 8 base pyramid blocks doubled = 16 thick blocks
+                    AddThickBlock(objs, ObjectType.Stone, -1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,   -0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,    0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone,  1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 2);
                     break;
 
                 case 5:
@@ -219,26 +218,16 @@ namespace RoyalSmash.Editor
                     balls = 28;
                     stands = SingleDeepStand(1.35f);
                     events.Add(new LevelEvent { Type = LevelEventType.UnlockMegaBall, Data = "Mega Ball Unlocked!" });
-                    // Front row: Heavy stone barricade
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -0.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  STEP_X, 1, FRONT_Z));
-                    // Back row: Tower with protected explosive core
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,   -0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
+                    // 9 base bastion blocks doubled = 18 thick blocks
+                    AddThickBlock(objs, ObjectType.Stone, -1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone, -0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone,  0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone,  1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 // =========================================================================
@@ -271,73 +260,50 @@ namespace RoyalSmash.Editor
                 case 7:
                     name = "Sapphire Spire Citadel";
                     balls = 29;
-                    stands = SingleDeepStand(1.3f);
-                    // Front row: 5 barrier blocks
-                    objs.Add(CreateBlock(ObjectType.Stone, -2f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,   -1f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,          0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    1f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  2f * STEP_X, 0, FRONT_Z));
-                    // Back row: High crystal spire (13 blocks)
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,   -0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -0.5f * STEP_X, 5, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  0.5f * STEP_X, 5, BACK_Z));
+                    stands = SingleDeepStand(1.35f);
+                    // 10 base blocks doubled = 20 thick blocks
+                    AddThickBlock(objs, ObjectType.Stone, -1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,   -0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box,    0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone,  1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, 0f, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 3);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 4);
                     break;
 
                 case 8:
                     name = "The Armored Bunker";
                     balls = 29;
                     stands = SingleDeepStand(1.35f);
-                    // Front row: Heavy stone defense wall
+                    // 10 base blocks doubled = 20 thick blocks
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 2 ? ObjectType.Cone : ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  STEP_X, 1, FRONT_Z));
-                    // Back row: Internal bunker vault
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(c == 0 ? ObjectType.PaintBottle : ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 3, BACK_Z));
+                        AddThickBlock(objs, Mathf.Abs(c) == 2 ? ObjectType.Stone : ObjectType.Box, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 9:
                     name = "Citadel Aqueduct";
                     balls = 30;
-                    stands = SingleDeepStand(1.4f);
-                    // Front row: 4 aqueduct arches
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -0.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  0.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  0f,     1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  STEP_X, 1, FRONT_Z));
-                    // Back row: Upper water channel with paint bottles
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,          0f,     1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle,  STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  0.5f * STEP_X, 3, BACK_Z));
+                    stands = SingleDeepStand(1.40f);
+                    // 11 base blocks doubled = 22 thick blocks
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column,  0.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, -0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 10:
@@ -377,123 +343,79 @@ namespace RoyalSmash.Editor
                     name = "The Arcane Vault";
                     balls = 31;
                     stands = SingleDeepStand(1.35f);
-                    // Front row: 5 barrier blocks
-                    objs.Add(CreateBlock(ObjectType.Stone, -2f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,   -1f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,          0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    1f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  2f * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  STEP_X, 1, FRONT_Z));
-                    // Back row: Arcane Vault (13 blocks)
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  0.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                    // 11 base blocks doubled = 22 thick blocks
+                    for (int c = -2; c <= 2; c++)
+                        AddThickBlock(objs, Mathf.Abs(c) == 2 ? ObjectType.Stone : ObjectType.Box, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box, -0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Box,  0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 12:
                     name = "Triple Spire Keep";
                     balls = 31;
-                    stands = SingleDeepStand(1.4f);
-                    // Front row: 5 blocks
+                    stands = SingleDeepStand(1.40f);
+                    // 11 base blocks doubled = 22 thick blocks
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Box, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, FRONT_Z));
-                    // Back row: 3 Rising Spires (15 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,             1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -1.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  1.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f,        1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Cone, -1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Column, 0f,           2);
+                    AddThickBlock(objs, ObjectType.Cone,  1.5f * STEP_X, 2);
                     break;
 
                 case 13:
                     name = "Citadel Tiered Fortress";
                     balls = 32;
-                    stands = SingleDeepStand(1.4f); // Fixed: Deeper single stand, no floating platform!
-                    // Front row: Rampart barrier (7 blocks)
+                    stands = SingleDeepStand(1.40f);
+                    // 12 base blocks doubled = 24 thick blocks
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  STEP_X, 1, FRONT_Z));
-                    // Back row: Grand Citadel Bastion (14 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(c == 0 ? ObjectType.PaintBottle : ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,   -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, -0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 14:
                     name = "Ironclad Redoubt";
                     balls = 32;
-                    stands = SingleDeepStand(1.35f);
-                    // Front row: Heavy stone defense (6 blocks)
+                    stands = SingleDeepStand(1.40f);
+                    // 12 base blocks doubled = 24 thick blocks
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, FRONT_Z));
-                    // Back row: Fortress Keep (15 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,   0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 2);
                     break;
 
                 case 15:
                     name = "Sanctuary of Sapphire";
                     balls = 33;
-                    stands = SingleDeepStand(1.4f);
+                    stands = SingleDeepStand(1.40f);
                     events.Add(new LevelEvent { Type = LevelEventType.NewContentIntroduction, Data = "Sapphire Temple Unlocked" });
-                    // Front row: Temple colonnade (7 blocks)
+                    // 12 base blocks doubled = 24 thick blocks
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 2 ? ObjectType.Column : ObjectType.Box, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  STEP_X, 1, FRONT_Z));
-                    // Back row: Sacred Altar (16 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle,  0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,     2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f,        1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, -1.5f * STEP_X, 3);
+                    AddThickBlock(objs, ObjectType.Cone,  1.5f * STEP_X, 3);
                     break;
 
                 // =========================================================================
@@ -502,26 +424,18 @@ namespace RoyalSmash.Editor
                 case 16:
                     name = "The High Cathedral";
                     balls = 33;
-                    stands = SingleDeepStand(1.4f);
-                    // Front row: Cathedral portico (7 blocks)
+                    stands = SingleDeepStand(1.40f);
+                    // 13 base blocks doubled = 26 thick blocks
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Box, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 1, FRONT_Z));
-                    // Back row: Grand Cathedral nave (16 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,   0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -1.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  1.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f,        2);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 17:
@@ -553,51 +467,33 @@ namespace RoyalSmash.Editor
                 case 18:
                     name = "Palace of Shields";
                     balls = 34;
-                    stands = SingleDeepStand(1.4f);
-                    // Front row: 7 shield blocks
+                    stands = SingleDeepStand(1.40f);
+                    // 13 base blocks doubled = 26 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -1.5f * STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  1.5f * STEP_X, 1, FRONT_Z));
-                    // Back row: Shield Palace Keep (16 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, Mathf.Abs(c) == 3 ? ObjectType.Stone : ObjectType.Box, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f,        1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone, -STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Stone,  STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 19:
                     name = "The Arcane Observatory";
                     balls = 34;
-                    stands = SingleDeepStand(1.4f);
-                    // Front row: Observation ramparts (7 blocks)
+                    stands = SingleDeepStand(1.40f);
+                    // 13 base blocks doubled = 26 thick blocks
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Box, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 1, FRONT_Z));
-                    // Back row: High Observatory Spire (17 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,             1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 5, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,    0f,             1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f,        2);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 4);
                     break;
 
                 case 20:
@@ -605,24 +501,16 @@ namespace RoyalSmash.Editor
                     balls = 34;
                     stands = SingleDeepStand(1.45f);
                     events.Add(new LevelEvent { Type = LevelEventType.NewContentIntroduction, Data = "Citadel Stronghold Unlocked" });
-                    // Front row: 8 bastion blocks
+                    // 14 base blocks doubled = 28 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, 0f, 1, FRONT_Z));
-                    // Back row: Citadel Keep (17 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(c == 0 ? ObjectType.PaintBottle : ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,   0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,   -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box,    0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone, -STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Stone,  STEP_X, 2);
                     break;
 
                 // =========================================================================
@@ -632,24 +520,16 @@ namespace RoyalSmash.Editor
                     name = "The Citadel Coliseum";
                     balls = 35;
                     stands = SingleDeepStand(1.45f);
-                    // Front row: Coliseum ring wall (8 blocks)
+                    // 14 base blocks doubled = 28 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) >= 2 ? ObjectType.Column : ObjectType.Box, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, FRONT_Z));
-                    // Back row: Imperial Arena Tribune (17 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,   -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, Mathf.Abs(c) >= 2 ? ObjectType.Column : ObjectType.Box, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Stone, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Column,  0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 22:
@@ -686,48 +566,29 @@ namespace RoyalSmash.Editor
                     name = "The Great Crystal Pyramid";
                     balls = 35;
                     stands = SingleDeepStand(1.45f);
-                    // Front row: Step tier (8 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  STEP_X, 1, FRONT_Z));
-                    // Back row: Master Pyramid (17 blocks)
+                    // 14 base blocks doubled = 28 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Box, c * STEP_X, 0, BACK_Z));
+                        AddThickBlock(objs, Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Box, c * STEP_X, 0);
                     for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Column, c * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Column, c * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 24:
                     name = "Vault of the Celestials";
                     balls = 35;
-                    stands = SingleDeepStand(1.45f); // Fixed: Deeper single stand, no floating platform!
-                    // Front row: Outer celestial guard (8 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 1, FRONT_Z));
-                    // Back row: Celestial Vault Chamber (17 blocks)
+                    stands = SingleDeepStand(1.45f);
+                    // 14 base blocks doubled = 28 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,   0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone, -0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Stone,  0.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 25:
@@ -735,26 +596,17 @@ namespace RoyalSmash.Editor
                     balls = 35;
                     stands = SingleDeepStand(1.45f);
                     events.Add(new LevelEvent { Type = LevelEventType.NewContentIntroduction, Data = "Sky Fortress Unlocked" });
-                    // Front row: 8 fortress ramparts
+                    // 15 base blocks doubled = 30 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, 0f, 1, FRONT_Z));
-                    // Back row: Sky Fortress Keep (18 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle,  0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,    0f,     2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 5, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Box, -2f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -1f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Column, 1f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box, 2f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Cone, -1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone,  1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 2);
                     break;
 
                 // =========================================================================
@@ -764,26 +616,17 @@ namespace RoyalSmash.Editor
                     name = "The Crown Bastion";
                     balls = 35;
                     stands = SingleDeepStand(1.45f);
-                    // Front row: 8 barrier blocks
+                    // 15 base blocks doubled = 30 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(ObjectType.Box, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, 0f, 1, FRONT_Z));
-                    // Back row: Crown Bastion Keep (18 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,   0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 5, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone,  -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone,   0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column, -STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Column,  STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 27:
@@ -820,79 +663,53 @@ namespace RoyalSmash.Editor
                     name = "The Core Reactor Spire";
                     balls = 36;
                     stands = SingleDeepStand(1.45f);
-                    // Front row: 8 containment shields
+                    // 15 base blocks doubled = 30 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, FRONT_Z));
-                    // Back row: Reactor core tower (18 blocks)
-                    for (int c = -2; c <= 2; c++)
-                        objs.Add(CreateBlock(c == 0 ? ObjectType.PaintBottle : ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle,  0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 4, BACK_Z));
+                        AddThickBlock(objs, Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone, -STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Stone,  STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 29:
                     name = "The Emperor's Redoubt";
                     balls = 36;
-                    stands = SingleDeepStand(1.5f);
-                    // Front row: Heavy imperial defenses (8 blocks)
+                    stands = SingleDeepStand(1.50f);
+                    // 16 base blocks doubled = 32 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 1, FRONT_Z));
-                    // Back row: Imperial Redoubt Keep (19 blocks)
-                    for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) >= 2 ? ObjectType.Cone : ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle,  0.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  0.5f * STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, 0f, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 5, BACK_Z));
+                        AddThickBlock(objs, ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, -0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle,  0.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  1.5f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone, -STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Column, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Stone,  STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
 
                 case 30:
                     name = "The Crown Citadel";
                     balls = 36;
-                    stands = SingleDeepStand(1.5f);
+                    stands = SingleDeepStand(1.50f);
                     events.Add(new LevelEvent { Type = LevelEventType.FinalLevel, Data = "Level 30 Finale (Grand Victory)" });
-                    // Front row: Imperial Grand Entrance (9 blocks)
+                    // 16 base blocks doubled = 32 thick blocks
                     for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Stone, c * STEP_X, 0, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -STEP_X, 1, FRONT_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle,  STEP_X, 1, FRONT_Z));
-                    // Back row: The Imperial Citadel Citadel (19 blocks)
-                    for (int c = -3; c <= 3; c++)
-                        objs.Add(CreateBlock(Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Box, c * STEP_X, 0, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -2f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  -1f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,   1f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  2f * STEP_X, 1, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box, -1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, -0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone,  0.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Box,  1.5f * STEP_X, 2, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column, -STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Column,  STEP_X, 3, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Stone, 0f, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, -STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone,  STEP_X, 4, BACK_Z));
-                    objs.Add(CreateBlock(ObjectType.Cone, 0f, 5, BACK_Z));
+                        AddThickBlock(objs, Mathf.Abs(c) == 3 ? ObjectType.Cone : ObjectType.Stone, c * STEP_X, 0);
+                    AddThickBlock(objs, ObjectType.Column, -2f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Stone,  -1f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 1);
+                    AddThickBlock(objs, ObjectType.Stone,   1f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Column,  2f * STEP_X, 1);
+                    AddThickBlock(objs, ObjectType.Box, -1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.PaintBottle, 0f, 2);
+                    AddThickBlock(objs, ObjectType.Box,  1.5f * STEP_X, 2);
+                    AddThickBlock(objs, ObjectType.Cone, 0f, 3);
                     break;
             }
 

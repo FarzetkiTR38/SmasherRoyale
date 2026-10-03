@@ -17,7 +17,7 @@ MonoBehaviour:
   _minX: -2.6
   _maxX: 2.6
   _dragThresholdPixels: 12
-  _defaultTargetDistance: 7.5
+  _defaultTargetDistance: 9
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
