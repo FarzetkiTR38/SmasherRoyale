@@ -49,7 +49,6 @@
   <Project Path="Unity.TextMeshPro.csproj" />
   <Project Path="UnityEditor.Purchasing.csproj" />
   <Project Path="Unity.TextMeshPro.Editor.csproj" />
-  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.Purchasing.WebshopService.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="Unity.Rider.Editor.csproj" />
@@ -79,6 +78,7 @@
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
   <Project Path="UnityEditor.UI.Analytics.csproj" />
   <Project Path="Unity.PathTracing.Runtime.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.PathTracing.Editor.csproj" />
   <Project Path="Unity.Purchasing.Stores.XboxCloudServices.csproj" />
   <Project Path="Unity.Services.Core.Threading.csproj" />
