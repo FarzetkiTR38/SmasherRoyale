@@ -37,6 +37,10 @@ namespace RoyalSmash.UI
         [SerializeField] private TextMeshProUGUI _megaRewardText;
         [SerializeField] private TextMeshProUGUI _infinityRewardText;
         [SerializeField] private TextMeshProUGUI _noAdsRewardText;
+        [SerializeField] private Image _goldRewardIcon;
+        [SerializeField] private Image _megaRewardIcon;
+        [SerializeField] private Image _infinityRewardIcon;
+        [SerializeField] private Image _noAdsRewardIcon;
 
         [Header("Catalog Binding")]
         [SerializeField] private ShopConfig _catalog;
@@ -199,7 +203,7 @@ namespace RoyalSmash.UI
             {
                 // Legacy descriptions contain copied reward quantities. Dynamic cards
                 // render those quantities once, directly from the reward fields below.
-                bool showDescription = !hasLiveRewards || item.GrantsNoAds ||
+                bool showDescription = !hasLiveRewards || (item.ItemType == ShopItemType.NoAds && item.GrantsNoAds) ||
                                        (item.GoldReward <= 0 && item.MegaBallReward <= 0 && item.InfinityBallReward <= 0);
                 _descriptionText.text = showDescription
                     ? (item.GrantsNoAds && _presentation != null ? _presentation.NoAdsDescription : item.Description)
@@ -384,8 +388,7 @@ namespace RoyalSmash.UI
 
         private void ApplyPresentation(ShopItemData item)
         {
-            if (_presentation == null) return;
-            ShopProductArtwork art = _presentation.FindArtwork(item.Id);
+            ShopProductArtwork art = _presentation != null ? _presentation.FindArtwork(item.Id) : null;
             if (_artworkImage != null)
             {
                 _artworkImage.sprite = art != null && art.Artwork != null ? art.Artwork : item.Icon;
@@ -393,6 +396,11 @@ namespace RoyalSmash.UI
                 _artworkImage.color = Color.white;
                 _artworkImage.preserveAspect = true;
             }
+            SetRewardIcon(_goldRewardIcon, _presentation != null ? _presentation.GoldRewardIcon : null);
+            SetRewardIcon(_megaRewardIcon, _presentation != null ? _presentation.MegaRewardIcon : null);
+            SetRewardIcon(_infinityRewardIcon, _presentation != null ? _presentation.InfinityRewardIcon : null);
+            SetRewardIcon(_noAdsRewardIcon, _presentation != null ? _presentation.NoAdsRewardIcon : null);
+            if (_presentation == null) return;
             Sprite background = _presentation.CompactBackground;
             switch (item.ItemType)
             {
@@ -432,6 +440,15 @@ namespace RoyalSmash.UI
             image.type = sprite != null && sprite.border.sqrMagnitude > 0f ? Image.Type.Sliced : Image.Type.Simple;
         }
 
+        private static void SetRewardIcon(Image image, Sprite sprite)
+        {
+            if (image == null) return;
+            image.sprite = sprite;
+            image.enabled = sprite != null;
+            image.color = Color.white;
+            image.preserveAspect = true;
+        }
+
         private void SetState(string message)
         {
             if (_stateText == null) return;
@@ -455,7 +472,7 @@ namespace RoyalSmash.UI
 
         private static string Label(string value, string fallback) => string.IsNullOrEmpty(value) ? fallback : value;
 
-        private static string GetDisplayTitle(ShopItemData item)
+        internal static string GetDisplayTitle(ShopItemData item)
         {
             string title = item.Title ?? string.Empty;
             if (item.ItemType != ShopItemType.SkillPack || !title.EndsWith(")", StringComparison.Ordinal)) return title;

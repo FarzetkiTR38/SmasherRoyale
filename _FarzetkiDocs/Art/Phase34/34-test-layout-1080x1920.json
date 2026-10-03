@@ -1,0 +1,56 @@
+{
+    "suite": "layout-1080x1920",
+    "scope": "Current GameView layout metrics. Capture and visually inspect this exact screen separately; this test does not claim an image was reviewed.",
+    "startedUtc": "2026-10-03T22:49:04.0473965Z",
+    "completedUtc": "2026-10-03T22:49:04.0592645Z",
+    "status": "passed",
+    "backupManifest": "",
+    "passed": 7,
+    "failed": 0,
+    "screenWidth": 1080,
+    "screenHeight": 1920,
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1080.0,
+        "height": 1920.0
+    },
+    "checks": [
+        {
+            "name": "Scroll viewport stays inside the current screen safe area",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "All purchase targets meet the shared 96-unit minimum",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Active dynamic text fits its own TMP bounds",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Reward rows stay in their own group and clear purchase/status text",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "First product is reachable at top of scroll",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Final product is reachable at bottom of scroll",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Every card remains inside the content width",
+            "detail": "",
+            "passed": true
+        }
+    ]
+}

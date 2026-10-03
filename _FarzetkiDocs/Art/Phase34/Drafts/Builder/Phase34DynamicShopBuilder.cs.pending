@@ -83,7 +83,8 @@ namespace RoyalSmash.EditorTools
                 ShopCatalogPresenter presenter = panel.GetComponent<ShopCatalogPresenter>();
                 presenter.Rebuild();
                 ValidateCards(presenter, catalog);
-                SavePrefab(panel, PanelPath);
+                GameObject savedPanel = SavePrefab(panel, PanelPath);
+                ValidateCards(savedPanel.GetComponent<ShopCatalogPresenter>(), catalog);
                 UnityEngine.Object.DestroyImmediate(panel);
 
                 GameObject preview = NewRoot("PF_DynamicShop_Preview", previewScene);
@@ -106,8 +107,9 @@ namespace RoyalSmash.EditorTools
                 sampleRect.anchorMax = new Vector2(1f, .88f);
                 sampleRect.offsetMin = new Vector2(58f, 0f);
                 sampleRect.offsetMax = new Vector2(-58f, 0f);
-                SavePrefab(preview, PreviewPath);
-                int cardCount = sample.GetComponentsInChildren<ShopItemCardUI>(true).Length;
+                RecordPrefabOverrides(sample, sampleRect);
+                GameObject savedPreview = SavePrefab(preview, PreviewPath);
+                int cardCount = ValidateCards(savedPreview.GetComponentInChildren<ShopCatalogPresenter>(true), catalog).Length;
                 UnityEngine.Object.DestroyImmediate(preview);
                 bool unchanged = catalogBefore == EditorJsonUtility.ToJson(catalog, false);
                 if (!unchanged) throw new InvalidOperationException("The shop catalog unexpectedly changed while authoring prefabs.");
@@ -175,17 +177,21 @@ namespace RoyalSmash.EditorTools
             Undo.SetCurrentGroupName("Phase 34: Replace Royal Bazar content with dynamic prefabs");
             try
             {
-                Undo.RecordObject(controller, "Wire dynamic shop controller");
+                // Capture immediately: presenter.Rebuild publishes its cards into
+                // the controller before the migration finishes or might throw.
+                Undo.RegisterCompleteObjectUndo(controller, "Wire dynamic shop controller");
                 GameObject newFrame = (GameObject)PrefabUtility.InstantiatePrefab(prefab, shop);
                 Undo.RegisterCreatedObjectUndo(newFrame, "Create dynamic shop frame");
                 newFrame.name = "ShopFrameContainer";
                 newFrame.transform.SetSiblingIndex(oldSiblingIndex);
                 Stretch(newFrame.GetComponent<RectTransform>(), new Vector2(58f, 0f), new Vector2(-58f, 0f));
+                RecordPrefabOverrides(newFrame, newFrame.transform);
                 ShopCatalogPresenter presenter = newFrame.GetComponent<ShopCatalogPresenter>();
                 SetReferences(presenter, ("_shopUI", controller));
                 presenter.Rebuild();
                 string[] ids = ValidateCards(presenter, catalog);
-                Button closeButton = newFrame.transform.Find("CloseButton").GetComponent<Button>();
+                Transform closeTransform = newFrame.transform.Find("CloseButton");
+                Button closeButton = closeTransform != null ? closeTransform.GetComponent<Button>() : null;
                 if (closeButton == null) throw new InvalidOperationException("The new shop close button is missing.");
 
                 var serialized = new SerializedObject(controller);
@@ -200,7 +206,7 @@ namespace RoyalSmash.EditorTools
                 for (int i = 0; i < presenter.Cards.Count; i++)
                     cards.GetArrayElementAtIndex(i).objectReferenceValue = presenter.Cards[i];
                 serialized.ApplyModifiedPropertiesWithoutUndo();
-                PrefabUtility.RecordPrefabInstancePropertyModifications(presenter);
+                RecordPrefabOverrides(presenter, controller);
                 Undo.DestroyObjectImmediate(oldFrame.gameObject);
                 report.changed = true;
                 report.itemIds = ids;
@@ -224,7 +230,10 @@ namespace RoyalSmash.EditorTools
             if (example == null) throw new InvalidOperationException("Each card family requires a catalog example.");
             GameObject root = CreateCard(scene, catalog, config, kind, example);
             root.GetComponent<ShopItemCardUI>().RefreshDisplay();
-            SavePrefab(root, path);
+            GameObject saved = SavePrefab(root, path);
+            ShopItemCardUI savedCard = saved.GetComponent<ShopItemCardUI>();
+            if (savedCard == null || !ReferenceEquals(savedCard.ItemData, example))
+                throw new InvalidOperationException("Saved card lost its catalog binding: " + path);
             UnityEngine.Object.DestroyImmediate(root);
         }
 
@@ -278,7 +287,7 @@ namespace RoyalSmash.EditorTools
             RectTransform rewards = CreateRect("Rewards", root.transform);
             if (featured) Region(rewards, 0f, 1f, .52f, 1f, 30f, -274f, -8f, -132f);
             else if (noAds) Region(rewards, .25f, 0f, .64f, 0f, 8f, 20f, -8f, 66f);
-            else Region(rewards, .46f, 1f, 1f, 1f, 2f, bundle ? -284f : -206f, -14f, -112f);
+            else Region(rewards, .46f, 0f, 1f, 1f, 2f, 146f, -14f, -112f);
             VerticalLayoutGroup rewardLayout = rewards.gameObject.AddComponent<VerticalLayoutGroup>();
             rewardLayout.childAlignment = TextAnchor.UpperLeft;
             rewardLayout.childControlWidth = true;
@@ -287,10 +296,10 @@ namespace RoyalSmash.EditorTools
             rewardLayout.childForceExpandHeight = false;
             rewardLayout.spacing = 4f;
             float rewardSize = wide ? 28f : 24f;
-            TextMeshProUGUI gold = Reward(rewards, "Gold", config, rewardSize, new Color(1f, .89f, .48f));
-            TextMeshProUGUI mega = Reward(rewards, "Mega", config, rewardSize, new Color(.95f, .98f, 1f));
-            TextMeshProUGUI infinity = Reward(rewards, "Infinity", config, rewardSize, new Color(.72f, .90f, 1f));
-            TextMeshProUGUI ads = Reward(rewards, "NoAds", config, noAds ? 23f : rewardSize, config.BodyColor);
+            TextMeshProUGUI gold = Reward(rewards, "Gold", config, rewardSize, new Color(1f, .89f, .48f), out Image goldIcon);
+            TextMeshProUGUI mega = Reward(rewards, "Mega", config, rewardSize, new Color(.95f, .98f, 1f), out Image megaIcon);
+            TextMeshProUGUI infinity = Reward(rewards, "Infinity", config, rewardSize, new Color(.72f, .90f, 1f), out Image infinityIcon);
+            TextMeshProUGUI ads = Reward(rewards, "NoAds", config, noAds ? 23f : rewardSize, config.BodyColor, out Image noAdsIcon);
 
             Image buyImage = CreateImage("BuyButton", root.transform, config.BuyBackground, true);
             if (featured) Region(buyImage.rectTransform, .55f, 0f, 1f, 0f, 10f, 18f, -20f, 114f);
@@ -331,6 +340,8 @@ namespace RoyalSmash.EditorTools
                 ("_catalog", catalog), ("_presentation", config), ("_backgroundImage", background),
                 ("_artworkImage", artwork), ("_goldRewardText", gold), ("_megaRewardText", mega),
                 ("_infinityRewardText", infinity), ("_noAdsRewardText", ads), ("_stateText", state),
+                ("_goldRewardIcon", goldIcon), ("_megaRewardIcon", megaIcon),
+                ("_infinityRewardIcon", infinityIcon), ("_noAdsRewardIcon", noAdsIcon),
                 ("_timerText", timer), ("_buyBackgroundImage", buyImage), ("_badgeImage", badge));
             var serialized = new SerializedObject(card);
             RequireProperty(serialized, "_catalogItemId").stringValue = product.Id;
@@ -432,14 +443,23 @@ namespace RoyalSmash.EditorTools
         }
 
         private static TextMeshProUGUI Reward(RectTransform parent, string kind,
-            ShopPresentationConfig config, float fontSize, Color color)
+            ShopPresentationConfig config, float fontSize, Color color, out Image icon)
         {
             RectTransform row = CreateRect(kind + "Reward", parent);
             LayoutElement layout = row.gameObject.AddComponent<LayoutElement>();
             layout.preferredHeight = fontSize + 10f;
             layout.minHeight = fontSize + 10f;
+            Sprite sprite = kind == "Gold" ? config.GoldRewardIcon : kind == "Mega" ? config.MegaRewardIcon
+                : kind == "Infinity" ? config.InfinityRewardIcon : config.NoAdsRewardIcon;
+            icon = CreateImage(kind + "RewardIcon", row, sprite, false);
+            icon.preserveAspect = true;
+            icon.enabled = sprite != null;
+            icon.rectTransform.anchorMin = icon.rectTransform.anchorMax = new Vector2(0f, .5f);
+            icon.rectTransform.pivot = new Vector2(0f, .5f);
+            icon.rectTransform.anchoredPosition = Vector2.zero;
+            icon.rectTransform.sizeDelta = new Vector2(32f, 32f);
             TextMeshProUGUI label = CreateText(kind + "RewardText", row, config, fontSize, color, TextAlignmentOptions.MidlineLeft);
-            Stretch(label.rectTransform, Vector2.zero, Vector2.zero);
+            Stretch(label.rectTransform, new Vector2(40f, 0f), Vector2.zero);
             label.fontStyle = FontStyles.Bold;
             label.enableWordWrapping = false;
             return label;
@@ -603,11 +623,19 @@ namespace RoyalSmash.EditorTools
             AssetDatabase.CreateFolder(parent, path.Substring(split + 1));
         }
 
-        private static void SavePrefab(GameObject root, string path)
+        private static GameObject SavePrefab(GameObject root, string path)
         {
             bool success;
-            PrefabUtility.SaveAsPrefabAsset(root, path, out success);
-            if (!success) throw new InvalidOperationException("Could not write prefab " + path);
+            GameObject saved = PrefabUtility.SaveAsPrefabAsset(root, path, out success);
+            if (!success || saved == null) throw new InvalidOperationException("Could not write prefab " + path);
+            return saved;
+        }
+
+        private static void RecordPrefabOverrides(params UnityEngine.Object[] objects)
+        {
+            foreach (UnityEngine.Object target in objects)
+                if (target != null && PrefabUtility.IsPartOfPrefabInstance(target))
+                    PrefabUtility.RecordPrefabInstancePropertyModifications(target);
         }
 
         private static void RequireEditMode()

@@ -228,7 +228,8 @@ namespace RoyalSmash.UI
             if (item.InfinityBallReward > 0) summary.AppendLine($"+{item.InfinityBallReward:N0} {(_presentation != null ? _presentation.InfinityRewardLabel : "Sonsuz Top")}");
             if (item.GrantsNoAds) summary.AppendLine(_presentation != null ? _presentation.NoAdsDescription : "Zorunlu reklamlar kaldırıldı!");
             ShopProductArtwork art = _presentation != null ? _presentation.FindArtwork(item.Id) : null;
-            _feedbackDialog.ShowSuccess(item.Title ?? "SATIN ALMA BAŞARILI", summary.ToString().TrimEnd(),
+            string title = ShopItemCardUI.GetDisplayTitle(item);
+            _feedbackDialog.ShowSuccess(string.IsNullOrEmpty(title) ? "SATIN ALMA BAŞARILI" : title, summary.ToString().TrimEnd(),
                 art != null && art.Artwork != null ? art.Artwork : item.Icon);
         }
 

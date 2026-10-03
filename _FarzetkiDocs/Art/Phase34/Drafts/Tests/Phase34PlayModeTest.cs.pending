@@ -325,6 +325,10 @@ namespace RoyalSmash.EditorTools
                         Require(!text.isTextOverflowing, text.name + " overflows: " + text.text);
                     }
                 });
+                Check("Reward rows stay in their own group and clear purchase/status text", () =>
+                {
+                    foreach (var card in live.Cards) VerifyRewardLayout(card);
+                });
                 Check("First product is reachable at top of scroll", () =>
                 {
                     scroll.verticalNormalizedPosition = 1;
@@ -354,6 +358,114 @@ namespace RoyalSmash.EditorTools
             finally
             {
                 scroll.verticalNormalizedPosition = originalScroll;
+                Canvas.ForceUpdateCanvases();
+                Complete();
+            }
+            return JsonUtility.ToJson(Current, true);
+        }
+
+        /// <summary>
+        /// Measures an active independent preview with long Turkish wording, large
+        /// live amounts and another currency. Its clones are destroyed before return;
+        /// root captures the reviewed production screen separately.
+        /// </summary>
+        public static string RunEditedTextLayoutTests(string captureLabel)
+        {
+            RequirePlay();
+            Require(_tick == null, "Another suite is running.");
+            Require(!string.IsNullOrEmpty(captureLabel) && captureLabel.All(c => char.IsLetterOrDigit(c) || c == '-'), "Use a simple capture label.");
+            Begin("edited-layout-" + captureLabel, "Active cloned preview geometry with long Turkish titles, large catalog quantities and euro fallback. No purchases or source-asset edits; separate screenshots still required.");
+            Current.screenWidth = Screen.width;
+            Current.screenHeight = Screen.height;
+            Current.safeArea = Screen.safeArea;
+            GameObject sandbox = null;
+            ShopConfig catalog = null;
+            ShopPresentationConfig presentation = null;
+            try
+            {
+                ShopCatalogPresenter live = LivePresenter();
+                catalog = Object.Instantiate(Field<ShopConfig>(live, "_catalog"));
+                presentation = Object.Instantiate(Field<ShopPresentationConfig>(live, "_presentation"));
+                foreach (ShopItemData item in catalog.GetAllItems())
+                {
+                    if (item == null) continue;
+                    item.Title = "Çok Uzun Türkçe Şampiyonların Altın Hazinesi";
+                    item.ProductId = "phase34_layout_metadata_" + item.Id;
+                    item.PriceString = "1.234,56 €";
+                    // Exercise larger quantities across the existing product families.
+                    if (item.GoldReward > 0) item.GoldReward = 9876543;
+                    if (item.MegaBallReward > 0) item.MegaBallReward = 4321;
+                    if (item.InfinityBallReward > 0) item.InfinityBallReward = 8765;
+                }
+                ShopItemData editedGold = catalog.GoldPacks.First(item => item != null);
+                editedGold.GoldReward = 9876543;
+                editedGold.MegaBallReward = 4321;
+                editedGold.InfinityBallReward = 8765;
+                presentation.ShopTitle = "KRALLIĞIN DÜZENLENEN ROYAL BAZAR MAĞAZASI";
+                sandbox = new GameObject("Phase34_EditedLayoutSandbox");
+                sandbox.SetActive(false);
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Prefabs + "PF_DynamicShop_Preview.prefab");
+                Require(prefab != null, "Dynamic preview prefab missing.");
+                GameObject preview = Object.Instantiate(prefab, sandbox.transform);
+                ShopCatalogPresenter presenter = preview.GetComponentInChildren<ShopCatalogPresenter>(true);
+                Require(presenter != null, "Preview presenter missing.");
+                SetField(presenter, "_catalog", catalog);
+                SetField(presenter, "_presentation", presentation);
+                SetField(presenter, "_shopUI", null);
+                presenter.Rebuild();
+                sandbox.SetActive(true);
+                Canvas.ForceUpdateCanvases();
+                Check("Long titles and another currency use visible TMP bounds", () =>
+                {
+                    foreach (TMP_Text text in presenter.GetComponentsInChildren<TMP_Text>(false))
+                    {
+                        if (string.IsNullOrWhiteSpace(text.text)) continue;
+                        text.ForceMeshUpdate(true, true);
+                        Require(!text.isTextOverflowing, text.name + " overflows edited text: " + text.text);
+                    }
+                    foreach (ShopItemCardUI card in presenter.Cards)
+                    {
+                        Require(Field<TMP_Text>(card, "_titleText").text == card.ItemData.Title, "Long title did not reach card.");
+                        if (!card.ItemData.GrantsNoAds || !SaveManager.Instance.Data.NoAdsPurchased)
+                            Require(Field<TMP_Text>(card, "_priceText").text == "1.234,56 €", "Alternate currency did not reach card.");
+                    }
+                });
+                Check("Large reward quantities fit separate rows without purchase/status overlap", () =>
+                {
+                    foreach (ShopItemCardUI card in presenter.Cards)
+                    {
+                        VerifyRewards(card);
+                        VerifyRewardLayout(card);
+                    }
+                    Require(((RectTransform)Card(presenter, editedGold.Id).transform).rect.height >= 367.9f,
+                        "Compact height did not grow for three reward rows.");
+                    Require(Field<ShopConfig>(live, "_catalog").GoldPacks[0].GoldReward != editedGold.GoldReward,
+                        "Edited layout changed source catalog economics.");
+                });
+                Check("Reward amount refresh retains cards; a fourth reward rebuilds and grows the row", () =>
+                {
+                    ShopItemCardUI before = Card(presenter, editedGold.Id);
+                    editedGold.GoldReward++;
+                    presenter.RefreshCatalog();
+                    Require(ReferenceEquals(before, Card(presenter, editedGold.Id)), "A quantity-only edit rebuilt the catalog.");
+                    editedGold.GrantsNoAds = true;
+                    presenter.RefreshCatalog();
+                    Canvas.ForceUpdateCanvases();
+                    ShopItemCardUI after = Card(presenter, editedGold.Id);
+                    Require(!ReferenceEquals(before, after), "Reward composition change did not rebuild the catalog.");
+                    Require(((RectTransform)after.transform).rect.height >= 405.9f, "Compact height did not grow for four reward rows.");
+                    VerifyRewards(after);
+                    VerifyRewardLayout(after);
+                    Require(!Field<TMP_Text>(after, "_descriptionText").gameObject.activeSelf,
+                        "Mixed reward card reactivated legacy prose over its four reward rows.");
+                });
+            }
+            catch (Exception ex) { Record("Edited layout setup", false, ex.ToString()); }
+            finally
+            {
+                if (sandbox != null) Object.DestroyImmediate(sandbox);
+                if (catalog != null) Object.DestroyImmediate(catalog);
+                if (presentation != null) Object.DestroyImmediate(presentation);
                 Canvas.ForceUpdateCanvases();
                 Complete();
             }
@@ -442,10 +554,16 @@ namespace RoyalSmash.EditorTools
             var live = LivePresenter();
             Require(live.gameObject.activeInHierarchy, "Open the Shop before purchase regression.");
             Require(live.Cards.Count == 8, "Expected eight migrated cards.");
+            Require(GoldManager.HasInstance && SkillManager.HasInstance, "Existing gold and skill managers must be ready before purchase simulation.");
+            // Validate cleanup reflection before changing any flags or save fields.
+            Field<int>(GoldManager.Instance, "_currentGold");
+            Field<int>(SkillManager.Instance, "_megaBallUses");
+            Field<int>(SkillManager.Instance, "_infinityBallUses");
             var cards = live.Cards.ToArray();
             bool originalFakeUI = iap.UseFakeStoreUIInEditor;
             bool originalFailure = iap.SimulateNextPurchaseFailure;
             var originalBalance = Balance.Capture();
+            var originalSaveBalance = Balance.CaptureSaveData();
             bool originalOwned = save.Data.NoAdsPurchased;
             int completions = 0, failures = 0;
             ShopItemData completedItem = null;
@@ -468,8 +586,11 @@ namespace RoyalSmash.EditorTools
                 iap.UseFakeStoreUIInEditor = originalFakeUI;
                 iap.SimulateNextPurchaseFailure = originalFailure;
                 originalBalance.RestoreInMemory();
+                originalSaveBalance.RestoreSaveData();
                 save.Data.NoAdsPurchased = originalOwned;
                 foreach (var card in live.Cards) card.RefreshDisplay();
+                foreach (var display in Object.FindObjectsByType<GoldDisplayUI>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+                    display.RefreshDisplay();
                 var dialog = Object.FindFirstObjectByType<PurchaseFeedbackDialog>(FindObjectsInactive.Include);
                 if (dialog != null) dialog.Hide();
             };
@@ -544,6 +665,12 @@ namespace RoyalSmash.EditorTools
                 mega = SkillManager.Instance.GetRemainingUses(SkillType.MegaBall),
                 infinity = SkillManager.Instance.GetRemainingUses(SkillType.InfinityBall)
             };
+            public static Balance CaptureSaveData() => new Balance
+            {
+                gold = SaveManager.Instance.Data.Gold,
+                mega = SaveManager.Instance.Data.MegaBallUses,
+                infinity = SaveManager.Instance.Data.InfinityBallUses
+            };
             public bool EqualsBalance(Balance other) => gold == other.gold && mega == other.mega && infinity == other.infinity;
             public bool MatchesRewards(Balance before, ShopItemData item) => gold == before.gold + item.GoldReward && mega == before.mega + item.MegaBallReward && infinity == before.infinity + item.InfinityBallReward;
             public void RestoreInMemory()
@@ -551,6 +678,10 @@ namespace RoyalSmash.EditorTools
                 SetField(GoldManager.Instance, "_currentGold", gold);
                 SetField(SkillManager.Instance, "_megaBallUses", mega);
                 SetField(SkillManager.Instance, "_infinityBallUses", infinity);
+                RestoreSaveData();
+            }
+            public void RestoreSaveData()
+            {
                 var data = SaveManager.Instance.Data;
                 data.Gold = gold; data.MegaBallUses = mega; data.InfinityBallUses = infinity;
             }
@@ -562,10 +693,23 @@ namespace RoyalSmash.EditorTools
             Require(IAPManager.HasInstance && !IAPManager.Instance.IsPurchaseInProgress, "Wait for idle IAP manager.");
             Require(SaveManager.HasInstance && SaveManager.Instance.Data != null, "SaveManager is not ready.");
         }
-        private static ShopCatalogPresenter LivePresenter() => Object.FindObjectsByType<ShopCatalogPresenter>(FindObjectsInactive.Include, FindObjectsSortMode.None).First(p => p.gameObject.scene.IsValid() && !p.transform.root.name.Contains("Sandbox"));
+        private static ShopCatalogPresenter LivePresenter()
+        {
+            ShopCatalogPresenter presenter = Object.FindObjectsByType<ShopCatalogPresenter>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+                .FirstOrDefault(p => p.gameObject.scene.path == Phase34DynamicShopBuilder.MainMenuPath && p.GetComponentInParent<ShopUI>(true) != null);
+            Require(presenter != null, "The migrated MainMenu ShopPage presenter was not found.");
+            return presenter;
+        }
         private static ShopItemCardUI Card(ShopCatalogPresenter presenter, string id) => presenter.Cards.First(c => c.ItemData != null && c.ItemData.Id == id);
-        private static T Field<T>(object target, string name) => (T)target.GetType().GetField(name, Private).GetValue(target);
-        private static void SetField(object target, string name, object value) => target.GetType().GetField(name, Private).SetValue(target, value);
+        private static T Field<T>(object target, string name) => (T)RequiredField(target, name).GetValue(target);
+        private static void SetField(object target, string name, object value) => RequiredField(target, name).SetValue(target, value);
+        private static FieldInfo RequiredField(object target, string name)
+        {
+            Require(target != null, "Cannot inspect field on a null object: " + name);
+            FieldInfo field = target.GetType().GetField(name, Private);
+            Require(field != null, target.GetType().Name + " is missing test field " + name);
+            return field;
+        }
         private static void SetPending(IAPManager iap, bool value) => typeof(IAPManager).GetMethod("SetPurchaseInProgress", Private).Invoke(iap, new object[] { value });
         private static void VerifyRewards(ShopItemCardUI card)
         {
@@ -583,6 +727,29 @@ namespace RoyalSmash.EditorTools
             Require(text.transform.parent.gameObject.activeSelf == (amount > 0), card.name + " reward row visibility wrong: " + field);
             if (amount > 0) Require(text.text.Contains(amount.ToString("N0", CultureInfo.CurrentCulture)), card.name + " reward text differs from catalog: " + text.text);
         }
+        private static void VerifyRewardLayout(ShopItemCardUI card)
+        {
+            Rect buy = ScreenRect((RectTransform)Field<Button>(card, "_buyButton").transform);
+            TMP_Text state = Field<TMP_Text>(card, "_stateText");
+            foreach (string field in new[] { "_goldRewardText", "_megaRewardText", "_infinityRewardText", "_noAdsRewardText" })
+            {
+                TMP_Text text = Field<TMP_Text>(card, field);
+                Require(text != null && text.transform.parent != null && text.transform.parent != card.transform,
+                    card.name + " reward lacks a dedicated row parent: " + field);
+                Transform row = text.transform.parent;
+                Require(row.parent != null && row.parent.GetComponent<VerticalLayoutGroup>() != null,
+                    card.name + " reward row is outside the shared reward layout: " + field);
+                if (!row.gameObject.activeInHierarchy) continue;
+                Rect rect = ScreenRect((RectTransform)row);
+                Require(ContainsRect(ScreenRect((RectTransform)row.parent), rect, 2), card.name + " reward escapes its group: " + field);
+                Require(!OverlapsInterior(rect, buy, 1), card.name + " reward overlaps BuyButton: " + field);
+                if (state != null && state.gameObject.activeInHierarchy)
+                    Require(!OverlapsInterior(rect, ScreenRect(state.rectTransform), 1), card.name + " reward overlaps StateText: " + field);
+            }
+        }
+        private static bool OverlapsInterior(Rect a, Rect b, float tolerance) =>
+            Math.Min(a.xMax, b.xMax) - Math.Max(a.xMin, b.xMin) > tolerance &&
+            Math.Min(a.yMax, b.yMax) - Math.Max(a.yMin, b.yMin) > tolerance;
         private static void Begin(string suite, string scope)
         {
             Current = new Report { suite = suite, scope = scope, startedUtc = DateTime.UtcNow.ToString("O") };

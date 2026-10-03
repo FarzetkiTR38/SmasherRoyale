@@ -1,0 +1,19 @@
+{
+    "capturedUtc": "2026-10-03T22:48:26.0134739Z",
+    "changed": false,
+    "sceneWasDirty": false,
+    "sceneSaved": false,
+    "catalogUnchanged": true,
+    "cardCount": 8,
+    "itemIds": [
+        "deal_kings_royal",
+        "no_ads_pass",
+        "gold_pouch_800",
+        "gold_chest_1600",
+        "skill_mega_5",
+        "skill_infinity_5",
+        "bundle_warrior",
+        "bundle_champion"
+    ],
+    "replacedRoot": "MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer"
+}

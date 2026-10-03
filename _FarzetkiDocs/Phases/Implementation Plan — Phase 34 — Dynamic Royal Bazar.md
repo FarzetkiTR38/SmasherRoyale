@@ -1,9 +1,9 @@
 # Phase 34 — Royal Bazar: düzenlenebilir ve dinamik mağaza
 
 **Başlangıç:** 3 Ekim 2026
-**Durum:** Devam ediyor — **34.1–34.2 tamamlandı (2/10)**.
-**Son tamamlanan aşama:** **34.2 canlı katalog bağlantısı ve presentation veri modeli**, 3 Ekim 2026.
-**Devam noktası:** **34.3 — yazısız modüler görseller ve ayrı artwork**. Sekiz mevcut buton canlı kataloğa bağlandı; presentation asset oluşturuldu. Skin/artwork alanları bu sonraki aşamada doldurulacak. Mevcut mağazanın baked görünümü henüz değiştirilmedi; aşama34.4 polished prefab preview sonrasında kontrollü görsel migration yapılacak. Aynı işi yeniden üretme; aşağıdaki son checkpoint'i oku.
+**Durum:** **Tamamlandı — 34.1–34.10 (10/10)**.
+**Son tamamlanan aşama:** **34.10 kontrollü purchase regression, kayıt restore ve final doğrulama**, 4 Ekim 2026.
+**Kapanış:** MainMenu dinamik mağazaya geçirildi. Sekiz ürün, yedi reusable prefab, 16 yazısız PNG ve Inspector'dan düzenlenen presentation asset hazır. Son Play denetimleri **59 PASS / 0 FAIL**; Console **0 hata / 0 uyarı**; aynı oturumun **5/5 JSON SHA256 restore PASS**. Unity Edit Mode, MainMenu temiz; GameView önceki seçimine döndü. Son kayıtlar aşağıdadır; Phase35 bu kapsamda başlatılmadı.
 **Kullanıcı isteği:** Mevcut mağazanın tarzını koruyarak tek parçalı görsellerdeki yazı/fiyat/ödül/indirim/sayaçları gerçek Unity UI bileşenlerine dönüştürmek; bütün alanları düzenlenebilir yapmak; aşamalı ve kalıcı bir uygulama planıyla devam etmek.
 
 ## Referans ve kapsam
@@ -15,7 +15,7 @@
 
 Referans sanat ve düzen hedefidir; görseldeki fiyat/ödüller canlı ürün kataloğunun yerine geçmez. Görseldeki **Rift Kristali** mevcut ekonomi/save şemasında yoktur. Dinamik mağaza gerçek **Altın / Mega / Sonsuz Top / No Ads** ödüllerini gösterecek; bu faz yeni para birimi oluşturmaz. Store ProductId `gold_douch_800` mevcut yayınlanan anahtardır ve aynen korunur.
 
-## 1. Mevcut durum ve mimari
+## 1. Başlangıç durumu ve mimari
 
 - Unity 6000.4.0f1; MainMenu sahnesi `Assets/_Project/Scenes/MainMenu.unity`.
 - UI kökü `MainMenuCanvas/PagesRoot/ShopPage`; içerik `ShopFrameContainer/ContentScrollView/Viewport/Content`.
@@ -41,27 +41,27 @@ Referans sanat ve düzen hedefidir; görseldeki fiyat/ödüller canlı ürün ka
 | --- | --- | --- | --- |
 | **34.1** | Güncel mağaza/ürün/binding envanteri, scene/catalog/player backup, gerçek başlangıç görüntüsü | 8 ürün, mevcut bağlantılar ve baked alanlar belgeli; hash ve rollback yolu kayıtlı | **Tamam**; gerçek Play baseline,10 project byte backup,5 JSON hash restore |
 | **34.2** | Catalog Id çözümü ve presentation veri modeli | Mevcut SKU/ödül/fiyat/save aynı; canlı katalog değişikliği eski kopyayı kullanmaz; kayıp Id kilitli | **Tamam**; 8/8 live binding, idempotent migration,11 gerçek Play denetimi PASS |
-| **34.3** | Yazısız modüler sanat: boş çerçeve, kart, section/header, rozet ve buy yüzeyi; ayrı artwork | Metin/fiyat/sayı baked değil; transparan alpha, uygun import ve 9-slice; referans stili korunur | Bekliyor |
-| **34.4** | Düzenlenebilir kart/header prefabları ve bağımsız preview | Başlık/ödül/price/badge/artwork ayrı Inspector alanları; en az bir polished card gerçek katalogla görünür | Bekliyor |
-| **34.5** | Limited deal ve No Ads kartlarının dönüşümü | Gerçek ödüller/TMP/sayaç; bought/pending/error durumları okunur; eski buy hook korunur | Bekliyor |
-| **34.6** | Altın ve skill kartları; dinamik section başlıkları ve iki sütun | 4 kartta doğru canlı ürün/ödül/fiyat, ayrı artwork; shared prefab ölçüleri tutarlı | Bekliyor |
-| **34.7** | Bundle kartları ve liste presenter'ı | 2 bundle + listelerin ekle/sil/sırala değişimi; ikinci ekonomik kaynak yok; düzgün layout | Bekliyor |
-| **34.8** | MainMenu'ye kontrollü migration; timer/open-close/navigation/feedback lifecycle | Shop aç/kapat tekrarında sayaç/event bağlantıları doğru; başka sayfalar ve top/bottom bar korunur | Bekliyor |
-| **34.9** | Responsive/safe area/scroll/uzun metin ve edit testi | 1080×1920, 1080×2400 ve küçük ekran; scroll tüm ürünlere ulaşır; düzenlenen alan hemen görülebilir | Bekliyor |
-| **34.10** | Kontrollü purchase regression, save restore, final görüntüler ve devir | 8 doğru ürün, tek fulfillment, owned/fail/pending; konsol temiz, kayıtlar hash restore; 10/10 kapanış | Bekliyor |
+| **34.3** | Yazısız modüler sanat: boş çerçeve, kart, section/header, rozet ve buy yüzeyi; ayrı artwork | Metin/fiyat/sayı baked değil; transparan alpha, uygun import ve 9-slice; referans stili korunur | **Tamam**;16 PNG,8 ayrı ürün artwork,alpha/9slice/importPASS |
+| **34.4** | Düzenlenebilir kart/header prefabları ve bağımsız preview | Başlık/ödül/price/badge/artwork ayrı Inspector alanları; en az bir polished card gerçek katalogla görünür | **Tamam**;7 prefab, bağımsız polished Play preview |
+| **34.5** | Limited deal ve No Ads kartlarının dönüşümü | Gerçek ödüller/TMP/sayaç; bought/pending/error durumları okunur; eski buy hook korunur | **Tamam**;live reward/store metadata/owned/pending/feedback PASS |
+| **34.6** | Altın ve skill kartları; dinamik section başlıkları ve iki sütun | 4 kartta doğru canlı ürün/ödül/fiyat, ayrı artwork; shared prefab ölçüleri tutarlı | **Tamam**;4 kart, shared compact prefab ve 2 sütun |
+| **34.7** | Bundle kartları ve liste presenter'ı | 2 bundle + listelerin ekle/sil/sırala değişimi; ikinci ekonomik kaynak yok; düzgün layout | **Tamam**;2 bundle; add/remove/reorder/null ve reward composition PASS |
+| **34.8** | MainMenu'ye kontrollü migration; timer/open-close/navigation/feedback lifecycle | Shop aç/kapat tekrarında sayaç/event bağlantıları doğru; başka sayfalar ve top/bottom bar korunur | **Tamam**;migration/idempotence/outside-shop preservation ve5 lifecycle PASS |
+| **34.9** | Responsive/safe area/scroll/uzun metin ve edit testi | 1080×1920, 1080×2400 ve küçük ekran; scroll tüm ürünlere ulaşır; düzenlenen alan hemen görülebilir | **Tamam**;21 layout+3 edited-layout PASS; Editor safe area ve synthetic insets |
+| **34.10** | Kontrollü purchase regression, save restore, final görüntüler ve devir | 8 doğru ürün, tek fulfillment, owned/fail/pending; konsol temiz, kayıtlar hash restore; 10/10 kapanış | **Tamam**;12 purchase PASS;5/5 restore;final Console0/0 |
 
 ## 3. Kabul kriterleri
 
-1. [ ] Ürün title/reward/price/badge/section/sayaç metinleri TMP; düzenlemek için raster yeniden üretmek gerekmez.
-2. [x] Sekiz ürün gerçek ShopConfig'ten çözülür; Google Play SKU'ları ve mevcut ödüller istemsiz değişmez. 34.2 actual reference test + catalog byte hash PASS; diğer görsel kriterler açık.
-3. [ ] Canlı store fiyatı geldiğinde UI onu gösterir; offline fallback doğru etiketlenir. Görsele gömülü ikinci fiyat yoktur.
-4. [ ] Tüm artwork/background/frame/icon/rozetler ayrı Image alanlarıdır; shared prefab/skin düzenlemesi bütün ilgili kartlara yansır.
-5. [ ] Gerçek reward satırları katalogdan oluşur; farklı ürün/ödül miktarıyla doğru değişir. Referansta olup oyunda olmayan kristal ödülü gösterilmez.
-6. [ ] Yeni ürün, kaldırılan ürün ve liste sırası scene elle kopyalama olmadan değişir; kayıp Id satın almaya izin vermez.
-7. [ ] Satın alma lock/pending/success/failure, No Ads owned ve feedback mevcut IAP akışına bağlıdır; çift fulfillment oluşmaz.
-8. [ ] Shop/battle/leaderboard ve close, tekrar açılma, timer lifecycle ve scroll davranışı doğru.
-9. [ ] İki uzun portrait oranı ve küçük ekran, uzun Türkçe başlık, farklı currency fiyatı, safe-area denetimi geçti; görsel referansa yaklaştı ve hiçbir info baked kalmadı.
-10. [ ] Gerçek test çıktıları/prefab preview/ekran görüntüleri kayıtlı; Console temiz; aynı Play oturumunun tüm JSON kayıtları geri yüklenip hash doğrulandı.
+1. [x] Ürün title/reward/price/badge/section/sayaç metinleri TMP; düzenlemek için raster yeniden üretmek gerekmez.
+2. [x] Sekiz ürün gerçek ShopConfig'ten çözülür; Google Play SKU'ları ve mevcut ödüller değişmedi. Catalog asset/GUID byte hash PASS.
+3. [x] Store metadata geldiğinde UI onu gösterir; offline fallback ayrı etiketlenir. InGameGold fiyatı CostInGold kullanır. Görsele gömülü ikinci fiyat yoktur.
+4. [x] Artwork/background/frame/icon/rozetler ayrı Image alanlarıdır; shared prefab/skin değişimi ilgili kartlara yansır.
+5. [x] Reward satırları katalogdan oluşur; sayı ve reward türü değişimi doğrulandı. Oyunda olmayan kristal ödülü yoktur.
+6. [x] Ürün ekleme/kaldırma/liste sırası presenter ile değişir; kayıp Id satın almaya izin vermez.
+7. [x] Lock/pending/success/failure, No Ads owned ve feedback mevcut IAP akışına bağlıdır. Editor'da sekiz işlemde birer doğru fulfillment ve eşzamanlı ikinci isteğin reddi PASS; duplicate store callback idempotency bu fazın doğrulaması değildir.
+8. [x] Shop/battle/leaderboard, close/reopen, timer ve scroll denetimleri PASS.
+9. [x] Üç portrait boyutu, uzun Türkçe başlık, euro fiyatı, büyük ödül miktarı ve viewport inset denetimi PASS. Fiziksel çentikli cihaz testi yapılmadı; Editor Screen.safeArea ve synthetic inset geometrisi kontrol edildi.
+10. [x] Test JSON/prefab preview/görüntüler kayıtlı; final Console0/0; aynı Play oturumunun5JSON bytes ve SHA256 restore PASS.
 
 ## 4. Güvenli uygulama ve devam protokolü
 
@@ -100,3 +100,54 @@ Referans sanat ve düzen hedefidir; görseldeki fiyat/ödüller canlı ürün ka
 - Ayrı taze PlayerSave-CatalogTest yedeği5JSON için alındı. Test sonrası Play kapatıldı, aynı oturum5JSON hashPASS: `34-02-save-restoration.json`. MainMenu Edit Mode temiz; Konsol0 hata/uyarı. `34-02-preservation.json`: yalnız beklenenMainMenu/ShopItemCardUI/ShopConfig.cs değişti; catalog.asset/GUID,MainGame,IAPManager,ShopUI,BottomNavigation aynı.
 - Bağımsız kod denetimi PASS; null lookup edge'i root tarafından giderilip test edildi. Sonraki aşama34.3: reference raster'ı font/fiyat/sayı üretmeden modüler boş skinlere ve ayrı ürün artwork'lerine revize et, alpha/9slice/import kaydını doğrula. Sonra34.4'te polished editable prefab preview oluştur; mevcut mağazanın tamamı henüz dinamik görünüme geçirilmedi.
 - Son Git durumunda TMP/Fonts cache varlıkları ve Plastic metadata dirty görünüyor; bunlar bu scoped checkpoint commit'ine dahil edilmedi ve geri alınmadı. Sonraki görsel oturumda güncel font dosyaları da yeni başlangıç yedeğine dahil edilecek; kullanıcıya ait font/atlas değişiklikleri eski HEAD ile ezilmez.
+
+### 34.3 — Tamamlandı, 4 Ekim 2026
+
+- `34-03-current-backup.json`: 4 Ekim güncel 16 scene/catalog/script/font dosyası byte/hash yedeği. Önceki günün player yedeği kullanılmadı. Başlangıç Git clean; kullanıcının yeni gameplay/level/fracture commit'leri korunuyor.
+- `Assets/_Project/Art/UI/ShopDynamic/`:8 bağımsız artwork (deal/noads/goldbag/goldchest/mega/infinity/warrior/champion),3 blank card skin (blue/gold/purple),5 mevcut text-free yüzeyin kaynak değişmeden kopyası (frame/header/section/buy/badge).11 üretilen PNG native built-in image_gen ile; prompt set `34-03-image-prompts.json`. Mevcut raster'lar yeniden çizilmedi; hiçbir görsel fiyat/ödül miktarı/kart başlığı taşımıyor. Infinity sembolü ve crown şekilleri sanatsal ikonlardır.
+- `Phase34ShopArtImporter.cs`: explicit Edit Mode importer; source PNG bytes değişmez. Sprite rect alpha bounds ile transparan margin seçilir, skin9slice, FullRect, mipmap off,Clamp,Bilinear,uncompressed,max2048. Modern SpriteDataProvider API ile stable subasset GUID korunur. `34-03-art-import.json`:16/16 gerçek alpha PASS;8 art borders0,8 skin borders>0. ShopPresentationConfig8 stableId artwork +9 skin slot bağlı.
+- `Phase34DynamicShopBuilder.BuildPrefabAssets`:7 reusable prefab yazdı; kayıt sonrası8 unique stableId doğrulandı; katalog aynı. `34-04-prefab-build.json`. MainMenu henüz değişmedi.
+- İlk bağımsız gerçek Play preview `34-04-independent-preview.png` (1080×1920 GameView, tool preview675×1200): yaşayan8 card görünümü incelendi. İlk Instantiate dönüşünde16 component sayısı önceki subtree Destroy() frame sonunu beklediği için geçici; presenter.Cards8, eski subtree inactive ve sonraki frame kaldırılır. Fontun geniş outline'ı polish için Fazo_Font_Settings'e çevriliyor; shared reward icons ve reward-count row height üzerinde çalışma devam ediyor.
+- Play öncesi güncel5 JSON `34-04-preview-save-backup.json`; Stop sonrası5/5SHA256 restorePASS `34-04-preview-save-restoration.json`. Konsol0hata/uyarı. Editor helper importunda iki API/namespace compile sorunu düzeltildi; sonraki compile temiz. MainMenu Edit Mode temiz.
+
+### 34.4–34.7 — Tamamlandı, 4 Ekim 2026
+
+- `RoyalSmash.UI.ShopCatalogPresenter`: tek catalog kaynağından section ve card üretir. Stable Id binding, eksik/null/tekrarlanan Id guard, canlı field refresh ve structural değişiklikte Rebuild. Miktar değişimi mevcut card'ı korur; ürün/liste/bölüm/ödül satırı değişimi layout'u yeniden kurar. Edit Mode preview persistent prefab asset'i kendiliğinden değiştirmez. Generated subtree presenter'a aittir; eski subtree runtime'da önce inactive olur, frame sonunda silinir.
+- `RoyalSmash.UI.ShopItemCardUI`: ayrı title/description/price/badge/state/timer TMP; artwork/background/buy/badge ve dört reward icon Image. Gold/Mega/Infinity/NoAds satırları gerçek katalogdan gelir, zero satır gizlenir; skill title'daki eski terminal `(x5)` canlı miktarla çelişmez. RealMoneyIAP için store localized metadata, hazır değilse etiketli fallback; InGameGold için gerçek CostInGold. Satın alma aynı IAPManager hook'undan gider; fiyat/ödül ikinci kopyada tutulmaz.
+- `ShopPresentationConfig` font, renkler, başlıklar, section sırası, spacing/card heights, shared skins, dört reward icon ve stableId artwork alanlarını içerir. `Fazo_Font_Settings` kullanıldı. Font atlas/cache değişiklikleri faz commit'ine alınmaz. Shared compact/bundle reward alanı bottom146/top112; 3 reward minimum368, 4 reward406 yüksekliği ile metin/buy çakışması giderildi.
+- `RoyalSmash.EditorTools.Phase34DynamicShopBuilder`: explicit BuildPrefabAssets ve ApplyToOpenMainMenu. Preview scene finally kapatılır; prefab içinde nested bağlantı ve stableId override'ları kaydedilir. Yedi çıktı: `Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopFeatured.prefab`, `PF_ShopNoAds.prefab`, `PF_ShopCompact.prefab`, `PF_ShopBundle.prefab`, `PF_ShopSectionHeader.prefab`, `PF_DynamicShopPanel.prefab`, `PF_DynamicShop_Preview.prefab`.
+- `34-04-prefab-build.json` PASS. `34-04-polished-preview.png` bağımsız gerçek1080×1920 Play görüntüsü; font, reward icon ve artwork ayrı alanlar görsel olarak incelendi. Geçerli katalogla featured/NoAds, dört compact ve iki bundle oluşuyor. `34-07-mainmenu-shop-bottom.png` skill/bundle görünümünü ve scroll sonunu gösterir.
+- `34-test-presentation.json`: **18/18 PASS**. Sekiz gerçek instance, SKU, TMP/Image, prefab, baked panel kaldırılması; canlı title/badge/reward/zero/fallback/metadata/InGameGold; ekleme/silme/sıralama/null, presentation label/section/skin, owned ve pending doğrulandı. Clone catalog/presentation sonunda temizlendi; source asset değiştirilmedi.
+- Polished preview oturumunun5JSON yedeği ve5/5restore: `34-04-polished-save-backup.json`, `34-04-polished-save-restoration.json`.
+
+### 34.8 — Tamamlandı, 4 Ekim 2026
+
+- MainMenu migration yalnız `MainMenuCanvas/PagesRoot/ShopPage/ShopFrameContainer` altındaki baked görünümü dinamik panel prefab instance'ıyla değiştirdi. ShopUI, PurchaseFeedbackDialog, top bar, bottom navigation ve diğer sayfalar korunur. Builder sahne açmaz/save etmez; doğrulamadan sonra root sahneyi kaydetti. Undo/rollback yolu vardır.
+- `34-08-mainmenu-migration.json`:8stableId, catalog unchanged. `34-08-outside-shop-before.txt` başlangıç snapshot'ıdır; `34-10-final-state.json` aynı3538serialized satırın korunduğunu doğrular (instanceID normalize). `34-08-idempotent.json`: ikinci Apply değişiklik0, card8, scene dirtyfalse. `34-08-mainmenu-shop-top.png` gerçek MainMenu mağazasıdır.
+- `RoyalSmash.UI.ShopUI`: sayaç realtime deadline kullanır; kapalı sayfada geçen süre reopen'da hesaba katılır. Event subscription tek kez bağlanır ve OnDestroy'da çıkar. Presenter card/timer reference'larını yeniler. Kapalı mağazada biten satın almanın feedback'i açılışta gösterilir; close mevcut Battle navigation'a gider.
+- `34-test-lifecycle.json`: **5/5 PASS**; tekrar aç/kapat, timer ilerleyişi, card sayısı/tekrarlanmayan bağlantılar, Shop/Battle/Leaderboard ve close denetlendi. Mevcut feedback modal tasarımı değiştirilmedi.
+
+### 34.9 — Tamamlandı, 4 Ekim 2026
+
+- `RoyalSmash.EditorTools.Phase34GameView`: explicit temporary boyut seçimi ve original selection restore. MainMenu Shop frame anchors x58, y0.12–0.88; viewport ve içerik kendi layout'uyla uyarlanır. Her boyutta tüm ürünlere scroll ile ulaşıldı.
+- `34-test-layout-1080x1920.json`, `34-test-layout-1080x2400.json`, `34-test-layout-750x1334.json`: **7+7+7 PASS**. Gerçek Screen boyutu/safeArea, yeni shop buy/close96unit minimum hit target, TMP overflow, reward containment/overlap, ilk/son ürün erişimi ve content width denetlendi. Görseller: `34-10-final-shop.png`, `34-09-shop-1080x2400.png`, `34-09-shop-750x1334.png`.
+- `34-test-edited-layout-1080x1920.json`: **3/3 PASS**. Geçici clone içinde uzun Türkçe title, `1.234,56 €`, büyük reward sayıları ve3/4reward büyüyen card test edildi; miktar değişimi card instance'ını korur. `34-09-edited-long-text-1.png` gerçekten düzenlenmiş clone'u gösterir. Suffix'siz `34-09-edited-long-text.png` capture'dan önceki frame'dir ve edited-text kanıtı değildir.
+- `34-09-safe-insets.json`:1080×1920 viewport,32side/68bottom/88top synthetic inset içinde PASS. Editor safeArea tam ekrandır; fiziksel notch cihazı veya gerçek store locale testi yapılmadı. Localized store metadata path mock metadata ile, Editor ürünleri ise fake-store fiyatıyla doğrulandı.
+
+### 34.10 — Tamamlandı, 4 Ekim 2026
+
+- `RoyalSmash.EditorTools.Phase34PlayModeTest` explicit Editor test driver'ıdır. Otomatik setup/import veya kontrolsüz ekonomi reseti yapmaz. Purchase suite fresh manifest ister; mevcut Editor simülasyonu ve sekiz gerçek buy button kullanılır; `UseFakeStoreUIInEditor` geçici false ve sonunda eski değerine döner. Gerçek ödeme alınmadı.
+- `34-test-purchase.json`: **12/12 PASS**. Sekiz doğru product/reward delta ve birer success event; global lock ile ikinci eşzamanlı istek reddi; owned NoAds yeniden satın alamama; simulated failure ödül vermeden lock release ve görünür failure feedback. Bu denetim IAPManager'ın duplicate store callback/transaction-id güvenliğini yeniden tasarlamaz veya garanti etmez; mevcut IAPManager bytes aynı.
+- Pending/owned, failure ve success görsel doğrulaması: `34-10-pending.png`, `34-10-failure.png`, `34-10-success.png`. Son iki görüntü mevcut feedback API'sini görsel kontrol için çağırır; ek fulfillment yapmaz. Son normal görünüm `34-10-final-shop.png`; Editor `$0.01` metadata gerçek satış fiyatı kabul edilmez.
+- MCP screenshot aracı `ScreenshotUtility.cs:197` içindeki `EditorApplication.Step()` ile zaten çalışan PlayerLoop'u tekrar çağırdı. `34-10-capture-diagnostic.json` stack kaydı tool package'ını gösterir; Phase34 runtime stack'i değildir. Son görüntüler asenkron `UnityEngine.ScreenCapture.CaptureScreenshot` ile alındı. Son denetim `34-10-final-console.json`: **0 hata / 0 uyarı**. PackageCache değiştirilmedi.
+- Play öncesi aynı oturumun5güncelJSON yedeği `34-10-mainmenu-save-backup.json`. Stop sonrası `SaveSession.ps1` aynı bytes'ı geri yükledi; `34-10-mainmenu-save-restoration.json`: **5/5 SHA256 PASS**, yeni JSON0. Önceki günün ilerleme yedeği kullanılmadı. GameView original selection restore; EditMode,MainMenu clean, temporary clone yok ve purchase lock false.
+- `34-10-preservation.json`: **7/7 unchanged PASS**; ShopConfig.asset/GUID, MainMenu GUID, MainGame, IAPManager, ShopConfig.cs ve BottomNavigationUI korunur. Migration dışındaki scene serialization aynı. `.plastic` ve dynamic font atlas/cache değişimleri scoped commit dışında bırakıldı; kullanıcı ilerlemesi/gameplay commit'leri geri alınmadı.
+- Bağımsız agent son kod incelemesi:6production/draft hash aynı,59PASS/0FAIL raporu doğrulandı, kapanış blocker yok. Unity YAML serializer boş `m_Name:`/`value:` alanlarının sonunda bir boşluk üretir; generated scene/prefab formatı elle değiştirilmedi. Whitespace kontrolü bu standart boş-değer formatını hariç tutan `git -c core.whitespace=-blank-at-eol diff --check` ile PASS; C# dosyaları normal `git diff --check` ile denetlenir. Faz10/10 kapandı; sonraki faz için yeni kapsam başlatılmaz.
+
+## 6. Düzenleme ve devir
+
+- Ürün title/description/badge, ödül miktarı/türü, fallback price, CostInGold ve liste sırası: `Assets/_Project/ScriptableObjects/Config/ShopConfig.asset`. Mevcut yayınlanmış ProductId'ları değiştirmek store ürününü değiştirir; UI fallback store metadata'yı override etmez. Yeni stableId farklı ve benzersiz olmalıdır.
+- Mağaza/section başlığı ve sırası, owned/pending/fallback/reward etiketleri, font, renk, boyut ve spacing, text-free skin/artwork: `Assets/_Project/ScriptableObjects/Config/ShopPresentationConfig.asset`. Yeni artwork için stableId eşleşen ItemArt girişi eklenir; ayrı Image field'ları prefab Inspector'ında da düzenlenebilir.
+- Shared card düzeni: `Assets/_Project/Prefabs/UI/ShopDynamic/` altındaki featured/noads/compact/bundle prefabları. Panel ve MainMenu prefab instance bağlantıları korunur. Runtime presenter düzenlenen katalog/presentation alanlarını0.5sn aralıkla yeniler; structural alanlarda Rebuild yapar. Edit Mode'da presenter context menu **Refresh Preview** ile görünüm güncellenir.
+- Bağımsız görünüm: `PF_DynamicShop_Preview.prefab`; canlı sahne: `Assets/_Project/Scenes/MainMenu.unity`. Importer/builder yalnız explicit Editor çağrısı içindir; normal preview refresh için prefabları yeniden üretmek gerekmez.
+- Tüm doğrulama/görüntü/prompt/import/backup manifestleri `_FarzetkiDocs/Art/Phase34/` içinde kalıcıdır.11native built-in imagegen üretimin prompt/tool/source/çıktı listesi `34-03-image-prompts.json`; nihai PNG yolları `Assets/_Project/Art/UI/ShopDynamic/` içindedir.

@@ -1,0 +1,101 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "reference": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/_FarzetkiArts/_PanelsFullVersion/ChatGPT Image 24 Eyl 2026 23_51_57 (2).png",
+  "outputs": [
+  {
+    "name": "Card_Blue",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Card_Blue.png"
+  },
+  {
+    "name": "Art_GoldBag",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_GoldBag.png"
+  },
+  {
+    "name": "Art_GoldChest",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_GoldChest.png"
+  },
+  {
+    "name": "Art_Mega",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_Mega.png"
+  },
+  {
+    "name": "Art_Infinity",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_Infinity.png"
+  },
+  {
+    "name": "Art_NoAds",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_NoAds.png"
+  },
+  {
+    "name": "Art_RoyalDeal",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_RoyalDeal.png"
+  },
+  {
+    "name": "Card_Gold",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Card_Gold.png"
+  },
+  {
+    "name": "Card_Purple",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Card_Purple.png"
+  },
+  {
+    "name": "Art_Warrior",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_Warrior.png"
+  },
+  {
+    "name": "Art_Champion",
+    "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_Champion.png"
+  }
+],
+  "prompts": [
+    {
+      "name": "Card_Blue",
+      "prompt": "Use case: stylized-concept. Create ONE production Unity UI sprite: a blank wide landscape rectangular product card with very thin beveled angular cyan-blue luminous metallic border, clipped chamfered corners, dark midnight-blue subtly textured empty opaque interior. Match the provided reference shop's blue card style precisely. Flat front view; aspect 2:1. No internal divider, no inset boxes, no text, no digits, no glyphs, no symbols, no icon, no treasure, no button, no watermark. Exterior transparent alpha. Empty large interior suitable for overlay TMP text/artwork. Border uniformly narrow and straight across middle spans for Unity 9slice; corner details confined to outer 12%. The reference is style guidance only."
+    },
+    {
+      "name": "Art_GoldBag",
+      "prompt": "Use case: stylized-concept. ONE isolated game shop artwork matching reference: plump luxurious brown leather coin bag spilling shiny embossed gold coins, chunky polished 3D cartoon mobile game rendering, golden bounce light with electric blue rim, three quarter frontal view. Centered in square with generous transparent margins. NO text, NO letters, NO digits, NO ribbon/banner/card/frame/button; NO crystals. Transparent alpha background, object only. The supplied shop image is style guidance."
+    },
+    {
+      "name": "Art_GoldChest",
+      "prompt": "Use case: stylized-concept. ONE isolated game shop artwork matching reference: open royal navy-metal and silver treasure chest with polished gold clasps, overflowing shiny gold coins, small blue shield-shaped gem on front, chunky polished 3D cartoon mobile game rendering, golden bounce light and blue rim. Three quarter frontal view. Centered square with transparent margins. NO text, NO letters, NO digits, NO ribbon/banner/card/frame/button, NO loose crystals. Transparent alpha background, object only. Reference is style guidance."
+    },
+    {
+      "name": "Art_Mega",
+      "prompt": "Use case: stylized-concept. ONE isolated game shop artwork matching reference: three small friendly spherical robot balls, one hero ball centered high and two smaller flanking, white and silver shells, small golden triangular fins, glossy black face with bright blue friendly crescent eyes and tiny blue smile, vibrant electric blue rim light. Polished high quality 3D cartoon mobile game. Centered square silhouette; no floor. NO text, NO letters, NO digits, NO frame/button/banner, no coins/crystals. Transparent alpha background. Reference is style guidance."
+    },
+    {
+      "name": "Art_Infinity",
+      "prompt": "Use case: stylized-concept. ONE isolated game shop artwork matching reference: three polished spherical robot skill balls, central ball raised, silver and navy shells and small golden fins, black front containing ONE luminous purple infinity mathematical symbol, subtle violet electric arc glow close to shells. High quality chunky 3D cartoon mobile game, square centered silhouette transparent margins. NO text, NO letters, NO digits, NO frame/button/banner/coins/crystals. Transparent alpha background. Reference is style guidance."
+    },
+    {
+      "name": "Art_NoAds",
+      "prompt": "Use case: stylized-concept. ONE isolated game shop icon matching reference: protective blue-metal circular shield with luminous cyan rim and red circle-slash over a simple white video-ticket silhouette, no letters or play logo. Polished 3D cartoon mobile game rendering, crisp beveled edges, frontal view. Centered square with transparent margins. NO text, NO digits, NO banner, NO card, NO buttons. Transparent alpha background. Reference is style guidance."
+    },
+    {
+      "name": "Art_RoyalDeal",
+      "prompt": "Use case: stylized-concept. ONE isolated premium bundle shop artwork matching reference: large open navy silver gold treasure chest overflowing gold coins, flanked by a friendly silver robot ball with cyan glowing eyes and a silver skill ball with purple infinity symbol; small regal red pennant with gold crown shape behind chest. Attractive coherent loot pile, chunky glossy 3D cartoon mobile game rendering, rich gold light and blue rim. Landscape 3:2 object composition, transparent margins. NO loose crystals, NO characters, NO words, NO letters, NO digits, NO price, NO UI frame or button. Transparent alpha background. The provided shop is style guidance."
+    },
+    {
+      "name": "Card_Gold",
+      "ref": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-5c7fcbf1-a40e-4706-bf5f-07f75ab2b7e8.png",
+      "prompt": "Edit target: this blank modular game shop card. Change ONLY the thin luminous cyan border into luminous golden amber, and interior blue into very dark royal navy-purple. Preserve front view rectangular shape, chamfered corners, overall proportions, polished metallic style, and blank interior. No text, no digits, no words, no icons, no symbols, no buttons, no inset panels. True transparent exterior. Fit the card close to the canvas edges with only 3% transparent margin, keep sharp clean silhouette. This is a reusable Unity 9-slice frame."
+    },
+    {
+      "name": "Card_Purple",
+      "ref": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-5c7fcbf1-a40e-4706-bf5f-07f75ab2b7e8.png",
+      "prompt": "Edit target: this blank modular game shop card. Change ONLY the thin luminous cyan border into luminous violet-purple, and interior blue into very dark royal indigo. Preserve front view rectangular shape, chamfered corners, overall proportions, polished metallic style, and blank interior. No text, no digits, no words, no icons, no symbols, no buttons, no inset panels. True transparent exterior. Fit the card close to the canvas edges with only 3% transparent margin, keep sharp clean silhouette. This is a reusable Unity 9-slice frame."
+    },
+    {
+      "name": "Art_Warrior",
+      "ref": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/_FarzetkiArts/_PanelsFullVersion/ChatGPT Image 24 Eyl 2026 23_51_57 (2).png",
+      "prompt": "Use case: stylized-concept. One isolated shop bundle artwork matching the supplied royal mobile shop style: cheerful adventurous brown-haired young adult hero with blue goggles pushed up, blue-and-gold outfit, giving thumbs up behind a small navy/silver open treasure chest overflowing gold coins, one friendly round silver robot ball with glowing cyan crescent eyes, and one glowing purple infinity robot sphere. Waist-up character plus loot pile, compact square composition, glossy 3D cartoon mobile game. No loose crystals; rewards represented are gold and the two ball types. No text, words, numbers, price, ribbon, banner, frame, card, or buttons. Exterior completely transparent alpha, clean cutout with no opaque backdrop, mist or broad glow. Fit content with 5% clear margin."
+    },
+    {
+      "name": "Art_Champion",
+      "ref": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/_FarzetkiArts/_PanelsFullVersion/ChatGPT Image 24 Eyl 2026 23_51_57 (2).png",
+      "prompt": "Use case: stylized-concept. One isolated shop bundle artwork matching the supplied royal mobile shop style: cheerful pink-haired young adult champion with violet goggles on head, purple-and-gold outfit, smiling behind a larger navy/silver open treasure chest overflowing gold coins, one friendly round silver robot ball with glowing cyan crescent eyes, and one glowing purple infinity robot sphere. Waist-up character plus loot pile, compact square composition, glossy 3D cartoon mobile game. No loose crystals; rewards represented are gold and the two ball types. No text, words, numbers, price, ribbon, banner, frame, card, or buttons. Exterior completely transparent alpha, clean cutout with no opaque backdrop, mist or broad glow. Fit content with 5% clear margin."
+    }
+  ]
+}

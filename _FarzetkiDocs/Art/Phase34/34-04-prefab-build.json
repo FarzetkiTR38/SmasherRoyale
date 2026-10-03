@@ -1,0 +1,15 @@
+{
+    "capturedUtc": "2026-10-03T22:43:07.1395419Z",
+    "prefabPaths": [
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopFeatured.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopNoAds.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopCompact.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopBundle.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopSectionHeader.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShopPanel.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShop_Preview.prefab"
+    ],
+    "cardCount": 8,
+    "catalogUnchanged": true,
+    "sceneSaved": false
+}
