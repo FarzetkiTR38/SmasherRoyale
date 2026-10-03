@@ -12,6 +12,7 @@ namespace RoyalSmash.Levels
     {
         [Header("Prefab References")]
         [SerializeField] private GameObject _standPrefab;
+        [SerializeField] private GameObject _standSingleLegPrefab;
         [SerializeField] private GameObject _boxPrefab;
         [SerializeField] private GameObject _stonePrefab;
         [SerializeField] private GameObject _columnPrefab;
@@ -27,10 +28,13 @@ namespace RoyalSmash.Levels
 
         public List<PhysicsObject> SpawnedObjects => _spawnedObjects;
         public List<GameObject> SpawnedStands => _spawnedStands;
+        public GameObject StandPrefab => _standPrefab;
+        public GameObject StandSingleLegPrefab => _standSingleLegPrefab;
 
-        public void BindPrefabs(GameObject stand, GameObject box, GameObject stone, GameObject col, GameObject cone, GameObject bottle)
+        public void BindPrefabs(GameObject stand, GameObject box, GameObject stone, GameObject col, GameObject cone, GameObject bottle, GameObject standSingleLeg = null)
         {
             _standPrefab = stand;
+            if (standSingleLeg != null) _standSingleLegPrefab = standSingleLeg;
             _boxPrefab = box;
             _stonePrefab = stone;
             _columnPrefab = col;
@@ -118,9 +122,9 @@ namespace RoyalSmash.Levels
                 _levelRoot = rootGo.transform;
             }
 
-            // 1. Stand setup: Support custom stand scaling and multi-stand setups from LevelData
+            // 1. Stand setup: Support custom stand scaling, single-leg stand, and multi-stand setups from LevelData
             var existingSceneStand = GameObject.Find("Stand");
-            if (data.Stands != null && data.Stands.Length > 0 && _standPrefab != null)
+            if (data.Stands != null && data.Stands.Length > 0 && (_standPrefab != null || _standSingleLegPrefab != null))
             {
                 if (existingSceneStand != null)
                 {
@@ -129,7 +133,19 @@ namespace RoyalSmash.Levels
 
                 foreach (var standCfg in data.Stands)
                 {
-                    var stand = Instantiate(_standPrefab, standCfg.Position, Quaternion.Euler(standCfg.Rotation), _levelRoot);
+                    GameObject prefabToUse = _standPrefab;
+                    if (standCfg.Type == StandType.SingleLeg || (standCfg.Type == StandType.Auto && data.Stands.Length > 1))
+                    {
+                        if (_standSingleLegPrefab != null) prefabToUse = _standSingleLegPrefab;
+                    }
+                    else if (standCfg.Type == StandType.StandardTwoLeg)
+                    {
+                        prefabToUse = _standPrefab != null ? _standPrefab : _standSingleLegPrefab;
+                    }
+
+                    if (prefabToUse == null) prefabToUse = _standPrefab != null ? _standPrefab : _standSingleLegPrefab;
+
+                    var stand = Instantiate(prefabToUse, standCfg.Position, Quaternion.Euler(standCfg.Rotation), _levelRoot);
                     stand.transform.localScale = standCfg.Scale;
                     _spawnedStands.Add(stand);
                 }

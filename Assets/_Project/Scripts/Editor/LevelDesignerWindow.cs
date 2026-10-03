@@ -60,6 +60,7 @@ namespace RoyalSmash.Editor
         private GameObject _crystalPrefab;
         private GameObject _corePrefab;
         private GameObject _standPrefab;
+        private GameObject _standSingleLegPrefab;
 
         // Scene Interaction
         private Vector3 _ghostPosition = Vector3.zero;
@@ -96,6 +97,7 @@ namespace RoyalSmash.Editor
             _crystalPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Art/SkyCitadel/Prefabs/PF_crystal.prefab");
             _corePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Art/SkyCitadel/Prefabs/PF_core.prefab");
             _standPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Art/SkyCitadel/Prefabs/PF_CitadelStand.prefab");
+            _standSingleLegPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Art/SkyCitadel/Prefabs/PF_CitadelStand_SingleLeg.prefab");
         }
 
         private void LoadDatabase()
@@ -238,8 +240,8 @@ namespace RoyalSmash.Editor
             {
                 ApplyStandPreset(new[]
                 {
-                    new StandPlacement { Position = new Vector3(-2.2f, 0, STAND_Z), Scale = new Vector3(0.75f, 1f, 1f) },
-                    new StandPlacement { Position = new Vector3( 2.2f, 0, STAND_Z), Scale = new Vector3(0.75f, 1f, 1f) }
+                    new StandPlacement { Position = new Vector3(-2.2f, 0, STAND_Z), Scale = new Vector3(0.75f, 1f, 1f), Type = StandType.SingleLeg },
+                    new StandPlacement { Position = new Vector3( 2.2f, 0, STAND_Z), Scale = new Vector3(0.75f, 1f, 1f), Type = StandType.SingleLeg }
                 });
             }
             if (GUILayout.Button("Tiered (F/B)"))
@@ -270,6 +272,7 @@ namespace RoyalSmash.Editor
 
                 EditorGUI.BeginChangeCheck();
                 var s = _standsWorkingList[i];
+                s.Type = (StandType)EditorGUILayout.EnumPopup("Stand Type", s.Type);
                 s.Position = EditorGUILayout.Vector3Field("Position", s.Position);
                 s.Scale = EditorGUILayout.Vector3Field("Scale", s.Scale);
                 s.Rotation = EditorGUILayout.Vector3Field("Rotation", s.Rotation);
@@ -664,7 +667,8 @@ namespace RoyalSmash.Editor
                     {
                         Position = s.Position,
                         Scale = s.Scale,
-                        Rotation = s.Rotation
+                        Rotation = s.Rotation,
+                        Type = s.Type
                     });
                 }
             }
@@ -734,11 +738,23 @@ namespace RoyalSmash.Editor
 
             ClearChildren(standsRoot);
 
-            if (_standPrefab == null) LoadPrefabs();
+            if (_standPrefab == null || _standSingleLegPrefab == null) LoadPrefabs();
 
             foreach (var s in _standsWorkingList)
             {
-                var stand = (GameObject)PrefabUtility.InstantiatePrefab(_standPrefab, standsRoot);
+                GameObject prefabToUse = _standPrefab;
+                if (s.Type == StandType.SingleLeg || (s.Type == StandType.Auto && _standsWorkingList.Count > 1))
+                {
+                    if (_standSingleLegPrefab != null) prefabToUse = _standSingleLegPrefab;
+                }
+                else if (s.Type == StandType.StandardTwoLeg)
+                {
+                    prefabToUse = _standPrefab != null ? _standPrefab : _standSingleLegPrefab;
+                }
+
+                if (prefabToUse == null) prefabToUse = _standPrefab != null ? _standPrefab : _standSingleLegPrefab;
+
+                var stand = (GameObject)PrefabUtility.InstantiatePrefab(prefabToUse, standsRoot);
                 stand.transform.position = s.Position;
                 stand.transform.localScale = s.Scale;
                 stand.transform.rotation = Quaternion.Euler(s.Rotation);
