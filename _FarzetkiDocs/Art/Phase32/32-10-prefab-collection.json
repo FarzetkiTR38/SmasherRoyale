@@ -1,5 +1,5 @@
 {
-    "appliedUtc": "2026-09-30T11:08:20.8121716Z",
+    "appliedUtc": "2026-10-02T16:29:49.2850605Z",
     "showcasePath": "Assets/_Project/Prefabs/SkyCitadel/PF_00_SkyCitadel_Showcase.prefab",
     "sourceAssetsUnchanged": true,
     "activeScenePreserved": true,
@@ -278,9 +278,9 @@
             "existingTransformsPreserved": true,
             "gameplayComponentsPreserved": true,
             "currentArtMatches": true,
-            "addedVisualObjects": 21,
+            "addedVisualObjects": 0,
             "updatedMeshFilters": 0,
-            "updatedRenderers": 27,
+            "updatedRenderers": 0,
             "componentReferences": [
                 "PF_02_Mortar_Complete:MortarController.m_CorrespondingSourceObject -> null",
                 "PF_02_Mortar_Complete:MortarController.m_PrefabInstance -> null",
@@ -304,9 +304,9 @@
             "existingTransformsPreserved": true,
             "gameplayComponentsPreserved": true,
             "currentArtMatches": true,
-            "addedVisualObjects": 118,
-            "updatedMeshFilters": 69,
-            "updatedRenderers": 87,
+            "addedVisualObjects": 5,
+            "updatedMeshFilters": 0,
+            "updatedRenderers": 0,
             "componentReferences": [
                 "PF_00_SkyCitadel_Showcase/SKY CITADEL  /  PREFAB COLLECTION:TextMeshPro.m_CorrespondingSourceObject -> null",
                 "PF_00_SkyCitadel_Showcase/SKY CITADEL  /  PREFAB COLLECTION:TextMeshPro.m_PrefabInstance -> null",

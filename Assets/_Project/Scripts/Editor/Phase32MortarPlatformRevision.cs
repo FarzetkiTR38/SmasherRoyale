@@ -62,8 +62,6 @@ namespace RoyalSmash.Editor
             Material ivory = RequireMaterial("Phase32MortarIvory");
             Material blue = RequireMaterial("RoyalSapphire");
             Material cyan = RequireMaterial("Phase32StandCyan");
-            Mesh cube = AssetDatabase.LoadAssetAtPath<Mesh>(ART + "/Meshes/CitadelBeveledCube.asset");
-            if (cube == null) throw new InvalidOperationException("The existing beveled cube mesh is missing.");
 
             GameObject contents = PrefabUtility.LoadPrefabContents(PREFAB);
             try
@@ -76,8 +74,8 @@ namespace RoyalSmash.Editor
                         throw new InvalidOperationException("Expected a legacy platform renderer: " + path);
                 var snapshot = new PreservationSnapshot(contents);
 
-                using (var fixedBase = new Builder("Fixed", cube))
-                using (var swivel = new Builder("Swivel", cube))
+                using (var fixedBase = new Builder("Fixed"))
+                using (var swivel = new Builder("Swivel"))
                 {
                     fixedBase.Register(steel, "Steel"); fixedBase.Register(gold, "Gold");
                     swivel.Register(steel, "Steel"); swivel.Register(gold, "Gold");
@@ -277,7 +275,12 @@ namespace RoyalSmash.Editor
             if (stored == null) { AssetDatabase.CreateAsset(mesh, path); stored = mesh; }
             else
             {
-                EditorUtility.CopySerialized(mesh, stored);
+                // Update through Mesh APIs so existing renderers receive the new GPU buffers.
+                stored.Clear();
+                stored.indexFormat = mesh.indexFormat;
+                stored.CombineMeshes(new[] { new CombineInstance { mesh = mesh, transform = Matrix4x4.identity } }, true, true);
+                stored.RecalculateBounds(); stored.RecalculateTangents();
+                stored.UploadMeshData(false);
                 UnityEngine.Object.DestroyImmediate(mesh);
                 EditorUtility.SetDirty(stored);
             }
@@ -288,17 +291,20 @@ namespace RoyalSmash.Editor
         private sealed class Builder : IDisposable
         {
             private readonly string _prefix;
-            private readonly Mesh _cube;
             private readonly List<Mesh> _temporary = new List<Mesh>();
             private readonly Dictionary<Material, List<CombineInstance>> _parts = new Dictionary<Material, List<CombineInstance>>();
             private readonly Dictionary<Material, string> _names = new Dictionary<Material, string>();
-            public Builder(string prefix, Mesh cube) { _prefix = prefix; _cube = cube; }
+            public Builder(string prefix) { _prefix = prefix; }
             public void Register(Material material, string name)
             { _parts.Add(material, new List<CombineInstance>()); _names.Add(material, name); }
             public void Box(Material material, Vector3 position, Vector3 scale)
                 => Box(material, position, scale, Quaternion.identity);
             public void Box(Material material, Vector3 position, Vector3 scale, Quaternion rotation)
-                => Add(_cube, material, Matrix4x4.TRS(position, rotation, scale));
+            {
+                Mesh mesh = Phase32DimensionalBevel.Create(scale);
+                _temporary.Add(mesh);
+                Add(mesh, material, Matrix4x4.TRS(position, rotation, Vector3.one));
+            }
 
             public void Beam(Material material, Vector3 from, Vector3 to, float width, float height)
             {

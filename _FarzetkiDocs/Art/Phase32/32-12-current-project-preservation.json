@@ -1,0 +1,9 @@
+{
+  "capturedUtc": "2026-10-02T17:19:45.8849944Z",
+  "baselineCount": 526,
+  "changedExistingPaths": [
+    "Assets/_Project/Scripts\\Editor\\Citadel30LevelBuilder.cs",
+    "Assets/_Project/Scripts\\Editor\\Phase32VisualRevision.cs"
+  ],
+  "scope": "Gameplay, level tooling, ScriptableObjects and scene files from fresh before-clearance baseline. Only intended editor-builder and lighting-tool compatibility edits are expected; art-level positions verified by dedicated field fingerprints."
+}

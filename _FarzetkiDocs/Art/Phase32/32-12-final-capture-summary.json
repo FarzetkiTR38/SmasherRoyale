@@ -1,0 +1,66 @@
+[
+  {
+    "file": "32-12-final-level01-1080x1920.json",
+    "level": 1,
+    "targets": 13,
+    "stands": 1,
+    "fullyFramed": true,
+    "screenshotExists": true
+  },
+  {
+    "file": "32-12-final-level01-1080x2400.json",
+    "level": 1,
+    "targets": 13,
+    "stands": 1,
+    "fullyFramed": true,
+    "screenshotExists": true
+  },
+  {
+    "file": "32-12-final-level15-1080x1920.json",
+    "level": 15,
+    "targets": 24,
+    "stands": 1,
+    "fullyFramed": true,
+    "screenshotExists": true
+  },
+  {
+    "file": "32-12-final-level15-1080x2400.json",
+    "level": 15,
+    "targets": 24,
+    "stands": 1,
+    "fullyFramed": true,
+    "screenshotExists": true
+  },
+  {
+    "file": "32-12-final-level22-1080x1920.json",
+    "level": 22,
+    "targets": 26,
+    "stands": 2,
+    "fullyFramed": true,
+    "screenshotExists": true
+  },
+  {
+    "file": "32-12-final-level22-1080x2400.json",
+    "level": 22,
+    "targets": 26,
+    "stands": 2,
+    "fullyFramed": true,
+    "screenshotExists": true
+  },
+  {
+    "file": "32-12-final-level30-1080x1920.json",
+    "level": 30,
+    "targets": 28,
+    "stands": 1,
+    "fullyFramed": true,
+    "screenshotExists": true
+  },
+  {
+    "file": "32-12-final-level30-1080x2400.json",
+    "level": 30,
+    "targets": 28,
+    "stands": 1,
+    "fullyFramed": true,
+    "screenshotExists": true
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "scope": "Programmatic InputHandler aim/drag-event pipeline, not hardware touch emulation; optional trajectory enabled only during this Play check and restored afterward",
+  "trajectoryEnabledBefore": false,
+  "trajectoryEnabledAfter": false,
+  "ballsBefore": 35,
+  "ballsAfter": 35,
+  "firesBefore": 0,
+  "firesAfter": 0,
+  "samples": [
+    {
+      "stage": 0,
+      "yaw": -21.7619572,
+      "trajectoryPoints": 38,
+      "originError": 0.0,
+      "passed": true
+    },
+    {
+      "stage": 1,
+      "yaw": 21.7619629,
+      "trajectoryPoints": 38,
+      "originError": 0.0,
+      "passed": true
+    },
+    {
+      "stage": 2,
+      "yaw": 1.10163692E-05,
+      "trajectoryPoints": 32,
+      "originError": 0.0,
+      "passed": true
+    }
+  ]
+}

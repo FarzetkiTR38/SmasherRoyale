@@ -1,0 +1,42 @@
+{
+  "scope": "V2 analytical body/strip contribution only; full PBR/probe/bloom/tonemapped output requires root render review.",
+  "frontFacingNdotL": 0.5674549516354737,
+  "materials": [
+    {
+      "name": "gold",
+      "albedoMinimum": [
+        0.33708968917115145,
+        0.13201421671404287,
+        0.008403972560203312
+      ],
+      "albedoMaximum": [
+        0.8802576891711515,
+        0.4268975153665377,
+        0.03403213697781455
+      ],
+      "maxAddedPolishPlanar": [
+        0.4242482703726479,
+        0.26235159348660275,
+        0.07608958130667329
+      ]
+    },
+    {
+      "name": "sapphire",
+      "albedoMinimum": [
+        0.000645137800652703,
+        0.009444490439916402,
+        0.17755467547714368
+      ],
+      "albedoMaximum": [
+        0.001723465974027316,
+        0.022043638522651097,
+        0.3153604625803747
+      ],
+      "maxAddedPolishPlanar": [
+        0.07487656539441877,
+        0.1400898764816491,
+        0.18283996743233827
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+    "status": "passed",
+    "reason": "Target shrank, primary BaseColor alpha decreased, physics disabled and object was removed.",
+    "startedUtc": "2026-10-02T16:41:23.8814728Z",
+    "finishedUtc": "2026-10-02T16:41:24.0715688Z",
+    "passed": true,
+    "target": "PF_armored(Clone)",
+    "primaryRenderer": "M_IvoryStone",
+    "primaryShader": "Universal Render Pipeline/Lit",
+    "primaryEnabled": true,
+    "colliderDisabled": true,
+    "kinematic": true,
+    "scaleDecreased": true,
+    "alphaDecreased": true,
+    "removed": true,
+    "initialScale": {
+        "x": 0.7400000095367432,
+        "y": 0.7400000095367432,
+        "z": 0.7400000095367432
+    },
+    "minimumScale": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "initialAlpha": 1.0,
+    "minimumAlpha": 0.0,
+    "scope": "Explicit TriggerDestroyCondition lifecycle check on one real target; this does not assert a projectile caused the destruction."
+}

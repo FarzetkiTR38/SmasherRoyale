@@ -180,19 +180,19 @@ namespace RoyalSmash.Editor
                     balls = 25;
                     stands = SingleStand(1.3f);
                     // Left Tower: 3 layers of 2 blocks (6)
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 0));
-                    objs.Add(CreateBlock(ObjectType.Box,   -0.5f * STEP_X, 0));
-                    objs.Add(CreateBlock(ObjectType.Stone, -1.5f * STEP_X, 1));
-                    objs.Add(CreateBlock(ObjectType.Column, -0.5f * STEP_X, 1));
-                    objs.Add(CreateBlock(ObjectType.Column, -1.5f * STEP_X, 2));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -0.5f * STEP_X, 2));
+                    objs.Add(CreateBlock(ObjectType.Stone, -2.0f * STEP_X, 0));
+                    objs.Add(CreateBlock(ObjectType.Box,   -1.0f * STEP_X, 0));
+                    objs.Add(CreateBlock(ObjectType.Stone, -2.0f * STEP_X, 1));
+                    objs.Add(CreateBlock(ObjectType.Column, -1.0f * STEP_X, 1));
+                    objs.Add(CreateBlock(ObjectType.Column, -2.0f * STEP_X, 2));
+                    objs.Add(CreateBlock(ObjectType.PaintBottle, -1.0f * STEP_X, 2));
                     // Right Tower: 3 layers of 2 blocks (6)
-                    objs.Add(CreateBlock(ObjectType.Box,    0.5f * STEP_X, 0));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 0));
-                    objs.Add(CreateBlock(ObjectType.Column,  0.5f * STEP_X, 1));
-                    objs.Add(CreateBlock(ObjectType.Stone,  1.5f * STEP_X, 1));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle,  0.5f * STEP_X, 2));
-                    objs.Add(CreateBlock(ObjectType.Column,  1.5f * STEP_X, 2));
+                    objs.Add(CreateBlock(ObjectType.Box,    1.0f * STEP_X, 0));
+                    objs.Add(CreateBlock(ObjectType.Stone,  2.0f * STEP_X, 0));
+                    objs.Add(CreateBlock(ObjectType.Column,  1.0f * STEP_X, 1));
+                    objs.Add(CreateBlock(ObjectType.Stone,  2.0f * STEP_X, 1));
+                    objs.Add(CreateBlock(ObjectType.PaintBottle,  1.0f * STEP_X, 2));
+                    objs.Add(CreateBlock(ObjectType.Column,  2.0f * STEP_X, 2));
                     // Central Connecting Bridge: (4 blocks)
                     objs.Add(CreateBlock(ObjectType.Box, 0f, 0));
                     objs.Add(CreateBlock(ObjectType.Box, 0f, 1));
@@ -397,7 +397,7 @@ namespace RoyalSmash.Editor
                         objs.Add(CreateBlock(ObjectType.Box,   -2.2f + 0.5f * STEP_X, l));
                     }
                     objs.Add(CreateBlock(ObjectType.Cone,   -2.2f - 0.5f * STEP_X, 4));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -2.2f, 4));
+                    objs.Add(CreateBlock(ObjectType.PaintBottle, -2.2f + 0.5f * STEP_X, 4));
 
                     // Right Gatehouse (10 blocks)
                     for (int l = 0; l < 4; l++)
@@ -406,7 +406,7 @@ namespace RoyalSmash.Editor
                         objs.Add(CreateBlock(ObjectType.Stone, 2.2f + 0.5f * STEP_X, l));
                     }
                     objs.Add(CreateBlock(ObjectType.Cone,   2.2f + 0.5f * STEP_X, 4));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 2.2f, 4));
+                    objs.Add(CreateBlock(ObjectType.PaintBottle, 2.2f - 0.5f * STEP_X, 4));
 
                     // Spanning Arch Connectors (2 blocks)
                     objs.Add(CreateBlock(ObjectType.Column, -1.0f * STEP_X, 3));
@@ -596,9 +596,9 @@ namespace RoyalSmash.Editor
                     // Layer 3: 4 telescope gantry
                     for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Cone, (-1.5f + c) * STEP_X, 3));
                     // Layer 4: 3 celestial eye
-                    objs.Add(CreateBlock(ObjectType.Column, -0.75f * STEP_X, 4));
+                    objs.Add(CreateBlock(ObjectType.Column, -1.0f * STEP_X, 4));
                     objs.Add(CreateBlock(ObjectType.PaintBottle, 0f, 4));
-                    objs.Add(CreateBlock(ObjectType.Column,  0.75f * STEP_X, 4));
+                    objs.Add(CreateBlock(ObjectType.Column,  1.0f * STEP_X, 4));
                     // Layer 5: 1 spire apex
                     objs.Add(CreateBlock(ObjectType.Column, 0f, 5));
                     break;
@@ -648,22 +648,22 @@ namespace RoyalSmash.Editor
                     balls = 32;
                     stands = DualStands(2.3f, 0.75f);
                     // Left Bastion (13 blocks): 4 base, 4 mid, 3 high, 2 spires
-                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Stone, -2.3f + (-1.5f + c) * 0.7f * STEP_X, 0));
-                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Box,   -2.3f + (-1.5f + c) * 0.7f * STEP_X, 1));
-                    objs.Add(CreateBlock(ObjectType.Cone,        -2.3f - 0.7f * STEP_X, 2));
+                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Stone, -2.3f + (-1.5f + c) * STEP_X, 0));
+                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Box,   -2.3f + (-1.5f + c) * STEP_X, 1));
+                    objs.Add(CreateBlock(ObjectType.Cone,        -2.3f - STEP_X, 2));
                     objs.Add(CreateBlock(ObjectType.PaintBottle, -2.3f, 2));
-                    objs.Add(CreateBlock(ObjectType.Cone,        -2.3f + 0.7f * STEP_X, 2));
-                    objs.Add(CreateBlock(ObjectType.Column, -2.3f - 0.35f * STEP_X, 3));
-                    objs.Add(CreateBlock(ObjectType.Column, -2.3f + 0.35f * STEP_X, 3));
+                    objs.Add(CreateBlock(ObjectType.Cone,        -2.3f + STEP_X, 2));
+                    objs.Add(CreateBlock(ObjectType.Column, -2.3f - 0.5f * STEP_X, 3));
+                    objs.Add(CreateBlock(ObjectType.Column, -2.3f + 0.5f * STEP_X, 3));
 
                     // Right Bastion (13 blocks)
-                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Stone, 2.3f + (-1.5f + c) * 0.7f * STEP_X, 0));
-                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Box,   2.3f + (-1.5f + c) * 0.7f * STEP_X, 1));
-                    objs.Add(CreateBlock(ObjectType.Cone,        2.3f - 0.7f * STEP_X, 2));
+                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Stone, 2.3f + (-1.5f + c) * STEP_X, 0));
+                    for (int c = 0; c < 4; c++) objs.Add(CreateBlock(ObjectType.Box,   2.3f + (-1.5f + c) * STEP_X, 1));
+                    objs.Add(CreateBlock(ObjectType.Cone,        2.3f - STEP_X, 2));
                     objs.Add(CreateBlock(ObjectType.PaintBottle, 2.3f, 2));
-                    objs.Add(CreateBlock(ObjectType.Cone,        2.3f + 0.7f * STEP_X, 2));
-                    objs.Add(CreateBlock(ObjectType.Column, 2.3f - 0.35f * STEP_X, 3));
-                    objs.Add(CreateBlock(ObjectType.Column, 2.3f + 0.35f * STEP_X, 3));
+                    objs.Add(CreateBlock(ObjectType.Cone,        2.3f + STEP_X, 2));
+                    objs.Add(CreateBlock(ObjectType.Column, 2.3f - 0.5f * STEP_X, 3));
+                    objs.Add(CreateBlock(ObjectType.Column, 2.3f + 0.5f * STEP_X, 3));
                     break;
 
                 case 23:
@@ -747,22 +747,22 @@ namespace RoyalSmash.Editor
                     // Left Ancient Tower (14 blocks)
                     for (int l = 0; l < 4; l++)
                     {
-                        objs.Add(CreateBlock(ObjectType.Stone, -2.35f - 0.7f * STEP_X, l));
+                        objs.Add(CreateBlock(ObjectType.Stone, -2.35f - STEP_X, l));
                         objs.Add(CreateBlock(ObjectType.Box,   -2.35f, l));
-                        objs.Add(CreateBlock(ObjectType.Column, -2.35f + 0.7f * STEP_X, l));
+                        objs.Add(CreateBlock(ObjectType.Column, -2.35f + STEP_X, l));
                     }
-                    objs.Add(CreateBlock(ObjectType.Cone,        -2.35f - 0.35f * STEP_X, 4));
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, -2.35f + 0.35f * STEP_X, 4));
+                    objs.Add(CreateBlock(ObjectType.Cone,        -2.35f - 0.5f * STEP_X, 4));
+                    objs.Add(CreateBlock(ObjectType.PaintBottle, -2.35f + 0.5f * STEP_X, 4));
 
                     // Right Ancient Tower (14 blocks)
                     for (int l = 0; l < 4; l++)
                     {
-                        objs.Add(CreateBlock(ObjectType.Column, 2.35f - 0.7f * STEP_X, l));
+                        objs.Add(CreateBlock(ObjectType.Column, 2.35f - STEP_X, l));
                         objs.Add(CreateBlock(ObjectType.Box,    2.35f, l));
-                        objs.Add(CreateBlock(ObjectType.Stone,  2.35f + 0.7f * STEP_X, l));
+                        objs.Add(CreateBlock(ObjectType.Stone,  2.35f + STEP_X, l));
                     }
-                    objs.Add(CreateBlock(ObjectType.PaintBottle, 2.35f - 0.35f * STEP_X, 4));
-                    objs.Add(CreateBlock(ObjectType.Cone,        2.35f + 0.35f * STEP_X, 4));
+                    objs.Add(CreateBlock(ObjectType.PaintBottle, 2.35f - 0.5f * STEP_X, 4));
+                    objs.Add(CreateBlock(ObjectType.Cone,        2.35f + 0.5f * STEP_X, 4));
                     break;
 
                 case 28:

@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-02",
+  "mode": "built-in image_gen",
+  "source": "C:/Users/Farzetki/.codex/generated_images/01a0bfa3-57f0-7130-a86e-d16793ced969/exec-5f8c5747-2e56-472c-82cb-41b6c6b0859f.png",
+  "output": "_FarzetkiDocs/Art/Phase32/Candidates/T_CitadelGold_Reference.png",
+  "prompt": "Use case: stylized-concept. Asset type: a full-bleed seamless square albedo surface texture for ornate polished gold metal in a high quality colorful fantasy mobile Unity game. Texture only: NO object, NO panel, NO border, NO symbols, NO screws, NO sphere, NO typography. Softly mottled rich champagne gold with warm amber lowlights and pale creamy gold highlights, hand-painted PBR-like material variation, extremely fine subtle polished/brushed grain. Gentle broad value variation and a few tiny worn flecks for depth when applied to wide gold rails, rings and armor trims. Moderate contrast, saturated warm gold but never flat yellow, no black or dark brown marks, no chrome mirror objects or environment reflections painted into it. Even detail density across the full square, no central spotlight, no isolated focal feature, seamlessly tileable left-right and top-bottom. Opaque RGB.",
+  "disposition": "Rejected after controlled Play A/B: too gritty foil-like; no runtime material assignment. Preserved outside Assets for provenance."
+}

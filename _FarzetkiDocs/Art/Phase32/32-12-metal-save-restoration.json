@@ -1,0 +1,22 @@
+[
+  {
+    "file": "leaderboard_cache.json",
+    "restored": true
+  },
+  {
+    "file": "live_cloud_device_saves.json",
+    "restored": true
+  },
+  {
+    "file": "live_cloud_leaderboard.json",
+    "restored": true
+  },
+  {
+    "file": "player_save_backup.json",
+    "restored": true
+  },
+  {
+    "file": "player_save.json",
+    "restored": true
+  }
+]

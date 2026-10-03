@@ -1,12 +1,12 @@
 {
     "status": "passed",
     "reason": "Left/right/center aiming preserved FirePoint and rigid art follow without spending ammunition.",
-    "startedUtc": "2026-09-30T11:09:40.0536312Z",
-    "finishedUtc": "2026-09-30T11:09:41.5898084Z",
+    "startedUtc": "2026-10-02T16:25:30.1408726Z",
+    "finishedUtc": "2026-10-02T16:25:31.6322725Z",
     "recoil": "Not tested: current mortar has no recoil implementation.",
     "passed": true,
-    "ballsBefore": 32,
-    "ballsAfter": 32,
+    "ballsBefore": 35,
+    "ballsAfter": 35,
     "firesBefore": 0,
     "firesAfter": 0,
     "visualRenderers": 42,
@@ -14,10 +14,10 @@
         {
             "requestedYaw": -45.0,
             "expectedYaw": -45.0,
-            "actualYaw": -44.99996566772461,
-            "elapsedSeconds": 0.6017494201660156,
+            "actualYaw": -44.999961853027347,
+            "elapsedSeconds": 0.6045989990234375,
             "firePointWorld": {
-                "x": -0.6640411615371704,
+                "x": -0.6640411019325256,
                 "y": 1.266365647315979,
                 "z": -1.8559579849243165
             }
@@ -25,21 +25,21 @@
         {
             "requestedYaw": 45.0,
             "expectedYaw": 45.0,
-            "actualYaw": 45.0,
-            "elapsedSeconds": 0.6358184814453125,
+            "actualYaw": 44.99999237060547,
+            "elapsedSeconds": 0.605712890625,
             "firePointWorld": {
-                "x": 0.6640415787696838,
+                "x": 0.6640414595603943,
                 "y": 1.266365647315979,
-                "z": -1.8559584617614747
+                "z": -1.855958342552185
             }
         },
         {
             "requestedYaw": 0.0,
             "expectedYaw": 0.0,
-            "actualYaw": 0.000012454099305614363,
-            "elapsedSeconds": 0.6070480346679688,
+            "actualYaw": 0.00001495323158451356,
+            "elapsedSeconds": 0.6043548583984375,
             "firePointWorld": {
-                "x": 2.0412676349224058e-7,
+                "x": 2.4508835849701429e-7,
                 "y": 1.266365647315979,
                 "z": -1.58090341091156
             }

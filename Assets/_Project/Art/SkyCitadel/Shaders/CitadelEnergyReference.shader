@@ -2,6 +2,8 @@ Shader "RoyalSmash/Citadel Energy Reference"
 {
     Properties
     {
+        _EnergyTex ("Layered Plasma Surface", 2D) = "black" {}
+        _TextureStrength ("Plasma Radiance", Range(0,3)) = 1.65
         [MainColor] _BaseColor ("Deep Energy Color / Runtime Tint", Color) = (0.015,0.20,0.92,1)
         [HDR] _GlowColor ("Filament Glow", Color) = (0.025,1.15,1.8,1)
         [HDR] _CoreColor ("Filament Intersections", Color) = (0.3,1.65,2.25,1)
@@ -20,7 +22,11 @@ Shader "RoyalSmash/Citadel Energy Reference"
         ZWrite On
         HLSLINCLUDE
         #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+        TEXTURE2D(_EnergyTex);
+        SAMPLER(sampler_EnergyTex);
         CBUFFER_START(UnityPerMaterial)
+            float4 _EnergyTex_ST;
+            half _TextureStrength;
             half4 _BaseColor;
             half4 _GlowColor;
             half4 _CoreColor;
@@ -52,6 +58,7 @@ Shader "RoyalSmash/Citadel Energy Reference"
             {
                 float4 positionOS : POSITION;
                 float3 normalOS : NORMAL;
+                float2 uv : TEXCOORD0;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
             struct EnergyVaryings
@@ -62,6 +69,7 @@ Shader "RoyalSmash/Citadel Energy Reference"
                 float3 local : TEXCOORD2;
                 half fogFactor : TEXCOORD3;
                 float4 shadowCoord : TEXCOORD4;
+                float2 uv : TEXCOORD5;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
                 UNITY_VERTEX_OUTPUT_STEREO
             };
@@ -76,6 +84,7 @@ Shader "RoyalSmash/Citadel Energy Reference"
                 output.positionWS = position.positionWS;
                 output.normalWS = TransformObjectToWorldNormal(input.normalOS);
                 output.local = input.positionOS.xyz;
+                output.uv = TRANSFORM_TEX(input.uv, _EnergyTex);
                 output.fogFactor = ComputeFogFactor(position.positionCS.z);
                 output.shadowCoord = GetShadowCoord(position);
                 return output;
@@ -117,7 +126,7 @@ Shader "RoyalSmash/Citadel Energy Reference"
                 float3 viewOS = SafeNormalize(TransformWorldToObjectDir(viewWS));
                 float3 p = input.local * _NoiseScale;
                 // Object-space coordinates stay attached to moving, rotating and Mega-scaled meshes.
-                // A small view offset suggests a layer under glass; no ray march or material textures.
+                // A small view offset suggests a layer under glass; no ray march.
                 p += viewOS * (1.0 - facing) * _DepthStrength * 0.12;
                 float3 drift = _Time.y * _FlowSpeed * float3(0.32, -0.64, 0.21);
                 float low = EnergyNoise(p + drift);
@@ -140,6 +149,13 @@ Shader "RoyalSmash/Citadel Energy Reference"
                 half corePeak = max(max(_CoreColor.r, _CoreColor.g), _CoreColor.b);
                 half3 glowColor = lerp(lerp(tint, half3(1,1,1), 0.16h) * glowPeak, _GlowColor.rgb, bluePalette);
                 half3 coreColor = lerp(lerp(tint, half3(1,1,1), 0.58h) * corePeak, _CoreColor.rgb, bluePalette);
+                float2 textureDrift = _Time.y * _FlowSpeed * float2(0.055, -0.035);
+                float2 parallax = viewOS.xy * (1.0 - facing) * _DepthStrength * 0.025;
+                half3 plasmaA = SAMPLE_TEXTURE2D(_EnergyTex, sampler_EnergyTex, input.uv + textureDrift + parallax).rgb;
+                half3 plasmaB = SAMPLE_TEXTURE2D(_EnergyTex, sampler_EnergyTex, input.uv * float2(-1,1) * 1.37 - textureDrift * 0.65 - parallax + float2(.31,.57)).rgb;
+                half3 plasma = plasmaA * 0.78h + plasmaB * 0.22h;
+                half plasmaPeak = max(max(plasma.r, plasma.g), plasma.b);
+                half3 coloredPlasma = lerp(lerp(tint, half3(1,1,1), saturate(plasma.r) * 0.65h) * plasmaPeak, plasma, bluePalette);
 
                 #if defined(_MAIN_LIGHT_SHADOWS_SCREEN)
                     float4 shadowCoord = input.shadowCoord;
@@ -151,8 +167,10 @@ Shader "RoyalSmash/Citadel Energy Reference"
                 float diffuse = saturate(dot(normalWS, light.direction)) * attenuation;
                 float depth = lerp(1.0, 0.56 + facing * 0.44, _DepthStrength);
                 half3 color = _BaseColor.rgb * (0.16 + low * 0.28 + detail * 0.08) * depth * (0.65 + diffuse * 0.35);
-                color += glowColor * (filaments * _FilamentStrength + halo + core * 0.20);
-                color += coreColor * (intersection * 0.38 + core * 0.40);
+                color += coloredPlasma * _TextureStrength * depth;
+                // Fine procedural arcs remain beneath the painted flow, without a closed cell grid.
+                color += glowColor * (filaments * _FilamentStrength + halo + core * 0.20) * 0.16;
+                color += coreColor * (intersection * 0.38 + core * 0.40) * 0.22;
                 float rim = pow(1.0 - facing, 4.0) * _RimStrength;
                 color += glowColor * rim * 0.85;
 

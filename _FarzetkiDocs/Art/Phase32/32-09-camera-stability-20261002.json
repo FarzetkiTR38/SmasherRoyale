@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "fovBefore": 68.68145,
+  "fovAfter": 68.68145,
+  "unchanged": true,
+  "level": 30,
+  "projectileHits": 2,
+  "removed": 0,
+  "displacement": 0.005311966
+}

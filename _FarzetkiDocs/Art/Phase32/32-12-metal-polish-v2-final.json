@@ -1,0 +1,81 @@
+{
+  "capturedUtc": "2026-10-02T17:39:23.5506281Z",
+  "preset": "V2 local-face UV gradient and broad light strip",
+  "idempotent": true,
+  "originalLitBackup": "C:/Users/Farzetki/.codex/local-backups/Phase32MetalPolish/20261002-170704-851-ed31b8cd",
+  "previousPresetBackup": "C:/Users/Farzetki/.codex/local-backups/Phase32MetalPolish/20261002-172206-948-a1ba1ca9",
+  "materials": [
+    {
+      "path": "Assets/_Project/Art/SkyCitadel/Materials/M_AntiqueGold.mat",
+      "guid": "6e5191d88e8a99647ac3a4d08c3e4296",
+      "shader": "RoyalSmash/Citadel Polished Metal",
+      "baseColor": [
+        1.0,
+        0.73,
+        0.219999969,
+        1.0
+      ],
+      "metallic": 0.64,
+      "smoothness": 0.74,
+      "shade": [
+        0.18,
+        0.095,
+        0.025,
+        0.0
+      ],
+      "highlight": [
+        1.0,
+        0.92,
+        0.67,
+        1.0
+      ],
+      "polishFloats": {
+        "_ShadeStrength": 1.0,
+        "_FaceContrast": 0.82,
+        "_HighlightBlend": 0.58,
+        "_PolishFrequency": 0.58,
+        "_PolishPhase": 0.35,
+        "_PolishNormalBend": 0.075,
+        "_PolishSpecular": 0.55,
+        "_StripWidth": 0.42,
+        "_CurvatureStrength": 0.075
+      }
+    },
+    {
+      "path": "Assets/_Project/Art/SkyCitadel/Materials/M_RoyalSapphire.mat",
+      "guid": "c50a78ece56a70445a7088dfecc5386b",
+      "shader": "RoyalSmash/Citadel Polished Metal",
+      "baseColor": [
+        0.025,
+        0.169999957,
+        0.62,
+        1.0
+      ],
+      "metallic": 0.48,
+      "smoothness": 0.72,
+      "shade": [
+        0.1,
+        0.17,
+        0.35,
+        0.0
+      ],
+      "highlight": [
+        0.6,
+        0.83,
+        1.0,
+        1.0
+      ],
+      "polishFloats": {
+        "_ShadeStrength": 0.9,
+        "_FaceContrast": 0.9,
+        "_HighlightBlend": 0.78,
+        "_PolishFrequency": 0.58,
+        "_PolishPhase": 0.78,
+        "_PolishNormalBend": 0.055,
+        "_PolishSpecular": 0.4,
+        "_StripWidth": 0.42,
+        "_CurvatureStrength": 0.05
+      }
+    }
+  ]
+}

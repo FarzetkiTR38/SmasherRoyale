@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-02",
+  "mode": "built-in image_gen",
+  "source": "C:/Users/Farzetki/.codex/generated_images/01a0bfa3-57f0-7130-a86e-d16793ced969/exec-57bbabf7-91a2-403f-b937-37cccf586dbd.png",
+  "output": "Assets/_Project/Art/SkyCitadel/Textures/T_CitadelEnergy_Reference.png",
+  "prompt": "Use case: stylized-concept. Asset type: seamless square tileable emissive surface texture for a premium colorful fantasy mobile game in Unity, mapped onto blue magic balls and crystal block faces. Create only the full-bleed flat material texture, no objects, no perspective, no sphere silhouette, no frames, no lettering. Deep rich sapphire and electric cobalt blue plasma with luminous turquoise/cyan fine flowing wisps, layered translucent cloudy energy, scattered tiny bright cyan sparks. High-quality polished magical energy under glass, visual depth and lively marbled flow, small-scale and medium-scale detail distributed evenly. About 65% deep blue, 30% blue/cyan soft luminous veins and cloudlets, 5% sharp cyan glints. Sparse near-white pinpricks only, no large white blowouts. Avoid closed cellular/cartographic outlines, lava crack grid, lightning-bolt symbols or a central glowing orb. Texture fills every pixel, seamless edges horizontally and vertically, uniformly dense, suitable to repeat across a moving 3D material. Opaque RGB, square."
+}

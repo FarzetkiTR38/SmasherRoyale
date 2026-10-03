@@ -1,0 +1,37 @@
+{
+    "status": "passed",
+    "reason": "Idle and missed shot held; real projectile impact released the gate and changed the puzzle.",
+    "startedUtc": "2026-10-02T16:58:59.3645763Z",
+    "finishedUtc": "2026-10-02T16:59:05.8186575Z",
+    "hitTargetName": "PF_crystal(Clone)",
+    "passed": true,
+    "idleHeld": true,
+    "missHeld": true,
+    "releasedOnImpact": true,
+    "level": 27,
+    "objects": 28,
+    "heldBodies": 28,
+    "ballsBefore": 35,
+    "ballsAfter": 33,
+    "firesBefore": 8,
+    "firesAfter": 10,
+    "projectileHits": 2,
+    "removedObjects": 0,
+    "idleSeconds": 3.0,
+    "missSeconds": 3.0,
+    "hitSeconds": 0.4199981689453125,
+    "totalSeconds": 6.4199981689453129,
+    "maxIdleDisplacement": 0.0,
+    "maxMissDisplacement": 0.0,
+    "maxHitDisplacement": 0.025612618774175645,
+    "missTarget": {
+        "x": 12.0,
+        "y": 8.0,
+        "z": 8.0
+    },
+    "hitTarget": {
+        "x": -1.59499990940094,
+        "y": 1.8450000286102296,
+        "z": 7.5
+    }
+}

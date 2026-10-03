@@ -12,6 +12,7 @@ namespace RoyalSmash.Editor
     {
         private const string MATERIAL = "Assets/_Project/Art/SkyCitadel/Materials/M_ArcaneEnergy.mat";
         private const string SHADER = "Assets/_Project/Art/SkyCitadel/Shaders/CitadelEnergyReference.shader";
+        private const string PLASMA = "Assets/_Project/Art/SkyCitadel/Textures/T_CitadelEnergy_Reference.png";
         private const string REPORT = "_FarzetkiDocs/Art/Phase32/32-08-energy-material.json";
         private const float COLOR_TOLERANCE = 1e-6f;
         private static readonly string[] COLORS = { "_BaseColor", "_GlowColor", "_CoreColor" };
@@ -35,8 +36,9 @@ namespace RoyalSmash.Editor
             public bool guidPreserved, legacyValuesPreserved, textureBindingsPreserved;
             public float colorPreservationTolerance, maxColorChannelDifference;
             public string status = "applied; runtime and visual verification pending";
-            public string scope = "Existing M_ArcaneEnergy shader only; new shader defaults add filament controls. No scene, prefab or runtime code changed.";
-            public string budget = "2 procedural 3D value-noise evaluations / fragment, 0 material texture fetches, main-light shadow sampling; no transparency or ray march. Forward, ShadowCaster and DepthOnly passes.";
+            public string plasmaTexturePath = PLASMA;
+            public string scope = "Existing M_ArcaneEnergy revised in place; one shared plasma texture plus legacy filament controls. No scene, prefab or runtime script changed.";
+            public string budget = "2 procedural 3D value-noise evaluations and 2 shared plasma texture fetches / fragment, main-light shadow sampling; no transparency or ray march. Forward, ShadowCaster and DepthOnly passes.";
             public string runtimeColor = "MainColor attribute binds Material.color to _BaseColor; non-blue runtime tints also recolor emission. Opaque shrink behavior retained.";
             public List<ColorValue> colors = new List<ColorValue>();
             public List<FloatValue> floats = new List<FloatValue>();
@@ -51,7 +53,8 @@ namespace RoyalSmash.Editor
                 throw new InvalidOperationException("Open MainGame in Edit Mode before revising the shared energy material.");
             var material = AssetDatabase.LoadAssetAtPath<Material>(MATERIAL);
             var shader = AssetDatabase.LoadAssetAtPath<Shader>(SHADER);
-            if (material == null || shader == null || !shader.isSupported)
+            var plasma = AssetDatabase.LoadAssetAtPath<Texture2D>(PLASMA);
+            if (material == null || shader == null || plasma == null || !shader.isSupported)
                 throw new InvalidOperationException("Existing energy material and supported reference shader are required.");
             if (material.shader == null || (material.shader.name != "RoyalSmash/Citadel Energy" && material.shader != shader))
                 throw new InvalidOperationException("Unexpected energy shader; preserve the current custom material for review.");
@@ -71,16 +74,16 @@ namespace RoyalSmash.Editor
                 if (!material.HasProperty(property)) throw new InvalidOperationException("Missing legacy energy property " + property);
                 report.floats.Add(new FloatValue { property = property, value = material.GetFloat(property) });
             }
-            // The established procedural material has no maps. Refuse an unexpected map-bearing
-            // variation rather than silently disconnecting its authored texture properties.
+            // The revision owns only _EnergyTex. Preserve any independently authored bindings.
             foreach (string property in material.GetTexturePropertyNames())
             {
                 var texture = material.GetTexture(property);
                 report.textures.Add(new TextureValue { property = property, assetPath = AssetDatabase.GetAssetPath(texture),
                     scale = material.GetTextureScale(property), offset = material.GetTextureOffset(property) });
             }
-            if (report.textures.Count != 0)
-                throw new InvalidOperationException("Energy material now has texture properties; review their shader bindings before switching.");
+            foreach (var binding in report.textures)
+                if (binding.property != "_EnergyTex" && shader.FindPropertyIndex(binding.property) < 0)
+                    throw new InvalidOperationException("Reference shader cannot preserve texture binding " + binding.property);
 
             // Clone the complete serialized material, including authored properties that
             // are not exposed by this tool. Do not copy temporary HideAndDontSave flags
@@ -93,6 +96,10 @@ namespace RoyalSmash.Editor
                 material.shader = shader;
                 foreach (var value in report.colors) material.SetColor(value.property, value.value);
                 foreach (var value in report.floats) material.SetFloat(value.property, value.value);
+                material.SetTexture("_EnergyTex", plasma);
+                material.SetTextureScale("_EnergyTex", Vector2.one);
+                material.SetTextureOffset("_EnergyTex", Vector2.zero);
+                material.SetFloat("_TextureStrength", 1.65f);
                 report.legacyValuesPreserved = true;
                 foreach (var value in report.colors)
                 {
@@ -106,7 +113,13 @@ namespace RoyalSmash.Editor
                 foreach (var value in report.floats)
                     report.legacyValuesPreserved &= material.GetFloat(value.property).Equals(value.value);
                 report.guidPreserved = AssetDatabase.AssetPathToGUID(MATERIAL) == report.materialGuid;
-                report.textureBindingsPreserved = material.GetTexturePropertyNames().Length == 0;
+                report.textureBindingsPreserved = material.GetTexture("_EnergyTex") == plasma;
+                foreach (var binding in report.textures)
+                {
+                    if (binding.property == "_EnergyTex") continue;
+                    report.textureBindingsPreserved &= AssetDatabase.GetAssetPath(material.GetTexture(binding.property)) == binding.assetPath
+                        && material.GetTextureScale(binding.property) == binding.scale && material.GetTextureOffset(binding.property) == binding.offset;
+                }
                 if (!report.legacyValuesPreserved || !report.guidPreserved || !report.textureBindingsPreserved)
                     throw new InvalidOperationException("Energy material preservation check failed; restoring the original material.");
                 EditorUtility.SetDirty(material);

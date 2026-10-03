@@ -190,7 +190,7 @@ MonoBehaviour:
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
     IsRequiredTarget: 1
   - Type: 2
-    Position: {x: -0.56624997, y: 4.829, z: 7.5}
+    Position: {x: -0.755, y: 4.829, z: 7.5}
     Rotation: {x: -0, y: 0, z: 0}
     Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
     PaintColor: {r: 0, g: 0, b: 0, a: 0}
     IsRequiredTarget: 1
   - Type: 2
-    Position: {x: 0.56624997, y: 4.829, z: 7.5}
+    Position: {x: 0.755, y: 4.829, z: 7.5}
     Rotation: {x: -0, y: 0, z: 0}
     Scale: {x: 0.74, y: 0.74, z: 0.74}
     OverrideMass: 0

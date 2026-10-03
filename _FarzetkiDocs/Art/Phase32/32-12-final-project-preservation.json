@@ -1,0 +1,9 @@
+{
+  "capturedUtc": "2026-10-02T17:40:32.9919737Z",
+  "baselineCount": 526,
+  "changedExistingPaths": [
+    "Assets/_Project/Scripts\\Editor\\Citadel30LevelBuilder.cs",
+    "Assets/_Project/Scripts\\Editor\\Phase32VisualRevision.cs"
+  ],
+  "scope": "Fresh before-clearance baseline: gameplay, level tooling, ScriptableObjects and scenes. Expected edits only two Editor helpers; five art-level X fixes have dedicated preservation fingerprints."
+}

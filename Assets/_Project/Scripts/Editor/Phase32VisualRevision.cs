@@ -159,7 +159,11 @@ namespace RoyalSmash.Editor
         {
             string path = ArtRoot + "/Materials/M_" + name + ".mat";
             var material = AssetDatabase.LoadAssetAtPath<Material>(path);
-            if (material == null || material.shader.name != "Universal Render Pipeline/Lit")
+            bool polishedMetal = material != null && material.shader != null &&
+                (name == "AntiqueGold" || name == "RoyalSapphire") &&
+                material.shader.name == "RoyalSmash/Citadel Polished Metal";
+            if (material == null || material.shader == null ||
+                (material.shader.name != "Universal Render Pipeline/Lit" && !polishedMetal))
                 throw new InvalidOperationException("Expected existing URP Lit material: " + path);
             return material;
         }

@@ -1,25 +1,25 @@
 {
-    "capturedUtc": "2026-10-01T08:42:23.9188197Z",
-    "finishedUtc": "2026-10-01T08:42:24.1867548Z",
+    "capturedUtc": "2026-10-02T16:56:07.6109363Z",
+    "finishedUtc": "2026-10-02T16:56:07.8068310Z",
     "database": "Assets/_Project/Art/SkyCitadel/Levels/CitadelLevelDatabase.asset",
     "sourceScene": "Assets/_Project/Scenes/MainGame.unity",
     "scope": "Authored starting poses only: collider-only copies, no scripts, Rigidbody, simulation, gameplay calls, scene saves or asset changes. Pair vectors move collider A out of B. Contact offsets, settling, stability, visual mesh intersections and collision response are not tested. Mesh results follow ComputePenetration's one-sided triangle behavior; unsupported shape combinations fail explicitly.",
     "reviewDepthMetres": 0.003000000026077032,
     "expectedLevels": 30,
     "completedLevels": 30,
-    "targetAabbCandidates": 44,
+    "targetAabbCandidates": 0,
     "falsePositiveTargetAabbCandidates": 0,
-    "penetratingTargetPairs": 44,
-    "targetReviewFlags": 44,
+    "penetratingTargetPairs": 0,
+    "targetReviewFlags": 0,
     "standReviewFlags": 0,
-    "maximumTargetDepth": 0.3625001907348633,
+    "maximumTargetDepth": 0.0,
     "maximumStandDepth": 0.0,
     "complete": true,
-    "noReviewFlags": false,
+    "noReviewFlags": true,
     "mainSceneUnchanged": true,
     "temporarySceneClosed": true,
-    "mainSceneHashBefore": "128d06420786f8e6c8e76cebaa11a6ab8d435fcc5406642b4353a90760fad02e",
-    "mainSceneHashAfter": "128d06420786f8e6c8e76cebaa11a6ab8d435fcc5406642b4353a90760fad02e",
+    "mainSceneHashBefore": "a52d7f2e60225dc9e1c9e3e24d692defadc76f82bbc1de10220be554708a64d1",
+    "mainSceneHashAfter": "a52d7f2e60225dc9e1c9e3e24d692defadc76f82bbc1de10220be554708a64d1",
     "mainSceneDirtyBefore": false,
     "mainSceneDirtyAfter": false,
     "prefabs": [
@@ -31,8 +31,8 @@
             "excludedColliders": 0,
             "renderers": 14,
             "renderedMeshInstances": 14,
-            "vertices": 9900,
-            "triangles": 4696,
+            "vertices": 11852,
+            "triangles": 6728,
             "nonTriangleIndices": 0,
             "colliderTypes": [
                 "BoxCollider"
@@ -132,8 +132,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 128412,
-            "renderedTriangles": 57892,
+            "renderedVertices": 130364,
+            "renderedTriangles": 59924,
             "pairs": []
         },
         {
@@ -142,193 +142,20 @@
             "stands": 1,
             "testedPlacementPairs": 136,
             "testedColliderPairs": 136,
-            "targetAabbCandidates": 4,
+            "targetAabbCandidates": 0,
             "falsePositiveTargetAabbCandidates": 0,
-            "penetratingTargetPairs": 4,
-            "targetReviewFlags": 4,
+            "penetratingTargetPairs": 0,
+            "targetReviewFlags": 0,
             "standReviewFlags": 0,
             "name": "Dual Watchtowers",
             "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel02.asset",
             "error": "",
             "complete": true,
-            "maximumTargetDepth": 0.36250001192092898,
+            "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 158892,
-            "renderedTriangles": 71848,
-            "pairs": [
-                {
-                    "category": "target-target",
-                    "aName": "Target[1]_PF_wood",
-                    "bName": "Target[12]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.36250001192092898,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.36250001192092898,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.36250001192092898,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.36250001192092898,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.36250001192092898,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[3]_PF_crystal",
-                    "bName": "Target[13]_PF_wood",
-                    "aType": "Column",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.36250001192092898,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.36250001192092898,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.36250001192092898,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.36250001192092898,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.36250001192092898,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[6]_PF_wood",
-                    "bName": "Target[12]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.36250001192092898,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": 0.36250001192092898,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.36250001192092898,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.36250001192092898,
-                            "direction": {
-                                "x": 1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": 0.36250001192092898,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[8]_PF_crystal",
-                    "bName": "Target[13]_PF_wood",
-                    "aType": "Column",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.36250001192092898,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": 0.36250001192092898,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.36250001192092898,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.36250001192092898,
-                            "direction": {
-                                "x": 1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": 0.36250001192092898,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                }
-            ]
+            "renderedVertices": 160844,
+            "renderedTriangles": 73880,
+            "pairs": []
         },
         {
             "level": 3,
@@ -347,8 +174,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 162060,
-            "renderedTriangles": 73384,
+            "renderedVertices": 164012,
+            "renderedTriangles": 75416,
             "pairs": []
         },
         {
@@ -368,8 +195,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 181548,
-            "renderedTriangles": 82216,
+            "renderedVertices": 183500,
+            "renderedTriangles": 84248,
             "pairs": []
         },
         {
@@ -389,8 +216,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 181356,
-            "renderedTriangles": 82048,
+            "renderedVertices": 183308,
+            "renderedTriangles": 84080,
             "pairs": []
         },
         {
@@ -410,8 +237,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 188088,
-            "renderedTriangles": 85304,
+            "renderedVertices": 191992,
+            "renderedTriangles": 89368,
             "pairs": []
         },
         {
@@ -431,8 +258,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 198204,
-            "renderedTriangles": 89512,
+            "renderedVertices": 200156,
+            "renderedTriangles": 91544,
             "pairs": []
         },
         {
@@ -452,8 +279,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 203964,
-            "renderedTriangles": 92344,
+            "renderedVertices": 205916,
+            "renderedTriangles": 94376,
             "pairs": []
         },
         {
@@ -473,8 +300,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 196044,
-            "renderedTriangles": 88552,
+            "renderedVertices": 197996,
+            "renderedTriangles": 90584,
             "pairs": []
         },
         {
@@ -483,107 +310,20 @@
             "stands": 2,
             "testedPlacementPairs": 276,
             "testedColliderPairs": 276,
-            "targetAabbCandidates": 2,
+            "targetAabbCandidates": 0,
             "falsePositiveTargetAabbCandidates": 0,
-            "penetratingTargetPairs": 2,
-            "targetReviewFlags": 2,
+            "penetratingTargetPairs": 0,
+            "targetReviewFlags": 0,
             "standReviewFlags": 0,
             "name": "The Royal Citadel Gate",
             "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel10.asset",
             "error": "",
             "complete": true,
-            "maximumTargetDepth": 0.3625001907348633,
+            "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 224088,
-            "renderedTriangles": 101480,
-            "pairs": [
-                {
-                    "category": "target-target",
-                    "aName": "Target[8]_PF_armored",
-                    "bName": "Target[9]_PF_core",
-                    "aType": "Cone",
-                    "bType": "PaintBottle",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.3625001907348633,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.3625001907348633,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.3625001907348633,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.3625001907348633,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.3625001907348633,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[18]_PF_armored",
-                    "bName": "Target[19]_PF_core",
-                    "aType": "Cone",
-                    "bType": "PaintBottle",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.3625001907348633,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": 0.3625001907348633,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.3625001907348633,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.3625001907348633,
-                            "direction": {
-                                "x": 1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": 0.3625001907348633,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                }
-            ]
+            "renderedVertices": 227992,
+            "renderedTriangles": 105544,
+            "pairs": []
         },
         {
             "level": 11,
@@ -602,8 +342,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 201324,
-            "renderedTriangles": 91336,
+            "renderedVertices": 203276,
+            "renderedTriangles": 93368,
             "pairs": []
         },
         {
@@ -623,8 +363,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 208860,
-            "renderedTriangles": 94372,
+            "renderedVertices": 210812,
+            "renderedTriangles": 96404,
             "pairs": []
         },
         {
@@ -644,8 +384,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 231048,
-            "renderedTriangles": 104816,
+            "renderedVertices": 234952,
+            "renderedTriangles": 108880,
             "pairs": []
         },
         {
@@ -665,8 +405,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 220524,
-            "renderedTriangles": 99664,
+            "renderedVertices": 222476,
+            "renderedTriangles": 101696,
             "pairs": []
         },
         {
@@ -686,8 +426,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 235212,
-            "renderedTriangles": 106120,
+            "renderedVertices": 237164,
+            "renderedTriangles": 108152,
             "pairs": []
         },
         {
@@ -707,8 +447,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 223500,
-            "renderedTriangles": 100756,
+            "renderedVertices": 225452,
+            "renderedTriangles": 102788,
             "pairs": []
         },
         {
@@ -728,8 +468,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 241368,
-            "renderedTriangles": 109088,
+            "renderedVertices": 245272,
+            "renderedTriangles": 113152,
             "pairs": []
         },
         {
@@ -749,8 +489,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 240684,
-            "renderedTriangles": 108808,
+            "renderedVertices": 242636,
+            "renderedTriangles": 110840,
             "pairs": []
         },
         {
@@ -759,107 +499,20 @@
             "stands": 1,
             "testedPlacementPairs": 325,
             "testedColliderPairs": 325,
-            "targetAabbCandidates": 2,
+            "targetAabbCandidates": 0,
             "falsePositiveTargetAabbCandidates": 0,
-            "penetratingTargetPairs": 2,
-            "targetReviewFlags": 2,
+            "penetratingTargetPairs": 0,
+            "targetReviewFlags": 0,
             "standReviewFlags": 0,
             "name": "The Arcane Observatory",
             "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel19.asset",
             "error": "",
             "complete": true,
-            "maximumTargetDepth": 0.17375004291534425,
+            "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 248124,
-            "renderedTriangles": 112276,
-            "pairs": [
-                {
-                    "category": "target-target",
-                    "aName": "Target[21]_PF_crystal",
-                    "bName": "Target[22]_PF_core",
-                    "aType": "Column",
-                    "bType": "PaintBottle",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.17375004291534425,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.17375004291534425,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.17375004291534425,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.17375004291534425,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.17375004291534425,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[22]_PF_core",
-                    "bName": "Target[23]_PF_crystal",
-                    "aType": "PaintBottle",
-                    "bType": "Column",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.17375004291534425,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.17375004291534425,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.17375004291534425,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.17375004291534425,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.17375004291534425,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                }
-            ]
+            "renderedVertices": 250076,
+            "renderedTriangles": 114308,
+            "pairs": []
         },
         {
             "level": 20,
@@ -878,8 +531,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 254796,
-            "renderedTriangles": 115024,
+            "renderedVertices": 256748,
+            "renderedTriangles": 117056,
             "pairs": []
         },
         {
@@ -899,8 +552,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 244236,
-            "renderedTriangles": 110188,
+            "renderedVertices": 246188,
+            "renderedTriangles": 112220,
             "pairs": []
         },
         {
@@ -909,795 +562,20 @@
             "stands": 2,
             "testedPlacementPairs": 378,
             "testedColliderPairs": 378,
-            "targetAabbCandidates": 18,
+            "targetAabbCandidates": 0,
             "falsePositiveTargetAabbCandidates": 0,
-            "penetratingTargetPairs": 18,
-            "targetReviewFlags": 18,
+            "penetratingTargetPairs": 0,
+            "targetReviewFlags": 0,
             "standReviewFlags": 0,
             "name": "Dual Fortress Bastions",
             "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel22.asset",
             "error": "",
             "complete": true,
-            "maximumTargetDepth": 0.2115001678466797,
+            "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 263256,
-            "renderedTriangles": 119096,
-            "pairs": [
-                {
-                    "category": "target-target",
-                    "aName": "Target[0]_PF_stone",
-                    "bName": "Target[1]_PF_stone",
-                    "aType": "Stone",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[1]_PF_stone",
-                    "bName": "Target[2]_PF_stone",
-                    "aType": "Stone",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[2]_PF_stone",
-                    "bName": "Target[3]_PF_stone",
-                    "aType": "Stone",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[4]_PF_wood",
-                    "bName": "Target[5]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[5]_PF_wood",
-                    "bName": "Target[6]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[6]_PF_wood",
-                    "bName": "Target[7]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[8]_PF_armored",
-                    "bName": "Target[9]_PF_core",
-                    "aType": "Cone",
-                    "bType": "PaintBottle",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[9]_PF_core",
-                    "bName": "Target[10]_PF_armored",
-                    "aType": "PaintBottle",
-                    "bType": "Cone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[11]_PF_crystal",
-                    "bName": "Target[12]_PF_crystal",
-                    "aType": "Column",
-                    "bType": "Column",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[13]_PF_stone",
-                    "bName": "Target[14]_PF_stone",
-                    "aType": "Stone",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[14]_PF_stone",
-                    "bName": "Target[15]_PF_stone",
-                    "aType": "Stone",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[15]_PF_stone",
-                    "bName": "Target[16]_PF_stone",
-                    "aType": "Stone",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[17]_PF_wood",
-                    "bName": "Target[18]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[18]_PF_wood",
-                    "bName": "Target[19]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[19]_PF_wood",
-                    "bName": "Target[20]_PF_wood",
-                    "aType": "Box",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[21]_PF_armored",
-                    "bName": "Target[22]_PF_core",
-                    "aType": "Cone",
-                    "bType": "PaintBottle",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[22]_PF_core",
-                    "bName": "Target[23]_PF_armored",
-                    "aType": "PaintBottle",
-                    "bType": "Cone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[24]_PF_crystal",
-                    "bName": "Target[25]_PF_crystal",
-                    "aType": "Column",
-                    "bType": "Column",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                }
-            ]
+            "renderedVertices": 267160,
+            "renderedTriangles": 123160,
+            "pairs": []
         },
         {
             "level": 23,
@@ -1716,8 +594,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 253068,
-            "renderedTriangles": 114160,
+            "renderedVertices": 255020,
+            "renderedTriangles": 116192,
             "pairs": []
         },
         {
@@ -1737,8 +615,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 269976,
-            "renderedTriangles": 122504,
+            "renderedVertices": 273880,
+            "renderedTriangles": 126568,
             "pairs": []
         },
         {
@@ -1758,8 +636,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 264588,
-            "renderedTriangles": 119404,
+            "renderedVertices": 266540,
+            "renderedTriangles": 121436,
             "pairs": []
         },
         {
@@ -1779,8 +657,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 253068,
-            "renderedTriangles": 114160,
+            "renderedVertices": 255020,
+            "renderedTriangles": 116192,
             "pairs": []
         },
         {
@@ -1789,795 +667,20 @@
             "stands": 2,
             "testedPlacementPairs": 435,
             "testedColliderPairs": 435,
-            "targetAabbCandidates": 18,
+            "targetAabbCandidates": 0,
             "falsePositiveTargetAabbCandidates": 0,
-            "penetratingTargetPairs": 18,
-            "targetReviewFlags": 18,
+            "penetratingTargetPairs": 0,
+            "targetReviewFlags": 0,
             "standReviewFlags": 0,
             "name": "Citadel of the Ancients",
             "asset": "Assets/_Project/Art/SkyCitadel/Levels/LevelData_Citadel27.asset",
             "error": "",
             "complete": true,
-            "maximumTargetDepth": 0.2115001678466797,
+            "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 280248,
-            "renderedTriangles": 126608,
-            "pairs": [
-                {
-                    "category": "target-target",
-                    "aName": "Target[0]_PF_stone",
-                    "bName": "Target[1]_PF_wood",
-                    "aType": "Stone",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[1]_PF_wood",
-                    "bName": "Target[2]_PF_crystal",
-                    "aType": "Box",
-                    "bType": "Column",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[3]_PF_stone",
-                    "bName": "Target[4]_PF_wood",
-                    "aType": "Stone",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[4]_PF_wood",
-                    "bName": "Target[5]_PF_crystal",
-                    "aType": "Box",
-                    "bType": "Column",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[6]_PF_stone",
-                    "bName": "Target[7]_PF_wood",
-                    "aType": "Stone",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[7]_PF_wood",
-                    "bName": "Target[8]_PF_crystal",
-                    "aType": "Box",
-                    "bType": "Column",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[9]_PF_stone",
-                    "bName": "Target[10]_PF_wood",
-                    "aType": "Stone",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[10]_PF_wood",
-                    "bName": "Target[11]_PF_crystal",
-                    "aType": "Box",
-                    "bType": "Column",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[12]_PF_armored",
-                    "bName": "Target[13]_PF_core",
-                    "aType": "Cone",
-                    "bType": "PaintBottle",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[14]_PF_crystal",
-                    "bName": "Target[15]_PF_wood",
-                    "aType": "Column",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[15]_PF_wood",
-                    "bName": "Target[16]_PF_stone",
-                    "aType": "Box",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7400002479553223,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[17]_PF_crystal",
-                    "bName": "Target[18]_PF_wood",
-                    "aType": "Column",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[18]_PF_wood",
-                    "bName": "Target[19]_PF_stone",
-                    "aType": "Box",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[20]_PF_crystal",
-                    "bName": "Target[21]_PF_wood",
-                    "aType": "Column",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[21]_PF_wood",
-                    "bName": "Target[22]_PF_stone",
-                    "aType": "Box",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[23]_PF_crystal",
-                    "bName": "Target[24]_PF_wood",
-                    "aType": "Column",
-                    "bType": "Box",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149992942810059,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21150004863739015,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21150004863739015,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21150004863739015,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21150004863739015,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[24]_PF_wood",
-                    "bName": "Target[25]_PF_stone",
-                    "aType": "Box",
-                    "bType": "Stone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.21149969100952149,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.21149969100952149,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.21149969100952149,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.21149969100952149,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.21149969100952149,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "category": "target-target",
-                    "aName": "Target[26]_PF_core",
-                    "bName": "Target[27]_PF_armored",
-                    "aType": "PaintBottle",
-                    "bType": "Cone",
-                    "aabbCandidate": true,
-                    "penetrating": true,
-                    "reviewFlag": true,
-                    "aabbOverlap": {
-                        "x": 0.2115001678466797,
-                        "y": 0.7399997711181641,
-                        "z": 0.7399997711181641
-                    },
-                    "maximumSeparationVector": {
-                        "x": -0.2115001678466797,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "maximumDepth": 0.2115001678466797,
-                    "colliderPairsTested": 1,
-                    "penetrations": [
-                        {
-                            "aCollider": "./BoxCollider[0]",
-                            "bCollider": "./BoxCollider[0]",
-                            "aColliderType": "BoxCollider",
-                            "bColliderType": "BoxCollider",
-                            "reviewFlag": true,
-                            "layerCollisionIgnored": false,
-                            "depth": 0.2115001678466797,
-                            "direction": {
-                                "x": -1.0,
-                                "y": 0.0,
-                                "z": 0.0
-                            },
-                            "separationVector": {
-                                "x": -0.2115001678466797,
-                                "y": 0.0,
-                                "z": 0.0
-                            }
-                        }
-                    ]
-                }
-            ]
+            "renderedVertices": 284152,
+            "renderedTriangles": 130672,
+            "pairs": []
         },
         {
             "level": 28,
@@ -2596,8 +699,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 277116,
-            "renderedTriangles": 125488,
+            "renderedVertices": 279068,
+            "renderedTriangles": 127520,
             "pairs": []
         },
         {
@@ -2617,8 +720,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 276396,
-            "renderedTriangles": 124744,
+            "renderedVertices": 278348,
+            "renderedTriangles": 126776,
             "pairs": []
         },
         {
@@ -2638,8 +741,8 @@
             "complete": true,
             "maximumTargetDepth": 0.0,
             "maximumStandDepth": 0.0,
-            "renderedVertices": 279852,
-            "renderedTriangles": 126736,
+            "renderedVertices": 281804,
+            "renderedTriangles": 128768,
             "pairs": []
         }
     ],
