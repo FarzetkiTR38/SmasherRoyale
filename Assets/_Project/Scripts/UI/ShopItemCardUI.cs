@@ -234,7 +234,15 @@ namespace RoyalSmash.UI
             bool isNoAdsOwned = IsNoAdsOwned(item);
             if (isNoAdsOwned)
             {
-                if (_priceText != null) _priceText.text = Label(_presentation != null ? _presentation.OwnedLabel : null, "OWNED");
+                if (_priceText != null)
+                {
+                    _priceText.text = Label(_presentation != null ? _presentation.OwnedLabel : null, "SATIN ALINDI");
+                    _priceText.alignment = TextAlignmentOptions.Center;
+                    _priceText.rectTransform.anchorMin = Vector2.zero;
+                    _priceText.rectTransform.anchorMax = Vector2.one;
+                    _priceText.rectTransform.offsetMin = new Vector2(8f, 0f);
+                    _priceText.rectTransform.offsetMax = new Vector2(-8f, 0f);
+                }
                 SetState(string.Empty);
                 if (_buyButton != null) _buyButton.interactable = false;
                 ApplyOwnedTint();
@@ -243,7 +251,6 @@ namespace RoyalSmash.UI
 
             RestoreOwnedTint();
             IAPManager iap = Application.isPlaying && IAPManager.HasInstance ? IAPManager.Instance : null;
-            bool usingFallbackPrice = false;
             string priceToDisplay;
             if (item.Currency == PriceCurrency.InGameGold)
             {
@@ -254,14 +261,20 @@ namespace RoyalSmash.UI
             {
                 string storePrice = iap != null && iap.IsInitialized && !string.IsNullOrEmpty(item.ProductId)
                     ? iap.GetLocalizedPriceString(item.ProductId, null) : null;
-                usingFallbackPrice = string.IsNullOrEmpty(storePrice);
-                priceToDisplay = usingFallbackPrice ? item.PriceString : storePrice;
+                priceToDisplay = string.IsNullOrEmpty(storePrice) ? item.PriceString : storePrice;
             }
 
-            if (_priceText != null) _priceText.text = priceToDisplay;
+            if (_priceText != null)
+            {
+                _priceText.text = priceToDisplay;
+                _priceText.alignment = TextAlignmentOptions.Center;
+                _priceText.rectTransform.anchorMin = Vector2.zero;
+                _priceText.rectTransform.anchorMax = Vector2.one;
+                _priceText.rectTransform.offsetMin = new Vector2(8f, 0f);
+                _priceText.rectTransform.offsetMax = new Vector2(-8f, 0f);
+            }
             bool locked = purchaseInProgress ?? (iap != null && iap.IsPurchaseInProgress);
-            SetState(locked ? Label(_presentation != null ? _presentation.PendingLabel : null, "İŞLEM SÜRÜYOR…")
-                : usingFallbackPrice ? Label(_presentation != null ? _presentation.FallbackPriceLabel : null, "Çevrimdışı fiyat") : string.Empty);
+            SetState(locked ? Label(_presentation != null ? _presentation.PendingLabel : null, "İŞLEM SÜRÜYOR…") : string.Empty);
             if (_buyButton != null) _buyButton.interactable = !locked;
         }
 
@@ -298,10 +311,20 @@ namespace RoyalSmash.UI
 
         private static bool IsNoAdsOwned(ShopItemData item)
         {
-            return Application.isPlaying && item.GrantsNoAds && SaveManager.HasInstance &&
-                   SaveManager.Instance != null &&
-                   SaveManager.Instance.Data != null &&
-                   SaveManager.Instance.Data.NoAdsPurchased;
+            if (item == null || !item.GrantsNoAds) return false;
+            if (SaveManager.HasInstance && SaveManager.Instance != null &&
+                SaveManager.Instance.Data != null && SaveManager.Instance.Data.NoAdsPurchased)
+                return true;
+            if (!Application.isPlaying)
+            {
+                var sm = UnityEngine.Object.FindFirstObjectByType<SaveManager>();
+                if (sm != null)
+                {
+                    if (sm.Data == null) sm.Load();
+                    return sm.Data != null && sm.Data.NoAdsPurchased;
+                }
+            }
+            return false;
         }
 
         // Only restore a tint this component applied; leave unrelated button colors alone.
@@ -413,6 +436,7 @@ namespace RoyalSmash.UI
             if (art != null && art.BackgroundOverride != null) background = art.BackgroundOverride;
             SetSkin(_backgroundImage, background);
             SetSkin(_buyBackgroundImage, _presentation.BuyBackground);
+            if (_buyBackgroundImage != null) _buyBackgroundImage.pixelsPerUnitMultiplier = 1.5f;
             SetSkin(_badgeImage, _presentation.BadgeBackground);
             ApplyTextStyle(_titleText, true);
             ApplyTextStyle(_descriptionText, false);
@@ -451,19 +475,30 @@ namespace RoyalSmash.UI
 
         private void SetState(string message)
         {
-            if (_stateText == null) return;
-            _stateText.text = message;
-            bool hasState = !string.IsNullOrEmpty(message);
-            _stateText.gameObject.SetActive(hasState);
+            if (_stateText != null)
+            {
+                _stateText.text = message;
+                bool hasState = !string.IsNullOrEmpty(message);
+                _stateText.gameObject.SetActive(hasState);
+            }
 
             if (_buyButton != null && _priceText != null &&
-                _stateText.transform.parent == _buyButton.transform &&
                 _priceText.transform.parent == _buyButton.transform)
             {
+                bool hasState = _stateText != null && _stateText.gameObject.activeSelf && !string.IsNullOrEmpty(_stateText.text);
                 RectTransform priceRect = _priceText.rectTransform;
-                Vector2 offsetMin = priceRect.offsetMin;
-                offsetMin.y = hasState ? _stateText.rectTransform.offsetMax.y + 2f : -priceRect.offsetMax.y;
-                priceRect.offsetMin = offsetMin;
+                priceRect.anchorMin = Vector2.zero;
+                priceRect.anchorMax = Vector2.one;
+                if (hasState && _stateText != null)
+                {
+                    priceRect.offsetMin = new Vector2(8f, _stateText.rectTransform.offsetMax.y + 2f);
+                    priceRect.offsetMax = new Vector2(-8f, -6f);
+                }
+                else
+                {
+                    priceRect.offsetMin = new Vector2(8f, 0f);
+                    priceRect.offsetMax = new Vector2(-8f, 0f);
+                }
             }
         }
 

@@ -19,7 +19,7 @@ MonoBehaviour:
   OwnedLabel: SATIN ALINDI
   PendingLabel: "\u0130\u015ELEM S\xDCR\xDCYOR\u2026"
   UnavailableLabel: KULLANILAMIYOR
-  FallbackPriceLabel: "\xC7evrimd\u0131\u015F\u0131 fiyat"
+  FallbackPriceLabel: 
   GoldRewardLabel: "Alt\u0131n"
   MegaRewardLabel: Mega Top
   InfinityRewardLabel: Sonsuz Top
@@ -44,7 +44,7 @@ MonoBehaviour:
   SectionOrder: 0000000001000000020000000300000004000000
   FeaturedCardHeight: 340
   NoAdsCardHeight: 260
-  CompactCardHeight: 230
+  CompactCardHeight: 195
   BundleCardHeight: 304
   SectionHeaderHeight: 56
   SectionSpacing: 14

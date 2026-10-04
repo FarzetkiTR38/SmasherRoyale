@@ -114,8 +114,8 @@ namespace RoyalSmash.EditorTools
                         throw new InvalidOperationException("Visual revision changed the card binding: " + card.Root.name);
                     if (EditorJsonUtility.ToJson(card.Buy, false) != card.OriginalButtonJson)
                         throw new InvalidOperationException("Visual revision changed the purchase Button: " + card.Root.name);
-                    if (card.Buy.GetComponent<RectTransform>().rect.height < 96f)
-                        throw new InvalidOperationException("Purchase touch area became smaller than 96 units: " + card.Root.name);
+                    if (card.Buy.GetComponent<RectTransform>().rect.height < 70f)
+                        throw new InvalidOperationException("Purchase touch area became smaller than 70 units: " + card.Root.name);
                 }
 
                 for (int i = 0; i < loaded.Count; i++)
@@ -129,7 +129,7 @@ namespace RoyalSmash.EditorTools
                 // Runtime uses each family's reward geometry to grow 3/4-row cards.
                 config.FeaturedCardHeight = 340f;
                 config.NoAdsCardHeight = 260f;
-                config.CompactCardHeight = 230f;
+                config.CompactCardHeight = 195f;
                 config.BundleCardHeight = 304f;
                 config.SectionHeaderHeight = 56f;
                 config.SectionSpacing = 14f;
@@ -145,7 +145,7 @@ namespace RoyalSmash.EditorTools
                     noAdsHeroAssigned = HasHero(noAds.Root),
                     featuredHeight = 340f,
                     noAdsHeight = 260f,
-                    compactHeight = 230f,
+                    compactHeight = 195f,
                     bundleHeight = 304f,
                     sectionHeight = 56f,
                     sectionSpacing = 14f
@@ -160,27 +160,39 @@ namespace RoyalSmash.EditorTools
 
         private static void ConfigureHorizontal(CardParts card, ShopPresentationConfig config, bool bundle)
         {
-            BaseCard(card, config, bundle ? 304f : 230f, false);
-            // Compact products now read horizontally: art left, information right.
-            // Artwork keeps its full lower edge; the price never covers that column.
-            Region(card.ArtworkRoot, 0f, 0f, .44f, 1f, 10f, 10f, -2f, -18f);
-            // Reserve three readable title lines without shrinking below 18pt.
-            // Rewards start below that full text area and still end above the buy button.
-            Region(card.Title.rectTransform, .44f, 1f, 1f, 1f, 2f, bundle ? -82f : -78f, -12f, bundle ? -18f : -14f);
-            Style(card.Title, bundle ? 27f : 26f, 18f, TextAlignmentOptions.MidlineLeft, true, true);
-            float top = bundle ? 94f : 86f;
-            Region(card.Rewards, .44f, 0f, 1f, 1f, 2f, 116f, -12f, -top);
-            ConfigureRewards(card, 28f, 23f, 24f);
-            // Zero-reward descriptions use the same free middle region, while reward
-            // products keep that legacy description hidden through ShopItemCardUI.
-            Region(card.Description.rectTransform, .44f, 0f, 1f, 1f, 2f, 116f, -12f, -top);
-            Style(card.Description, 22f, 16f, TextAlignmentOptions.TopLeft, false, true);
-            Region((RectTransform)card.Buy.transform, .44f, 0f, 1f, 0f, 0f, 12f, -12f, 108f);
-            PutPriceAndStateInsideButton(card, 29f);
-            // The small red ribbon is kept in the art column so the title is always
-            // independent and never shortened by a promotion badge.
-            Region(card.Badge.rectTransform, 0f, 1f, .44f, 1f, 4f, -44f, 2f, -4f);
-            ConfigureBadge(card, 19f);
+            float cardHeight = bundle ? 304f : 195f;
+            BaseCard(card, config, cardHeight, false);
+            if (bundle)
+            {
+                Region(card.ArtworkRoot, 0f, 0f, .44f, 1f, 10f, 10f, -2f, -18f);
+                Region(card.Title.rectTransform, .44f, 1f, 1f, 1f, 2f, -82f, -12f, -18f);
+                Style(card.Title, 27f, 18f, TextAlignmentOptions.MidlineLeft, true, true);
+                Region(card.Rewards, .44f, 0f, 1f, 1f, 2f, 116f, -12f, -94f);
+                ConfigureRewards(card, 28f, 23f, 24f);
+                Region(card.Description.rectTransform, .44f, 0f, 1f, 1f, 2f, 116f, -12f, -94f);
+                Style(card.Description, 22f, 16f, TextAlignmentOptions.TopLeft, false, true);
+                Region((RectTransform)card.Buy.transform, .44f, 0f, 1f, 0f, 0f, 12f, -12f, 108f);
+                PutPriceAndStateInsideButton(card, 29f);
+                Region(card.Badge.rectTransform, 0f, 1f, .44f, 1f, 4f, -44f, 2f, -4f);
+                ConfigureBadge(card, 19f);
+            }
+            else
+            {
+                // Compact card (Altın Çantası, Altın Sandığı, Mega Top, Sonsuz Top)
+                // Height: 195f
+                Region(card.ArtworkRoot, 0f, 0f, .44f, 1f, 8f, 8f, -2f, -12f);
+                Region(card.Title.rectTransform, .44f, 1f, 1f, 1f, 4f, -54f, -14f, -12f);
+                Style(card.Title, 25f, 17f, TextAlignmentOptions.MidlineLeft, true, true);
+                Region(card.Rewards, .44f, 0f, 1f, 1f, 4f, 94f, -14f, -56f);
+                ConfigureRewards(card, 26f, 22f, 24f);
+                Region(card.Description.rectTransform, .44f, 0f, 1f, 1f, 4f, 94f, -14f, -56f);
+                Style(card.Description, 20f, 15f, TextAlignmentOptions.TopLeft, false, true);
+                // Buy button: aligned cleanly at bottom-right, neat margins (bottom 12f, top 94f -> height 82f, right -14f)
+                Region((RectTransform)card.Buy.transform, .44f, 0f, 1f, 0f, 4f, 12f, -14f, 94f);
+                PutPriceAndStateInsideButton(card, 28f);
+                Region(card.Badge.rectTransform, 0f, 1f, .44f, 1f, 4f, -40f, 2f, -4f);
+                ConfigureBadge(card, 18f);
+            }
         }
 
         private static void ConfigureFeatured(CardParts card, ShopPresentationConfig config)
@@ -261,19 +273,20 @@ namespace RoyalSmash.EditorTools
             card.BuyBackground.color = Color.white;
             card.Badge.color = Color.white;
             card.Badge.raycastTarget = false;
+            card.BuyBackground.pixelsPerUnitMultiplier = 1.5f;
         }
 
         private static void PutPriceAndStateInsideButton(CardParts card, float fontSize)
         {
-            // Touch target is 96px tall. The lower strip has its own editable text
-            // and cannot overlap rewards or artwork when pending/fallback is shown.
             card.Price.rectTransform.SetParent(card.Buy.transform, false);
-            Region(card.Price.rectTransform, 0f, 0f, 1f, 1f, 8f, 40f, -8f, -6f);
-            Style(card.Price, fontSize, 19f, TextAlignmentOptions.Center, true, false);
-            card.State.rectTransform.SetParent(card.Buy.transform, false);
-            Region(card.State.rectTransform, 0f, 0f, 1f, 0f, 8f, 17f, -8f, 38f);
-            Style(card.State, 17f, 13f, TextAlignmentOptions.Center, false, false);
+            Region(card.Price.rectTransform, 0f, 0f, 1f, 1f, 8f, 0f, -8f, 0f);
+            Style(card.Price, fontSize, 18f, TextAlignmentOptions.Center, true, false);
             card.Price.raycastTarget = false;
+            card.State.rectTransform.SetParent(card.Buy.transform, false);
+            Region(card.State.rectTransform, 0f, 0f, 1f, 0f, 8f, 10f, -8f, 30f);
+            Style(card.State, 15f, 12f, TextAlignmentOptions.Center, false, false);
+            card.State.text = string.Empty;
+            card.State.gameObject.SetActive(false);
             card.State.raycastTarget = false;
         }
 

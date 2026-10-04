@@ -28,7 +28,7 @@ namespace RoyalSmash.UI
         public string OwnedLabel = "SATIN ALINDI";
         public string PendingLabel = "İŞLEM SÜRÜYOR…";
         public string UnavailableLabel = "KULLANILAMIYOR";
-        public string FallbackPriceLabel = "Çevrimdışı fiyat";
+        public string FallbackPriceLabel = "";
         public string GoldRewardLabel = "Altın";
         public string MegaRewardLabel = "Mega Top";
         public string InfinityRewardLabel = "Sonsuz Top";
@@ -67,7 +67,7 @@ namespace RoyalSmash.UI
         [Header("Shared Layout")]
         [Min(100f)] public float FeaturedCardHeight = 360f;
         [Min(100f)] public float NoAdsCardHeight = 240f;
-        [Min(100f)] public float CompactCardHeight = 330f;
+        [Min(100f)] public float CompactCardHeight = 195f;
         [Min(100f)] public float BundleCardHeight = 410f;
         [Min(32f)] public float SectionHeaderHeight = 66f;
         [Min(0f)] public float SectionSpacing = 22f;
