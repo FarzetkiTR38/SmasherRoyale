@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b6fa62483d7314db93df847f4f04aa, type: 3}
+  m_Name: AudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Audio.AudioConfig
+  _bgmMainMenu: {fileID: 8300000, guid: c5737ae4a99cdb64ebebf49308f3958b, type: 3}
+  _bgmMainMenuAlt1: {fileID: 8300000, guid: 401b03a770fc2c8489b1ce80450ef55c, type: 3}
+  _bgmMainMenuAlt2: {fileID: 8300000, guid: de2e1fa9172ec064ebfc5920ff8f0d28, type: 3}
+  _bgmGameplay: {fileID: 8300000, guid: 740e14977f39f21408e3c96fda523304, type: 3}
+  _bgmGameplayAlt1: {fileID: 8300000, guid: 3b995de921ec8d44b919d0b51b4e038e, type: 3}
+  _bgmGameplayAlt2: {fileID: 8300000, guid: 4c3ec59b9def6fc4784bbd516cc4051b, type: 3}
+  _ballLaunch: {fileID: 8300000, guid: 2f341619aaad50949b4c987f43498b10, type: 3}
+  _ballLaunchAlt1: {fileID: 8300000, guid: 2bbd42ba09dc09f4cae025897260e0c7, type: 3}
+  _ballLaunchAlt2: {fileID: 8300000, guid: 6bcfe39043e492245aeb6bb20a9d51ef, type: 3}
+  _cannonAim: {fileID: 8300000, guid: 5b1c3b53baff09f4a8b73ff22700bf5e, type: 3}
+  _cannonAimAlt1: {fileID: 8300000, guid: 7644559c28fa0f447a563c6bff7fd4ac, type: 3}
+  _cannonAimAlt2: {fileID: 8300000, guid: 690af419d3866604097fc21c561c1521, type: 3}
+  _ballBounce: {fileID: 8300000, guid: 9638a7cf4034afe4395bf208a715cfe9, type: 3}
+  _ballBounceAlt1: {fileID: 8300000, guid: 23c0e421b23ba564d9cded88e79c5d30, type: 3}
+  _ballBounceAlt2: {fileID: 8300000, guid: d0d7303e332c3cb4fa1d4ef9e1e92390, type: 3}
+  _skillMegaBall: {fileID: 8300000, guid: 5155a3b18061a414a92b635b7816f460, type: 3}
+  _skillMegaBallAlt1: {fileID: 8300000, guid: a428403977ed0e145978aa4a1b99f58b, type: 3}
+  _skillMegaBallAlt2: {fileID: 8300000, guid: da7ef850b69c5764fbd535945bcde86c, type: 3}
+  _skillInfinityBall: {fileID: 8300000, guid: 22c51b5b70d9a8a41865960abde8d91f, type: 3}
+  _skillInfinityBallAlt1: {fileID: 8300000, guid: 066950ed50768014fa964541f9613ab2, type: 3}
+  _skillInfinityBallAlt2: {fileID: 8300000, guid: 2f00ba8711daea84b825714ad2293eda, type: 3}
+  _boxImpact: {fileID: 8300000, guid: 10d241c8e0c91ee4f84a5ce30a24b5a5, type: 3}
+  _boxImpactAlt1: {fileID: 8300000, guid: 7c857e5810de5d34687b687d79fc8896, type: 3}
+  _boxImpactAlt2: {fileID: 8300000, guid: 19a9011b1bc792144b07d21a623287a4, type: 3}
+  _stoneImpact: {fileID: 8300000, guid: e38bc2050e8531b46beb2c6a511bf83b, type: 3}
+  _stoneImpactAlt1: {fileID: 8300000, guid: d5a5341ade7762e479262ec5d9255ace, type: 3}
+  _stoneImpactAlt2: {fileID: 8300000, guid: 0f2f48c9496eb3b41bfeb99fc7f231ce, type: 3}
+  _columnImpact: {fileID: 8300000, guid: ef546e307d41cba4c9bdb823efdf101c, type: 3}
+  _columnImpactAlt1: {fileID: 8300000, guid: 8868e92b0b3374243a38c50b94400ba7, type: 3}
+  _columnImpactAlt2: {fileID: 8300000, guid: eb99fcf3db2478e42b8decb2b9aa5ffe, type: 3}
+  _coneImpact: {fileID: 8300000, guid: 794dcd5a63f142744a1b28b2588a64b3, type: 3}
+  _coneImpactAlt1: {fileID: 8300000, guid: 05b5b0d80451dec44a008bace1a6dbcc, type: 3}
+  _coneImpactAlt2: {fileID: 8300000, guid: 28014c6a63bea8442aee0199a572159a, type: 3}
+  _boxDestroy: {fileID: 8300000, guid: 36103539212c3444e8fb4811ab447b8e, type: 3}
+  _boxDestroyAlt1: {fileID: 8300000, guid: 9479df957200d0d42bfcb2876b341c07, type: 3}
+  _boxDestroyAlt2: {fileID: 8300000, guid: 0f03a62d9580e7140ae0e27751d79fd8, type: 3}
+  _stoneDestroy: {fileID: 8300000, guid: f2142c5637ae3f44e93eb2c510a529de, type: 3}
+  _stoneDestroyAlt1: {fileID: 8300000, guid: 483d3d4a5ce640f47891cb575d16a95b, type: 3}
+  _stoneDestroyAlt2: {fileID: 8300000, guid: e1db7bc19bfbcdb4fa2ec5515e841a51, type: 3}
+  _columnDestroy: {fileID: 8300000, guid: e031b5774a278654e86226221e9056e2, type: 3}
+  _columnDestroyAlt1: {fileID: 8300000, guid: 376709d82a755554a9511d9c46f36301, type: 3}
+  _columnDestroyAlt2: {fileID: 8300000, guid: da10fb452692df24d833a3d62aea86bf, type: 3}
+  _coneDestroy: {fileID: 8300000, guid: 1807249d91fd0c343a9829f7af6cb7a0, type: 3}
+  _coneDestroyAlt1: {fileID: 8300000, guid: 0b29b49fa03360a4184de00cc023662d, type: 3}
+  _coneDestroyAlt2: {fileID: 8300000, guid: a9b189c4554c1734c86e2dd353871f6a, type: 3}
+  _paintBottleBreak: {fileID: 8300000, guid: e528a09f52c2df443891a4bfa16b81d9, type: 3}
+  _paintBottleBreakAlt1: {fileID: 8300000, guid: 20acb06f579b1714cbbba870ec6c38a0, type: 3}
+  _paintBottleBreakAlt2: {fileID: 8300000, guid: ae7e157f9346ed846ae682fc0e234d2b, type: 3}
+  _objectDestruction: {fileID: 8300000, guid: add0fd4fa642a794580819f44c050171, type: 3}
+  _objectDestructionAlt1: {fileID: 8300000, guid: a7a3d682bceb2ee4781233db2cd64b21, type: 3}
+  _objectDestructionAlt2: {fileID: 8300000, guid: 409db88dd2fa8ba4ca2497966faa077a, type: 3}
+  _comboDestroy: {fileID: 8300000, guid: 83311d8e1db86f64db6269ab48a2fd44, type: 3}
+  _comboDestroyAlt1: {fileID: 8300000, guid: 2c98747aaedc46e4da45e1a014d85692, type: 3}
+  _comboDestroyAlt2: {fileID: 8300000, guid: 44783999eef5d7d4c927e675ae205218, type: 3}
+  _buttonClick: {fileID: 8300000, guid: 4bb6130bbce725c4587a76a6eb31e956, type: 3}
+  _buttonClickAlt1: {fileID: 8300000, guid: 251292dfd1e27564ea6a87f7762e914e, type: 3}
+  _buttonClickAlt2: {fileID: 8300000, guid: 8e88d1bf9f84d9c4daa459be6b03300e, type: 3}
+  _panelOpen: {fileID: 8300000, guid: ef352d7287515da4f99b884153fe0b1c, type: 3}
+  _panelOpenAlt1: {fileID: 8300000, guid: e2cd6a8c3b536f44b88022bd0eb16400, type: 3}
+  _panelOpenAlt2: {fileID: 8300000, guid: 6d456a5a36dbae3448f838676fdfae6e, type: 3}
+  _panelClose: {fileID: 8300000, guid: 18088de651b026449aab6ea95ee936e0, type: 3}
+  _panelCloseAlt1: {fileID: 8300000, guid: 6defde8d61e96e9418baa013f2135850, type: 3}
+  _panelCloseAlt2: {fileID: 8300000, guid: 86041f2873380594996cdef1b0ca1747, type: 3}
+  _shopPurchase: {fileID: 8300000, guid: 9cded77565163d84bb59443b5e58d5d8, type: 3}
+  _shopPurchaseAlt1: {fileID: 8300000, guid: a90503d06a94e7a40b3c49ed917fb53e, type: 3}
+  _shopPurchaseAlt2: {fileID: 8300000, guid: 4aa4a7688446dfc43a2805cac56fd67a, type: 3}
+  _gameStart: {fileID: 8300000, guid: a534ccd053c26fd4f955d8ab11a0cf6d, type: 3}
+  _gameStartAlt1: {fileID: 8300000, guid: 6c2360745aa3a2143895b57961c6806b, type: 3}
+  _gameStartAlt2: {fileID: 8300000, guid: daff61eb247a26b41baaf85fe0113708, type: 3}
+  _winFanfare: {fileID: 8300000, guid: 99d2d73693e82564fbafe8542d22ee84, type: 3}
+  _winFanfareAlt1: {fileID: 8300000, guid: bce555165949a764ea027e1be91d641f, type: 3}
+  _winFanfareAlt2: {fileID: 8300000, guid: 538ed8b6def0b6a4b8de369dcbb317c9, type: 3}
+  _loseSound: {fileID: 8300000, guid: 241d90e4e09962042b737065fbc968ba, type: 3}
+  _loseSoundAlt1: {fileID: 8300000, guid: a6502fffbb8e3a449b28dff4525d0bab, type: 3}
+  _loseSoundAlt2: {fileID: 8300000, guid: b37255e582f42a849b548d32ab3d4857, type: 3}
+  _rewardSound: {fileID: 8300000, guid: 71c36767e280e66439b343328b2254bd, type: 3}
+  _rewardSoundAlt1: {fileID: 8300000, guid: a13e407de573d174ea295d298c4e01db, type: 3}
+  _rewardSoundAlt2: {fileID: 8300000, guid: e8e9c8d6df560f142bfdbd5b5883c1e7, type: 3}
+  _starAward: {fileID: 8300000, guid: 6c726bd9e3f1b7f448d1605f6856a1fb, type: 3}
+  _starAwardAlt1: {fileID: 8300000, guid: d44d688cf34a99a46adfe8770092a186, type: 3}
+  _starAwardAlt2: {fileID: 8300000, guid: 54bfc47b697dfda4a98763a932ba199e, type: 3}
+  _nextLevelTransition: {fileID: 8300000, guid: 0a821b41245b92144aa4cb369a4cf5ae, type: 3}
+  _nextLevelTransitionAlt1: {fileID: 8300000, guid: 6b032964ce16d054d81d2987b2dc5a23, type: 3}
+  _nextLevelTransitionAlt2: {fileID: 8300000, guid: 11e32c4fe8d0f534a9b25b479e285d90, type: 3}
+  _pitchRandomizationRange: 0.06
+  _maxSimultaneousVoices: 8
+  _minCollisionImpulse: 0.15

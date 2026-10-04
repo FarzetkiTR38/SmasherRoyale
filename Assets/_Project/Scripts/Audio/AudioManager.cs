@@ -65,9 +65,13 @@ namespace RoyalSmash.Audio
             {
                 if (_config == null)
                 {
+                    _config = Resources.Load<AudioConfig>("Config/AudioConfig");
 #if UNITY_EDITOR
-                    _config = UnityEditor.AssetDatabase.LoadAssetAtPath<AudioConfig>(
-                        "Assets/_Project/ScriptableObjects/Config/AudioConfig.asset");
+                    if (_config == null)
+                    {
+                        _config = UnityEditor.AssetDatabase.LoadAssetAtPath<AudioConfig>(
+                            "Assets/_Project/ScriptableObjects/Config/AudioConfig.asset");
+                    }
 #endif
                     if (_config == null)
                     {
@@ -89,7 +93,12 @@ namespace RoyalSmash.Audio
                 {
                     DontDestroyOnLoad(gameObject);
                 }
+                if (_config == null)
+                {
+                    _config = Config;
+                }
                 InitializeSources();
+                EnsureAudioListener();
             }
             else if (_instance != this)
             {
@@ -98,12 +107,69 @@ namespace RoyalSmash.Audio
             }
         }
 
+        private void OnEnable()
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += HandleSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= HandleSceneLoaded;
+        }
+
         private void Start()
         {
             SyncWithSaveData();
             if (SaveManager.HasInstance)
             {
                 SaveManager.Instance.OnSaveLoaded += HandleSaveLoaded;
+            }
+
+            EnsureAudioListener();
+            PlayAppropriateBGMForScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        }
+
+        private void HandleSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+        {
+            EnsureAudioListener();
+            PlayAppropriateBGMForScene(scene.name);
+        }
+
+        /// <summary>
+        /// Guarantees that at least one active AudioListener exists in the scene so audio is audible.
+        /// </summary>
+        public void EnsureAudioListener()
+        {
+            var listener = FindFirstObjectByType<AudioListener>();
+            if (listener == null)
+            {
+                var mainCam = Camera.main;
+                if (mainCam != null)
+                {
+                    mainCam.gameObject.AddComponent<AudioListener>();
+                    Debug.Log("[AudioManager] Added AudioListener to Camera.main.");
+                }
+                else
+                {
+                    gameObject.AddComponent<AudioListener>();
+                    Debug.Log("[AudioManager] Added AudioListener to AudioManager.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Selects and plays the appropriate BGM for the given scene name.
+        /// MainMenu plays BgmMainMenu; MainGame plays BgmGameplay.
+        /// </summary>
+        public void PlayAppropriateBGMForScene(string sceneName)
+        {
+            if (sceneName == "MainMenu")
+            {
+                PlayMainMenuBGM();
+            }
+            else if (sceneName == "MainGame")
+            {
+                PlayGameplayBGM();
             }
         }
 

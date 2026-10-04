@@ -2914,7 +2914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.GoldDisplayUI
   _goldText: {fileID: 1865764179}
   _containerCard: {fileID: 89243009}
-  _addGoldButton: {fileID: 0}
+  _addGoldButton: {fileID: 344300976}
   _punchScale: 1.2
   _punchDuration: 0.25
 --- !u!1 &93761004
@@ -10527,6 +10527,7 @@ GameObject:
   - component: {fileID: 344300977}
   - component: {fileID: 344300976}
   - component: {fileID: 344300979}
+  - component: {fileID: 344300980}
   m_Layer: 0
   m_Name: AddBtn
   m_TagString: Untagged
@@ -10653,6 +10654,18 @@ MonoBehaviour:
   _releaseDuration: 0.16
   _playClickAudio: 1
   _triggerHaptic: 0
+--- !u!114 &344300980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344300974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf0cb0179f3deb4b961a0162b633946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonSound
 --- !u!1 &344643695
 GameObject:
   m_ObjectHideFlags: 0
@@ -18136,6 +18149,7 @@ GameObject:
   - component: {fileID: 627187044}
   - component: {fileID: 627187043}
   - component: {fileID: 627187045}
+  - component: {fileID: 627187046}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18253,6 +18267,14 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!81 &627187046
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627187042}
+  m_Enabled: 1
 --- !u!1 &628199179
 GameObject:
   m_ObjectHideFlags: 0

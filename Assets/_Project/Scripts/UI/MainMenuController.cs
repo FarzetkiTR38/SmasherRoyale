@@ -200,15 +200,7 @@ namespace RoyalSmash.UI
 
         private void HandleProfileClicked()
         {
-            Debug.Log("[MainMenuController] Profile clicked.");
-            if (_profileDialog != null)
-            {
-                _profileDialog.Show();
-            }
-            else if (ProfileDialog.Instance != null)
-            {
-                ProfileDialog.Instance.Show();
-            }
+            Debug.Log("[MainMenuController] Profile clicked (disabled per user requirement - no dialog opened).");
         }
 
         private void HandleSettingsClicked()

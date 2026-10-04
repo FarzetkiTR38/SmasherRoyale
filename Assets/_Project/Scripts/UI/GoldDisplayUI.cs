@@ -37,8 +37,18 @@ namespace RoyalSmash.UI
                 _originalScale = _containerCard.localScale;
             }
 
+            if (_addGoldButton == null)
+            {
+                _addGoldButton = transform.Find("AddBtn")?.GetComponent<Button>();
+                if (_addGoldButton == null)
+                {
+                    _addGoldButton = GetComponentInChildren<Button>(true);
+                }
+            }
+
             if (_addGoldButton != null)
             {
+                _addGoldButton.onClick.RemoveListener(HandleAddGoldClicked);
                 _addGoldButton.onClick.AddListener(HandleAddGoldClicked);
             }
         }
@@ -169,6 +179,11 @@ namespace RoyalSmash.UI
         private void HandleAddGoldClicked()
         {
             Debug.Log("[GoldDisplayUI] Add Gold clicked -> Switching to Shop.");
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayButtonClick();
+            }
+
             var bottomNav = FindFirstObjectByType<BottomNavigationUI>();
             if (bottomNav != null)
             {
