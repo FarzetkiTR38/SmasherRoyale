@@ -48,6 +48,11 @@ namespace RoyalSmash.UI
 
         public void ShowSuccess(string title, string message, Sprite icon = null)
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayShopPurchase();
+            }
+
             if (_titleText != null)
             {
                 _titleText.text = string.IsNullOrEmpty(title) ? "PURCHASE SUCCESSFUL!" : title;
@@ -66,6 +71,11 @@ namespace RoyalSmash.UI
 
         public void ShowError(string message)
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelOpen();
+            }
+
             if (_titleText != null)
             {
                 _titleText.text = "TRANSACTION FAILED";
@@ -83,6 +93,10 @@ namespace RoyalSmash.UI
 
         public void Hide()
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelClose();
+            }
             SetVisible(false);
         }
 

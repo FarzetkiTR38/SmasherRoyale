@@ -336,11 +336,29 @@ namespace RoyalSmash.Audio
             }
         }
 
-        public void PlayObjectDestruction()
+        public void PlayObjectDestruction(ObjectType type = ObjectType.Box)
         {
-            if (Config != null && Config.ObjectDestruction != null)
+            if (Config == null) return;
+            switch (type)
             {
-                PlaySfx(Config.ObjectDestruction, 0.9f, randomizePitch: true);
+                case ObjectType.Box:
+                    PlaySfx(Config.BoxDestroy, 0.95f, randomizePitch: true);
+                    break;
+                case ObjectType.Stone:
+                    PlaySfx(Config.StoneDestroy, 1.0f, randomizePitch: true);
+                    break;
+                case ObjectType.Column:
+                    PlaySfx(Config.ColumnDestroy, 1.05f, randomizePitch: true);
+                    break;
+                case ObjectType.Cone:
+                    PlaySfx(Config.ConeDestroy, 0.95f, randomizePitch: true);
+                    break;
+                case ObjectType.PaintBottle:
+                    PlayBottleBreak();
+                    break;
+                default:
+                    PlaySfx(Config.ObjectDestruction, 0.9f, randomizePitch: true);
+                    break;
             }
         }
 
@@ -357,6 +375,91 @@ namespace RoyalSmash.Audio
             if (Config != null && Config.PanelOpen != null)
             {
                 PlaySfx(Config.PanelOpen, 0.85f, randomizePitch: false);
+            }
+        }
+
+        public void PlayPanelClose()
+        {
+            if (Config != null && Config.PanelClose != null)
+            {
+                PlaySfx(Config.PanelClose, 0.8f, randomizePitch: false);
+            }
+        }
+
+        public void PlayShopPurchase()
+        {
+            if (Config != null && Config.ShopPurchase != null)
+            {
+                PlaySfx(Config.ShopPurchase, 1.0f, randomizePitch: false);
+            }
+        }
+
+        public void PlayNextLevelTransition()
+        {
+            if (Config != null && Config.NextLevelTransition != null)
+            {
+                PlaySfx(Config.NextLevelTransition, 0.9f, randomizePitch: false);
+            }
+        }
+
+        public void PlaySkillMegaBall()
+        {
+            if (Config != null && Config.SkillMegaBall != null)
+            {
+                PlaySfx(Config.SkillMegaBall, 1.1f, randomizePitch: true);
+            }
+        }
+
+        public void PlaySkillInfinityBall()
+        {
+            if (Config != null && Config.SkillInfinityBall != null)
+            {
+                PlaySfx(Config.SkillInfinityBall, 1.1f, randomizePitch: true);
+            }
+        }
+
+        public void PlayStarAward(int starIndex = 1)
+        {
+            if (Config != null && Config.StarAward != null)
+            {
+                float pitchMult = 1f + (Mathf.Clamp(starIndex - 1, 0, 2) * 0.15f);
+                PlaySfxExplicitPitch(Config.StarAward, 0.9f, pitchMult);
+            }
+        }
+
+        public void PlayComboDestroy(int comboCount = 2)
+        {
+            if (Config != null && Config.ComboDestroy != null)
+            {
+                float pitchMult = 1f + (Mathf.Clamp(comboCount - 2, 0, 5) * 0.08f);
+                PlaySfxExplicitPitch(Config.ComboDestroy, 1.0f, pitchMult);
+            }
+        }
+
+        public void PlayBallBounce()
+        {
+            if (Config != null && Config.BallBounce != null)
+            {
+                PlaySfx(Config.BallBounce, 0.65f, randomizePitch: true);
+            }
+        }
+
+        public void PlayCannonAim()
+        {
+            if (Config != null && Config.CannonAim != null)
+            {
+                PlaySfx(Config.CannonAim, 0.5f, randomizePitch: true);
+            }
+        }
+
+        public void PlaySfxExplicitPitch(AudioClip clip, float volumeScale = 1f, float pitch = 1f)
+        {
+            if (!IsSfxEnabled || clip == null) return;
+            AudioSource voice = GetAvailableVoice();
+            if (voice != null)
+            {
+                voice.pitch = pitch;
+                voice.PlayOneShot(clip, volumeScale);
             }
         }
 

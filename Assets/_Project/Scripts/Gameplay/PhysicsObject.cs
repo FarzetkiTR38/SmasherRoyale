@@ -216,7 +216,8 @@ namespace RoyalSmash.Gameplay
 
             if (RoyalSmash.Audio.AudioManager.Instance != null)
             {
-                RoyalSmash.Audio.AudioManager.Instance.PlayObjectDestruction();
+                ObjectType type = _config != null ? _config.ObjectType : ObjectType.Box;
+                RoyalSmash.Audio.AudioManager.Instance.PlayObjectDestruction(type);
             }
 
             if (RoyalSmash.VFX.VFXManager.Instance != null)

@@ -48,12 +48,22 @@ namespace RoyalSmash.UI
 
         public void Show()
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelOpen();
+            }
+
             if (_contentRoot != null) _contentRoot.SetActive(true);
             else gameObject.SetActive(true);
         }
 
         public void Hide()
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelClose();
+            }
+
             if (_contentRoot != null) _contentRoot.SetActive(false);
             else gameObject.SetActive(false);
         }

@@ -201,10 +201,20 @@ namespace RoyalSmash.UI
 
             if (_contentRoot != null) _contentRoot.SetActive(true);
             else gameObject.SetActive(true);
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPanelOpen();
+            }
         }
 
         public void Hide()
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPanelClose();
+            }
+
             if (_isTimePaused && Application.isPlaying)
             {
                 Time.timeScale = _savedTimeScale > 0f ? _savedTimeScale : 1f;
