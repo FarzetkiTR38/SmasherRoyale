@@ -1,0 +1,20 @@
+{
+    "capturedUtc": "2026-10-04T09:25:55.2016899Z",
+    "modifiedPrefabPaths": [
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopFeatured.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopNoAds.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopCompact.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopBundle.prefab",
+        "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopSectionHeader.prefab"
+    ],
+    "cardBindingsUnchanged": true,
+    "purchaseButtonsUnchanged": true,
+    "sceneSaved": false,
+    "noAdsHeroAssigned": true,
+    "featuredHeight": 340.0,
+    "noAdsHeight": 260.0,
+    "compactHeight": 230.0,
+    "bundleHeight": 304.0,
+    "sectionHeight": 56.0,
+    "sectionSpacing": 14.0
+}

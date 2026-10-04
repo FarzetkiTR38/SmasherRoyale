@@ -1,0 +1,46 @@
+{
+    "suite": "lifecycle",
+    "scope": "Real navigation, close button and countdown over multiple frames. No purchase calls.",
+    "startedUtc": "2026-10-04T09:41:59.6407026Z",
+    "completedUtc": "2026-10-04T09:42:01.7374784Z",
+    "status": "passed",
+    "backupManifest": "",
+    "passed": 5,
+    "failed": 0,
+    "screenWidth": 0,
+    "screenHeight": 0,
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.0,
+        "height": 0.0
+    },
+    "checks": [
+        {
+            "name": "Countdown runs on initial shop opening",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Close button returns to Battle",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Leaderboard navigation hides Shop",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Countdown resumes after close/reopen",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Repeated reopening keeps one countdown",
+            "detail": "",
+            "passed": true
+        }
+    ]
+}

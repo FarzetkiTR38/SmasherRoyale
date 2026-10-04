@@ -309,20 +309,22 @@ namespace RoyalSmash.UI
         private float GetCardHeight(ShopSectionKind section, int maximumRewardRows)
         {
             float height = _presentation == null
-                ? (section == ShopSectionKind.Featured ? 360f : section == ShopSectionKind.NoAds ? 240f
-                    : section == ShopSectionKind.Bundles ? 410f : 330f)
+                ? (section == ShopSectionKind.Featured ? 340f : section == ShopSectionKind.NoAds ? 260f
+                    : section == ShopSectionKind.Bundles ? 304f : 230f)
                 : section == ShopSectionKind.Featured ? _presentation.FeaturedCardHeight
                 : section == ShopSectionKind.NoAds ? _presentation.NoAdsCardHeight
                 : section == ShopSectionKind.Bundles ? _presentation.BundleCardHeight
                 : _presentation.CompactCardHeight;
-            if (section == ShopSectionKind.Gold || section == ShopSectionKind.Skills || section == ShopSectionKind.Bundles)
-            {
-                // Compact/bundle Rewards stretches between 146 bottom and 112 top.
-                // Grow the entire two-column section to its largest visible reward
-                // composition, keeping the configured height as the minimum.
-                float rewardsHeight = maximumRewardRows * 34f + Mathf.Max(0, maximumRewardRows - 1) * 4f;
-                height = Mathf.Max(height, 146f + 112f + rewardsHeight);
-            }
+            // Horizontal card contract: compact Rewards top86/bottom116,
+            // bundle top94/bottom116; each row28 with gap3. Featured uses
+            // top128/bottom82 and row34; No Ads top180/bottom24 and row28.
+            // The configured height remains the minimum for the whole section.
+            float reservedHeight = section == ShopSectionKind.Featured ? 210f
+                : section == ShopSectionKind.NoAds ? 204f
+                : section == ShopSectionKind.Bundles ? 210f : 202f;
+            float rewardRowHeight = section == ShopSectionKind.Featured ? 34f : 28f;
+            float rewardsHeight = maximumRewardRows * rewardRowHeight + Mathf.Max(0, maximumRewardRows - 1) * 3f;
+            height = Mathf.Max(height, reservedHeight + rewardsHeight);
             return Mathf.Max(100f, height);
         }
 

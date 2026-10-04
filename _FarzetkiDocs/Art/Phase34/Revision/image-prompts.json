@@ -1,0 +1,43 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "reference": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/_FarzetkiDocs/Art/Phase34/Revision/reference.png",
+  "outputs": [
+    {
+      "name": "Skin_BuyStraight_v2",
+      "source": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-03a9c36b-cbcb-48e7-a763-373212f91b71.png",
+      "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Skin_BuyStraight_v2.png",
+      "prompt": "Use case: precise-object-edit. Input image is a STYLE REFERENCE of the desired game shop; extract and reconstruct ONLY ONE blank green BUY BUTTON like its $0.99 or $4.99 buttons. Asset: isolated front-facing reusable Unity sprite. Straight horizontal rectangular sides, short 45-degree clipped corners, thin luminous bright lime inner outline and thin golden outer bevel. Glossy rich emerald-green face with restrained subtle vertical shading, large completely empty center for live TMP price. Width:height about 4:1. Keep the button very simple and straight, exactly the reference's clean geometry. No text, no digits, no letters, no coin, no screws, no blue pieces, no machinery, no extra tabs, no spikes, no deep ornate metal backing. Generous transparent exterior, true alpha; clean crisp silhouette. Do not reproduce the shop screen, only the single button."
+    },
+    {
+      "name": "Skin_SectionSlim_v2",
+      "source": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-87b75a8e-2773-4215-a5a4-84f90665681b.png",
+      "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Skin_SectionSlim_v2.png",
+      "prompt": "Use case: precise-object-edit. Input is STYLE REFERENCE. Extract/reconstruct one EMPTY section-title divider like ALTIN PAKETLERI row: very thin gold-orange illuminated elongated hexagonal plaque centered on a long horizontal strip, with deep blue-black EMPTY interior, small pointed chamfered ends. Plaque takes middle 52% of total strip width; symmetric short fine glowing orange line accents on left and right separated from plaque by empty transparent gaps. Total strip very wide and shallow, ratio about 13:1, frontal crisp premium game UI. One asset only, no background panel. No text, words, letters, digits, icons, crown or other objects. True transparent alpha exterior. Slim border, restrained glow. Do not create a thick full-width golden banner or reproduce the entire screenshot."
+    },
+    {
+      "name": "Skin_RibbonRed_v2",
+      "source": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-e1304919-c965-4e6a-8338-39f99aa60e31.png",
+      "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Skin_RibbonRed_v2.png",
+      "prompt": "Use case: precise-object-edit. Input is STYLE REFERENCE. Extract/reconstruct ONLY ONE blank red promotion ribbon similar to %60 INDIRIM and OMUR BOYU: horizontal crimson ribbon with short angular folded notched ends, thin orange-red glossy edge, restrained shading and a very slight upward tilt to the right. Large empty central face for editable TMP. Long shallow silhouette ratio around 4.5:1, readable premium cartoon UI. Single isolated asset with true transparent alpha. No text, words, letters, numbers, icons, extra ribbons, blue backing, frame or screen. Do not reproduce any lettering."
+    },
+    {
+      "name": "Art_GoldBag_v2",
+      "source": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-efa85cf3-181b-459b-b9a5-cf8c0bf7282b.png",
+      "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_GoldBag_v2.png",
+      "prompt": "Use case: precise-object-edit. Input is STYLE REFERENCE. Extract and reconstruct ONLY the gold coin bag artwork in ALTIN PAKETLERI left card as a standalone high-quality Unity shop sprite. A large warm brown leather pouch tightly tied with thick golden rope, bulging open with polished bright gold coins, a modest scatter of individual coins and 2 short coin stacks around the base. Big simple readable silhouette, close-up hero object, coins detailed but not a busy particle pile. Three-quarter frontal, slightly top-down view, glossy premium 3D cartoon mobile game style, warm gold lighting with subtle cyan rim as reference. Square centered composition, object fills 90% of useful canvas, clean edges. True transparent alpha, no floor or background, no distant glow fog. No text, words, prices, numbers, card frame, buttons, crystals or characters. Just one bag and its coins."
+    },
+    {
+      "name": "Art_GoldChest_v2",
+      "source": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-dcd4b788-01b0-4c69-b2d5-328d9337b4a1.png",
+      "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_GoldChest_v2.png",
+      "prompt": "Use case: precise-object-edit. Input is STYLE REFERENCE. Extract/reconstruct ONLY the open gold treasure chest from ALTIN PAKETLERI right card as one standalone Unity sprite. Close-up large navy-and-silver royal chest with chunky silver riveted bands, gold trim, front blue shield gemstone, raised open lid and neatly overflowing shiny gold coins. A few bold coin stacks at its base. Match the reference's polished 3D cartoon mobile-game object and saturated royal-blue/gold palette. Three-quarter front view slightly from above, broad readable silhouette fills 90% square useful canvas. Rich gold highlights and subtle blue rim, crisp edges. True transparent alpha exterior; no floor, backdrop or wide glow clouds. No text, words, numbers, prices, banner, UI frame, buy button, crystals, robots or people."
+    },
+    {
+      "name": "Art_NoAdsHero_v2",
+      "source": "C:/Users/Farzetki/.codex/generated_images/01a10131-6271-7130-8b5e-7a1abee9fcd1/exec-9c67bdb9-af5a-42ec-8338-a6ee3ddbce78.png",
+      "path": "C:/Users/Farzetki/wkspaces/SmasherRoyale-SmasherRoyale/Assets/_Project/Art/UI/ShopDynamic/Art_NoAdsHero_v2.png",
+      "prompt": "Use case: precise-object-edit. Input is STYLE REFERENCE. Extract/reconstruct ONLY the right-hand character-and-robot artwork from the No Ads Pass card: cheerful brown-haired young adult adventurer boy with bright blue round goggles on his forehead, royal-blue and gold casual armor, smiling and making one thumbs-up toward viewer; behind his shoulder one friendly white/silver round robot with cyan glowing crescent eyes and little gold fins. Chest-up crop, frontal three-quarter, character on left of this isolated composition and robot on right, premium polished 3D cartoon mobile game. Compact wide silhouette ratio around 1.3:1, crisp saturated blue/gold highlights. True transparent alpha exterior; no background/floor/wide glow. No sign, video icon, text, digits, letters, prices, buttons, card frames or crystals. Preserve reference character identity and style."
+    }
+  ]
+}

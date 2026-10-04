@@ -1,0 +1,66 @@
+{
+  "headerSprite": "Assets/_Project/Art/Sprites/UI/Shop/Logo_RoyalBazar.png",
+  "titleActive": false,
+  "layout": [
+    {
+      "name": "ShopFrameContainer",
+      "anchorMin": [
+        0.0,
+        0.0
+      ],
+      "anchorMax": [
+        1.0,
+        1.0
+      ],
+      "offsetMin": [
+        58.0,
+        0.0
+      ],
+      "offsetMax": [
+        -58.0,
+        0.0
+      ]
+    },
+    {
+      "name": "HeaderBackground",
+      "anchorMin": [
+        0.5,
+        1.0
+      ],
+      "anchorMax": [
+        0.5,
+        1.0
+      ],
+      "offsetMin": [
+        -470.0,
+        -311.0
+      ],
+      "offsetMax": [
+        470.0,
+        129.0
+      ]
+    },
+    {
+      "name": "ContentScrollView",
+      "anchorMin": [
+        0.0,
+        0.0
+      ],
+      "anchorMax": [
+        1.0,
+        1.0
+      ],
+      "offsetMin": [
+        38.0,
+        40.0
+      ],
+      "offsetMax": [
+        -38.0,
+        -184.0
+      ]
+    }
+  ],
+  "header": "{\"RectTransform\":{\"m_LocalRotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"m_LocalPosition\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"m_LocalScale\":{\"x\":0.699999988079071,\"y\":0.699999988079071,\"z\":0.699999988079071},\"m_ConstrainProportionsScale\":true,\"m_LocalEulerAnglesHint\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"m_AnchorMin\":{\"x\":0.5,\"y\":1.0},\"m_AnchorMax\":{\"x\":0.5,\"y\":1.0},\"m_AnchoredPosition\":{\"x\":0.0,\"y\":129.0},\"m_SizeDelta\":{\"x\":940.0,\"y\":440.0},\"m_Pivot\":{\"x\":0.5,\"y\":1.0}}}",
+  "title": "{\"MonoBehaviour\":{\"m_Enabled\":true,\"m_EditorHideFlags\":0,\"m_Name\":\"\",\"m_EditorClassIdentifier\":\"Unity.TextMeshPro::TMPro.TextMeshProUGUI\",\"m_Material\":{\"instanceID\":0},\"m_Color\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0},\"m_RaycastTarget\":false,\"m_RaycastPadding\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":0.0},\"m_Maskable\":true,\"m_OnCullStateChanged\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"m_text\":\"ROYAL BAZAR\",\"m_isRightToLeft\":false,\"m_fontAsset\":{\"fileID\":11400000,\"guid\":\"6489d7b7a26b6144e908f00ab303d1e0\",\"type\":2},\"m_sharedMaterial\":{\"fileID\":2164040,\"guid\":\"6489d7b7a26b6144e908f00ab303d1e0\",\"type\":2},\"m_fontSharedMaterials\":[],\"m_fontMaterial\":{\"instanceID\":0},\"m_fontMaterials\":[],\"m_fontColor32\":{\"r\":255,\"g\":222,\"b\":89,\"a\":255},\"m_fontColor\":{\"r\":1.0,\"g\":0.8700000047683716,\"b\":0.3499999940395355,\"a\":1.0},\"m_enableVertexGradient\":false,\"m_colorMode\":3,\"m_fontColorGradient\":{\"topLeft\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0},\"topRight\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0},\"bottomLeft\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0},\"bottomRight\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0}},\"m_fontColorGradientPreset\":{\"instanceID\":0},\"m_spriteAsset\":{\"instanceID\":0},\"m_tintAllSprites\":false,\"m_StyleSheet\":{\"instanceID\":0},\"m_TextStyleHashCode\":-1183493901,\"m_overrideHtmlColors\":false,\"m_faceColor\":{\"r\":255,\"g\":255,\"b\":255,\"a\":255},\"m_fontSize\":57.0,\"m_fontSizeBase\":57.0,\"m_fontWeight\":400,\"m_enableAutoSizing\":true,\"m_fontSizeMin\":38.76000213623047,\"m_fontSizeMax\":57.0,\"m_fontStyle\":1,\"m_HorizontalAlignment\":2,\"m_VerticalAlignment\":512,\"m_textAlignment\":65535,\"m_characterSpacing\":0.0,\"m_characterHorizontalScale\":1.0,\"m_wordSpacing\":0.0,\"m_lineSpacing\":0.0,\"m_lineSpacingMax\":0.0,\"m_paragraphSpacing\":0.0,\"m_charWidthMaxAdj\":0.0,\"m_TextWrappingMode\":1,\"m_wordWrappingRatios\":0.4000000059604645,\"m_overflowMode\":3,\"m_linkedTextComponent\":{\"instanceID\":0},\"parentLinkedComponent\":{\"instanceID\":0},\"m_enableKerning\":false,\"m_ActiveFontFeatures\":[1801810542],\"m_enableExtraPadding\":false,\"checkPaddingRequired\":false,\"m_isRichText\":true,\"m_EmojiFallbackSupport\":true,\"m_parseCtrlCharacters\":true,\"m_isOrthographic\":true,\"m_isCullingEnabled\":false,\"m_horizontalMapping\":0,\"m_verticalMapping\":0,\"m_uvLineOffset\":0.0,\"m_geometrySortingOrder\":0,\"m_IsTextObjectScaleStatic\":false,\"m_VertexBufferAutoSizeReduction\":false,\"m_useMaxVisibleDescender\":true,\"m_pageToDisplay\":1,\"m_margin\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":0.0},\"m_isUsingLegacyAnimationComponent\":false,\"m_isVolumetricText\":false,\"m_hasFontAssetChanged\":false,\"m_baseMaterial\":{\"instanceID\":0},\"m_maskOffset\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":0.0}}}",
+  "close": "{\"RectTransform\":{\"m_LocalRotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"m_LocalPosition\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"m_LocalScale\":{\"x\":1.0399999618530274,\"y\":1.0399999618530274,\"z\":1.0399999618530274},\"m_ConstrainProportionsScale\":true,\"m_LocalEulerAnglesHint\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"m_AnchorMin\":{\"x\":1.0,\"y\":1.0},\"m_AnchorMax\":{\"x\":1.0,\"y\":1.0},\"m_AnchoredPosition\":{\"x\":5.0,\"y\":-30.0},\"m_SizeDelta\":{\"x\":104.0,\"y\":104.0},\"m_Pivot\":{\"x\":1.0,\"y\":1.0}}}"
+}

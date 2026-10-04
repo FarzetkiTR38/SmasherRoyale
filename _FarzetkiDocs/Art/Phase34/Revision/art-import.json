@@ -1,0 +1,114 @@
+{
+  "capturedUtc": "2026-10-04T08:42:04.3848048Z",
+  "sourcePixelsUnchanged": true,
+  "records": [
+    {
+      "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_BuyStraight_v2.png",
+      "width": 2172,
+      "height": 724,
+      "transparentPixels": 673659,
+      "rect": [
+        76.0,
+        136.0,
+        2020.0,
+        453.0
+      ],
+      "border": [
+        141.4,
+        72.4799957,
+        141.4,
+        72.4799957
+      ]
+    },
+    {
+      "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_SectionSlim_v2.png",
+      "width": 1429,
+      "height": 1101,
+      "transparentPixels": 1443594,
+      "rect": [
+        34.0,
+        492.0,
+        1361.0,
+        106.0
+      ],
+      "border": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_RibbonRed_v2.png",
+      "width": 2078,
+      "height": 757,
+      "transparentPixels": 1066492,
+      "rect": [
+        92.0,
+        159.0,
+        1915.0,
+        470.0
+      ],
+      "border": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "path": "Assets/_Project/Art/UI/ShopDynamic/Art_GoldBag_v2.png",
+      "width": 1254,
+      "height": 1254,
+      "transparentPixels": 704547,
+      "rect": [
+        36.0,
+        88.0,
+        1190.0,
+        1079.0
+      ],
+      "border": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "path": "Assets/_Project/Art/UI/ShopDynamic/Art_GoldChest_v2.png",
+      "width": 1254,
+      "height": 1254,
+      "transparentPixels": 644133,
+      "rect": [
+        19.0,
+        100.0,
+        1207.0,
+        1029.0
+      ],
+      "border": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "path": "Assets/_Project/Art/UI/ShopDynamic/Art_NoAdsHero_v2.png",
+      "width": 1431,
+      "height": 1099,
+      "transparentPixels": 654247,
+      "rect": [
+        7.0,
+        14.0,
+        1424.0,
+        1083.0
+      ],
+      "border": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

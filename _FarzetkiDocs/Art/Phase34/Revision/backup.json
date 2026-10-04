@@ -1,0 +1,133 @@
+{
+  "capturedUtc": "2026-10-04T08:26:05.7361907Z",
+  "backupRoot": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605",
+  "initialDirtyPaths": [
+    " M \"Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset\"",
+    " M \"Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset\"",
+    " M Assets/_Project/Fonts/Fazo_Font_Settings.asset",
+    " M Assets/_Project/Scenes/MainMenu.unity",
+    "?? _FarzetkiDocs/Art/Phase34/Revision/"
+  ],
+  "files": [
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scenes__MainMenu.unity",
+      "sha256": "DAC94012031226B34A60A0DFD0F8EE7747A391424ADD4CE71BFD642967AAB96E"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopPresentationConfig.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__ScriptableObjects__Config__ShopPresentationConfig.asset",
+      "sha256": "2CAB395B3EE2531CA4E6428171212F9326262E56357A1D455DC430BEFA5B7F52"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__ScriptableObjects__Config__ShopConfig.asset",
+      "sha256": "7712A0DA5DF5E280607B5F74D74A774B3A262C7D3134BF9FC4E2EC8787BFC20A"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopCatalogPresenter.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scripts__UI__ShopCatalogPresenter.cs",
+      "sha256": "B108FB6083EC4815ADDB4638D684408EE53370F6BFEE4A5ACA13235AC8276CC7"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopItemCardUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scripts__UI__ShopItemCardUI.cs",
+      "sha256": "A12E264AB24A0B9A083B38DC1F78932375A5D4BC14ACCA17CF75AD866576284E"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopPresentationConfig.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scripts__UI__ShopPresentationConfig.cs",
+      "sha256": "08A5593F8E3C914461CEF4C889067C765BFEE80AA42E896738FCB4571EF3C06B"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopUI.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scripts__UI__ShopUI.cs",
+      "sha256": "D8EB1C11F11A6BBCD9D7D9A1020E6C3238172D4749049C2810FAE898FF2837F0"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/IAPManager.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scripts__Economy__IAPManager.cs",
+      "sha256": "C635657D2DECDD298C84EA303F0E1F62322D3ED67650FDDABF7CD88EE4EEF386"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainGame.unity",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scenes__MainGame.unity",
+      "sha256": "6D119BEE757AB7B5DE46825B7F31A34E818C9F2C58D6EDC5CEFEC051DC0173A9"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Editor/Phase34PlayModeTest.cs",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Scripts__Editor__Phase34PlayModeTest.cs",
+      "sha256": "5F78980FAEAEB8557AA6C16CADF6313C434FF9DB26AC4358365C6CC168D7651A"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShop_Preview.prefab",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_DynamicShop_Preview.prefab",
+      "sha256": "273CF19AD0D0612B190B5B4D08B8A2097DE74402A555E62251F06B8367D945B5"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShop_Preview.prefab.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_DynamicShop_Preview.prefab.meta",
+      "sha256": "3845B9E9EBE4664D9F3D0F6A1DE37B03E32F75821DE15D05DF6E3144AF1B2EB5"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShopPanel.prefab",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_DynamicShopPanel.prefab",
+      "sha256": "B4FA8E6BB94CA110C69E96727D0CEBBC5BEBF946E4D054E732CE691968CB1A0D"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShopPanel.prefab.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_DynamicShopPanel.prefab.meta",
+      "sha256": "D3DA5B8EA97A12CC1FBF85C3727CFA28B59563E689CEB52E45AF2F43AD13820F"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopBundle.prefab",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopBundle.prefab",
+      "sha256": "50B2E7C9522DB00E656F870FE898897A17E383A8625669123E6BF5221E6B2192"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopBundle.prefab.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopBundle.prefab.meta",
+      "sha256": "F0436CCD2E3473E5294978663D64E973A95B86C546499BC2EBCCE7853B6A28C9"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopCompact.prefab",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopCompact.prefab",
+      "sha256": "8DF6CAA9D529B21E322E6164F4411273C5B57977B07394FD1C204F8F9632EFFE"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopCompact.prefab.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopCompact.prefab.meta",
+      "sha256": "861A0BDC9E0F37538149C6B637E7FB93178DA1AD0049AFF942D4627A8582FA77"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopFeatured.prefab",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopFeatured.prefab",
+      "sha256": "3B9F912411B3D570E600A9BE1F587521AD2D940743D2F63D05CE3842ACAC95B4"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopFeatured.prefab.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopFeatured.prefab.meta",
+      "sha256": "CC8C76E43A8F7D1275F932E83781E71D31E74523F7C2FA759B3A19FFB60AF5BD"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopNoAds.prefab",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopNoAds.prefab",
+      "sha256": "C4FAC85CF2472032C13A0B3CFE52614472A65039D40E83A7CE99EC5078F3045E"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopNoAds.prefab.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopNoAds.prefab.meta",
+      "sha256": "031F5380665AE9DF20A878141FDE087CEC30C5727A1059BB960BDEF47714C4F4"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopSectionHeader.prefab",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopSectionHeader.prefab",
+      "sha256": "5CB0549F920CAD6CFE59936FBE392C254A0A296B7C1BBFA05C4EC751EB794692"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopSectionHeader.prefab.meta",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-VisualRevision-20261004-112605\\Assets___Project__Prefabs__UI__ShopDynamic__PF_ShopSectionHeader.prefab.meta",
+      "sha256": "BA4FF27F597B84E80041A9F4070F96349D5784744D01AF1B352C8FA4323A1B03"
+    }
+  ]
+}

@@ -453,7 +453,18 @@ namespace RoyalSmash.UI
         {
             if (_stateText == null) return;
             _stateText.text = message;
-            _stateText.gameObject.SetActive(!string.IsNullOrEmpty(message));
+            bool hasState = !string.IsNullOrEmpty(message);
+            _stateText.gameObject.SetActive(hasState);
+
+            if (_buyButton != null && _priceText != null &&
+                _stateText.transform.parent == _buyButton.transform &&
+                _priceText.transform.parent == _buyButton.transform)
+            {
+                RectTransform priceRect = _priceText.rectTransform;
+                Vector2 offsetMin = priceRect.offsetMin;
+                offsetMin.y = hasState ? _stateText.rectTransform.offsetMax.y + 2f : -priceRect.offsetMax.y;
+                priceRect.offsetMin = offsetMin;
+            }
         }
 
         private static void SetRewardRow(TextMeshProUGUI text, int amount, string label)

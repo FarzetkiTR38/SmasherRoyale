@@ -27,7 +27,7 @@ namespace RoyalSmash.EditorTools
     /// </summary>
     public static class Phase34PlayModeTest
     {
-        private const string Output = "_FarzetkiDocs/Art/Phase34/";
+        private const string Output = "_FarzetkiDocs/Art/Phase34/Revision/";
         private const string Prefabs = "Assets/_Project/Prefabs/UI/ShopDynamic/";
         private const BindingFlags Private = BindingFlags.NonPublic | BindingFlags.Instance;
 
@@ -322,7 +322,7 @@ namespace RoyalSmash.EditorTools
                     {
                         if (string.IsNullOrWhiteSpace(text.text)) continue;
                         text.ForceMeshUpdate(true, true);
-                        Require(!text.isTextOverflowing, text.name + " overflows: " + text.text);
+                        Require(!text.isTextOverflowing, TextOverflowDiagnostic(text));
                     }
                 });
                 Check("Reward rows stay in their own group and clear purchase/status text", () =>
@@ -385,7 +385,9 @@ namespace RoyalSmash.EditorTools
             {
                 ShopCatalogPresenter live = LivePresenter();
                 catalog = Object.Instantiate(Field<ShopConfig>(live, "_catalog"));
-                presentation = Object.Instantiate(Field<ShopPresentationConfig>(live, "_presentation"));
+                ShopPresentationConfig sourcePresentation = Field<ShopPresentationConfig>(live, "_presentation");
+                string sourceShopTitle = sourcePresentation.ShopTitle;
+                presentation = Object.Instantiate(sourcePresentation);
                 foreach (ShopItemData item in catalog.GetAllItems())
                 {
                     if (item == null) continue;
@@ -421,7 +423,7 @@ namespace RoyalSmash.EditorTools
                     {
                         if (string.IsNullOrWhiteSpace(text.text)) continue;
                         text.ForceMeshUpdate(true, true);
-                        Require(!text.isTextOverflowing, text.name + " overflows edited text: " + text.text);
+                        Require(!text.isTextOverflowing, TextOverflowDiagnostic(text));
                     }
                     foreach (ShopItemCardUI card in presenter.Cards)
                     {
@@ -437,10 +439,10 @@ namespace RoyalSmash.EditorTools
                         VerifyRewards(card);
                         VerifyRewardLayout(card);
                     }
-                    Require(((RectTransform)Card(presenter, editedGold.Id).transform).rect.height >= 367.9f,
-                        "Compact height did not grow for three reward rows.");
+                    VerifyConfiguredRewardHeight(Card(presenter, editedGold.Id), presentation.CompactCardHeight);
                     Require(Field<ShopConfig>(live, "_catalog").GoldPacks[0].GoldReward != editedGold.GoldReward,
                         "Edited layout changed source catalog economics.");
+                    Require(sourcePresentation.ShopTitle == sourceShopTitle, "Edited layout changed the source custom shop title.");
                 });
                 Check("Reward amount refresh retains cards; a fourth reward rebuilds and grows the row", () =>
                 {
@@ -453,7 +455,7 @@ namespace RoyalSmash.EditorTools
                     Canvas.ForceUpdateCanvases();
                     ShopItemCardUI after = Card(presenter, editedGold.Id);
                     Require(!ReferenceEquals(before, after), "Reward composition change did not rebuild the catalog.");
-                    Require(((RectTransform)after.transform).rect.height >= 405.9f, "Compact height did not grow for four reward rows.");
+                    VerifyConfiguredRewardHeight(after, presentation.CompactCardHeight);
                     VerifyRewards(after);
                     VerifyRewardLayout(after);
                     Require(!Field<TMP_Text>(after, "_descriptionText").gameObject.activeSelf,
@@ -750,6 +752,37 @@ namespace RoyalSmash.EditorTools
         private static bool OverlapsInterior(Rect a, Rect b, float tolerance) =>
             Math.Min(a.xMax, b.xMax) - Math.Max(a.xMin, b.xMin) > tolerance &&
             Math.Min(a.yMax, b.yMax) - Math.Max(a.yMin, b.yMin) > tolerance;
+        private static string TextOverflowDiagnostic(TMP_Text text)
+        {
+            ShopItemCardUI card = text.GetComponentInParent<ShopItemCardUI>(true);
+            string owner = card != null ? card.CatalogItemId + "/" : string.Empty;
+            return owner + text.name + " overflows: " + text.text + " | bounds=" + text.rectTransform.rect
+                + " | font=" + text.fontSize + " | min=" + text.fontSizeMin;
+        }
+        private static void VerifyConfiguredRewardHeight(ShopItemCardUI card, float configuredMinimum)
+        {
+            TMP_Text first = Field<TMP_Text>(card, "_goldRewardText");
+            RectTransform group = (RectTransform)first.transform.parent.parent;
+            VerticalLayoutGroup layout = group.GetComponent<VerticalLayoutGroup>();
+            Require(layout != null && Mathf.Approximately(group.anchorMin.y, 0f) && Mathf.Approximately(group.anchorMax.y, 1f),
+                card.name + " reward area must stretch between the card's top and bottom insets.");
+            float rowsHeight = layout.padding.top + layout.padding.bottom;
+            int visibleRows = 0;
+            foreach (Transform child in group)
+            {
+                if (!child.gameObject.activeSelf) continue;
+                RectTransform row = child as RectTransform;
+                Require(row != null, card.name + " has a non-UI reward row.");
+                rowsHeight += Mathf.Max(LayoutUtility.GetMinHeight(row), LayoutUtility.GetPreferredHeight(row));
+                visibleRows++;
+            }
+            rowsHeight += Mathf.Max(0, visibleRows - 1) * layout.spacing;
+            float expected = Mathf.Max(configuredMinimum, group.offsetMin.y - group.offsetMax.y + rowsHeight);
+            float actual = ((RectTransform)card.transform).rect.height;
+            // The edited first gold product has this section's largest row count.
+            Require(Mathf.Abs(actual - expected) <= 1f,
+                card.name + " adaptive height differs from its configured minimum/reward geometry: " + actual + " / " + expected);
+        }
         private static void Begin(string suite, string scope)
         {
             Current = new Report { suite = suite, scope = scope, startedUtc = DateTime.UtcNow.ToString("O") };

@@ -58,10 +58,15 @@ namespace RoyalSmash.EditorTools
 
         private enum CardKind { Featured, NoAds, Compact, Bundle }
 
-        /// <summary>Writes only the seven explicit prefab assets; never saves a scene.</summary>
+        /// <summary>
+        /// Initial legacy authoring only: writes seven explicit prefab assets without
+        /// saving a scene. Existing horizontal revision assets must be maintained with
+        /// Phase34ShopVisualRevision.ApplyPrefabVisuals instead of regenerating them.
+        /// </summary>
         public static BuildReport BuildPrefabAssets()
         {
             RequireEditMode();
+            RequireUnrevisedCardPrefabs();
             ShopConfig catalog = RequireAsset<ShopConfig>(CatalogPath);
             ShopPresentationConfig presentation = RequireAsset<ShopPresentationConfig>(PresentationPath);
             ValidatePresentation(catalog, presentation);
@@ -123,6 +128,26 @@ namespace RoyalSmash.EditorTools
                 };
             }
             finally { EditorSceneManager.ClosePreviewScene(previewScene); }
+        }
+
+        private static void RequireUnrevisedCardPrefabs()
+        {
+            // The revised cards place their existing StateText inside BuyButton.
+            // Check serialized references so renamed children remain protected, and
+            // reject before this legacy generator writes even the first prefab.
+            foreach (string path in new[] { FeaturedPath, NoAdsPath, CompactPath, BundlePath })
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                ShopItemCardUI card = prefab != null ? prefab.GetComponent<ShopItemCardUI>() : null;
+                if (card == null) continue;
+                var serialized = new SerializedObject(card);
+                var state = serialized.FindProperty("_stateText").objectReferenceValue as TextMeshProUGUI;
+                var buy = serialized.FindProperty("_buyButton").objectReferenceValue as Button;
+                if (state != null && buy != null && state.transform.IsChildOf(buy.transform))
+                    throw new InvalidOperationException("Horizontal shop prefabs are already authored. " +
+                        "Use Phase34ShopVisualRevision.ApplyPrefabVisuals for scoped visual maintenance; " +
+                        "refresh the existing presenter for catalog changes. Full legacy regeneration would replace the reviewed layout.");
+            }
         }
 
         /// <summary>

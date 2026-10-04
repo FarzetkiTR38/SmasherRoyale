@@ -1,0 +1,41 @@
+{
+  "capturedUtc": "2026-10-04T09:55:17.0854513Z",
+  "allUnchanged": true,
+  "files": [
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity",
+      "unchanged": true,
+      "sha256": "DAC94012031226B34A60A0DFD0F8EE7747A391424ADD4CE71BFD642967AAB96E"
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset",
+      "unchanged": true,
+      "sha256": "7712A0DA5DF5E280607B5F74D74A774B3A262C7D3134BF9FC4E2EC8787BFC20A"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ShopUI.cs",
+      "unchanged": true,
+      "sha256": "D8EB1C11F11A6BBCD9D7D9A1020E6C3238172D4749049C2810FAE898FF2837F0"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/IAPManager.cs",
+      "unchanged": true,
+      "sha256": "C635657D2DECDD298C84EA303F0E1F62322D3ED67650FDDABF7CD88EE4EEF386"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainGame.unity",
+      "unchanged": true,
+      "sha256": "6D119BEE757AB7B5DE46825B7F31A34E818C9F2C58D6EDC5CEFEC051DC0173A9"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShop_Preview.prefab",
+      "unchanged": true,
+      "sha256": "273CF19AD0D0612B190B5B4D08B8A2097DE74402A555E62251F06B8367D945B5"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShopPanel.prefab",
+      "unchanged": true,
+      "sha256": "B4FA8E6BB94CA110C69E96727D0CEBBC5BEBF946E4D054E732CE691968CB1A0D"
+    }
+  ]
+}
