@@ -204,8 +204,18 @@ namespace RoyalSmash.UI
                 AudioManager.Instance.PlayPanelOpen();
             }
 
-            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
-            UIPanelAnimator.AnimateIn(target);
+            // Explicitly activate the dialog root GameObject
+            gameObject.SetActive(true);
+
+            if (_contentRoot != null && _contentRoot != gameObject)
+            {
+                _contentRoot.SetActive(true);
+                UIPanelAnimator.AnimateIn(_contentRoot);
+            }
+            else
+            {
+                UIPanelAnimator.AnimateIn(gameObject);
+            }
         }
 
         public void Hide()
@@ -221,8 +231,23 @@ namespace RoyalSmash.UI
                 _isTimePaused = false;
             }
 
-            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
-            UIPanelAnimator.AnimateOut(target);
+            if (_contentRoot != null && _contentRoot != gameObject && _contentRoot.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(_contentRoot, () =>
+                {
+                    if (_contentRoot != null) _contentRoot.SetActive(false);
+                    gameObject.SetActive(false);
+                });
+            }
+            else if (gameObject.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(gameObject, () => gameObject.SetActive(false));
+            }
+            else
+            {
+                if (_contentRoot != null) _contentRoot.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
 
         private void HandleExitLevelClicked()

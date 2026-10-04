@@ -64,8 +64,18 @@ namespace RoyalSmash.UI
 
             UpdateCostDisplay();
 
-            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
-            UIPanelAnimator.AnimateIn(target);
+            // Explicitly activate dialog root GameObject
+            gameObject.SetActive(true);
+
+            if (_contentRoot != null && _contentRoot != gameObject)
+            {
+                _contentRoot.SetActive(true);
+                UIPanelAnimator.AnimateIn(_contentRoot);
+            }
+            else
+            {
+                UIPanelAnimator.AnimateIn(gameObject);
+            }
         }
 
         public void Hide()
@@ -75,8 +85,23 @@ namespace RoyalSmash.UI
                 RoyalSmash.Audio.AudioManager.Instance.PlayPanelClose();
             }
 
-            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
-            UIPanelAnimator.AnimateOut(target);
+            if (_contentRoot != null && _contentRoot != gameObject && _contentRoot.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(_contentRoot, () =>
+                {
+                    if (_contentRoot != null) _contentRoot.SetActive(false);
+                    gameObject.SetActive(false);
+                });
+            }
+            else if (gameObject.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(gameObject, () => gameObject.SetActive(false));
+            }
+            else
+            {
+                if (_contentRoot != null) _contentRoot.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
 
         private void UpdateCostDisplay()

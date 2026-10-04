@@ -59,14 +59,49 @@ namespace RoyalSmash.UI
                 _usernameInput.ActivateInputField();
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(true);
-            else gameObject.SetActive(true);
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelOpen();
+            }
+
+            // Explicitly activate dialog root GameObject
+            gameObject.SetActive(true);
+
+            if (_contentRoot != null && _contentRoot != gameObject)
+            {
+                _contentRoot.SetActive(true);
+                UIPanelAnimator.AnimateIn(_contentRoot);
+            }
+            else
+            {
+                UIPanelAnimator.AnimateIn(gameObject);
+            }
         }
 
         public void Hide()
         {
-            if (_contentRoot != null) _contentRoot.SetActive(false);
-            else gameObject.SetActive(false);
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelClose();
+            }
+
+            if (_contentRoot != null && _contentRoot != gameObject && _contentRoot.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(_contentRoot, () =>
+                {
+                    if (_contentRoot != null) _contentRoot.SetActive(false);
+                    gameObject.SetActive(false);
+                });
+            }
+            else if (gameObject.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(gameObject, () => gameObject.SetActive(false));
+            }
+            else
+            {
+                if (_contentRoot != null) _contentRoot.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
 
         public void HandleConfirm()

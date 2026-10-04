@@ -54,12 +54,35 @@ namespace RoyalSmash.UI
         /// </summary>
         public void Show(Action onComplete = null)
         {
+            // Ensure parent chain is active so activeInHierarchy is guaranteed true
+            Transform current = transform.parent;
+            while (current != null)
+            {
+                if (!current.gameObject.activeSelf)
+                {
+                    current.gameObject.SetActive(true);
+                }
+                current = current.parent;
+            }
+
             gameObject.SetActive(true);
+
             if (_canvasGroup == null) _canvasGroup = GetComponent<CanvasGroup>();
             if (_originalScale == Vector3.zero) _originalScale = Vector3.one;
 
             if (_animRoutine != null) StopCoroutine(_animRoutine);
-            _animRoutine = StartCoroutine(PopInRoutine(onComplete));
+
+            if (Application.isPlaying && gameObject.activeInHierarchy)
+            {
+                _animRoutine = StartCoroutine(PopInRoutine(onComplete));
+            }
+            else
+            {
+                // Instant show in editor mode or fallback
+                transform.localScale = _originalScale;
+                if (_canvasGroup != null) _canvasGroup.alpha = 1f;
+                onComplete?.Invoke();
+            }
         }
 
         /// <summary>
@@ -67,7 +90,7 @@ namespace RoyalSmash.UI
         /// </summary>
         public void Hide(Action onComplete = null)
         {
-            if (!gameObject.activeInHierarchy)
+            if (!Application.isPlaying || !gameObject.activeInHierarchy)
             {
                 gameObject.SetActive(false);
                 onComplete?.Invoke();
