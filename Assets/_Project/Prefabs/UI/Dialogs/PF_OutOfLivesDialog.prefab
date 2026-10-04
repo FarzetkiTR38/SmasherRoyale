@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2059584150022604170}
   - component: {fileID: 2878149907406171582}
   - component: {fileID: 5549338187165670034}
+  - component: {fileID: 7058552232522255951}
   m_Layer: 0
   m_Name: BuyWithGoldBtn
   m_TagString: Untagged
@@ -121,6 +122,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7058552232522255951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271928780246201300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &699894880115265621
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +418,7 @@ GameObject:
   - component: {fileID: 222950806775976759}
   - component: {fileID: 5215176776116408196}
   - component: {fileID: 5635742778938200488}
+  - component: {fileID: 7996463521898474322}
   m_Layer: 0
   m_Name: CloseBtn
   m_TagString: Untagged
@@ -507,6 +527,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7996463521898474322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796437039099377799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &3425544288684920765
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +784,7 @@ GameObject:
   - component: {fileID: 1687621311050378839}
   - component: {fileID: 7142771620469761922}
   - component: {fileID: 1685331553058271091}
+  - component: {fileID: 6437851154945348063}
   m_Layer: 0
   m_Name: WatchAdBtn
   m_TagString: Untagged
@@ -854,6 +893,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6437851154945348063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224543543530412973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &6023045503049793387
 GameObject:
   m_ObjectHideFlags: 0

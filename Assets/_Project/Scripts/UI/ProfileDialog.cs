@@ -159,8 +159,9 @@ namespace RoyalSmash.UI
             _isEditingUsername = false;
             UpdateUsernameEditState();
             RefreshDisplay();
-            if (_contentRoot != null) _contentRoot.SetActive(true);
-            else gameObject.SetActive(true);
+
+            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
+            UIPanelAnimator.AnimateIn(target);
         }
 
         public void Hide()
@@ -170,8 +171,8 @@ namespace RoyalSmash.UI
                 RoyalSmash.Audio.AudioManager.Instance.PlayPanelClose();
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(false);
-            else gameObject.SetActive(false);
+            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
+            UIPanelAnimator.AnimateOut(target);
         }
 
         public void RefreshDisplay()

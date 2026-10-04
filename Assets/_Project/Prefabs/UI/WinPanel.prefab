@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 4485941774687181462}
   - component: {fileID: 8735520639493988654}
   - component: {fileID: 1294488818732060218}
+  - component: {fileID: 6824918704008085598}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -981,6 +982,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6824918704008085598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499812438071117237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &7665410803856283408
 GameObject:
   m_ObjectHideFlags: 0

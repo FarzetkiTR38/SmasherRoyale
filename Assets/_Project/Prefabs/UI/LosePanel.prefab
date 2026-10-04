@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 4447394611297274672}
   - component: {fileID: 2630346813981926839}
   - component: {fileID: 4949735216114121625}
+  - component: {fileID: 7262853363698928105}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -833,6 +834,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7262853363698928105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179320349263194744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &4289524599326084925
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +963,7 @@ GameObject:
   - component: {fileID: 759030853927238856}
   - component: {fileID: 2609892494331566023}
   - component: {fileID: 2064319687273304625}
+  - component: {fileID: 8313355448701448888}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -1053,6 +1073,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8313355448701448888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870272681731283027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &5753885299147717860
 GameObject:
   m_ObjectHideFlags: 0

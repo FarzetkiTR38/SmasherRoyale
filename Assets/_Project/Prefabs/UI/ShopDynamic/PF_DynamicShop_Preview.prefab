@@ -274,10 +274,244 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7098746411648903360, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5115248251679769776}
+    - targetCorrespondingSourceObject: {fileID: 7583275814216904850, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3691160633786591106}
+    - targetCorrespondingSourceObject: {fileID: 8853247051423220089, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2237153114081631154}
+    - targetCorrespondingSourceObject: {fileID: 8966803145259142863, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9124672540636531829}
+    - targetCorrespondingSourceObject: {fileID: 845188999278316408, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 331760938888568570}
+    - targetCorrespondingSourceObject: {fileID: 2310131805331055566, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 311331454596772821}
+    - targetCorrespondingSourceObject: {fileID: 6133454328994762992, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2835271014479202216}
+    - targetCorrespondingSourceObject: {fileID: 1602016284252923296, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3434596129173198592}
+    - targetCorrespondingSourceObject: {fileID: 6479649027898052009, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1318395676132370375}
   m_SourcePrefab: {fileID: 100100000, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+--- !u!1 &661087394471590041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8966803145259142863, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9124672540636531829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661087394471590041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
+--- !u!1 &1117404810164467503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8853247051423220089, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2237153114081631154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117404810164467503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
+--- !u!1 &1720107637625331350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7098746411648903360, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5115248251679769776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720107637625331350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
+--- !u!1 &2045172598815639236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7583275814216904850, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3691160633786591106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045172598815639236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
+--- !u!1 &2324619092140615334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6133454328994762992, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2835271014479202216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324619092140615334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
+--- !u!1 &3220226555315813375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6479649027898052009, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1318395676132370375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220226555315813375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
+--- !u!1 &6148504393422968216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2310131805331055566, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &311331454596772821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148504393422968216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
+--- !u!1 &7162796926993699830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1602016284252923296, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3434596129173198592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162796926993699830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!224 &8017002559564501081 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1882154803498067471, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
   m_PrefabInstance: {fileID: 8456876678125286998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9144113066638327086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 845188999278316408, guid: 2a2eb78347c81d841a5c77a2f97b9418, type: 3}
+  m_PrefabInstance: {fileID: 8456876678125286998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &331760938888568570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144113066638327086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0

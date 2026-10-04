@@ -14,13 +14,13 @@ namespace RoyalSmash.UI
     /// Follows Royal Smash Full Documentation Section 344 (UX Acceptance Criteria).
     /// </summary>
     [RequireComponent(typeof(Button))]
-    public class UIButtonJuice : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
+    public class UIButtonJuice : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IPointerExitHandler
     {
         [Header("Scale Animation Settings")]
-        [Range(0.7f, 1.0f)] [SerializeField] private float _pressedScale = 0.92f;
-        [Range(1.0f, 1.25f)] [SerializeField] private float _punchScale = 1.06f;
-        [SerializeField] private float _pressDuration = 0.08f;
-        [SerializeField] private float _releaseDuration = 0.18f;
+        [Range(0.7f, 1.0f)] [SerializeField] private float _pressedScale = 0.85f;
+        [Range(1.0f, 1.25f)] [SerializeField] private float _punchScale = 1.05f;
+        [SerializeField] private float _pressDuration = 0.07f;
+        [SerializeField] private float _releaseDuration = 0.16f;
 
         [Header("Sensory Feedback")]
         [SerializeField] private bool _playClickAudio = true;
@@ -29,13 +29,16 @@ namespace RoyalSmash.UI
         private Vector3 _originalScale;
         private Coroutine _scaleRoutine;
         private Button _button;
+        private bool _isPressed = false;
 
         public Vector3 OriginalScale => _originalScale;
         public float PressedScale => _pressedScale;
+        public bool IsPressed => _isPressed;
 
         private void Awake()
         {
             _originalScale = transform.localScale;
+            if (_originalScale == Vector3.zero) _originalScale = Vector3.one;
             _button = GetComponent<Button>();
         }
 
@@ -46,6 +49,7 @@ namespace RoyalSmash.UI
                 _originalScale = Vector3.one;
             }
             transform.localScale = _originalScale;
+            _isPressed = false;
         }
 
         private void OnDisable()
@@ -55,7 +59,11 @@ namespace RoyalSmash.UI
                 StopCoroutine(_scaleRoutine);
                 _scaleRoutine = null;
             }
-            transform.localScale = _originalScale;
+            if (_originalScale != Vector3.zero)
+            {
+                transform.localScale = _originalScale;
+            }
+            _isPressed = false;
         }
 
         private Button TargetButton
@@ -67,20 +75,42 @@ namespace RoyalSmash.UI
             }
         }
 
+        public void SetBaseScale(Vector3 scale)
+        {
+            _originalScale = scale;
+            if (!_isPressed)
+            {
+                transform.localScale = scale;
+            }
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             if (TargetButton != null && !TargetButton.interactable) return;
 
+            _isPressed = true;
             if (_scaleRoutine != null) StopCoroutine(_scaleRoutine);
             _scaleRoutine = StartCoroutine(ScaleCoroutine(transform.localScale, _originalScale * _pressedScale, _pressDuration));
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            if (!_isPressed) return;
+            _isPressed = false;
+
             if (TargetButton != null && !TargetButton.interactable) return;
 
             if (_scaleRoutine != null) StopCoroutine(_scaleRoutine);
             _scaleRoutine = StartCoroutine(BounceBackCoroutine());
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if (!_isPressed) return;
+            _isPressed = false;
+
+            if (_scaleRoutine != null) StopCoroutine(_scaleRoutine);
+            _scaleRoutine = StartCoroutine(ScaleCoroutine(transform.localScale, _originalScale, 0.10f));
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -105,7 +135,9 @@ namespace RoyalSmash.UI
             {
                 elapsed += Time.unscaledDeltaTime;
                 float t = Mathf.Clamp01(elapsed / duration);
-                transform.localScale = Vector3.Lerp(from, to, t);
+                // Smooth sine ease-in-out
+                float easedT = 0.5f - 0.5f * Mathf.Cos(t * Mathf.PI);
+                transform.localScale = Vector3.Lerp(from, to, easedT);
                 yield return null;
             }
             transform.localScale = to;
@@ -114,12 +146,12 @@ namespace RoyalSmash.UI
 
         private IEnumerator BounceBackCoroutine()
         {
-            // Overshoot slightly for juicy tactile feel, then settle to 1.0x
+            // Overshoot slightly for juicy tactile feel, then settle smoothly to 1.0x
             Vector3 peakScale = _originalScale * _punchScale;
-            float halfDuration = _releaseDuration * 0.5f;
+            float halfDuration = _releaseDuration * 0.45f;
 
             yield return StartCoroutine(ScaleCoroutine(transform.localScale, peakScale, halfDuration));
-            yield return StartCoroutine(ScaleCoroutine(peakScale, _originalScale, halfDuration));
+            yield return StartCoroutine(ScaleCoroutine(peakScale, _originalScale, _releaseDuration * 0.55f));
             transform.localScale = _originalScale;
             _scaleRoutine = null;
         }

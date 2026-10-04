@@ -102,8 +102,15 @@ namespace RoyalSmash.UI
 
         private void SetVisible(bool visible)
         {
-            if (_contentRoot != null) _contentRoot.SetActive(visible);
-            else gameObject.SetActive(visible);
+            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
+            if (visible)
+            {
+                UIPanelAnimator.AnimateIn(target);
+            }
+            else
+            {
+                UIPanelAnimator.AnimateOut(target);
+            }
         }
     }
 }

@@ -1753,6 +1753,7 @@ GameObject:
   - component: {fileID: 1064418969545159845}
   - component: {fileID: 4118226901166570835}
   - component: {fileID: 4467917651593357335}
+  - component: {fileID: 1812989844373288277}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -1863,6 +1864,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1812989844373288277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7145473350766670687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &7636895924234656972
 GameObject:
   m_ObjectHideFlags: 0

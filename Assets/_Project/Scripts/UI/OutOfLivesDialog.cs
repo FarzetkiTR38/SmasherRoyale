@@ -62,10 +62,10 @@ namespace RoyalSmash.UI
                 RoyalSmash.Audio.AudioManager.Instance.PlayPanelOpen();
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(true);
-            else gameObject.SetActive(true);
-
             UpdateCostDisplay();
+
+            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
+            UIPanelAnimator.AnimateIn(target);
         }
 
         public void Hide()
@@ -75,8 +75,8 @@ namespace RoyalSmash.UI
                 RoyalSmash.Audio.AudioManager.Instance.PlayPanelClose();
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(false);
-            else gameObject.SetActive(false);
+            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
+            UIPanelAnimator.AnimateOut(target);
         }
 
         private void UpdateCostDisplay()

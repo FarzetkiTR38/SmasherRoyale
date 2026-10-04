@@ -199,13 +199,13 @@ namespace RoyalSmash.UI
                 _isTimePaused = true;
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(true);
-            else gameObject.SetActive(true);
-
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.PlayPanelOpen();
             }
+
+            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
+            UIPanelAnimator.AnimateIn(target);
         }
 
         public void Hide()
@@ -221,8 +221,8 @@ namespace RoyalSmash.UI
                 _isTimePaused = false;
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(false);
-            else gameObject.SetActive(false);
+            GameObject target = _contentRoot != null ? _contentRoot : gameObject;
+            UIPanelAnimator.AnimateOut(target);
         }
 
         private void HandleExitLevelClicked()
