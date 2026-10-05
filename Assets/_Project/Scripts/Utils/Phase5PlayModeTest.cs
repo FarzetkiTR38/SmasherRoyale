@@ -118,7 +118,11 @@ namespace RoyalSmash.Utils
             // Defeat must NOT trigger while a ball is still in mid-air flying toward target
             // ----------------------------------------------------------------------------------
             report.AppendLine("\n[TEST 3] Testing In-Flight Ball Grace Period (No premature lose)...");
+#if UNITY_EDITOR
             var boxPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Gameplay/Box.prefab");
+#else
+            GameObject boxPrefab = null;
+#endif
             if (boxPrefab == null) boxPrefab = Resources.Load<GameObject>("Prefabs/Gameplay/Box");
 
             GameObject graceTarget = Instantiate(boxPrefab, new Vector3(0f, 1.8f, 7.5f), Quaternion.identity);
@@ -245,7 +249,9 @@ namespace RoyalSmash.Utils
 
             // Wait 1s and stop Play Mode
             yield return new WaitForSeconds(1.0f);
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
+#endif
         }
 
         private void CleanupProjectiles()
