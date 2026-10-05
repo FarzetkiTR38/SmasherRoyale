@@ -1,0 +1,32 @@
+{
+  "capturedUtc": "2026-10-03T22:48:27.0375347Z",
+  "saveRoot": "C:\\Users\\Farzetki\\AppData\\LocalLow\\TELEFERIC\\SmasherRoyale",
+  "backupRoot": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Play-20261004-014826",
+  "files": [
+    {
+      "relativePath": "leaderboard_cache.json",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Play-20261004-014826\\leaderboard_cache.json",
+      "sha256": "4727036A6D51767D3B7CFAABEC2FF9A3122EA2E2E32BE0C3A670FBDA2227D0E8"
+    },
+    {
+      "relativePath": "live_cloud_device_saves.json",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Play-20261004-014826\\live_cloud_device_saves.json",
+      "sha256": "5549E25401A742B230D25ACF04DB3E0317275CCB52B10F19A6399F0486AAF022"
+    },
+    {
+      "relativePath": "live_cloud_leaderboard.json",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Play-20261004-014826\\live_cloud_leaderboard.json",
+      "sha256": "5360AE85F79669E703297ED4566F87C88C400D8B17F45F6338E83A3FDF25083D"
+    },
+    {
+      "relativePath": "player_save_backup.json",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Play-20261004-014826\\player_save_backup.json",
+      "sha256": "A1DA776777D630F5729DED16E9D8002802BBBCEC2A6E8C943752F753B1238C5C"
+    },
+    {
+      "relativePath": "player_save.json",
+      "backup": "C:\\Users\\Farzetki\\.codex\\local-backups\\Phase34-Play-20261004-014826\\player_save.json",
+      "sha256": "DEEA24F64DA2006527A0CB8EEB7F50C58CFB0098FF28D5ECD61549DD4620BCEB"
+    }
+  ]
+}

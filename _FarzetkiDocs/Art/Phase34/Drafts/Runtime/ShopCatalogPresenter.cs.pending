@@ -87,12 +87,17 @@ namespace RoyalSmash.UI
                 if (card == null) continue;
                 card.BindPresentation(_presentation);
             }
+            RecordAuthoredOverrides();
         }
 
         /// <summary>Only the presenter's own generated subtree is replaced.</summary>
         public void Rebuild()
         {
             if (_isRebuilding) return;
+            // Prefab assets are persistent objects. Rebuild their editable Prefab Stage
+            // or scene instance, never their asset hierarchy directly.
+            if (!Application.isPlaying && !gameObject.scene.IsValid())
+                throw new InvalidOperationException("Open this shop in Prefab Mode or a scene before refreshing its preview.");
             _isRebuilding = true;
             try
             {
@@ -128,6 +133,7 @@ namespace RoyalSmash.UI
                 RefreshPresentation();
                 PublishCards();
                 LayoutRebuilder.MarkLayoutForRebuild(_contentRoot);
+                RecordAuthoredOverrides();
             }
             finally
             {
@@ -155,11 +161,14 @@ namespace RoyalSmash.UI
 
             int columns = section == ShopSectionKind.Featured || section == ShopSectionKind.NoAds ? 1 : 2;
             RectTransform row = null;
-            float cardHeight = GetCardHeight(section);
+            int maximumRewardRows = 0;
+            foreach (ShopItemData item in products)
+                maximumRewardRows = Mathf.Max(maximumRewardRows, GetRewardRowCount(item));
+            float cardHeight = GetCardHeight(section, maximumRewardRows);
             for (int i = 0; i < products.Count; i++)
             {
                 if (i % columns == 0) row = CreateRow(section, cardHeight);
-                ShopItemCardUI card = Instantiate(prefab, row, false);
+                ShopItemCardUI card = InstantiateCard(prefab, row);
                 card.name = "Card_" + products[i].Id;
                 card.gameObject.SetActive(true);
                 LayoutElement sizing = card.GetComponent<LayoutElement>();
@@ -207,7 +216,7 @@ namespace RoyalSmash.UI
         private void CreateHeader(ShopSectionKind section)
         {
             if (_sectionHeaderPrefab == null) return;
-            GameObject header = Instantiate(_sectionHeaderPrefab, _generatedRoot, false);
+            GameObject header = InstantiatePresentationObject(_sectionHeaderPrefab, _generatedRoot);
             header.name = "Header_" + section;
             header.SetActive(true);
             LayoutElement sizing = header.GetComponent<LayoutElement>();
@@ -297,23 +306,31 @@ namespace RoyalSmash.UI
             foreach (ShopItemData item in list) yield return item;
         }
 
-        private float GetCardHeight(ShopSectionKind section)
+        private float GetCardHeight(ShopSectionKind section, int maximumRewardRows)
         {
-            if (_presentation == null)
-            {
-                switch (section)
-                {
-                    case ShopSectionKind.Featured: return 360f;
-                    case ShopSectionKind.NoAds: return 240f;
-                    case ShopSectionKind.Bundles: return 410f;
-                    default: return 330f;
-                }
-            }
-            float height = section == ShopSectionKind.Featured ? _presentation.FeaturedCardHeight
+            float height = _presentation == null
+                ? (section == ShopSectionKind.Featured ? 360f : section == ShopSectionKind.NoAds ? 240f
+                    : section == ShopSectionKind.Bundles ? 410f : 330f)
+                : section == ShopSectionKind.Featured ? _presentation.FeaturedCardHeight
                 : section == ShopSectionKind.NoAds ? _presentation.NoAdsCardHeight
                 : section == ShopSectionKind.Bundles ? _presentation.BundleCardHeight
                 : _presentation.CompactCardHeight;
+            if (section == ShopSectionKind.Gold || section == ShopSectionKind.Skills || section == ShopSectionKind.Bundles)
+            {
+                // Compact/bundle Rewards stretches between 146 bottom and 112 top.
+                // Grow the entire two-column section to its largest visible reward
+                // composition, keeping the configured height as the minimum.
+                float rewardsHeight = maximumRewardRows * 34f + Mathf.Max(0, maximumRewardRows - 1) * 4f;
+                height = Mathf.Max(height, 146f + 112f + rewardsHeight);
+            }
             return Mathf.Max(100f, height);
+        }
+
+        private static int GetRewardRowCount(ShopItemData item)
+        {
+            if (item == null) return 0;
+            return (item.GoldReward > 0 ? 1 : 0) + (item.MegaBallReward > 0 ? 1 : 0)
+                + (item.InfinityBallReward > 0 ? 1 : 0) + (item.GrantsNoAds ? 1 : 0);
         }
 
         private string BuildLayoutSignature()
@@ -343,7 +360,8 @@ namespace RoyalSmash.UI
                     if (item == null) key.Append("<null>;");
                     else
                     {
-                        key.Append(item.Id != null ? item.Id.Length : 0).Append('#').Append(item.Id).Append(';');
+                        key.Append(item.Id != null ? item.Id.Length : 0).Append('#').Append(item.Id)
+                            .Append('@').Append(GetRewardRowCount(item)).Append(';');
                     }
                 }
                 key.Append('|');
@@ -368,6 +386,7 @@ namespace RoyalSmash.UI
         private static RectTransform CreateRect(string name, Transform parent)
         {
             var root = new GameObject(name, typeof(RectTransform));
+            root.layer = parent.gameObject.layer;
             var rect = (RectTransform)root.transform;
             rect.SetParent(parent, false);
             rect.anchorMin = new Vector2(0f, 1f);
@@ -375,6 +394,41 @@ namespace RoyalSmash.UI
             rect.pivot = new Vector2(.5f, 1f);
             rect.sizeDelta = Vector2.zero;
             return rect;
+        }
+
+        private static ShopItemCardUI InstantiateCard(ShopItemCardUI prefab, Transform parent)
+        {
+            return InstantiatePresentationObject(prefab.gameObject, parent).GetComponent<ShopItemCardUI>();
+        }
+
+        private static GameObject InstantiatePresentationObject(GameObject prefab, Transform parent)
+        {
+#if UNITY_EDITOR
+            // Preserve nested prefab links in serialized panels, scene previews and
+            // Prefab Mode so shared typography/layout edits reach every authored card.
+            if (!Application.isPlaying && UnityEditor.PrefabUtility.IsPartOfPrefabAsset(prefab))
+                return (GameObject)UnityEditor.PrefabUtility.InstantiatePrefab(prefab, parent);
+#endif
+            return Instantiate(prefab, parent, false);
+        }
+
+        private void RecordAuthoredOverrides()
+        {
+#if UNITY_EDITOR
+            if (Application.isPlaying || _generatedRoot == null) return;
+            // Direct runtime setters do not register prefab overrides on their own.
+            // Persist each product's stable Id, text and row visibility while leaving
+            // unchanged shared prefab typography/layout properties inherited.
+            foreach (Component component in _generatedRoot.GetComponentsInChildren<Component>(true))
+            {
+                if (component == null || !UnityEditor.PrefabUtility.IsPartOfPrefabInstance(component)) continue;
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(component);
+                if (component is Transform)
+                    UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(component.gameObject);
+            }
+            if (UnityEditor.PrefabUtility.IsPartOfPrefabInstance(this))
+                UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+#endif
         }
 
         private static string DefaultSectionTitle(ShopSectionKind section)
@@ -389,4 +443,3 @@ namespace RoyalSmash.UI
         }
     }
 }
-

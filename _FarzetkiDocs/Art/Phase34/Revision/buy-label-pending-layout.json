@@ -1,0 +1,50 @@
+[
+  {
+    "id": "deal_kings_royal",
+    "state": "İŞLEM SÜRÜYOR…",
+    "separated": true,
+    "overflow": false
+  },
+  {
+    "id": "no_ads_pass",
+    "state": "",
+    "separated": true,
+    "overflow": false
+  },
+  {
+    "id": "gold_pouch_800",
+    "state": "İŞLEM SÜRÜYOR…",
+    "separated": true,
+    "overflow": false
+  },
+  {
+    "id": "gold_chest_1600",
+    "state": "İŞLEM SÜRÜYOR…",
+    "separated": true,
+    "overflow": false
+  },
+  {
+    "id": "skill_mega_5",
+    "state": "İŞLEM SÜRÜYOR…",
+    "separated": true,
+    "overflow": false
+  },
+  {
+    "id": "skill_infinity_5",
+    "state": "İŞLEM SÜRÜYOR…",
+    "separated": true,
+    "overflow": false
+  },
+  {
+    "id": "bundle_warrior",
+    "state": "İŞLEM SÜRÜYOR…",
+    "separated": true,
+    "overflow": false
+  },
+  {
+    "id": "bundle_champion",
+    "state": "İŞLEM SÜRÜYOR…",
+    "separated": true,
+    "overflow": false
+  }
+]

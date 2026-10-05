@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3931211037195989858}
   - component: {fileID: 966046422137502284}
   - component: {fileID: 107338475847911144}
+  - component: {fileID: 870214908310932559}
   m_Layer: 0
   m_Name: SkillBtn_MegaBall
   m_TagString: Untagged
@@ -162,6 +163,24 @@ MonoBehaviour:
   _activeGlow: {fileID: 8580812186814281662}
   _usesText: {fileID: 2601889557245188371}
   _timerText: {fileID: 565935589583243055}
+--- !u!114 &870214908310932559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416360873335570415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &1380722509145577153
 GameObject:
   m_ObjectHideFlags: 0

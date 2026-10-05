@@ -31,9 +31,11 @@ Thumbs.db
 .gitattributes
 
 # Screenshots
+Screenshots/
 Assets/Screenshots/
 Assets/Screenshots.meta
 
 # Farzetki Special
 FarzetkiSpecial
 scratch/
+.utmp/

@@ -48,6 +48,11 @@ namespace RoyalSmash.UI
 
         public void ShowSuccess(string title, string message, Sprite icon = null)
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayShopPurchase();
+            }
+
             if (_titleText != null)
             {
                 _titleText.text = string.IsNullOrEmpty(title) ? "PURCHASE SUCCESSFUL!" : title;
@@ -66,6 +71,11 @@ namespace RoyalSmash.UI
 
         public void ShowError(string message)
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelOpen();
+            }
+
             if (_titleText != null)
             {
                 _titleText.text = "TRANSACTION FAILED";
@@ -83,13 +93,48 @@ namespace RoyalSmash.UI
 
         public void Hide()
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayPanelClose();
+            }
             SetVisible(false);
         }
 
         private void SetVisible(bool visible)
         {
-            if (_contentRoot != null) _contentRoot.SetActive(visible);
-            else gameObject.SetActive(visible);
+            if (visible)
+            {
+                gameObject.SetActive(true);
+                if (_contentRoot != null && _contentRoot != gameObject)
+                {
+                    _contentRoot.SetActive(true);
+                    UIPanelAnimator.AnimateIn(_contentRoot);
+                }
+                else
+                {
+                    UIPanelAnimator.AnimateIn(gameObject);
+                }
+            }
+            else
+            {
+                if (_contentRoot != null && _contentRoot != gameObject && _contentRoot.activeInHierarchy)
+                {
+                    UIPanelAnimator.AnimateOut(_contentRoot, () =>
+                    {
+                        if (_contentRoot != null) _contentRoot.SetActive(false);
+                        gameObject.SetActive(false);
+                    });
+                }
+                else if (gameObject.activeInHierarchy)
+                {
+                    UIPanelAnimator.AnimateOut(gameObject, () => gameObject.SetActive(false));
+                }
+                else
+                {
+                    if (_contentRoot != null) _contentRoot.SetActive(false);
+                    gameObject.SetActive(false);
+                }
+            }
         }
     }
 }

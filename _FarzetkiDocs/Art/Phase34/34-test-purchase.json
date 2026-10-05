@@ -1,0 +1,81 @@
+{
+    "suite": "purchase",
+    "scope": "Editor simulated transactions via eight real buy buttons, lock, owned and failure. No real payment; does not claim duplicate store-callback idempotency.",
+    "startedUtc": "2026-10-03T22:50:15.5055074Z",
+    "completedUtc": "2026-10-03T22:50:19.1453174Z",
+    "status": "passed",
+    "backupManifest": "C:\\Users\\Farzetki\\wkspaces\\SmasherRoyale-SmasherRoyale\\_FarzetkiDocs\\Art\\Phase34\\34-10-mainmenu-save-backup.json",
+    "passed": 12,
+    "failed": 0,
+    "screenWidth": 0,
+    "screenHeight": 0,
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.0,
+        "height": 0.0
+    },
+    "checks": [
+        {
+            "name": "Second simultaneous purchase is rejected",
+            "detail": "Expected IAP guard warning is recorded by the Console.",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: deal_kings_royal",
+            "detail": "deal_kings_royal",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: no_ads_pass",
+            "detail": "noadspass",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: gold_pouch_800",
+            "detail": "gold_douch_800",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: gold_chest_1600",
+            "detail": "gold_chest_1600",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: skill_mega_5",
+            "detail": "skill_mega_5",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: skill_infinity_5",
+            "detail": "skill_infinity_5",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: bundle_warrior",
+            "detail": "bundle_warrior",
+            "passed": true
+        },
+        {
+            "name": "Single correct fulfillment: bundle_champion",
+            "detail": "bundle_champion",
+            "passed": true
+        },
+        {
+            "name": "Owned No Ads cannot be repurchased",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Simulated failure grants nothing and releases all purchase locks",
+            "detail": "Expected simulated-error warning is recorded by the Console.",
+            "passed": true
+        },
+        {
+            "name": "Failure feedback is visible and readable",
+            "detail": "",
+            "passed": true
+        }
+    ]
+}

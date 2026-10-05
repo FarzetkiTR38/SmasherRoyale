@@ -18,6 +18,18 @@ namespace RoyalSmash.UI
         [SerializeField] private Button _addLifeButton;
         [SerializeField] private OutOfLivesDialog _outOfLivesDialog;
 
+        private void Awake()
+        {
+            if (_addLifeButton == null)
+            {
+                _addLifeButton = transform.Find("AddBtn")?.GetComponent<Button>();
+                if (_addLifeButton == null)
+                {
+                    _addLifeButton = GetComponentInChildren<Button>(true);
+                }
+            }
+        }
+
         private void Start()
         {
             if (LivesManager.Instance != null)
@@ -26,10 +38,27 @@ namespace RoyalSmash.UI
                 LivesManager.Instance.OnRegenTimerUpdated += HandleTimerUpdated;
                 UpdateDisplay(LivesManager.Instance.CurrentLives, LivesManager.Instance.MaxLives);
             }
+            else
+            {
+                UpdateDisplay(5, 5);
+            }
 
             if (_addLifeButton != null)
             {
+                _addLifeButton.onClick.RemoveListener(HandleAddLifeClicked);
                 _addLifeButton.onClick.AddListener(HandleAddLifeClicked);
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (LivesManager.Instance != null)
+            {
+                LivesManager.Instance.OnLivesChanged -= HandleLivesChanged;
+                LivesManager.Instance.OnLivesChanged += HandleLivesChanged;
+                LivesManager.Instance.OnRegenTimerUpdated -= HandleTimerUpdated;
+                LivesManager.Instance.OnRegenTimerUpdated += HandleTimerUpdated;
+                UpdateDisplay(LivesManager.Instance.CurrentLives, LivesManager.Instance.MaxLives);
             }
         }
 
@@ -58,6 +87,11 @@ namespace RoyalSmash.UI
             {
                 _addLifeButton.onClick.RemoveAllListeners();
                 _addLifeButton.onClick.AddListener(HandleAddLifeClicked);
+            }
+
+            if (LivesManager.Instance != null)
+            {
+                UpdateDisplay(LivesManager.Instance.CurrentLives, LivesManager.Instance.MaxLives);
             }
         }
 
@@ -99,10 +133,28 @@ namespace RoyalSmash.UI
                     _timerText.text = $"{remaining.Minutes:D2}:{remaining.Seconds:D2}";
                 }
             }
+
+            // Only allow clicking the + button if lives are depleted (0/5)
+            if (_addLifeButton != null)
+            {
+                _addLifeButton.interactable = (current <= 0);
+            }
         }
 
         private void HandleAddLifeClicked()
         {
+            int currentLives = LivesManager.Instance != null ? LivesManager.Instance.CurrentLives : 5;
+            if (currentLives > 0)
+            {
+                Debug.Log($"[LivesWidgetUI] Lives are not empty ({currentLives}/{LivesManager.Instance?.MaxLives ?? 5}). Cannot open OutOfLivesDialog.");
+                return;
+            }
+
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayButtonClick();
+            }
+
             if (_outOfLivesDialog != null)
             {
                 _outOfLivesDialog.Show();

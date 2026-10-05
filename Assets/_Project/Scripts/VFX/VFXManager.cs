@@ -272,26 +272,6 @@ namespace RoyalSmash.VFX
                 }
                 ReturnToPool(shards, Config.BottleBreakShardsPrefab.name, 1.5f);
             }
-
-            // 2. Lingering paint spill puddle
-            if (Config.PaintSpillPrefab != null)
-            {
-                Vector3 puddlePos = new Vector3(position.x, 0.05f, position.z);
-                GameObject spill = GetFromPool(Config.PaintSpillPrefab, puddlePos, Quaternion.Euler(90f, 0f, 0f));
-                var renderer = spill.GetComponentInChildren<Renderer>();
-                if (renderer != null)
-                {
-                    if (Application.isPlaying)
-                    {
-                        renderer.material.color = paintColor;
-                    }
-                    else if (renderer.sharedMaterial != null)
-                    {
-                        renderer.sharedMaterial.color = paintColor;
-                    }
-                }
-                ReturnToPool(spill, Config.PaintSpillPrefab.name, Config.PaintSpillLifetime);
-            }
         }
 
         /// <summary>

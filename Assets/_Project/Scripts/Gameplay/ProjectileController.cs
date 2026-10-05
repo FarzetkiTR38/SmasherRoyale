@@ -111,6 +111,15 @@ namespace RoyalSmash.Gameplay
                 _rigidbody.useGravity = true;
             }
 
+            // Play bounce sound when colliding with environment/stands/borders
+            if (collision.gameObject.GetComponent<PhysicsObject>() == null)
+            {
+                if (RoyalSmash.Audio.AudioManager.Instance != null)
+                {
+                    RoyalSmash.Audio.AudioManager.Instance.PlayBallBounce();
+                }
+            }
+
             if (collision.rigidbody != null && !collision.rigidbody.isKinematic)
             {
                 float impulse = _config != null ? _config.ImpactImpulse : 35f;

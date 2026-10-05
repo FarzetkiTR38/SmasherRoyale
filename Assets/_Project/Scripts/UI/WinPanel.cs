@@ -271,13 +271,18 @@ namespace RoyalSmash.UI
                 if (soundStep != lastSoundStep && RoyalSmash.Audio.AudioManager.Instance != null)
                 {
                     lastSoundStep = soundStep;
-                    RoyalSmash.Audio.AudioManager.Instance.PlayButtonClick();
+                    RoyalSmash.Audio.AudioManager.Instance.PlayStarAward();
                 }
 
                 yield return null;
             }
 
             _totalGoldText.text = $"<b><color=#FFE224>+{targetGold} ALTIN</color></b>";
+
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayRewardSound();
+            }
 
             // Golden sparkle punch pulse
             float punchElapsed = 0f;
@@ -295,6 +300,11 @@ namespace RoyalSmash.UI
 
         private void HandleContinueClicked()
         {
+            if (RoyalSmash.Audio.AudioManager.Instance != null)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayNextLevelTransition();
+            }
+
             if (LevelManager.Instance != null)
             {
                 LevelManager.Instance.NextLevel();

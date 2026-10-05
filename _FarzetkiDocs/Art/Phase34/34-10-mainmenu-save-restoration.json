@@ -1,0 +1,33 @@
+{
+  "restoredUtc": "2026-10-03T23:01:46.3528198Z",
+  "manifest": "_FarzetkiDocs/Art/Phase34/34-10-mainmenu-save-backup.json",
+  "newFilesRemoved": 0,
+  "allPassed": true,
+  "files": [
+    {
+      "file": "leaderboard_cache.json",
+      "restored": true,
+      "sha256": "4727036A6D51767D3B7CFAABEC2FF9A3122EA2E2E32BE0C3A670FBDA2227D0E8"
+    },
+    {
+      "file": "live_cloud_device_saves.json",
+      "restored": true,
+      "sha256": "5549E25401A742B230D25ACF04DB3E0317275CCB52B10F19A6399F0486AAF022"
+    },
+    {
+      "file": "live_cloud_leaderboard.json",
+      "restored": true,
+      "sha256": "5360AE85F79669E703297ED4566F87C88C400D8B17F45F6338E83A3FDF25083D"
+    },
+    {
+      "file": "player_save_backup.json",
+      "restored": true,
+      "sha256": "A1DA776777D630F5729DED16E9D8002802BBBCEC2A6E8C943752F753B1238C5C"
+    },
+    {
+      "file": "player_save.json",
+      "restored": true,
+      "sha256": "DEEA24F64DA2006527A0CB8EEB7F50C58CFB0098FF28D5ECD61549DD4620BCEB"
+    }
+  ]
+}

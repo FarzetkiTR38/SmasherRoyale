@@ -193,8 +193,9 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 68450682e8df325469ea0ff3f4ac0ce8, type: 2}
   _currentState: 0
   _isRequiredTarget: 1
-  _paintColor: {r: 0.05, g: 0.7, b: 1, a: 1}
+  _paintColor: {r: 0.04, g: 0.22, b: 0.82, a: 1}
   _hasBroken: 0
+  _fracturedPrefab: {fileID: 1578958938034829526, guid: f047d812cdf0a0b4791157adbbd0d404, type: 3}
 --- !u!1 &2692650306394229145
 GameObject:
   m_ObjectHideFlags: 0

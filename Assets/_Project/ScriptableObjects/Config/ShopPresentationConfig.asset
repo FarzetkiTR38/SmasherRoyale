@@ -19,43 +19,58 @@ MonoBehaviour:
   OwnedLabel: SATIN ALINDI
   PendingLabel: "\u0130\u015ELEM S\xDCR\xDCYOR\u2026"
   UnavailableLabel: KULLANILAMIYOR
+  FallbackPriceLabel: 
   GoldRewardLabel: "Alt\u0131n"
   MegaRewardLabel: Mega Top
   InfinityRewardLabel: Sonsuz Top
+  NoAdsRewardLabel: "Reklams\u0131z oyun"
   NoAdsDescription: "Zorunlu reklamlar\u0131 \xF6m\xFCr boyu kald\u0131r\u0131n!"
-  Font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  Font: {fileID: 11400000, guid: 6489d7b7a26b6144e908f00ab303d1e0, type: 2}
   TitleColor: {r: 1, g: 0.87, b: 0.35, a: 1}
   BodyColor: {r: 1, g: 1, b: 1, a: 1}
-  ShopFrame: {fileID: 0}
-  HeaderBackground: {fileID: 0}
-  SectionBackground: {fileID: 0}
-  FeaturedBackground: {fileID: 0}
-  CompactBackground: {fileID: 0}
-  NoAdsBackground: {fileID: 0}
-  BuyBackground: {fileID: 0}
-  BadgeBackground: {fileID: 0}
+  GoldRewardIcon: {fileID: 21300000, guid: 6e424d49499a3324e98d67b5638825fd, type: 3}
+  MegaRewardIcon: {fileID: 1236852591, guid: 9464ac2acb78f0a4fad5757eb1e480df, type: 3}
+  InfinityRewardIcon: {fileID: -1442656269, guid: 4f83be9cd7be10d409995a998c52bb36, type: 3}
+  NoAdsRewardIcon: {fileID: -1614538388, guid: a1381c8bb97486746b885d330221a32d, type: 3}
+  ShopFrame: {fileID: 239324247, guid: 88584f8263f41734896b3387302dcc12, type: 3}
+  HeaderBackground: {fileID: 21300000, guid: 22233a1b24e22d44487731cfaa8876fe, type: 3}
+  SectionBackground: {fileID: -1382924572, guid: 23a2665b70ff2fc4db7482e12920f762, type: 3}
+  FeaturedBackground: {fileID: 717915988, guid: f33da7b9d8cbb184182c54e48029ad46, type: 3}
+  CompactBackground: {fileID: 760140996, guid: 5ea90296b0b495d498b2975b97f24471, type: 3}
+  NoAdsBackground: {fileID: 1957897265, guid: 556f9e8961e14694ebfb0e9306362be1, type: 3}
+  BundleBackground: {fileID: 1957897265, guid: 556f9e8961e14694ebfb0e9306362be1, type: 3}
+  BuyBackground: {fileID: -660630519, guid: 82c36b83c8a615d4cb648bcb45ed8bfd, type: 3}
+  BadgeBackground: {fileID: 1722705255, guid: 4c7051b53d827bf4d9b11e63ec91e7c1, type: 3}
+  SectionOrder: 0000000001000000020000000300000004000000
+  FeaturedCardHeight: 340
+  NoAdsCardHeight: 260
+  CompactCardHeight: 195
+  BundleCardHeight: 304
+  SectionHeaderHeight: 56
+  SectionSpacing: 14
+  ColumnSpacing: 18
   Products:
   - ItemId: deal_kings_royal
-    Artwork: {fileID: 0}
+    Artwork: {fileID: -663798043, guid: 58d970a729830a34fb0e8d76dbc04bb9, type: 3}
     BackgroundOverride: {fileID: 0}
   - ItemId: no_ads_pass
-    Artwork: {fileID: 0}
+    Artwork: {fileID: -1614538388, guid: a1381c8bb97486746b885d330221a32d, type: 3}
     BackgroundOverride: {fileID: 0}
   - ItemId: gold_pouch_800
-    Artwork: {fileID: 0}
+    Artwork: {fileID: -2083013772, guid: f3d322bd6f1a92d49aee972b47ba53b7, type: 3}
     BackgroundOverride: {fileID: 0}
   - ItemId: gold_chest_1600
-    Artwork: {fileID: 0}
+    Artwork: {fileID: 880180437, guid: 1c1d8070aaed8904faa05a31de4e4615, type: 3}
     BackgroundOverride: {fileID: 0}
   - ItemId: skill_mega_5
-    Artwork: {fileID: 0}
+    Artwork: {fileID: 1236852591, guid: 9464ac2acb78f0a4fad5757eb1e480df, type: 3}
     BackgroundOverride: {fileID: 0}
   - ItemId: skill_infinity_5
-    Artwork: {fileID: 0}
+    Artwork: {fileID: -1442656269, guid: 4f83be9cd7be10d409995a998c52bb36, type: 3}
     BackgroundOverride: {fileID: 0}
   - ItemId: bundle_warrior
-    Artwork: {fileID: 0}
+    Artwork: {fileID: -1623991052, guid: 9d7525d1fcedd1a409cb1568e490759a, type: 3}
     BackgroundOverride: {fileID: 0}
   - ItemId: bundle_champion
-    Artwork: {fileID: 0}
+    Artwork: {fileID: 1706788690, guid: 67f6b94e20dfe3141993b71aa153969c, type: 3}
     BackgroundOverride: {fileID: 0}

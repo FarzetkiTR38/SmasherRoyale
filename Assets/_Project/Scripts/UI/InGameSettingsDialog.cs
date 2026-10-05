@@ -199,20 +199,55 @@ namespace RoyalSmash.UI
                 _isTimePaused = true;
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(true);
-            else gameObject.SetActive(true);
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPanelOpen();
+            }
+
+            // Explicitly activate the dialog root GameObject
+            gameObject.SetActive(true);
+
+            if (_contentRoot != null && _contentRoot != gameObject)
+            {
+                _contentRoot.SetActive(true);
+                UIPanelAnimator.AnimateIn(_contentRoot);
+            }
+            else
+            {
+                UIPanelAnimator.AnimateIn(gameObject);
+            }
         }
 
         public void Hide()
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPanelClose();
+            }
+
             if (_isTimePaused && Application.isPlaying)
             {
                 Time.timeScale = _savedTimeScale > 0f ? _savedTimeScale : 1f;
                 _isTimePaused = false;
             }
 
-            if (_contentRoot != null) _contentRoot.SetActive(false);
-            else gameObject.SetActive(false);
+            if (_contentRoot != null && _contentRoot != gameObject && _contentRoot.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(_contentRoot, () =>
+                {
+                    if (_contentRoot != null) _contentRoot.SetActive(false);
+                    gameObject.SetActive(false);
+                });
+            }
+            else if (gameObject.activeInHierarchy)
+            {
+                UIPanelAnimator.AnimateOut(gameObject, () => gameObject.SetActive(false));
+            }
+            else
+            {
+                if (_contentRoot != null) _contentRoot.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
 
         private void HandleExitLevelClicked()

@@ -1,0 +1,19 @@
+{
+  "capturedUtc": "2026-10-04T09:13:40.1900069Z",
+  "rejectedBeforeWrite": true,
+  "unchanged": true,
+  "paths": [
+    "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopFeatured.prefab",
+    "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopNoAds.prefab",
+    "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopCompact.prefab",
+    "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopBundle.prefab",
+    "Assets/_Project/Prefabs/UI/ShopDynamic/PF_ShopSectionHeader.prefab",
+    "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShopPanel.prefab",
+    "Assets/_Project/Prefabs/UI/ShopDynamic/PF_DynamicShop_Preview.prefab",
+    "Assets/_Project/ScriptableObjects/Config/ShopPresentationConfig.asset"
+  ],
+  "message": "Horizontal shop prefabs are already authored. Use Phase34ShopVisualRevision.ApplyPrefabVisuals for scoped visual maintenance; refresh the existing presenter for catalog changes. Full legacy regeneration would replace the reviewed layout.",
+  "playing": false,
+  "compiling": false,
+  "sceneDirty": false
+}

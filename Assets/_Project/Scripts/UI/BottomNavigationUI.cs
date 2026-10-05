@@ -122,6 +122,11 @@ namespace RoyalSmash.UI
         /// </summary>
         public void SwitchTab(NavigationTab tab)
         {
+            if (_currentTab != tab && RoyalSmash.Audio.AudioManager.Instance != null && Application.isPlaying)
+            {
+                RoyalSmash.Audio.AudioManager.Instance.PlayButtonClick();
+            }
+
             _currentTab = tab;
 
             // Update Pages

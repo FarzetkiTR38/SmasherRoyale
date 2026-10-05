@@ -1,0 +1,36 @@
+{
+    "suite": "edited-layout-1080x1920",
+    "scope": "Active cloned preview geometry with long Turkish titles, large catalog quantities and euro fallback. No purchases or source-asset edits; separate screenshots still required.",
+    "startedUtc": "2026-10-03T22:49:05.3459016Z",
+    "completedUtc": "2026-10-03T22:49:05.5185911Z",
+    "status": "passed",
+    "backupManifest": "",
+    "passed": 3,
+    "failed": 0,
+    "screenWidth": 1080,
+    "screenHeight": 1920,
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1080.0,
+        "height": 1920.0
+    },
+    "checks": [
+        {
+            "name": "Long titles and another currency use visible TMP bounds",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Large reward quantities fit separate rows without purchase/status overlap",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Reward amount refresh retains cards; a fourth reward rebuilds and grows the row",
+            "detail": "",
+            "passed": true
+        }
+    ]
+}

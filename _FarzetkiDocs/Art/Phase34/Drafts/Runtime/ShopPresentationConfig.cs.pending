@@ -40,6 +40,12 @@ namespace RoyalSmash.UI
         public Color TitleColor = new Color(1f, .87f, .35f, 1f);
         public Color BodyColor = Color.white;
 
+        [Header("Editable Reward Icons")]
+        public Sprite GoldRewardIcon;
+        public Sprite MegaRewardIcon;
+        public Sprite InfinityRewardIcon;
+        public Sprite NoAdsRewardIcon;
+
         [Header("Text-Free Skin Sprites — filled during 34.3")]
         public Sprite ShopFrame;
         public Sprite HeaderBackground;

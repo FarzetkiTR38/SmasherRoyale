@@ -1,0 +1,107 @@
+{
+  "capturedUtc": "2026-10-04T09:55:17.3480324Z",
+  "phase": "34.11",
+  "status": "complete",
+  "suites": [
+    {
+      "suite": "edited-layout-1080x1920",
+      "passed": 3,
+      "failed": 0,
+      "completedUtc": "2026-10-04T09:41:56.6158755Z"
+    },
+    {
+      "suite": "layout-1080x1920",
+      "passed": 7,
+      "failed": 0,
+      "completedUtc": "2026-10-04T09:41:58.1492429Z"
+    },
+    {
+      "suite": "layout-1080x2400",
+      "passed": 7,
+      "failed": 0,
+      "completedUtc": "2026-10-04T09:45:53.9851689Z"
+    },
+    {
+      "suite": "layout-750x1334",
+      "passed": 7,
+      "failed": 0,
+      "completedUtc": "2026-10-04T09:47:52.5830142Z"
+    },
+    {
+      "suite": "lifecycle",
+      "passed": 5,
+      "failed": 0,
+      "completedUtc": "2026-10-04T09:42:01.7374784Z"
+    },
+    {
+      "suite": "presentation",
+      "passed": 18,
+      "failed": 0,
+      "completedUtc": "2026-10-04T09:41:55.0503382Z"
+    },
+    {
+      "suite": "purchase",
+      "passed": 12,
+      "failed": 0,
+      "completedUtc": "2026-10-04T09:43:46.678328Z"
+    }
+  ],
+  "passed": 59.0,
+  "failed": 0.0,
+  "consoleErrors": 0,
+  "consoleWarnings": 0,
+  "savesRestored": true,
+  "savesCount": 5,
+  "preservedFiles": 7,
+  "preservationPassed": true,
+  "editorState": {
+    "capturedUtc": "2026-10-04T09:51:12.6074271Z",
+    "playing": false,
+    "compiling": false,
+    "scene": "MainMenu",
+    "sceneDirty": false,
+    "headerRectUnchanged": true,
+    "titleComponentUnchanged": true,
+    "closeRectUnchanged": true,
+    "titleActiveUnchanged": true,
+    "headerSprite": "Assets/_Project/Art/Sprites/UI/Shop/Logo_RoyalBazar.png",
+    "headerSpriteUnchanged": true
+  },
+  "screenshots": [
+    {
+      "path": "_FarzetkiDocs\\Art\\Phase34\\Revision\\final-shop-top-1080x1920.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "DF81449940BF6E3E00ADE18AD9BB3E87D62C55F5937649939A079F17E86F2B9E",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "_FarzetkiDocs\\Art\\Phase34\\Revision\\final-shop-bottom-1080x1920.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "33E550D4A6EF37C871418CF181DD763C59C2B289B61C01FE5D5B48AF470EF041",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "_FarzetkiDocs\\Art\\Phase34\\Revision\\final-shop-1080x2400.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "B2EAA964A8D608775D7DC59FB8A2CDFF81D698DA7C01403CA75BD1C49E46BFAF",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "_FarzetkiDocs\\Art\\Phase34\\Revision\\final-shop-750x1334.png",
+      "width": 750,
+      "height": 1334,
+      "sha256": "F5EE08AC0C104DA58D62286ACB343103112502FA7AF10368127CB64F43D51C32",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "_FarzetkiDocs\\Art\\Phase34\\Revision\\final-pending.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "723118CF1F593061572F36800C72F3D987ACCE99F595A101165E25AA459ED4A7",
+      "visuallyReviewed": true
+    }
+  ]
+}

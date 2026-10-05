@@ -1,0 +1,34 @@
+{
+  "checkedUtc": "2026-10-03T23:01:21.6384268Z",
+  "allPassed": true,
+  "files": [
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainGame.unity",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/ScriptableObjects/Config/ShopConfig.asset.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/BottomNavigationUI.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/IAPManager.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/_Project/Scripts/Economy/ShopConfig.cs",
+      "unchanged": true
+    }
+  ]
+}

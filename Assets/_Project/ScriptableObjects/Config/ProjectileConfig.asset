@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35db39703b8b11c4ab243a3a5c886df1, type: 3}
   m_Name: ProjectileConfig
   m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.Gameplay.ProjectileConfig
-  _launchSpeed: 22
+  _launchSpeed: 20
   _mass: 1.2
-  _impactImpulse: 25
+  _impactImpulse: 20
   _bounciness: 0.4
   _friction: 0.35
   _lifetime: 5
   _fadeDuration: 1
-  _fireCooldown: 0.15
+  _fireCooldown: 0.5
   _defaultBallCount: 25

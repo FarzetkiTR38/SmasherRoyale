@@ -1,0 +1,111 @@
+{
+    "suite": "presentation",
+    "scope": "Live UI and isolated cloned catalog/presentation. No purchase or fulfillment calls.",
+    "startedUtc": "2026-10-03T22:49:02.6289886Z",
+    "completedUtc": "2026-10-03T22:49:02.7447124Z",
+    "status": "passed",
+    "backupManifest": "",
+    "passed": 18,
+    "failed": 0,
+    "screenWidth": 0,
+    "screenHeight": 0,
+    "safeArea": {
+        "serializedVersion": "2",
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.0,
+        "height": 0.0
+    },
+    "checks": [
+        {
+            "name": "Eight cards resolve the authoritative catalog definitions",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Every card has editable TMP title/price/rewards and separate Images",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Displayed sprites do not use old baked product panels",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Four reusable product prefabs and section header exist",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Cloned product edit updates title, badge and visible reward numbers",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Zero reward rows disappear and skill title has no stale x-count",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Unknown store metadata uses the catalog fallback price",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Real store metadata overrides fallback, including another currency",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Gold currency never displays store metadata",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Added products appear without editing the scene",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Catalog order controls rendered card order",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Removed product becomes unpurchasable then disappears",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Null list entries are ignored by the presenter",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Presentation title and reward labels update independently of economics",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Section order and titles are live presentation fields",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Shared skin change reaches each corresponding card",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Owned No Ads is disabled and shows the presentation label",
+            "detail": "",
+            "passed": true
+        },
+        {
+            "name": "Global pending lock disables every live card and unlocks safely",
+            "detail": "",
+            "passed": true
+        }
+    ]
+}

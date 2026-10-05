@@ -193,8 +193,9 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 146fe7b7bd5d28c4f8fe5536cc45ed95, type: 2}
   _currentState: 0
   _isRequiredTarget: 1
-  _paintColor: {r: 0.851, g: 0.275, b: 0.937, a: 1}
+  _paintColor: {r: 0.04, g: 0.22, b: 0.82, a: 1}
   _hasBroken: 0
+  _fracturedPrefab: {fileID: 1578958938034829526, guid: f047d812cdf0a0b4791157adbbd0d404, type: 3}
 --- !u!65 &4554628989088559468
 BoxCollider:
   m_ObjectHideFlags: 0

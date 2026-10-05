@@ -1,0 +1,9 @@
+{
+  "recordedUtc": "2026-10-03T23:01:45.529Z",
+  "captureMethod": "Async UnityEngine.ScreenCapture.CaptureScreenshot; no EditorApplication.Step",
+  "console": {
+    "success": true,
+    "message": "Retrieved 0 log entries.",
+    "data": []
+  }
+}

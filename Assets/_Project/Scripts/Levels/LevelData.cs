@@ -56,12 +56,20 @@ namespace RoyalSmash.Levels
         }
     }
 
+    public enum StandType
+    {
+        Auto = 0,           // Uses standard 2-leg stand if single stand, single-leg stand if multi-stand
+        StandardTwoLeg = 1, // Forces standard 2-leg stand
+        SingleLeg = 2       // Forces single-leg narrow stand
+    }
+
     [Serializable]
     public class StandPlacement
     {
         public Vector3 Position = new Vector3(0, 1.0f, 5.0f);
         public Vector3 Scale = new Vector3(4.0f, 0.3f, 2.5f);
         public Vector3 Rotation = Vector3.zero;
+        public StandType Type = StandType.Auto;
     }
 
     [Serializable]

@@ -364,6 +364,7 @@ GameObject:
   - component: {fileID: 6248747176956684848}
   - component: {fileID: 5456209200859779144}
   - component: {fileID: 3731835991305953964}
+  - component: {fileID: 2030988349368774036}
   m_Layer: 0
   m_Name: SkillBtn_InfinityBall
   m_TagString: Untagged
@@ -512,6 +513,24 @@ MonoBehaviour:
   _activeGlow: {fileID: 7675486745442503573}
   _usesText: {fileID: 1871676005799641951}
   _timerText: {fileID: 4423194763570054548}
+--- !u!114 &2030988349368774036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818385396024775660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda2d191f3276ae47adfa213388b05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoyalSmash.UI.UIButtonJuice
+  _pressedScale: 0.85
+  _punchScale: 1.05
+  _pressDuration: 0.07
+  _releaseDuration: 0.16
+  _playClickAudio: 1
+  _triggerHaptic: 0
 --- !u!1 &6103770508839112062
 GameObject:
   m_ObjectHideFlags: 0

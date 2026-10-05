@@ -10,7 +10,7 @@ namespace RoyalSmash.Gameplay
     public class PaintBottleObject : PhysicsObject
     {
         [Header("Paint Bottle Settings")]
-        [SerializeField] private Color _paintColor = new Color(0.85f, 0.27f, 0.94f, 1f); // Vibrant magenta
+        [SerializeField] private Color _paintColor = new Color(0.04f, 0.22f, 0.82f, 1f); // Deep Royal Sapphire / Lacivert
         [SerializeField] private bool _hasBroken = false;
 
         public Color PaintColor => _paintColor;
@@ -38,33 +38,39 @@ namespace RoyalSmash.Gameplay
             }
         }
 
+        [Header("Fractured Mesh Settings")]
+        [SerializeField] private GameObject _fracturedPrefab;
+
+        public GameObject FracturedPrefab { get => _fracturedPrefab; set => _fracturedPrefab = value; }
+
         protected override void HandleProjectileHit(Collision collision)
         {
             base.HandleProjectileHit(collision);
 
             if (_hasBroken) return;
 
-            // Direct ball hit shatters the paint bottle
+            // Direct ball hit shatters the paint bottle into physical 3D debris
             Vector3 impactPoint = collision.contacts.Length > 0 ? collision.contacts[0].point : transform.position;
-            BreakBottle(impactPoint);
+            Vector3 ballVelocity = collision.relativeVelocity.sqrMagnitude > 0.1f ? -collision.relativeVelocity : Vector3.forward * 12f;
+            BreakBottle(impactPoint, ballVelocity);
         }
 
         /// <summary>
-        /// Shatters the paint bottle, triggering glass and paint splatter effects.
+        /// Shatters the paint bottle into 3D physics debris pieces and triggers visual feedback.
         /// </summary>
-        public void BreakBottle(Vector3 impactPoint)
+        public void BreakBottle(Vector3 impactPoint, Vector3 impactVelocity = default)
         {
             if (_hasBroken) return;
             _hasBroken = true;
 
+            if (impactVelocity == default)
+            {
+                impactVelocity = Vector3.forward * 12f;
+            }
+
             if (RoyalSmash.Audio.AudioManager.Instance != null)
             {
                 RoyalSmash.Audio.AudioManager.Instance.PlayBottleBreak();
-            }
-
-            if (RoyalSmash.VFX.VFXManager.Instance != null)
-            {
-                RoyalSmash.VFX.VFXManager.Instance.SpawnBottleBreak(impactPoint, _paintColor);
             }
 
             if (RoyalSmash.Haptics.HapticManager.Instance != null)
@@ -72,10 +78,26 @@ namespace RoyalSmash.Gameplay
                 RoyalSmash.Haptics.HapticManager.Instance.TriggerBottleBreakHaptic();
             }
 
-            Debug.Log($"[PaintBottleObject] Shattered at {impactPoint} with {_paintColor} paint splash!");
+            // 1. Spawn 3D Fractured Physics Debris Pieces!
+            if (_fracturedPrefab != null)
+            {
+                var fracturedInstance = Instantiate(_fracturedPrefab, transform.position, transform.rotation);
+                fracturedInstance.transform.localScale = transform.localScale;
 
-            // Spawn procedural paint splat particle burst
-            SpawnPaintSplat(impactPoint);
+                var controller = fracturedInstance.GetComponent<FracturedCoreObject>();
+                if (controller != null)
+                {
+                    controller.TriggerShatter(impactPoint, impactVelocity);
+                }
+            }
+
+            // 2. Compact impact flash & sparkle VFX pop
+            if (RoyalSmash.VFX.VFXManager.Instance != null)
+            {
+                RoyalSmash.VFX.VFXManager.Instance.SpawnBottleBreak(impactPoint, _paintColor);
+            }
+
+            Debug.Log($"[PaintBottleObject] Shattered into 3D physical pieces at {impactPoint}!");
 
             // Hide the bottle body immediately
             if (_renderer != null) _renderer.enabled = false;
@@ -98,34 +120,6 @@ namespace RoyalSmash.Gameplay
 
             if (_destroyCoroutine != null) StopCoroutine(_destroyCoroutine);
             _destroyCoroutine = StartCoroutine(BreakShatterRoutine());
-        }
-
-        private void SpawnPaintSplat(Vector3 impactPoint)
-        {
-            GameObject splatGo = new GameObject("PaintSplat_Burst");
-            splatGo.transform.position = impactPoint;
-
-            ParticleSystem ps = splatGo.AddComponent<ParticleSystem>();
-            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-
-            var main = ps.main;
-            main.startColor = _paintColor;
-            main.startSize = new ParticleSystem.MinMaxCurve(0.15f, 0.35f);
-            main.startSpeed = new ParticleSystem.MinMaxCurve(2.0f, 6.0f);
-            main.startLifetime = 0.6f;
-            main.duration = 0.5f;
-            main.loop = false;
-
-            var emission = ps.emission;
-            emission.SetBursts(new ParticleSystem.Burst[] { new ParticleSystem.Burst(0f, 25) });
-
-            var shape = ps.shape;
-            shape.shapeType = ParticleSystemShapeType.Sphere;
-            shape.radius = 0.2f;
-
-            ps.Play();
-
-            Destroy(splatGo, 1.2f);
         }
 
         private IEnumerator BreakShatterRoutine()

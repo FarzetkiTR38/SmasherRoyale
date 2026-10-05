@@ -1,0 +1,341 @@
+{
+    "capturedUtc": "2026-10-03T22:43:05.8941102Z",
+    "records": [
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_Champion.png",
+            "width": 1254,
+            "height": 1254,
+            "transparentPixels": 648535,
+            "partialAlphaPixels": 923442,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 32.0,
+                "y": 30.0,
+                "width": 1199.0,
+                "height": 1193.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_GoldBag.png",
+            "width": 1254,
+            "height": 1254,
+            "transparentPixels": 741011,
+            "partialAlphaPixels": 831308,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 33.0,
+                "y": 111.0,
+                "width": 1190.0,
+                "height": 1051.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_GoldChest.png",
+            "width": 1254,
+            "height": 1254,
+            "transparentPixels": 731081,
+            "partialAlphaPixels": 841188,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 27.0,
+                "y": 148.0,
+                "width": 1202.0,
+                "height": 946.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_Infinity.png",
+            "width": 1254,
+            "height": 1254,
+            "transparentPixels": 811141,
+            "partialAlphaPixels": 761335,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 8.0,
+                "y": 235.0,
+                "width": 1238.0,
+                "height": 825.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_Mega.png",
+            "width": 1254,
+            "height": 1254,
+            "transparentPixels": 880724,
+            "partialAlphaPixels": 691792,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 46.0,
+                "y": 160.0,
+                "width": 1177.0,
+                "height": 999.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_NoAds.png",
+            "width": 1254,
+            "height": 1254,
+            "transparentPixels": 499426,
+            "partialAlphaPixels": 1072056,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 50.0,
+                "y": 41.0,
+                "width": 1152.0,
+                "height": 1170.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_RoyalDeal.png",
+            "width": 1536,
+            "height": 1024,
+            "transparentPixels": 646879,
+            "partialAlphaPixels": 925985,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 17.0,
+                "y": 99.0,
+                "width": 1504.0,
+                "height": 854.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Art_Warrior.png",
+            "width": 1254,
+            "height": 1254,
+            "transparentPixels": 662497,
+            "partialAlphaPixels": 909302,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 33.0,
+                "y": 44.0,
+                "width": 1193.0,
+                "height": 1189.0
+            },
+            "border": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "pixelsPerUnit": 100.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Card_Blue.png",
+            "width": 1774,
+            "height": 887,
+            "transparentPixels": 646583,
+            "partialAlphaPixels": 926784,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 14.0,
+                "y": 185.0,
+                "width": 1746.0,
+                "height": 542.0
+            },
+            "border": {
+                "x": 174.60000610351563,
+                "y": 92.13999938964844,
+                "z": 174.60000610351563,
+                "w": 92.13999938964844
+            },
+            "pixelsPerUnit": 300.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Card_Gold.png",
+            "width": 1774,
+            "height": 887,
+            "transparentPixels": 525491,
+            "partialAlphaPixels": 1047976,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 4.0,
+                "y": 165.0,
+                "width": 1767.0,
+                "height": 603.0
+            },
+            "border": {
+                "x": 176.6999969482422,
+                "y": 102.51000213623047,
+                "z": 176.6999969482422,
+                "w": 102.51000213623047
+            },
+            "pixelsPerUnit": 300.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Card_Purple.png",
+            "width": 1774,
+            "height": 887,
+            "transparentPixels": 615647,
+            "partialAlphaPixels": 955992,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 4.0,
+                "y": 176.0,
+                "width": 1768.0,
+                "height": 571.0
+            },
+            "border": {
+                "x": 176.8000030517578,
+                "y": 97.06999969482422,
+                "z": 176.8000030517578,
+                "w": 97.06999969482422
+            },
+            "pixelsPerUnit": 300.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_Badge.png",
+            "width": 691,
+            "height": 95,
+            "transparentPixels": 3417,
+            "partialAlphaPixels": 62197,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 0.0,
+                "y": 0.0,
+                "width": 691.0,
+                "height": 95.0
+            },
+            "border": {
+                "x": 69.0999984741211,
+                "y": 16.149999618530275,
+                "z": 69.0999984741211,
+                "w": 16.149999618530275
+            },
+            "pixelsPerUnit": 300.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_Buy.png",
+            "width": 906,
+            "height": 444,
+            "transparentPixels": 28713,
+            "partialAlphaPixels": 265927,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 0.0,
+                "y": 0.0,
+                "width": 906.0,
+                "height": 444.0
+            },
+            "border": {
+                "x": 180.0,
+                "y": 100.0,
+                "z": 180.0,
+                "w": 100.0
+            },
+            "pixelsPerUnit": 300.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_Frame.png",
+            "width": 901,
+            "height": 1583,
+            "transparentPixels": 68826,
+            "partialAlphaPixels": 1356924,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 0.0,
+                "y": 1.0,
+                "width": 900.0,
+                "height": 1581.0
+            },
+            "border": {
+                "x": 100.0,
+                "y": 100.0,
+                "z": 100.0,
+                "w": 230.0
+            },
+            "pixelsPerUnit": 200.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_Header.png",
+            "width": 998,
+            "height": 195,
+            "transparentPixels": 14211,
+            "partialAlphaPixels": 179814,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 0.0,
+                "y": 4.0,
+                "width": 998.0,
+                "height": 188.0
+            },
+            "border": {
+                "x": 99.80000305175781,
+                "y": 31.96000099182129,
+                "z": 99.80000305175781,
+                "w": 31.96000099182129
+            },
+            "pixelsPerUnit": 300.0
+        },
+        {
+            "path": "Assets/_Project/Art/UI/ShopDynamic/Skin_Section.png",
+            "width": 998,
+            "height": 195,
+            "transparentPixels": 14211,
+            "partialAlphaPixels": 179814,
+            "spriteRect": {
+                "serializedVersion": "2",
+                "x": 0.0,
+                "y": 4.0,
+                "width": 998.0,
+                "height": 188.0
+            },
+            "border": {
+                "x": 99.80000305175781,
+                "y": 31.96000099182129,
+                "z": 99.80000305175781,
+                "w": 31.96000099182129
+            },
+            "pixelsPerUnit": 300.0
+        }
+    ]
+}
