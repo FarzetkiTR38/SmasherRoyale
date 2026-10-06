@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b05cb9612738c6444a34051698846310
+guid: a5e5f451c21d7024a9979fa710440091
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,11 +39,11 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,12 +108,34 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Seviyesiz Oyun HUD Profili-Photoroom_0
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 34
+        width: 308
+        height: 299
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fecd341e69bbf124c84adc312c81c59b
+      internalID: -1240020773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 344557bdb8666ac4a8d5526ba5e9e3ec
     internalID: 0
     vertices: []
     indices: 
@@ -121,8 +143,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Seviyesiz Oyun HUD Profili-Photoroom_0: -1240020773
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
