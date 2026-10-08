@@ -1,33 +1,15 @@
-using UnityEngine;
 #if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
-#endif
 
-namespace RoyalSmash.Gameplay
+namespace RoyalSmash.Editor
 {
     /// <summary>
     /// Editor showcase map preview containing every Citadel block type on the Stand.
     /// Allows inspecting materials, geometries, and visual alignment before starting the game.
-    /// When entering Play Mode, this preview is immediately hidden and destroyed in Awake
-    /// so the active level can spawn cleanly via LevelLoader.
     /// </summary>
-    [DefaultExecutionOrder(-100000)]
-    public sealed class SkyCitadelPreview : MonoBehaviour
+    public static class SkyCitadelPreview
     {
-        private void Awake()
-        {
-            // In Play Mode, completely remove preview so the active level can spawn cleanly
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-
-#if UNITY_EDITOR
-        [ContextMenu("Rebuild Showcase Map")]
-        public void RebuildShowcase()
-        {
-            BuildShowcaseHierarchy(gameObject);
-        }
-
         [MenuItem("Tools/Royal Smash/Rebuild Showcase Preview")]
         public static void MenuRebuildShowcase()
         {
@@ -36,7 +18,6 @@ namespace RoyalSmash.Gameplay
             {
                 go = new GameObject("SkyCitadelPreview");
                 go.tag = "EditorOnly";
-                go.AddComponent<SkyCitadelPreview>();
             }
             BuildShowcaseHierarchy(go);
             EditorUtility.SetDirty(go);
@@ -48,7 +29,7 @@ namespace RoyalSmash.Gameplay
             // Clear existing children
             for (int i = root.transform.childCount - 1; i >= 0; i--)
             {
-                DestroyImmediate(root.transform.GetChild(i).gameObject);
+                Object.DestroyImmediate(root.transform.GetChild(i).gameObject);
             }
 
             var woodPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Art/SkyCitadel/Prefabs/PF_wood.prefab");
@@ -65,8 +46,6 @@ namespace RoyalSmash.Gameplay
 
             const float standZ = 9.00f;
 
-            // Majestic 20-block Grand Citadel layout matching Level 30 ("The Crown Citadel")
-            // Incorporates all 5 Citadel block types across 5 towering tiers:
             var layout = new (Vector3 pos, GameObject prefab, string label)[]
             {
                 // Layer 0: Ground Foundation (7 blocks, Y = 1.845)
@@ -107,7 +86,6 @@ namespace RoyalSmash.Gameplay
                 instance.transform.position = item.pos;
                 instance.transform.rotation = Quaternion.identity;
 
-                // Make kinematic in preview so blocks stay perfectly aligned in edit mode
                 var rb = instance.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
@@ -117,6 +95,6 @@ namespace RoyalSmash.Gameplay
 
             Debug.Log($"[SkyCitadelPreview] Successfully built showcase layout with {layout.Length} blocks across all 5 types.");
         }
-#endif
     }
 }
+#endif
