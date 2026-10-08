@@ -37,19 +37,11 @@ namespace RoyalSmash.Editor
 
         // Prefab paths
         private const string PREFAB_CITADEL_BALL = "Assets/_Project/Art/SkyCitadel/Prefabs/PF_CitadelBall.prefab";
-        private const string PREFAB_BALL = "Assets/_Project/Prefabs/Gameplay/Ball.prefab";
-
         private const string PREFAB_WOOD = "Assets/_Project/Art/SkyCitadel/Prefabs/PF_wood.prefab";
         private const string PREFAB_STONE = "Assets/_Project/Art/SkyCitadel/Prefabs/PF_stone.prefab";
         private const string PREFAB_ARMORED = "Assets/_Project/Art/SkyCitadel/Prefabs/PF_armored.prefab";
         private const string PREFAB_CRYSTAL = "Assets/_Project/Art/SkyCitadel/Prefabs/PF_crystal.prefab";
         private const string PREFAB_CORE = "Assets/_Project/Art/SkyCitadel/Prefabs/PF_core.prefab";
-
-        private const string CORE_PREFAB_WOOD = "Assets/_Project/Prefabs/Gameplay/Box.prefab";
-        private const string CORE_PREFAB_STONE = "Assets/_Project/Prefabs/Gameplay/Stone.prefab";
-        private const string CORE_PREFAB_ARMORED = "Assets/_Project/Prefabs/Gameplay/Cone.prefab";
-        private const string CORE_PREFAB_CRYSTAL = "Assets/_Project/Prefabs/Gameplay/Column.prefab";
-        private const string CORE_PREFAB_CORE = "Assets/_Project/Prefabs/Gameplay/PaintBottle.prefab";
 
         private int _selectedTab = 0;
         private Vector2 _scrollPos;
@@ -449,33 +441,12 @@ namespace RoyalSmash.Editor
             // 3. Sync Prefabs Rigidbodies
             float ballMass = _projectileConfig != null ? _projectileConfig.Mass : 1.5f;
             SetPrefabRigidbodyMass(PREFAB_CITADEL_BALL, ballMass);
-            SetPrefabRigidbodyMass(PREFAB_BALL, ballMass);
 
-            if (_cfgWood != null)
-            {
-                SetPrefabRigidbodyMass(PREFAB_WOOD, _cfgWood.Mass);
-                SetPrefabRigidbodyMass(CORE_PREFAB_WOOD, _cfgWood.Mass);
-            }
-            if (_cfgStone != null)
-            {
-                SetPrefabRigidbodyMass(PREFAB_STONE, _cfgStone.Mass);
-                SetPrefabRigidbodyMass(CORE_PREFAB_STONE, _cfgStone.Mass);
-            }
-            if (_cfgArmored != null)
-            {
-                SetPrefabRigidbodyMass(PREFAB_ARMORED, _cfgArmored.Mass);
-                SetPrefabRigidbodyMass(CORE_PREFAB_ARMORED, _cfgArmored.Mass);
-            }
-            if (_cfgCrystal != null)
-            {
-                SetPrefabRigidbodyMass(PREFAB_CRYSTAL, _cfgCrystal.Mass);
-                SetPrefabRigidbodyMass(CORE_PREFAB_CRYSTAL, _cfgCrystal.Mass);
-            }
-            if (_cfgCore != null)
-            {
-                SetPrefabRigidbodyMass(PREFAB_CORE, _cfgCore.Mass);
-                SetPrefabRigidbodyMass(CORE_PREFAB_CORE, _cfgCore.Mass);
-            }
+            if (_cfgWood != null) SetPrefabRigidbodyMass(PREFAB_WOOD, _cfgWood.Mass);
+            if (_cfgStone != null) SetPrefabRigidbodyMass(PREFAB_STONE, _cfgStone.Mass);
+            if (_cfgArmored != null) SetPrefabRigidbodyMass(PREFAB_ARMORED, _cfgArmored.Mass);
+            if (_cfgCrystal != null) SetPrefabRigidbodyMass(PREFAB_CRYSTAL, _cfgCrystal.Mass);
+            if (_cfgCore != null) SetPrefabRigidbodyMass(PREFAB_CORE, _cfgCore.Mass);
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();

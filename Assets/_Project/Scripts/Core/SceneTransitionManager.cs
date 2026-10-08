@@ -120,18 +120,8 @@ namespace RoyalSmash.Core
             Debug.Log($"[SceneTransitionManager] Initiating transition to scene: '{sceneName}'");
             OnTransitionStarted?.Invoke(sceneName);
 
-            var overlay = SplashLoadingOverlay.Instance;
-            if (overlay == null) overlay = FindFirstObjectByType<SplashLoadingOverlay>();
-
-            // 1. Fade to black / overlay
-            if (overlay != null)
-            {
-                yield return StartCoroutine(overlay.FadeInOverlay(_defaultFadeDuration));
-            }
-            else
-            {
-                yield return new WaitForSecondsRealtime(_defaultFadeDuration);
-            }
+            // 1. Fade duration delay
+            yield return new WaitForSecondsRealtime(_defaultFadeDuration);
 
             // 2. Load scene asynchronously
             AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName);
@@ -143,10 +133,6 @@ namespace RoyalSmash.Core
                 {
                     float normalizedProgress = Mathf.Clamp01(asyncOp.progress / 0.9f);
                     OnTransitionProgress?.Invoke(normalizedProgress);
-                    if (overlay != null)
-                    {
-                        overlay.SetProgress(normalizedProgress);
-                    }
                     yield return null;
                 }
 
@@ -163,11 +149,8 @@ namespace RoyalSmash.Core
             // Wait a frame for scene initialization to settle
             yield return null;
 
-            // 3. Fade out overlay to reveal new scene
-            if (overlay != null)
-            {
-                yield return StartCoroutine(overlay.FadeOutOverlay(_defaultFadeDuration));
-            }
+            // 3. Complete fade duration delay
+            yield return new WaitForSecondsRealtime(_defaultFadeDuration);
 
             _isTransitioning = false;
             OnTransitionCompleted?.Invoke(sceneName);

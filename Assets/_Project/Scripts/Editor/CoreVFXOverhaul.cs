@@ -101,7 +101,6 @@ namespace RoyalSmash.Editor
             // 5. Update PF_core and PF_Block_05_Core prefabs
             UpdateCorePrefabColor("Assets/_Project/Art/SkyCitadel/Prefabs/PF_core.prefab");
             UpdateCorePrefabColor("Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_05_Core.prefab");
-            UpdateCorePrefabColor("Assets/_Project/Prefabs/Gameplay/PaintBottle.prefab");
 
             // 6. Ensure VFXConfig links are solid
             var vfxConfig = AssetDatabase.LoadAssetAtPath<VFXConfig>("Assets/_Project/ScriptableObjects/Config/VFXConfig.asset");

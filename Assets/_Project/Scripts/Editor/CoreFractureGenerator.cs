@@ -198,8 +198,7 @@ namespace RoyalSmash.Editor
             string[] targetPrefabs = new string[]
             {
                 "Assets/_Project/Art/SkyCitadel/Prefabs/PF_core.prefab",
-                "Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_05_Core.prefab",
-                "Assets/_Project/Prefabs/Gameplay/PaintBottle.prefab"
+                "Assets/_Project/Prefabs/SkyCitadel/Blocks/PF_Block_05_Core.prefab"
             };
 
             foreach (var path in targetPrefabs)
