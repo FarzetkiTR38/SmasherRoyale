@@ -22,7 +22,7 @@ namespace RoyalSmash.Editor
         private const string TexturesDir = "Assets/_Project/Textures/VFX";
         private const string PrefabsDir = "Assets/_Project/Prefabs/VFX";
         private const string ConfigPath = "Assets/_Project/ScriptableObjects/Config/VFXConfig.asset";
-        private const string BallPrefabPath = "Assets/_Project/Prefabs/Gameplay/Ball.prefab";
+        private const string BallPrefabPath = "Assets/_Project/Art/SkyCitadel/Prefabs/PF_CitadelBall.prefab";
 
         [MenuItem("RoyalSmash/VFX Studio/Build All VFX Ecosystem")]
         public static void BuildAll()

@@ -75,7 +75,20 @@ Kullanıcı direktifine istinaden bu faz 5 bağımsız adıma bölünmüştür. 
   - Sahneler, scriptler, `LevelData` ScriptableObject'leri ve prefab içi iç içe referanslar kontrol edilecek.
   - Tamamen kullanılmayan ve hiçbir sistem tarafından çağrılmayan eski prefabler tespit edilip temizlenecek.
   - Unity konsolu kontrol edilecek.
-- **Durum:** BEKLEMEDE (Pending Approval of Step 2)
+- **Sonuç / Gerçekleştirilen İşlemler:**
+  - Projedeki tüm prefabler (66 adet) taranarak sahne, ScriptableObject, materyal ve kod bağımlılıkları incelendi.
+  - Erken prototip aşamasından kalan ve SkyCitadel blok/top/stand sistemleri ile VFX geliştirmeleri tarafından ikame edilmiş **16 adet atıl prefab** güvenli bir şekilde silindi:
+    - **Eski Oynanış / Blok Prefableri (7 Adet):** `Ball.prefab`, `Box.prefab`, `Column.prefab`, `Cone.prefab`, `PaintBottle.prefab`, `Stand.prefab`, `Stone.prefab` (SkyCitadel üretim blokları `PF_wood`, `PF_stone`, `PF_crystal`, `PF_armored`, `PF_core`, `PF_CitadelStand`, `PF_CitadelBall` tarafından devralınmıştır).
+    - **Eski UI Prefableri (4 Adet):** `LeaderboardRow_Normal.prefab` (`LeaderboardRow.prefab` ile ikame edildi), `LivesWidget.prefab`, `SkillBtn_InfinityBall.prefab`, `SkillBtn_MegaBall.prefab` (Doğrudan sahne Canvas hiyerarşisine gömülü oldukları için atıl kalan prefab varlıkları).
+    - **Eski VFX Prefableri (5 Adet):** `VFX_BottleShards.prefab`, `VFX_ImpactGeneric.prefab`, `VFX_ImpactHeavy.prefab`, `VFX_MuzzleFlash.prefab`, `VFX_WinConfetti.prefab` (Phase 26/30'da üretilen çoklu varyantlı `Opt1/Opt2/Opt3` VFX eko-sistemi tarafından devralınmıştır).
+  - Editor araçlarındaki (`VFXStudio.cs`, `GameDesignerWindow.cs`, `CoreFractureGenerator.cs`, `CoreVFXOverhaul.cs`) eski prefab referansları temizlenerek üretim varlıklarına bağlandı.
+  - `MainGame.unity` sahnesindeki inaktif eski kayıp referans nesnesi `TapIndicator` (MissingPrefab) temizlendi.
+  - **Doğrulama:** 3 sahne tekrar açılarak tarandı:
+    - `BootScene`: 28 GO — MissingScripts: 0, MissingPrefabs: 0
+    - `MainMenu`: 1,036 GO — MissingScripts: 0, MissingPrefabs: 0
+    - `MainGame`: 762 GO — MissingScripts: 0, MissingPrefabs: 0
+  - Konsolda **0 hata** olduğu doğrulandı.
+- **Durum:** **TAMAMLANDI (Completed - Onay Bekleniyor)**
 
 ### Adım 4: Build Boyutu Artışının Kök Neden Analizi (Root Cause Analysis)
 - **Hedef:** 150-170MB olan build boyutunun 250-270MB'a fırlamasının kesin teknik nedeninin tespiti.
@@ -99,7 +112,7 @@ Kullanıcı direktifine istinaden bu faz 5 bağımsız adıma bölünmüştür. 
 
 1. [x] **Adım 1:** 3 sahnedeki tüm hiyerarşi taranarak atıl scriptler temizlendi, Unity konsolunda 0 hata.
 2. [x] **Adım 2:** Inspector / On-Off referansları korunarak atıl sprite'lar temizlendi.
-3. [ ] **Adım 3:** Kullanılmayan eski prefabler tespit edilip güvenli şekilde kaldırıldı.
+3. [x] **Adım 3:** Kullanılmayan eski prefabler tespit edilip güvenli şekilde kaldırıldı.
 4. [ ] **Adım 4:** 150MB -> 270MB artışının kök nedeni tam verilerle kanıtlandı ve belgelendi.
 5. [ ] **Adım 5:** Kapsamlı CodeReview, .apk / .aab boyutu ve varlık MB dökümü raporlandı.
 6. [ ] Her adım kullanıcı onayı alınarak ilerletildi.
