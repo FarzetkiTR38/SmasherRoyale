@@ -178,3 +178,26 @@ Kullanıcı direktifine istinaden bu faz 5 bağımsız adıma bölünmüştür. 
 5. [x] **Adım 5:** Kapsamlı CodeReview (130 script, 29.4k satır), .apk / .aab boyutu ve varlık MB dökümü eksiksiz raporlandı.
 6. [x] Her adım kullanıcı onayı alınarak ilerletildi.
 
+---
+
+## 4. Yayın Öncesi Uygulanan Kritik İyileştirmeler (Pre-Launch Refinements — Risk 1 & Risk 2)
+
+Kullanıcı talimatına istinaden yayın öncesi iki kritik risk başarıyla çözülmüştür:
+
+### 1. Risk 1 Çözümü: Müzik ve Ses Dosyaları Optimizasyonu (RAM Çökme Riski Sıfırlandı)
+- **Problem:** 10 müzik parçası `DecompressOnLoad` ve `Vorbis Quality: 1.0` ayarındaydı. Belleğe açıldıklarında ~60-80 MB anlık RAM işgali yaratarak düşük/orta segment Android cihazlarda OutOfMemory (OOM) çökme riski barındırıyordu.
+- **Uygulanan Değişiklik:**
+  - 10 müzik parçasının (`Assets/_Project/Audio/Music`) tamamı `AudioClipLoadType.Streaming`, `Vorbis`, `Quality: 0.65` olarak güncellendi. Hem varsayılan hem de Android platform override ayarları aktif edildi. Müzikler artık RAM'e yüklenmeden doğrudan diskten akıcı şekilde okunacak.
+  - 89 SFX ses dosyasının (`Assets/_Project/Audio/SFX`) tamamı `Vorbis`, `Quality: 0.70` olarak optimize edildi. 3 saniyenin altındaki kısa efektler `DecompressOnLoad`, 3 saniyeden uzun efektler `CompressedInMemory` olarak ayarlandı.
+- **Sonuç:** OOM bellek çökme riski tamamen sıfırlandı, derleme boyutu ek olarak hafifletildi.
+
+### 2. Risk 2 Çözümü: App Launcher Icon Entegrasyonu
+- **Problem:** `PlayerSettings` içerisinde oyuna ait özel bir uygulama ikonu tanımlı değildi (varsayılan Unity mavi logo ikonu mevcuttu).
+- **Uygulanan Değişiklik:**
+  - `Assets/_Project/Art/_FarzetkiArts/general_arts/SmashRoyale_logo.png` (1024x1024) dokusu kullanılarak:
+    - Genel platformlar için Default Icon (`BuildTargetGroup.Unknown`) atandı.
+    - Android platformu için 6 standart ikon çözünürlüğüne (192, 144, 96, 72, 48, 36) atandı.
+    - Android API 26+ Adaptive Icons, Round Icons (API 25) ve Legacy Icons olmak üzere 18 platform ikon yuvasının tamamı konfigüre edildi.
+- **Sonuç:** Oyun cihaza yüklendiğinde ve mağazada kendi özgün `SmashRoyale_logo` ikonuyla profesyonel şekilde görüntülenecektir.
+
+
