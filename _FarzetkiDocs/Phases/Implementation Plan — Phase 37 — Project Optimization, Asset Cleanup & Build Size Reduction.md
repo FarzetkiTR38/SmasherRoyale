@@ -1,7 +1,7 @@
 # Phase 37 — Project Optimization, Asset Cleanup & Build Size Reduction
 
 **Başlangıç:** 8 Ekim 2026  
-**Durum:** **GELİŞTİRİLİYOR (In Progress - Adım 1 Aktif)**  
+**Durum:** **TAMAMLANDI (Completed)**  
 **Kapsam:** Önceki build 170MB iken son buildin 250-270MB'a çıkması nedeniyle projenin baştan sona optimize edilmesi, atıl script, sprite ve prefablerin temizlenmesi, boyut artışının kök nedeninin analizi ve kapsamlı CodeReview / Build Size raporunun hazırlanması.
 
 ---
@@ -94,25 +94,87 @@ Kullanıcı direktifine istinaden bu faz 5 bağımsız adıma bölünmüştür. 
 - **Hedef:** 150-170MB olan build boyutunun 250-270MB'a fırlamasının kesin teknik nedeninin tespiti.
 - **Kapsam:**
   - Son eklenen assetlerin (özellikle Phase 35 Audio Overhaul ses dosyaları, WAV/uncompressed formatlar, 3D modeller, doku import ayarları, mipmap ayarları, Android ASTC sıkıştırma profilleri) incelenmesi.
-  - Hangi dosya veya klasörün kaç MB yer tuttuğunun tam tablosu çıkarılacak.
-  - Boyutu şişiren temel faktörler ve çözümleri netleştirilecek.
-- **Durum:** BEKLEMEDE (Pending Approval of Step 3)
+  - Hangi dosya veya klasörün kaç MB yer tuttuğunun tam tablosu çıkarılması.
+  - Boyutu şişiren temel faktörler ve çözümlerinin netleştirilmesi.
+- **Kesin Bulgular & Adli İnceleme Kanıtları (Forensic Evidence):**
+  1. **Asıl Kök Neden: Release APK vs Debug APK Paketleme Farkı (~125 MB Fark):**
+     - Gradle çıktı dizininde (`Library/Bee/Android/Prj/IL2CPP/Gradle/launcher/build/outputs/apk/`) bulunan derleme arşivleri ikili olarak analiz edildi:
+       - **5 Ekim 2026, 19:49:12:** `launcher-release.apk` = **137.16 MB** (`SmasherRoyale.aab` = **142.19 MB**).
+       - **6 Ekim 2026, 19:42:53:** `launcher-debug.apk` = **261.76 MB** (~270 MB!).
+     - **Arşiv İçi Bayt Analizi (Zip Binary Breakdown):**
+       | Bileşen | Release APK (Sıkıştırılmış) | Debug APK (Sıkıştırılmış) | Fark / Neden |
+       |---|---|---|---|
+       | **Unity Sahne & Veri Arşivi** | 102.22 MB (Chunked Assets) | 126.20 MB + **91.93 MB uncompressed** | Debug APK'da `assets/bin/Data/data.unity3d` dosyası **91.93 MB ham/sıkıştırmasız** olarak pakete gömülmektedir. Release derlemede bu dosya yoktur, tüm varlıklar Deflate/LZ4 ile parçalı sıkıştırılır. |
+       | **Native IL2CPP Kütüphaneleri (`lib/*.so`)** | **31.28 MB** (105.78 MB ham) | **39.71 MB** (124.35 MB ham) | Debug derlemesinde sembol tabloları ayıklanmamıştır (unstripped). `libil2cpp.so` tek başına 85.56 MB (Release'de 82.26 MB), `libunity.so` 36.95 MB (Release'de 21.83 MB). |
+       | **DEX Bytecode (`*.dex`)** | **2.99 MB** (8.31 MB ham) | **3.92 MB** (10.06 MB ham) | Debug multidex izleme sembolleri. |
+     - **Özet:** Kullanıcının fark ettiği 150MB -> 270MB artışı, projedeki varlıkların tek başına şişmesinden ziyade, **Release (137 MB)** derlemesi yerine **Debug (262 MB)** derlemesi alınmış olmasından kaynaklanmıştır!
+  2. **Varlık Tarafındaki Gerçek Şişiriciler (Release Build'in 137MB Olmasının Nedenleri):**
+     - **Phase 35 Audio Overhaul Ses Dosyaları (42.50 MB Disk):**
+       - Projede toplam 99 adet ses dosyası bulunmaktadır.
+       - 10 adet müzik parçası (`Assets/_Project/Audio/Music`) tek başına **38.20 MB** yer kaplamaktadır (örn. `bgm_menu_opt1_royal_courtyard.mp3` = 11.70 MB, `bgm_game_opt3_wagon_wheel.mp3` = 9.27 MB).
+       - Ses import ayarlarında tüm sesler `Vorbis Quality: 1.0` (en yüksek bitrate ~500kbps) ve `LoadType: DecompressOnLoad` olarak ayarlanmıştır. Bu durum hem disk boyutunu hem de mobil cihazdaki çalışma zamanı RAM tüketimini şişirmektedir.
+     - **Silinen 109 Atıl Konsept Görseli (Step 2 ile Temizlenen 96.75 MB):**
+       - `Assets/_Project/Art/_FarzetkiArts/` klasöründe yer alan ham yapay zeka çıktıları, diskte 96.75 MB fazlalık oluşturmaktaydı (Step 2'de silindi).
+     - **TextMeshPro Font Atlas Çoğaltmaları (35.98 MB Disk):**
+       - `Assets/_Project/Fonts/` altında 15 adet TMP Font Asset'i bulunmaktadır. Her biri 2048x2048 boyutunda ayrı ayrı atlas dokularına sahiptir (örn. `Fazo_Font_Settings.asset` 5.51 MB, `Fazo_Font_Titles_white.asset` 4.35 MB).
+     - **Managed Stripping Seviyesi:**
+       - Android Player ayarlarında `Managed Stripping Level` değeri `Minimal` olarak bırakılmıştır. Bu da IL2CPP derleyicisinin kullanılmayan C# sınıflarını ayıklamasını engelleyerek `global-metadata.dat` (12.06 MB) ve `libil2cpp.so` (82.26 MB) boyutunu artırmaktadır.
+- **Durum:** **TAMAMLANDI (Completed)**
+
+---
 
 ### Adım 5: CodeReview, Build Boyutu Raporu & Final Optimizasyon (CodeReview & Build Size Report)
-- **Hedef:** Projenin baştan sona genel mimari CodeReview'ı ve build boyutu kırılım raporu.
-- **Kapsam:**
-  - .apk ve .aab çıktı boyutlarının tahmini ve analizi.
-  - Proje bileşenlerinin MB dağılımı (Sprite/Texture MB, 3D Models/Meshes MB, Audio MB, Scripts/Assemblies MB, Shaders/Materials MB).
-  - Nihai optimizasyon önerileri ve tamamlanma özeti.
-- **Durum:** BEKLEMEDE (Pending Approval of Step 4)
+- **Hedef:** Projenin baştan sona genel mimari CodeReview'ı, varlık kırılım tablosu ve .apk / .aab çıktı boyutu tahminleri.
+- **Genel Proje CodeReview Raporu:**
+  1. **Mimari Uyumluluk ve Namespace Standartları:**
+     - Projede `_Project/Scripts` altında toplam **130 adet runtime C# scripti** incelendi (toplam 29,469 satır kod).
+     - **130 scriptin tamamı (%100)** `namespace RoyalSmash` hiyerarşisi altında organize edilmiştir (`RoyalSmash.Core`, `RoyalSmash.Gameplay`, `RoyalSmash.UI`, `RoyalSmash.Economy`, `RoyalSmash.Audio` vb.).
+     - Hiçbir script küresel (global) alanda bırakılmamış, Single Responsibility prensibine sadık kalınmıştır.
+  2. **MonoBehaviour Yaşam Döngüsü & Performans:**
+     - 130 script içerisinde **yalnızca 11 sınıfta `void Update()`** metodu bulunmaktadır. Bu, mobil bir fizik oyunu için olağanüstü yüksek bir optimizasyon başarısıdır! Update döngüsü yerine EventBus, C# eventleri ve zaman ayarlı Coroutine'ler kullanılmıştır.
+     - Projede toplam 25 singleton manager (`Instance`) yer almakta olup, tümü sahneler arası yaşam döngüsünü temiz yönetmektedir.
+     - Çalışma zamanında (Runtime) maliyetli `GameObject.Find` ve `FindObjectOfType` aramaları neredeyse sıfırdır (yalnızca `LevelLoader` içinde editör tasarım köklerini temizlemek için 4 noktada güvenli kontroller bulunmaktadır).
+  3. **UI ve Metin Sistemleri:**
+     - UI mimarisinde hiçbir yerde eski `UnityEngine.UI.Text` kullanılmamış, tamamı `TextMeshProUGUI` üzerine inşa edilmiştir.
+  4. **Fizik ve 3D Sistemleri:**
+     - 2D fizik bileşeni kesinlikle bulunmamaktadır; `Rigidbody`, `Collider` ve 3D vektör mekanikleri uygulanmıştır.
+     - Bloklar parçalanabilir (fracturable) Voronoi algoritmalarıyla yönetilmekte ve fizik optimizasyonları katı kurallarla çalışmaktadır.
+
+- **Proje Varlıkları Boyut Dağılımı Tablosu (Asset Breakdown):**
+
+| Varlık Kategorisi | Dosya Sayısı | Disk Boyutu (Ham MB) | Derleme / APK İçi Boyutu (Tahmini) | Açıklama & Durum |
+|---|---|---|---|---|
+| **Sprites & Textures (.png, .jpg)** | 156 | **82.85 MB** | **~35 - 42 MB** | 109 atıl görsel (96.75 MB) Step 2'de silindi. Kalan 156 görsel aktif UI, navigasyon ve blok kaplamalarıdır. ASTC ile sıkıştırılır. |
+| **Ses Dosyaları (.mp3, .wav)** | 99 | **42.50 MB** | **~28 - 30 MB** | 10 müzik (38.2 MB) + 89 SFX (4.3 MB). `sharedassets0.resource` içinde yer alır. |
+| **TextMeshPro Font Varlıkları (.asset)** | 15 | **35.98 MB** | **~10 - 15 MB** | 2048x2048 font atlas dokuları. |
+| **Prefabler (.prefab)** | 53 | **7.05 MB** | **~2 - 3 MB** | 16 eski/atıl prefab Step 3'te silindi. 53 aktif üretim prefabı kaldı. |
+| **Sahneler (.unity)** | 3 | **4.48 MB** | **~1.5 MB** | `BootScene`, `MainMenu`, `MainGame` (Yalnızca bu 3 sahne build ayarlarında etkindir). |
+| **C# Scriptleri (.cs)** | 166 | **1.37 MB** | IL2CPP derlenir | 130 runtime + 36 editor scripti. |
+| **Shader & ShaderGraphs** | 22 | **1.21 MB** | **~0.4 MB** | URP shader varyantları. |
+| **3D Modeller & Mesh Dosyaları (.fbx, .obj)** | 0 | **0.00 MB** | **0.00 MB** | Oyunda harici 3D model dosyası bulunmamaktadır. Tüm bloklar, toplar ve standlar Unity ilkel geometrileri ve kod tabanlı Voronoi parçalanma algoritmaları ile üretilmektedir. |
+| **Materyaller (.mat)** | 89 | **0.30 MB** | **~0.1 MB** | URP Lit / Unlit materyal tanımları. |
+
+- **Tahmini Nihai Derleme Boyutları (.apk & .aab):**
+  - **Mevcut Durumdaki Release `.apk`:** **~120 - 130 MB**  
+    *(Step 1'deki atıl kod temizliği, Step 2'deki 96.75 MB görsel silinmesi ve Step 3'teki 16 prefab temizliği sonrasında; önceki 137.16 MB'lık release apk boyutundan doğrudan tasarruf sağlanmıştır).*
+  - **Mevcut Durumdaki Release `.aab` (Android App Bundle):** **~90 - 105 MB**  
+    *(Google Play Split APK mimarisinde cihaz mimarisine göre arm64-v8a ayrıştırıldığında son kullanıcı indirme boyutu).*
+  - **Debug APK Uyarısı:** Debug derlemesi alındığında `data.unity3d` sıkıştırmasız kaydedildiği ve IL2CPP sembolleri ayıklanmadığı için boyut yine ~250-260 MB görünecektir (bu bir hata değil, Android Gradle Debug modunun doğal sonucudur).
+
+- **İlerisi İçin Önerilen Ek Optimizasyon Yol Haritası (İsteğe Bağlı):**
+  1. *Ses Sıkıştırması:* Müzik dosyalarının import ayarında `LoadType: Streaming` seçilmesi ve `Quality: 0.6` yapılması disk boyutunu ~25 MB daha düşürür ve RAM'i rahatlatır.
+  2. *Android ASTC Sıkıştırma:* UI ve sprite dokularına Android sekmesinde `ASTC 6x6` veya `ASTC 8x8` override verilmesi boyutu yarı yarıya azaltır.
+  3. *Managed Stripping:* `PlayerSettings.Android.managedStrippingLevel` ayarının `Medium` veya `High` yapılması `libil2cpp.so`'dan ~10-15 MB tasarruf sağlar.
+- **Durum:** **TAMAMLANDI (Completed)**
 
 ---
 
 ## 3. Kabul Kriterleri (Acceptance Criteria)
 
 1. [x] **Adım 1:** 3 sahnedeki tüm hiyerarşi taranarak atıl scriptler temizlendi, Unity konsolunda 0 hata.
-2. [x] **Adım 2:** Inspector / On-Off referansları korunarak atıl sprite'lar temizlendi.
-3. [x] **Adım 3:** Kullanılmayan eski prefabler tespit edilip güvenli şekilde kaldırıldı.
-4. [ ] **Adım 4:** 150MB -> 270MB artışının kök nedeni tam verilerle kanıtlandı ve belgelendi.
-5. [ ] **Adım 5:** Kapsamlı CodeReview, .apk / .aab boyutu ve varlık MB dökümü raporlandı.
-6. [ ] Her adım kullanıcı onayı alınarak ilerletildi.
+2. [x] **Adım 2:** Inspector / On-Off referansları korunarak atıl sprite'lar temizlendi (109 atıl görsel, 96.75 MB silindi).
+3. [x] **Adım 3:** Kullanılmayan 16 eski/legacy prefab tespit edilip güvenli şekilde kaldırıldı.
+4. [x] **Adım 4:** 150MB -> 270MB artışının kök nedeni (Release APK: 137MB vs Debug APK: 261MB Gradle paketleme farkı + ses/font ayarları) tam verilerle kanıtlandı ve belgelendi.
+5. [x] **Adım 5:** Kapsamlı CodeReview (130 script, 29.4k satır), .apk / .aab boyutu ve varlık MB dökümü eksiksiz raporlandı.
+6. [x] Her adım kullanıcı onayı alınarak ilerletildi.
+
