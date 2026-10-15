@@ -13,7 +13,12 @@ namespace RoyalSmash.Editor
             {
                 try
                 {
-                    MCPForUnity.Editor.Windows.MCPForUnityEditorWindow.ShowWindow();
+                    var mcpType = System.Type.GetType("MCPForUnity.Editor.Windows.MCPForUnityEditorWindow, MCPForUnity.Editor");
+                    if (mcpType != null)
+                    {
+                        var showMethod = mcpType.GetMethod("ShowWindow", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                        showMethod?.Invoke(null, null);
+                    }
                 }
                 catch (System.Exception ex)
                 {

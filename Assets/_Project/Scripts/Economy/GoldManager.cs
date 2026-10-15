@@ -77,6 +77,7 @@ namespace RoyalSmash.Economy
                 {
                     DontDestroyOnLoad(gameObject);
                 }
+                EnsureConfigurations();
                 InitializeGold();
                 SceneManager.sceneLoaded += HandleSceneLoaded;
             }
@@ -240,38 +241,73 @@ namespace RoyalSmash.Economy
         }
 
         /// <summary>
-        /// Processes level win reward with strict duplicate reward prevention.
-        /// First completion awards Base + (Remaining Balls * 2).
-        /// Replays award 0 Gold.
+        /// Ensures economy and level reward configurations are loaded from Resources, AssetDatabase or default instances.
+        /// </summary>
+        public void EnsureConfigurations()
+        {
+            if (_rewardConfig == null)
+            {
+                _rewardConfig = Resources.Load<LevelRewardConfig>("Config/LevelRewardConfig");
+#if UNITY_EDITOR
+                if (_rewardConfig == null)
+                {
+                    _rewardConfig = UnityEditor.AssetDatabase.LoadAssetAtPath<LevelRewardConfig>(
+                        "Assets/_Project/ScriptableObjects/Config/LevelRewardConfig.asset");
+                }
+#endif
+                if (_rewardConfig == null)
+                {
+                    _rewardConfig = ScriptableObject.CreateInstance<LevelRewardConfig>();
+                }
+            }
+
+            if (_economyConfig == null)
+            {
+                _economyConfig = Resources.Load<EconomyConfig>("Config/EconomyConfig");
+#if UNITY_EDITOR
+                if (_economyConfig == null)
+                {
+                    _economyConfig = UnityEditor.AssetDatabase.LoadAssetAtPath<EconomyConfig>(
+                        "Assets/_Project/ScriptableObjects/Config/EconomyConfig.asset");
+                }
+#endif
+                if (_economyConfig == null)
+                {
+                    _economyConfig = ScriptableObject.CreateInstance<EconomyConfig>();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Processes level win reward: Base Level Reward + (Remaining Balls * RemainingBallMultiplier).
+        /// Awards gold to the player on victory and persists save data.
         /// </summary>
         public int ProcessLevelCompletionReward(int levelIndex, int remainingBalls)
         {
+            EnsureConfigurations();
+
             int baseReward = _rewardConfig != null ? _rewardConfig.BaseLevelReward : 50;
             int multiplier = _rewardConfig != null ? _rewardConfig.RemainingBallMultiplier : 2;
             int clampedBalls = Mathf.Max(0, remainingBalls);
             int ballBonus = clampedBalls * multiplier;
             int calculatedTotal = baseReward + ballBonus;
 
-            // Duplicate reward check
-            if (HasClaimedLevelReward(levelIndex))
-            {
-                Debug.Log($"[GoldManager] Level {levelIndex} was already rewarded. Duplicate reward prevented (Granted 0 Gold).");
-                OnLevelRewardProcessed?.Invoke(levelIndex, baseReward, ballBonus, 0, false);
-                return 0;
-            }
-
-            // Grant first-time reward
+            // Track completion in save data
             if (SaveManager.Instance != null && SaveManager.Instance.Data != null)
             {
                 if (SaveManager.Instance.Data.RewardedLevelIds == null)
                 {
                     SaveManager.Instance.Data.RewardedLevelIds = new System.Collections.Generic.List<int>();
                 }
-                SaveManager.Instance.Data.RewardedLevelIds.Add(levelIndex);
+                if (!SaveManager.Instance.Data.RewardedLevelIds.Contains(levelIndex))
+                {
+                    SaveManager.Instance.Data.RewardedLevelIds.Add(levelIndex);
+                }
             }
 
             AddGold(calculatedTotal, $"Level_{levelIndex}_Victory");
             OnLevelRewardProcessed?.Invoke(levelIndex, baseReward, ballBonus, calculatedTotal, true);
+            Debug.Log($"[GoldManager] Level {levelIndex} Cleared! Base: {baseReward}, Ball Bonus: {ballBonus}, Total Awarded: {calculatedTotal} Gold.");
             return calculatedTotal;
         }
 
